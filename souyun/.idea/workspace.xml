@@ -11,684 +11,16 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="886527f8-5b10-49e8-aed0-64825d7ec9eb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Adupter/MyPagerAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/BlankFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/CtldFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/CtzcFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/DzysFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/SongFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Fragment/TcldFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/auxiliary/DataCleanManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/auxiliary/DataCleanManager2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/auxiliary/DataCleanManagerUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/updateBeen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/by.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/gd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/hx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/me.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/sys.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/tx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/tx2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/yuan3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/yuan5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/zbbw.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/zbbxx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/zf00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/shape_tablayout_bg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/line_shape.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_blank3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ctld.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ctzc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dzys.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_song.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tcld.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tczc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/head.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/lift.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/map_nfo_window.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/new_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/pppp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/objectbox-models/default.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/re1e-4.0.0.3.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.1.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.10.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.11.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.12.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.13.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.15.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.16.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.20.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.204.0.0.20.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.21.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.22.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.224.0.0.22.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.234.0.0.23.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.244.0.0.24 - 副本.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.244.0.0.24.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.25.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.26.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.27.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.5.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.6.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.7.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.8.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/release-4.0.0.9.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/xrwl/owner/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/china_Province_city_zone.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/coupon.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/driver_tab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/fonts/hwxk.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/home.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/insurance.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/tab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/MyApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseEventActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseEventFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BasePopDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseWebActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/PermissionDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/adapter/BasePagerAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Address.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Address2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Auth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/BaseMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/BusModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Business.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/BusinessDetail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Distance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/HistoryOrder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/HomeItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/MsgCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/OrderDetail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/PostOrder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/ProductSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Register.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Tab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/bean/Update.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/db/AreaDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/db/AssetsDatabaseManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/BankListRefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/BusinessListRefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/BusinessTabCountEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/DriverListRrefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/DriverOrderListRrefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/FriendRefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/OwnerOrderListRrefreshEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/PublishClearCacheEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/event/TabCheckEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/http/HttpConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/LoginActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/ModifyPwdActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/RegisterActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/WebActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/AccountContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/AccountModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/LoginPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/ModifyPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/RegisterPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/view/LoginView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/adapter/BusinessAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessDetailContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessDetailModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessDetailPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/mvp/BusinessPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/ui/BusinessDetailActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/ui/BusinessFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/business/ui/BusinessFragment1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/AddressAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/BusModelAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/CategoryAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/FindAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/HistoryAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/adapter/SelectedAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/dialog/BaseFindDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/dialog/ChooseAddressDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/dialog/ProductSearchDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/mvp/FindContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/mvp/FindModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/mvp/FindPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/find/ui/FindFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendAddHeaderDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendSearchAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendSearchDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/adapter/FriendTitleDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/bean/BaseContact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/bean/EntityWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/bean/Friend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/bean/IndexableEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/bean/InitialComparator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/mvp/FriendAddContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/mvp/FriendAddModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/mvp/FriendAddPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/mvp/FriendPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/ui/FriendActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/ui/FriendAddActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/ui/FriendFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/friend/ui/FriendSearchActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/adapter/HistoryOrderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/adapter/HomeAdAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/adapter/HomeRecyclerAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/AuthContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/AuthModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/AuthPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/DriverAuthContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/DriverAuthModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/DriverAuthPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/HistoryContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/HistoryModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/mvp/HistoryPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/DriverAuthActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/HistoryActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/HomeFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/NearLocationActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/loading/activity/LoadingActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/loading/mvp/LoadingContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/loading/mvp/LoadingModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/loading/mvp/LoadingPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/adapter/BankAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/adapter/MeAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/adapter/MeDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/adapter/MeHeaderDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/bean/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/bean/Me.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/dialog/ExitDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/mvp/AddBankPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/mvp/BankContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/mvp/BankModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/mvp/BankPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/ui/AddBankActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/ui/BankActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/ui/MeFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/me/ui/MeInfoActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/adapter/DriverOrderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/mvp/DriverOrderContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/mvp/DriverOrderDetailModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/mvp/DriverOrderDetailPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/mvp/DriverOrderModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/mvp/DriverOrderPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/ui/DriverOrderActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/ui/DriverOrderDetailActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/ui/DriverOrderFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/driver/ui/GrapSuccessActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/adapter/OwnerOrderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/mvp/OwnerOrderContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/mvp/OwnerOrderDetailModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/mvp/OwnerOrderDetailPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/mvp/OwnerOrderModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/mvp/OwnerOrderPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/ui/OwnerOrderActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/ui/OwnerOrderDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/ui/OwnerOrderDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/ui/OwnerOrderFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/Address2Adapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/CouponAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/InsuranceAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/PhotoRvAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/PhotoRvAddDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/PhotoRvItemDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/SearchLocationAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/adapter/TruckAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/Coupon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/Insurance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/PayResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/Photo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/PublishBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/bean/Truck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/AuthDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/CategoryDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/CouponDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/InsuranceDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/ProductDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/dialog/RemarkDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/map/SearchLocationActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/AddressContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/AddressModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/AddressPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/OrderConfirmContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/OrderConfirmModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/OrderConfirmPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishConfirmContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishConfirmModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishConfirmPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/PublishPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/TruckContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/TruckModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/mvp/TruckPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/AddressActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/OrderConfirmActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/PublishConfirmActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/PublishFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/PublishSuccessActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/ui/TruckActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/view/AreaSpinnerView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/view/AreaSpinnersView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/view/CustomSpinner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/view/PublishProductLongView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/publish/view/SpinnerDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/mvp/TabContract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/mvp/TabModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/mvp/TabPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/mvp/MyLoadPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/mvp/MyPresenter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/Api.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/BaseObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/BaseRetrofitFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/BaseSimpleObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/CommonParamsInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/OtherRetrofitFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/RetrofitFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/RxSchedulers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/file/FileRetrofitFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/file/JsDownloadInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/file/JsDownloadListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/retrofit/file/JsResponseBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/service/FileDownloadService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/AMapUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/AccountUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/BadgeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/CommTools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/FileUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/IdCheckUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/VersionUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/view/PhotoRecyclerView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/view/PhotoScrollView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/view/RegionNumberEditText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/wxapi/WXPayEntryActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/loading_alpha_anim.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/pop_anim_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/pop_anim_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/pop_translate_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/pop_translate_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/base_dialog_btn_color_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/choose_address_rb_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/publish_category_rb_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/publish_remark_tag_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/register_codebtn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_green_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/base_bg_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/base_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v21/base_list_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ad8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fanmian.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/fanmianshili.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_ckfw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_cp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_cwz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_gczl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_gls.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_gsgl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_hlfw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_hyfw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_jd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_jqz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_jyz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_ktv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_lmjj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_shfw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_tcc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_tqyb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_xlz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_yh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_grid_ic_zfym.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_ic_fbhy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_ic_lsjy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_ic_smrz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/home_ic_wddd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_alipay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_auth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_auth_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_call.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_checkbox_friend.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_checkbox_friend_checked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_circle_delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_default_avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_delete_photo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_order_default.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_order_finished.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_order_received.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_order_transfer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_order_transport.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_publish_success.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_qrcode.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_small_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_small_search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_spinner_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_weixin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon_camera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/loading_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/login_ic_edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/login_ic_password.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/login_ic_username.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_about.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_auth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_bank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_call.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_exit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_order.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_pwd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/me_ic_qrcode.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/poi_marker_pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_arrow_down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_arrow_up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_bz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_dh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_dhdw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_fhdw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_hw.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_pslx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_shr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_time.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_ic_yxcx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/publish_truck_ic_random.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_business_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_business_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_home_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_home_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_me_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_me_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_news_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_news_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_publish_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tab_publish_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/zhengmian.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/zhengmianshili.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/base_bg_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/info_shape.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/base_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/base_list_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/blue_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/camera_frame_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/chooseaddress_bg_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/chooseaddress_history_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/chooseaddress_selected_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/color_cursor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/downloading_progressbar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/friend_checkbox_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/friend_search_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/friend_searchview_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_back.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_exit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_primary_back.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_primary_exit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/list_divider.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/login_forgetpwd_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/order_detail_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pay_recommend_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/productsearch_item_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/productsearch_item_selected_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/publish_category_rb_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/publishconfirm_frame_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/red_dot_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sl_edittext_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sl_search_btn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/webview_progress_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_showphotos_addphoto_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_showphotos_item_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_showphotos_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_showphotos_recyclerview_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_showphotos_recyclerview_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/addbank_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/address_add_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/address_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/address_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bank_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bank_footer_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bank_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_lineview_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_list_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_pay_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_retryview_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_vertical_pay_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/baseweb_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_detail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_fragment1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chooseaddress_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chooseaddress_history_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chooseaddress_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chooseaddress_selected_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coupon_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/coupon_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/driver_auth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/driverorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/driverorderdetail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/exit_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/find_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/find_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_search_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_search_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friend_sectiontitle_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friendadd_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/friendadd_header_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/grapsuccess_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/history_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/historyorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_ad_viewpager_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/home_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/insurance_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/insurance_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/loading_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/me_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/me_header_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/me_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/meinfo_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/modifypassword_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/modifypwd_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nearlocation_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notify_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ordercomfirm_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ownerauth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ownerorder_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ownerorder_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ownerorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/ownerorderdetail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/permission_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/productsearch_busmodel_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/productsearch_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_address_default_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_address_longtotal_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_area_spinner_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_area_spinners_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_auth_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_category_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_product_default_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_product_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_product_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_product_longtotal_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_remark_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_remark_dialog_tag_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_spinner_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_truck_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publish_truck_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publishconfirm_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publishconfirm_pricedetail_pop_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/publishsuccess_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/register_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/searchlocation_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/searchlocation_listview_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/spinnerdialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/spinnerdialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/tab_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/gongxininqiangdanchenggong.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/huanying.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/nindehuodanyibeijieshou.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/quanxianbuzushimingrenzheng.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/constants.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/myfile_paths.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/xrwl/owner/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/xrwl.jks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependencies.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensourcelibrary/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensourcelibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensourcelibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensourcelibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opensourcelibrary/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/androidTest/java/com/ldw/library/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/listview/CommonAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/listview/MultiItemTypeAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/listview/ViewHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/listview/base/ItemViewDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/listview/base/ItemViewDelegateManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/loadmore/LoadMoreView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/CommonAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/MultiItemTypeAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/base/ItemViewDelegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/base/ItemViewDelegateManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/base/ViewHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/utils/WrapperUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/wrapper/EmptyWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/wrapper/HeaderAndFooterWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/adapter/recycler/wrapper/LoadMoreWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/bean/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/mvp/BaseMVP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/AppUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/AvoidDoubleClickListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/AvoidDoubleItemClickListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/DisplayUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/DoubleUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/KeyboardChangeListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/PinyinUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/ReflectUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/ViewHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/filedownload/FileDownloadTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/filedownload/OnFileDownloadListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/fileupload/CountingRequestBody.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/fileupload/FileUploadCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/fileupload/FileUploadUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/fileupload/Platform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/Eyes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesKitKat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/BadgeView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/ClearEditText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/CustomLoadMoreView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/GridSpacingItemDecoration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/LBadgeView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/RetryView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/SpaceItemDecoration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/TitleView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/WheelPicker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/dialog/LoadingProgress.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/indexrv/IndexRecyclerView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/indexrv/IndexScroller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/tab/BottomTab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/view/tab/BottomTabItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/color/ul_tab_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/footer_loading_progress.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/sample_footer_loading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_arrow_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_ic_delete.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_ic_download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_ic_small_search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_notify_download_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_retryview_loadfailed_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable-xhdpi/ul_retryview_nodata_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable/ul_loading_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable/ul_notify_bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/drawable/ul_notify_progress_style.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/layout/layout_view_load_more.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/layout/ul_loading_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/ids.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/indexrv_attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/retryview_attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/titleview_attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/wheelpicker_attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/res/values/wheelpicker_dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/universallibrary/src/test/java/com/ldw/library/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xrwl.jks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/接口文档" beforeDir="false" />
-    </list>
+    <list default="true" id="886527f8-5b10-49e8-aed0-64825d7ec9eb" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SNFNW19104001719]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="HMKNW17505013095" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -735,6 +67,37 @@
       </state>
     </system>
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -753,8 +116,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/local.properties" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1f2P7uh1SiQJR9oWxyB3rHBja7C" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -777,7 +168,7 @@
     <property name="android.sdk.path" value="D:/SDK" />
     <property name="device.picker.selection" value="46FDU19621011409" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../16_app/owner/XRWL_Owner" />
+    <property name="last_opened_file_path" value="E:/16_app/owner/XRWL_Owner" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
@@ -785,10 +176,12 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.xrwl.owner.utils.behavior" />
-      <recent name="com.pengguanming.mimusicbehavior" />
-      <recent name="com.xrwl.owner.Frame.AppUpdate.http" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\DU\owner\XRWL_Owner\app\src\main\res\layout" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\java\com\xrwl\owner\utils" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-xhdpi" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-v24" />
+      <recent name="D:\NewApp\owner\XRWL_Owner" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.xrwl.owner" />
@@ -800,21 +193,25 @@
       <recent name="com.xrwl.owner.Fragment" />
       <recent name="com.pengguanming.mimusicbehavior" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\DU\owner\XRWL_Owner\app\src\main\res\layout" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\java\com\xrwl\owner\utils" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-xhdpi" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-v24" />
-      <recent name="D:\NewApp\owner\XRWL_Owner" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.xrwl.owner.utils.behavior" />
+      <recent name="com.pengguanming.mimusicbehavior" />
+      <recent name="com.xrwl.owner.Frame.AppUpdate.http" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Android App.app">
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -838,7 +235,6 @@
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ALL_USERS" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -847,6 +243,8 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -874,18 +272,19 @@
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
-        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
-      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -950,12 +349,26 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" weight="0.25" />
+    </layout>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -974,7 +387,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Notifications" timestamp="1602759269380">
@@ -1107,5 +519,21 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
