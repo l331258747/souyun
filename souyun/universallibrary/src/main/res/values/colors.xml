@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#519cff</color>
+    <color name="white">#ffffff</color>
+
+    <color name="ul_loading_color">#88000000</color>
+
+    <color name="ul_notify_text_color">#ababaa</color>
+    <color name="tab_unselected_color">#939393</color>
+</resources>

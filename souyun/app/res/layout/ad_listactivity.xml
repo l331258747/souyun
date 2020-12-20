@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:backImage="@drawable/ic_back"
+        app:titleText="发现更多"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+
+         >
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/default_dp20"
+         android:layout_marginLeft="@dimen/default_dp20"
+         android:text="发现更多"
+         android:textColor="@color/black"
+         android:textSize="@dimen/default_dp15"
+         />
+
+
+         <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:src="@drawable/home_dj"
+                 android:layout_gravity="center"
+                android:layout_marginStart="@dimen/default_dp40"
+                android:layout_marginEnd="@dimen/default_dp40"
+                android:layout_marginTop="-130dp"
+                />
+
+
+
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:src="@drawable/home_gh"
+             android:layout_gravity="center"
+             android:layout_marginStart="@dimen/default_dp40"
+             android:layout_marginEnd="@dimen/default_dp40"
+             android:layout_marginTop="-300dp"
+             />
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:src="@drawable/home_jy"
+             android:layout_gravity="center"
+             android:layout_marginStart="@dimen/default_dp40"
+             android:layout_marginEnd="@dimen/default_dp40"
+             android:layout_marginTop="-300dp"
+             />
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:src="@drawable/home_jq"
+             android:layout_gravity="center"
+             android:layout_marginStart="@dimen/default_dp40"
+             android:layout_marginEnd="@dimen/default_dp40"
+             android:layout_marginTop="-300dp"
+             />
+
+     </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

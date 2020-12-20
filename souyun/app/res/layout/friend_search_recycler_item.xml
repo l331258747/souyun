@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/default_dp10"
+    android:paddingEnd="@dimen/default_dp10"
+    android:paddingTop="@dimen/default_dp10"
+    android:paddingBottom="@dimen/default_dp10">
+
+    <Button
+        android:id="@+id/friendItemSearchBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/friend_search_btn_selector"
+        android:drawableStart="@drawable/ic_small_search"
+        android:minHeight="0dp"
+        android:gravity="start|center_vertical"
+        style="?android:attr/borderlessButtonStyle"
+        android:paddingStart="@dimen/default_dp15"
+        android:paddingEnd="@dimen/default_dp15"
+        android:paddingTop="@dimen/default_dp8"
+        android:paddingBottom="@dimen/default_dp8"
+        android:drawablePadding="@dimen/default_dp6"
+        android:textSize="@dimen/default_font16"
+        android:textColor="@color/friend_search_btn_text_color"
+        android:text="@string/friend_search_hint"/>
+
+</LinearLayout>

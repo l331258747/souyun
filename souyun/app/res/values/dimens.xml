@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="retryview_progress_size">25dp</dimen>
+
+    <dimen name="home_icon_size">30dp</dimen>
+    <dimen name="list_divider_height">0.5dp</dimen>
+
+    <dimen name="add_showphotos_photo_item_bg_size">90dp</dimen>
+    <dimen name="add_showphotos_photo_item_size">80dp</dimen>
+    <dimen name="add_showphotos_photo_item_margin">10dp</dimen>
+    <dimen name="add_showphotos_photo_delete_size">20dp</dimen>
+
+    <!-- 列表的基础样式 -->
+    <dimen name="default_cell_title_font">@dimen/default_font16</dimen>
+    <dimen name="default_cell_detail_font">@dimen/default_font14</dimen>
+    <dimen name="default_cell_info_font">@dimen/default_font12</dimen>
+
+    <dimen name="base_dialog_title_size">20sp</dimen>
+    <dimen name="base_dialog_content_size">17sp</dimen>
+    <dimen name="base_dialog_padding">24dp</dimen>
+    <dimen name="base_dialog_padding_bottom">8dp</dimen>
+    <dimen name="base_dialog_title_padding_bottom">10dp</dimen>
+    <dimen name="base_dialog_button_layout_height">48dp</dimen>
+    <dimen name="base_dialog_button_layout_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="poi_title_size">14sp</dimen>
+    <dimen name="poi_field_size">14sp</dimen>
+    <dimen name="margin_left">15dp</dimen>
+    <dimen name="margin_right">15dp</dimen>
+    <dimen name="offset_title">5dp</dimen>
+    <dimen name="width_title_leftImg">30dp</dimen>
+    <dimen name="offset_title_left">5dp</dimen>
+    <dimen name="margin_padding">15dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="trace_spinner_padding">2dp</dimen>
+
+
+</resources>

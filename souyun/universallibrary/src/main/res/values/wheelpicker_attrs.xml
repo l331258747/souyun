@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelPicker">
+        <attr name="wheelItemTextSize" format="dimension"/>
+        <attr name="wheelIsLoop" format="boolean"/>
+        <attr name="wheelLineColor" format="color"/>
+        <attr name="wheelItemTextColor" format="color"/>
+        <attr name="wheelItemSelectedTextColor" format="color"/>
+    </declare-styleable>
+</resources>

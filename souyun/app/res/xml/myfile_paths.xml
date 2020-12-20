@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="downloadPath"
+        path="/xrwl" />
+    <external-path
+        name="photoPath"
+        path="DCIM" />
+    <external-path
+        name="root"
+        path="/" />
+    <!--<external-files-path name="myDownloadPath" path="/download" />-->
+    <!--<external-path name="myApk" path="Android/data/com.lt.pms.gwj/files/" />-->
+    <!--对应getFilesDir()。-->
+    <!--<files-path name="name" path="path" />-->
+    <!--对应getCacheDir()。-->
+    <cache-path name="downloadPath" path="/xrwl" />
+    <!--对应Environment.getExternalStorageDirectory()。-->
+    <!--<external-path name="download" path="/longteng/ltpms/download" />-->
+    <!--对应getExternalFilesDir()。-->
+    <!--<external-files-path name="name" path="path" />-->
+    <!--对应getExternalCacheDir()。-->
+    <!--<external-cache-path name="name" path="path" />-->
+</paths>

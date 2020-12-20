@@ -1,0 +1,107 @@
+def supportVersion = "27.0.2"
+def okHttpVersion = "3.9.1"
+def materialprogressbarVersion = "1.1.7"
+def rxjavaVersion = "2.1.5"
+def rxandroidVersion = "2.0.1"
+def retrofitVersion = "2.3.0"
+def adapterrxjava2Version = "2.3.0"
+def convertergsonVersion = "2.3.0"
+def logginginterceptorVersion = "3.9.1"
+def greendaoVersion = "3.2.2"
+def pinyinVersion = "2.0.3"
+def glideVersion = "4.4.0"
+def glideCompilerVersion = "4.4.0"
+def magicIndicatorVersion = "1.5.0"
+def eventBusVersion = "3.1.1"
+def pictureSelectorVersion = "2.2.0"
+def BRVAHVersion = "2.9.36"
+def butterKnifeVersion = "8.8.1"
+def utilcodeVersion = "1.11.1"
+def flowlayoutVersion = "1.1.2"
+def rxPermissionsVersion = "0.9.5"
+project.ext {
+    ext.appConfig = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
+            applicationId    : "com.xrwl.owner",
+            minSdkVersion    : 19,
+                targetSdkVersion : 29,
+            versionCode      : 20190524,
+            versionName      : "4.0.1.55",
+
+//            keyAlias         : "ldw",
+//            keyPassword      : "longdawei1988",
+//            storeFile        : "/Users/longdw/Desktop/ldw_keystore",
+//            storePassword    : "longdawei1988"
+
+            keyAlias         : "xrwl",
+            keyPassword      : "123456Aa",
+            storeFile        : "/xrwl.jks",
+            storePassword    : "123456Aa"
+    ]
+    dependencies = [
+            //android-support
+            "support-v4"                  : "com.android.support:support-v4:${supportVersion}",
+            "appcompat-v7"                : "com.android.support:appcompat-v7:${supportVersion}",
+            "design"                      : "com.android.support:design:${supportVersion}",
+            "support-vector-drawable"     : "com.android.support:support-vector-drawable:${supportVersion}",
+            "cardview-v7"                 : "com.android.support:cardview-v7:${supportVersion}",
+
+            //butterKnife
+            "butterknife"                 : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            "butterknife-compiler"        : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+
+            //OkHttp
+            "okhttp"                      : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+
+            //materialprogressbar
+            "materialprogressbar"         : "me.zhanghai.android.materialprogressbar:library:${materialprogressbarVersion}",
+
+            //rxjava&rxandroid
+            "rxjava"                      : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
+            "rxandroid"                   : "io.reactivex.rxjava2:rxandroid:${rxandroidVersion}",
+
+            //retrofit
+            "retrofit"                    : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+
+            //adapter-rxjava2
+            "adapter-rxjava2"             : "com.squareup.retrofit2:adapter-rxjava2:${adapterrxjava2Version}",
+
+            //converter-gson
+            "converter-gson"              : "com.squareup.retrofit2:converter-gson:${convertergsonVersion}",
+
+            //logging-interceptor
+            "logging-interceptor"         : "com.squareup.okhttp3:logging-interceptor:${logginginterceptorVersion}",
+
+            //greendao
+            "greendao"                    : "org.greenrobot:greendao:${greendaoVersion}",
+
+            //pinyin
+            "pinyin"                      : "com.github.promeg:tinypinyin:${pinyinVersion}",
+
+            //glide
+            "glide"                       : "com.github.bumptech.glide:glide:${glideVersion}",
+            "glide-compiler"              : "com.github.bumptech.glide:compiler:${glideCompilerVersion}",
+
+            //MagicIndicator
+            "magicindicator"              : "com.github.hackware1993:MagicIndicator:${magicIndicatorVersion}",
+
+            //EventBus
+            "eventbus"                    : "org.greenrobot:eventbus:${eventBusVersion}",
+
+            //PictureSelector
+            "pictureselector"             : "com.github.LuckSiege.PictureSelector:picture_library:v${pictureSelectorVersion}",
+
+            //BaseRecyclerViewAdapterHelper
+            "baservadapterhelper"         : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${BRVAHVersion}",
+
+            //utilcode
+            "utilcode"                    : "com.blankj:utilcode:${utilcodeVersion}",
+
+            //flowlayout
+            "flowlayout"                  : "com.hyman:flowlayout-lib:${flowlayoutVersion}",
+
+            //RxPermissions
+            "rxjavapermissions"           : "com.tbruyelle.rxpermissions2:rxpermissions:${rxPermissionsVersion}@aar"
+    ]
+}

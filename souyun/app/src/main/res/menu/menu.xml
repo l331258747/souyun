@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/wdxx"
+            android:icon="@drawable/zbbxx"
+            android:checkable="true"
+            android:title="   我的消息"/>
+
+    </group>
+    <item
+        android:id="@+id/wddd"
+        android:icon="@drawable/ic_green_arrow"
+
+        android:title="     我的订单"/>
+    <item
+        android:id="@+id/photo"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    实名认证"/>
+    <item
+        android:id="@+id/dzgl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    地址管理"/>
+    <item
+        android:id="@+id/fpgl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    发票管理"/>
+    <item
+        android:id="@+id/lxkf"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    联系客服"/>
+    <item
+        android:id="@+id/tcdl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    退出登陆"/>
+
+</menu>

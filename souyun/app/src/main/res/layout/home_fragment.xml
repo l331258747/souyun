@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nidaye"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteColorPrimary"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/hx"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/default_dp8">
+
+        <ImageView
+            android:id="@+id/wode"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/default_dp10"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/me"></ImageView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+
+            <TextView
+                android:id="@+id/tab_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="指尖上的发货平台"
+                android:textSize="@dimen/default_font18"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/sys"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:src="@drawable/sys" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:tabIndicatorColor="@android:color/holo_orange_light"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@android:color/holo_orange_light"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"></android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+
+    </LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav"
+        android:layout_gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:headerLayout="@layout/head"
+        app:menu="@menu/menu"
+        >
+
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

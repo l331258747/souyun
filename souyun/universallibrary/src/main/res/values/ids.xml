@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="baseLineView" type="id"/>
+    <item name="baseBackIv" type="id"/>
+    <item name="baseWebExitIv" type="id"/>
+    <item name="baseTitleTv" type="id"/>
+    <item name="baseMoreIv" type="id"/>
+    <item name="baseAddIv" type="id"/>
+    <item name="baseSearchIv" type="id"/>
+    <item name="baseRightTv" type="id"/>
+    <item name="baseTitleView" type="id"/>
+    <item name="baseArcTitleView" type="id"/>
+
+    <item name="baseListItemBadgeView" type="id"/>
+</resources>

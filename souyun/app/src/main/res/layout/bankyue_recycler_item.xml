@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/base_list_selector"
+    android:paddingTop="@dimen/default_dp10"
+    android:paddingBottom="@dimen/default_dp10"
+    android:paddingStart="@dimen/default_dp20"
+    android:paddingEnd="@dimen/default_dp20">
+
+    <TextView
+        android:id="@+id/tixianid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/default_cell_title_font"
+        android:textColor="@color/default_cell_title_color"
+        android:text="1"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tixianjine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/default_cell_title_font"
+        android:layout_marginTop="@dimen/default_dp15"
+        android:textColor="@color/default_cell_title_color"
+        android:text="10元"/>
+    <TextView
+        android:id="@+id/tixiantype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp15"
+        android:textSize="@dimen/default_cell_title_font"
+        android:textColor="@color/default_cell_title_color"
+        android:text="体现type"/>
+    <TextView
+        android:id="@+id/tixianshijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp15"
+        android:textSize="@dimen/default_cell_title_font"
+        android:textColor="@color/default_cell_title_color"
+        android:text="体现时间"/>
+
+
+
+    <TextView
+        android:id="@+id/tixianuserid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp15"
+        android:textSize="@dimen/default_cell_title_font"
+        android:textColor="@color/default_cell_title_color"
+        android:text="体现人"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

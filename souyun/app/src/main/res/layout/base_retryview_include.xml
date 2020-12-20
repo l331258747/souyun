@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ldw.library.view.RetryView
+    android:id="@+id/baseRetryView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/global_bg_color"
+    app:textFont="fonts/hwxk.ttf"
+    app:loadingTextColor="@color/retryview_loading_textcolor"
+    app:nodataTextColor="@color/retryview_loading_textcolor"
+    app:failedText="@string/retryview_failed_text"
+    app:failedTextColor="@color/retryview_loading_textcolor"
+    app:loadingText="@string/retryview_loading_text"
+    app:loadingOrientation="horizontal"
+    app:progressSize="@dimen/retryview_progress_size"
+    app:progressColor="@color/retryview_progress_color"/>

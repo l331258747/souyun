@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/pcRootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:backImage="@drawable/ic_back"
+        app:titleText="订单详情"
+        app:titleTextColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/pcProductNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/baseTitleView"
+        android:layout_marginTop="@dimen/default_dp4"
+        android:gravity="center"
+        android:text="货物：光纤"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_font20"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/publishConfirmDesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pcProductNameTv"
+        android:layout_marginBottom="@dimen/default_dp10"
+        android:layout_marginEnd="@dimen/default_dp15"
+        android:layout_marginStart="@dimen/default_dp15"
+        android:layout_marginTop="@dimen/default_dp15"
+        android:background="@drawable/publishconfirm_frame_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/default_dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pcStartPositionTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:gravity="center"
+                android:text="霍州市"
+                android:textColor="@color/black"
+                android:textSize="@dimen/default_font16"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp4"
+                android:layout_marginStart="@dimen/default_dp4"
+                android:src="@drawable/publish_ic_arrow"/>
+
+            <TextView
+                android:id="@+id/pcEndPositionTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:gravity="center"
+                android:text="岳阳市"
+                android:textColor="@color/black"
+                android:textSize="@dimen/default_font16"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_dp8"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pcTruckTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车型：小型面包车"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14"/>
+
+            <TextView
+                android:id="@+id/pcAreaTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="体积：2方"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_dp8"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pcDistanceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公里：17.5公里"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14"/>
+
+            <TextView
+                android:id="@+id/pcWeightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="重量：1吨"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginTop="@dimen/default_dp8"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pcPriceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间：175元"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14" />
+
+
+            <TextView
+                android:id="@+id/pcNumTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="数量：3件"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/default_font14"
+
+                />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pcBottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_dp50"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/pcPriceDetailLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color_orange"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/default_dp15"
+            android:paddingStart="@dimen/default_dp15">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_font14"
+                    android:text="合计："/>
+
+                <TextView
+                    android:id="@+id/pcTotalPriceTv"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_font14"
+                    android:text="1000"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/pcArrowIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/publish_ic_arrow_up"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/pcOkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:paddingEnd="@dimen/default_dp40"
+            android:paddingStart="@dimen/default_dp40"
+            android:text="确认"
+            android:textColor="@color/white"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/publishConfirmDesLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_dp30"
+                android:layout_marginEnd="@dimen/default_dp30"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/dazongjiesuan"
+                        style="@style/PublishConfirmPrefixTextStyles"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/yunfeijiagetv"
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="运费价格"
+
+                        />
+
+
+                    <ImageView
+                        android:id="@+id/jianhao"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+
+                        android:layout_marginStart="@dimen/default_dp20"
+                        android:layout_marginTop="@dimen/default_dp10"
+                        android:src="@drawable/ic_jian"
+                        android:visibility="gone" />
+
+
+                    <com.xrwl.owner.view.RegionNumberEditText
+                        android:id="@+id/pcFreightEt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp20"
+                        android:gravity="center"
+                        android:hint="请输入运费价格"
+                        android:inputType="numberDecimal"
+                        android:lines="1"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="@dimen/default_font14" />
+
+                    <!--android:focusable="false"-->
+
+                    <ImageView
+                        android:id="@+id/jiahao"
+
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="@dimen/default_dp20"
+                        android:layout_marginTop="@dimen/default_dp10"
+                        android:src="@drawable/ic_add"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/default_dp6"
+                android:layout_marginBottom="@dimen/default_dp6"
+                android:background="@color/divider_color" />
+
+            <LinearLayout
+                android:id="@+id/pcRecommendLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="@dimen/default_dp6"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tuijianyunfeijiagetv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推荐运费价格："
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/default_font12" />
+
+                <TextView
+                    android:id="@+id/pcRecommendPriceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/zidongjieshouTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/red" />
+
+                <TextView
+                    android:id="@+id/pcPriceHintTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:text="请在900-1000之间选择输入"
+                    android:textColor="@color/gray"
+
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/default_dp6"
+                android:layout_marginBottom="@dimen/default_dp6"
+                android:background="@color/divider_color" />
+
+
+            <LinearLayout
+                android:id="@+id/kcys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/pcBySelfLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+
+                    <CheckBox
+                        android:id="@+id/pcSendBySelfCb"
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="自送" />
+
+
+                    <TextView
+                        android:id="@+id/xezsdTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp10"
+                        android:text="选择自送地"
+                        android:textColor="@color/gray"
+                        android:visibility="gone" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/default_dp6"
+                        android:layout_marginBottom="@dimen/default_dp6"
+                        android:background="@color/divider_color" />
+
+                    <CheckBox
+                        android:id="@+id/pcPickBySelfCb"
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="自提" />
+
+                    <TextView
+                        android:id="@+id/xeztdTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp10"
+                        android:text="选择自提地"
+                        android:textColor="@color/gray"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/default_dp6"
+                        android:layout_marginBottom="@dimen/default_dp6"
+                        android:background="@color/divider_color" />
+                </LinearLayout>
+
+
+                <CheckBox
+                    android:id="@+id/pcReceiptCb"
+                    style="@style/PublishConfirmPrefixTextStyle"
+                    android:text="是否需要运输发票" />
+
+                <LinearLayout
+                    android:id="@+id/pcReceiptLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:layout_marginEnd="@dimen/default_dp30"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/PublishConfirmPrefixTextStyle"
+                            android:text="税         号：" />
+
+                        <EditText
+                            android:id="@+id/pcTaxNumEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/default_font14" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/PublishConfirmPrefixTextStyle"
+                            android:text="单位名称：" />
+
+                        <EditText
+                            android:id="@+id/pcUnitNameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/default_font14" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/PublishConfirmPrefixTextStyle"
+                            android:text="电子邮箱：" />
+
+                        <EditText
+                            android:id="@+id/pcEmailEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/default_font14" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_dp6"
+                    android:layout_marginBottom="@dimen/default_dp6"
+                    android:background="@color/divider_color"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/pcHelpPayCb"
+                    style="@style/PublishConfirmPrefixTextStyle"
+                    android:text="是否需要代付运费(该服务要求对方已注册)"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/pcHelpPayLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:layout_marginEnd="@dimen/default_dp30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="付款人" />
+
+                    <TextView
+                        android:id="@+id/pcHelpPayTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp10"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font14" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_dp6"
+                    android:layout_marginBottom="@dimen/default_dp6"
+                    android:background="@color/divider_color" />
+
+                <CheckBox
+                    android:id="@+id/pcHelpGetCb"
+                    style="@style/PublishConfirmPrefixTextStyle"
+                    android:text="是否需要代收货款(该服务要求对方已注册)" />
+
+                <TextView
+                    android:id="@+id/daishoushouxufeiTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:text="代收货款时需收取0.6%的手续费"
+                    android:textColor="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/pcHelpGetLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:layout_marginEnd="@dimen/default_dp30"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_dp6"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/PublishConfirmPrefixTextStyle"
+                            android:layout_marginTop="8dp"
+                            android:text="收货人:" />
+
+                        <TextView
+                            android:id="@+id/pcHelpGetTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:layout_weight="1"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/default_font14" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_green_arrow"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/PublishConfirmPrefixTextStyle"
+                            android:text="货款金额：" />
+
+                        <EditText
+                            android:id="@+id/pcHelpGetPriceEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:lines="1"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/default_font14" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_dp6"
+                    android:layout_marginBottom="@dimen/default_dp6"
+                    android:background="@color/divider_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:layout_marginEnd="@dimen/default_dp30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="保险服务" />
+
+                    <TextView
+                        android:id="@+id/pcInsuranceTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp10"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font14" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_dp6"
+                    android:layout_marginBottom="@dimen/default_dp6"
+                    android:background="@color/divider_color"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/tongchengyouhuijuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp30"
+                    android:layout_marginEnd="@dimen/default_dp30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/PublishConfirmPrefixTextStyle"
+                        android:text="优惠券" />
+
+                    <TextView
+                        android:id="@+id/pcCouponTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp10"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font14" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_dp6"
+                    android:layout_marginBottom="@dimen/default_dp6"
+                    android:background="@color/divider_color" />
+
+            </LinearLayout>
+
+
+            <CheckBox
+                android:id="@+id/pcsimiCb"
+                style="@style/PublishConfirmPrefixTextStyle"
+                android:text="是否作为企业订单发布"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_dp30"
+                android:layout_marginEnd="@dimen/default_dp30"
+                android:layout_marginBottom="@dimen/default_dp30"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/PublishConfirmPrefixTextStyle"
+                    android:text="备注信息" />
+
+                <TextView
+                    android:id="@+id/pcRemarkTv"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_weight="1"
+                    android:hint="装货时间、备注" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_green_arrow" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        layout="@layout/publishconfirm_pricedetail_pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/pcBottomLayout"/>
+
+</RelativeLayout>

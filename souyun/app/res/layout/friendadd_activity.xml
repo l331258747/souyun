@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/global_bg_color"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:backImage="@drawable/ic_back"
+        app:titleText="@string/title_friendadd"
+        android:gravity="center"
+        app:titleGravity="center"
+        app:titleTextColor="@color/white"
+        app:rightTextColor="@color/white"
+        app:rightText="@string/confirm"/>
+
+    <com.ldw.library.view.indexrv.IndexRecyclerView
+        android:id="@+id/friendAddaRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+- 用户登陆
+
+**请求URL：** 
+- ` http://47.94.6.241:810/XingRongAppServer/User/Login `
+  
+**请求方式：**
+- POST 
+
+**参数：** 
+
+|参数名|必选|类型|说明|
+|:----    |:---|:----- |-----   |
+|Username |是  |string |用户名   |
+|password |是  |string | 密码    |
+
+
+ **返回示例**
+
+{
+	"status_code": "200",
+	"msg": "登录成功",
+	"data": {
+		"user_type": "0",
+		"phone": "13603578806",
+		"user_id": "1526"
+	        }
+}
+
+
+ **返回参数说明** 
+
+|参数名|类型|说明|
+|:-----  |:-----|-----                           |
+|user_type |string   |用户组user_type，0：货主；1：司机  |
+
+ **备注** 
+
+
+
+用户注册
+请求URL：
+
+http://47.94.6.241:810/XingRongAppServer/User/Register
+请求方式：
+
+POST
+参数：
+
+参数名	必选	类型	说明
+
+Username	是	string	用户名
+
+Userpass	是	string	密码
+
+Tel     	是	string	电话
+
+Regdate 	否	string	注册时间
+
+Qubie	    是	string	区别：0是货主、1是司机
+
+Shenfenzheng	否	string	身份证
+
+
+
+找回密码
+请求URL：
+
+/User/ModifyPwd?canshu=zhaohuimima&&tel=xxxxx&&pwd=xxx
+请求方式：
+
+POST
+参数：
+
+参数名	必选	类型	说明
+pwd	是	string	密码
+tel	是	string	电话
+
+
+修改密码
+请求URL：
+
+/User/ModifyPwd?canshu=wangjimima
+请求方式：
+
+POST
+参数：
+
+参数名	必选	类型	说明
+Userpass	是	string	密码

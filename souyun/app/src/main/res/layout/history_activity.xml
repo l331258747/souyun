@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/global_bg_color"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:backImage="@drawable/ic_back"
+        app:titleText="@string/title_history"
+        app:titleTextColor="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/subTitleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/baseTitleView"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/default_dp10"
+        android:paddingTop="@dimen/default_dp10">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/default_dp20"
+            android:paddingTop="@dimen/default_dp20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总交易次数（次）"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font16"/>
+
+            <TextView
+                android:id="@+id/historyNumTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_dp20"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font16"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/default_dp20"
+            android:paddingTop="@dimen/default_dp20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总交易金额（元）"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font16"/>
+
+            <TextView
+                android:id="@+id/historyPriceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_dp20"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font16"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/baseRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/subTitleLayout">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/historyRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include
+        layout="@layout/base_retryview_include"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/subTitleLayout"/>
+
+</RelativeLayout>

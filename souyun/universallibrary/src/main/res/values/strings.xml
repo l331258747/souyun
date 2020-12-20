@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="app_name">Universal</string>
+
+    <string name="pms_loading_default_msg">正在加载...</string>
+
+    <string name="pms_hint">提示</string>
+    <string name="pms_cancel">取消</string>
+
+    <string name="pms_wps_dialog_rightbtn">下载并安装</string>
+    <string name="pms_wps_dialog_content">检测到未安装相关WPS，该软件较大，建议连接Wifi下载，是否下载并安装？</string>
+    <string name="pms_wps_open_error">文件打开失败，移动wps可能未安装</string>
+
+    <string name="pms_notify_download_completed">下载完成</string>
+    <string name="pms_notify_download_error">下载失败</string>
+    <string name="pms_notify_downloading">正在下载</string>
+    <string name="pms_notify_download_url_error">下载地址错误</string>
+
+    <string name="pms_downloading">开始下载，请在通知栏中查看进度</string>
+    <string name="pms_downloading_donotworry">正在下载，不要着急</string>
+    <string name="pms_download">开始下载</string>
+    <string name="pms_download_url_error">下载地址错误</string>
+    <string name="pms_download_cancel">取消下载</string>
+    <string name="pms_download_completed">下载完成</string>
+
+    <string name="pms_filedownload_hint">是否下载并打开附件？</string>
+
+    <string name="loading">正在加载中…</string>
+    <string name="load_failed">加载失败，请点我重试</string>
+    <string name="load_end">没有更多数据</string>
+</resources>

@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">16飕云</string>
+
+    <string name="add">添加</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="save">保存</string>
+    <string name="hint_please_select">请选择</string>
+
+    <string name="toast_network_exception">网络异常</string>
+    <string name="empty" />
+    <string name="pms_notify_download_completed">下载完成</string>
+    <string name="pms_notify_download_error">下载失败</string>
+    <string name="pms_notify_downloading">正在下载</string>
+    <string name="pms_notify_download_url_error">下载地址错误</string>
+
+    <string name="pms_downloading">开始下载，请在通知栏中查看进度</string>
+    <string name="pms_downloading_donotworry">正在下载，不要着急</string>
+    <string name="pms_download">开始下载</string>
+    <string name="pms_download_url_error">下载地址错误</string>
+    <string name="pms_download_cancel">取消下载</string>
+    <string name="pms_download_completed">下载完成</string>
+
+    <string name="retryview_loading_text">16飕云</string><!-- 正在加载中的文字 -->
+    <string name="retryview_failed_text">点击屏幕，重新加载</string>
+
+    <string name="loading_version">版本号：%1$s</string>
+
+    <string name="title_login">用户登录</string>
+    <string name="title_register">注  册</string>
+    <string name="title_friendadd">添加好友</string>
+    <string name="title_orderconfirm">收银台</string>
+    <string name="title_chongzhi">在线充值</string>
+    <string name="title_meinfo">个人信息</string>
+    <string name="title_orderdetail">订单详情</string>
+    <string name="title_hongbao">红包</string>
+    <string name="title_history">历史交易</string>
+    <string name="title_auth">实名认证</string>
+    <string name="title_addbank">绑定银行卡</string>
+    <string name="title_password">忘记密码</string>
+    <string name="title_address">常用地址</string>
+    <string name="title_receipt">常用发票</string>
+
+    <string name="login_logining">正在登录...</string>
+
+    <string name="friendadd_header_select_all">全选</string>
+    <string name="friend_search_hint">请输入姓名</string>
+
+    <string name="publish_category_short">同城零担</string>
+    <string name="publish_category_zhuanche">同城专车</string>
+    <string name="publish_category_paotui">跑腿</string>
+    <string name="publish_category_longtotal">长途整车</string>
+    <string name="publish_category_longzero">长途零担</string>
+    <string name="publish_category_Mineral">大宗运输</string>
+    <string name="publish_category_railway">铁路运输</string>
+    <string name="publish_category_aviation">航空运输</string>
+    <string name="publish_category_hint">请先选择车型</string>
+    <string name="publish_longtotal_hit">您还没有发长途整车的权限，请您前往认证页面进行认证。</string>
+    <string name="publish_category_capacity">载重：%1$s</string>
+    <string name="publish_truck_area">%1$s*%2$s*%3$s</string>
+    <!--<string name="publish_truck_remark">%1$s元（%2$s公里） 超公里收费%3$s元/公里</string>-->
+    <string name="publish_truck_remark"></string>
+    <string name="publish_confirm_fullreduce">首次注册送您一张9.5折优惠卷只限同城</string>
+    <string name="title_activity_add_receipt">AddReceiptActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="Mon">一</string>
+
+
+    <string name="Tue">二</string>
+
+
+    <string name="Wed">三</string>
+    <string name="Thu">四</string>
+
+    <string name="Fri">五</string>
+    <string name="Sat">六</string>
+    <string name="Sun">日</string>
+
+
+    <!-- 星期 -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="chexing">
+        <item>三轮车</item>
+        <item>小型面包</item>
+        <item>金杯</item>
+        <item>厢货</item>
+        <item>小型平板</item>
+        <item>大型平板</item>
+        <item>4.2米</item>
+        <item>6.8米</item>
+        <item>9.6米</item>
+        <item>13米</item>
+        <item>17.5米</item>
+    </string-array>
+    <string-array name="baozhuang">
+        <item>请选择</item>
+        <item>纸箱</item>
+        <item>木架</item>
+        <item>袋装</item>
+        <item>托盘</item>
+        <item>桶装</item>
+    </string-array>
+    <string-array name="suoshuyinhang">
+
+        <item>中国建设银行</item>
+        <item>中国工商银行</item>
+        <item>中国农业银行</item>
+        <item>招商银行</item>
+        <item>中国银行</item>
+        <item>中国民生银行</item>
+        <item>中国光大银行</item>
+        <item>中信银行</item>
+        <item>交通银行</item>
+        <item>兴业银行</item>
+        <item>华夏银行</item>
+        <item>中国邮政储蓄银行</item>
+        <item>晋商银行</item>
+        <item>山西省农村信用社</item>
+
+    </string-array>
+    <string-array name="shenqingruzhu">
+        <item>请选择</item>
+        <item>加油站</item>
+        <item>加气站</item>
+
+    </string-array>
+    <string-array name="leixing">
+        <item>请选择</item>
+        <item>储蓄卡</item>
+        <item>信用卡</item>
+    </string-array>
+    <string-array name="pstype">
+        <item>请选择</item>
+        <item>同城零担</item>
+        <item>同城专车</item>
+        <item>大宗运输</item>
+        <item>长途整车</item>
+        <item>长途零担</item>
+        <item>铁路运输(未开放)</item>
+        <item>航空运输(未开放)</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="fukuan">
+        <item>100%运费</item>
+        <item>90%运费</item>
+        <item>80%运费</item>
+        <item>70%运费</item>
+        <item>60%运费</item>
+        <item>50%运费</item>
+        <item>40%运费</item>
+        <item>30%运费</item>
+        <item>20%运费</item>
+        <item>10%运费</item>
+    </string-array>
+</resources>

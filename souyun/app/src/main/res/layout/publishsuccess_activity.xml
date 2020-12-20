@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:backImage="@drawable/ic_back"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white"
+        app:titleText="@string/title_orderdetail"/>
+
+    <TextView
+        android:id="@+id/psTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_font26"
+        android:text="恭喜您！发货成功"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_publish_success"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/default_dp20"
+        android:layout_above="@id/psTv"/>
+
+    <Button
+        android:id="@+id/psOkBtn"
+        style="@style/BaseBtnTheme"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/default_dp30"
+        android:layout_marginEnd="@dimen/default_dp30"
+        android:text="确    认"
+        android:layout_marginBottom="@dimen/default_dp20"/>
+
+</RelativeLayout>

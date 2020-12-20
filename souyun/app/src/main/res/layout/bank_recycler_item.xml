@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yinhangbeijing"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:paddingTop="@dimen/default_dp10"
+    android:paddingBottom="@dimen/default_dp10"
+    android:paddingStart="@dimen/default_dp20"
+    android:paddingEnd="@dimen/default_dp20">
+<ImageView
+            android:id="@+id/yhbj"
+            android:layout_width="wrap_content"
+            android:layout_height="450px"
+            android:src="@drawable/xinyongshe"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/bankItemBankNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/default_cell_title_font"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/default_dp70"
+            android:layout_marginTop="@dimen/default_dp15"
+            android:text="建设银行"/>
+
+        <TextView
+            android:id="@+id/bankItemCategoryTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/default_cell_detail_font"
+            android:layout_marginTop="@dimen/default_dp4"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/default_dp70"
+            android:text="储蓄卡"/>
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+              android:gravity="right"
+            >
+            <TextView
+
+                android:id="@+id/bankItemNumTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="@dimen/default_dp40"
+                android:textSize="@dimen/default_cell_title_font"
+                android:textColor="@color/white"
+                android:text="**** 0006"/>
+        </LinearLayout>
+</FrameLayout>

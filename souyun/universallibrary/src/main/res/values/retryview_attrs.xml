@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="RetryView">
+        <!-- 加载失败后显示的icon -->
+        <attr name="failedIcon" format="reference" />
+        <!-- 加载失败后显示的文字 -->
+        <attr name="failedText" format="reference|string" />
+        <attr name="failedTextColor" format="reference|color" />
+        <attr name="failedTextSize" format="dimension" />
+        <!-- 正在加载显示的文字 -->
+        <attr name="loadingText" format="reference|string" />
+        <attr name="loadingTextColor" format="reference|color" />
+        <attr name="loadingTextSize" format="dimension" />
+
+        <attr name="textFont" format="string"/><!-- 文字字体 -->
+        
+        <!-- 加载失败后icon和text排列方式 横向或纵向 -->
+        <attr name="failedOrientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1"/>
+        </attr>
+        
+        <!-- 正在加载的菊花和text排列方式 横向或纵向 -->
+        <attr name="loadingOrientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1"/>
+        </attr>
+        
+        <!-- 进度条的颜色 -->
+        <attr name="progressColor" format="reference|color"/>
+
+        <!-- 进度条大小 -->
+        <attr name="progressSize" format="dimension"/>
+        
+        <!-- 没有数据时的文字颜色 -->
+        <attr name="nodataTextColor" format="reference|color"/>
+        <attr name="nodataText" format="reference|string"/>
+        <attr name="nodataIcon" format="reference"/>
+        <attr name="nodataTextSize" format="dimension" />
+    </declare-styleable>
+    
+</resources>

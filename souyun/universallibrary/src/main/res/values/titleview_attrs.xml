@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleView">
+        <attr name="iconSize" format="dimension"/>
+        <attr name="padding" format="dimension"/>
+
+        <attr name="rightText" format="string|reference"/>
+        <attr name="rightTextSize" format="dimension"/>
+        <attr name="rightTextColor" format="reference|color"/>
+
+        <attr name="titleText" format="string|reference"/>
+        <attr name="titleTextSize" format="dimension"/>
+        <attr name="titleTextColor" format="color"/>
+        <attr name="titleGravity">
+            <enum name="left" value="3"/>
+            <enum name="center" value="17"/>
+        </attr>
+
+        <!--true：单行 false：最多两行-->
+        <attr name="titleSingle" format="boolean"/>
+
+        <!--如果标题栏跟背景色差不多，需要在标题栏下面价格基线-->
+        <attr name="titleBaseLine" format="boolean"/>
+        <attr name="titleBaseLineColor" format="color"/>
+        <attr name="titleBaseLineImage" format="reference"/>
+
+        <attr name="backImage" format="reference"/>
+        <!--是否默认隐藏返回按钮-->
+        <attr name="backGone" format="boolean"/>
+
+        <attr name="webExitImage" format="reference"/>
+        <attr name="moreImage" format="reference"/>
+        <attr name="searchImage" format="reference"/>
+        <attr name="addImage" format="reference"/>
+
+        <!--一旦该属性赋值，除了title外，其他所有view都不会添加-->
+        <attr name="customView" format="reference"/>
+        <attr name="customViewWidth">
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
+        </attr>
+    </declare-styleable>
+</resources>

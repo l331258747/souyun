@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="loading_padding_topbottom">10dp</dimen>
+    <dimen name="loading_padding_leftright">30dp</dimen>
+    <dimen name="loading_radius">4dp</dimen>
+    <dimen name="loading_msg_font">16sp</dimen>
+
+    <dimen name="default_shape_corner_radius">10dp</dimen>
+    <dimen name="default_shape_stroke_width">0.5dp</dimen>
+
+    <dimen name="default_dp1">1dp</dimen>
+    <dimen name="default_dp2">2dp</dimen>
+    <dimen name="default_dp4">4dp</dimen>
+    <dimen name="default_dp6">6dp</dimen>
+    <dimen name="default_dp8">8dp</dimen>
+    <dimen name="default_dp10">10dp</dimen>
+    <dimen name="default_dp12">12dp</dimen>
+    <dimen name="default_dp15">15dp</dimen>
+    <dimen name="default_dp20">20dp</dimen>
+    <dimen name="default_dp25">25dp</dimen>
+    <dimen name="default_dp30">30dp</dimen>
+    <dimen name="default_dp40">40dp</dimen>
+    <dimen name="default_dp45">45dp</dimen>
+    <dimen name="default_dp48">48dp</dimen>
+    <dimen name="default_dp50">50dp</dimen>
+    <dimen name="default_dp60">60dp</dimen>
+    <dimen name="default_dp70">70dp</dimen>
+    <dimen name="default_dp80">80dp</dimen>
+    <dimen name="default_dp100">100dp</dimen>
+    <dimen name="default_dp140">140dp</dimen>
+    <dimen name="default_dp200">200dp</dimen>
+    <dimen name="default_font10">10sp</dimen>
+    <dimen name="default_font12">12sp</dimen>
+    <dimen name="default_font14">14sp</dimen>
+    <dimen name="default_font16">16sp</dimen>
+    <dimen name="default_font18">18sp</dimen>
+    <dimen name="default_font20">20sp</dimen>
+    <dimen name="default_font22">22sp</dimen>
+    <dimen name="default_font26">26sp</dimen>
+    <dimen name="default_font30">30sp</dimen>
+    <dimen name="default_font38">38sp</dimen>
+    <dimen name="default_font100">100sp</dimen>
+    <dimen name="default_line_height">0.5dp</dimen>
+    <dimen name="default_divider_height">0.5dp</dimen>
+    <dimen name="default_title_font">@dimen/default_font18</dimen>
+    <dimen name="default_cursor_width">2dp</dimen>
+
+</resources>

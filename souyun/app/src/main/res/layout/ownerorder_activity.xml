@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/global_bg_color">
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:id="@+id/fanhuizhuyejian"
+        >
+        <ImageView
+            android:id="@+id/fanhuijian"
+            android:layout_width="18dp"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:text="我的订单"
+            android:textSize="@dimen/default_font16"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+
+
+    <!--<com.ldw.library.view.TitleView-->
+        <!--android:id="@+id/baseTitleView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?android:attr/actionBarSize"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--app:backImage="@drawable/ic_back"-->
+        <!--app:titleText="我的订单"-->
+        <!--app:titleTextColor="@color/white"/>-->
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/driverOrderMagicIndicator"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="40dp"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/driverOrderViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/driverOrderMagicIndicator"/>
+
+        <include layout="@layout/base_retryview_include"/>
+    </RelativeLayout>
+
+</LinearLayout>

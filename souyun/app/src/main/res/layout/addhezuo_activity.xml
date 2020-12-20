@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/global_bg_color"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleText="申请入驻"
+        app:backImage="@drawable/ic_back"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/login_ic_edit"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/default_font18"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:text="法人姓名："/>
+            <EditText
+                android:id="@+id/addBankNumEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+
+                android:hint="请输入法人姓名"
+               />
+
+
+
+        </LinearLayout>
+
+        <include layout="@layout/base_lineview_include"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+            android:layout_marginTop="@dimen/default_dp1"
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/login_ic_edit"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/default_font18"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:text="电        话："/>
+            <EditText
+                android:id="@+id/addBankNameEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+
+                android:hint="请输入电话"
+              />
+
+
+        </LinearLayout>
+        <include layout="@layout/base_lineview_include"/>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+            android:layout_marginTop="@dimen/default_dp1"
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/login_ic_edit"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/default_font18"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:text="提现银行："/>
+            <EditText
+                android:id="@+id/addBankEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+
+                android:hint="提现银行卡账户法人储蓄卡"
+                />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/base_lineview_include"/>
+
+
+        <EditText
+            android:id="@+id/addBankAccountEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+
+            android:background="@null"
+            android:drawablePadding="@dimen/default_dp10"
+            android:drawableStart="@drawable/login_ic_edit"
+            android:hint="请输入开户行名称"
+            android:padding="@dimen/default_dp10"
+            android:visibility="gone"
+            />
+
+        <!--<include layout="@layout/base_lineview_include"/>-->
+
+        <LinearLayout
+            android:id="@+id/cartype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/login_ic_edit"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/default_font18"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:text="所属类别："/>
+
+            <Spinner
+                android:id="@+id/suoshuleibie"
+                android:entries="@array/shenqingruzhu"
+                android:layout_width="wrap_content"
+                android:spinnerMode="dialog"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <include layout="@layout/base_lineview_include"/>
+        <LinearLayout
+            android:id="@+id/cartypess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/login_ic_edit"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/default_font18"
+                android:textColor="@color/black"
+                android:background="@null"
+                android:text="地址定位："/>
+            <EditText
+                android:id="@+id/addBankEtss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+
+                android:hint="加油站/加气站具体定位"
+                />
+
+        </LinearLayout>
+
+        <include layout="@layout/base_lineview_include"/>
+        <LinearLayout
+            android:id="@+id/fenlei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+           <ImageView
+               android:layout_width="480px"
+               android:layout_height="300px"
+               android:src="@drawable/jyzpictrue"
+               />
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="300px"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+                android:gravity="center"
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+
+                android:hint="法人本人手持身份证与加油站合照"
+                />
+        </LinearLayout>
+
+
+
+
+        <include layout="@layout/base_lineview_include"/>
+        <LinearLayout
+            android:id="@+id/fenleis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp15"
+            android:layout_marginStart="@dimen/default_dp15"
+
+            android:drawablePadding="@dimen/default_dp10"
+            android:orientation="horizontal"
+
+            >
+            <ImageView
+                android:layout_width="480px"
+                android:layout_height="300px"
+                android:src="@drawable/jyzpictrue"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="300px"
+                android:layout_marginEnd="@dimen/default_dp15"
+                android:layout_marginStart="@dimen/default_dp15"
+                android:gravity="center"
+                android:background="@null"
+                android:drawablePadding="@dimen/default_dp10"
+                android:hint="加油站营业执照加盖公章照片"
+                />
+        </LinearLayout>
+
+
+
+
+
+        <include layout="@layout/base_lineview_include"/>
+
+
+        <Button
+            android:id="@+id/addBankConfirmBtn"
+            style="@style/BaseBtnTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_dp20"
+            android:layout_marginEnd="@dimen/default_dp25"
+            android:layout_marginStart="@dimen/default_dp25"
+            android:layout_marginTop="@dimen/default_dp20"
+            android:text="确认申请"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

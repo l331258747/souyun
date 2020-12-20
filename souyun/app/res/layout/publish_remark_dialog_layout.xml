@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/prDialogCancelTv"
+            style="@style/MaterialDialogCancelButton"
+            android:text="@string/cancel"/>
+
+        <TextView
+            android:id="@+id/prDialogConfirmTv"
+            style="@style/MaterialDialogButton"
+            android:layout_gravity="end"
+            android:text="@string/confirm"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/default_font16"
+        android:paddingBottom="@dimen/default_dp15"
+        android:paddingTop="@dimen/default_dp6"
+        android:textColor="@color/dark_gray"
+        android:text="备注信息"/>
+
+    <include layout="@layout/base_lineview_include"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_dp15"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/PublishConfirmPrefixTextStyle"
+            android:text="装货时间"/>
+
+        <TextView
+            android:id="@+id/prDialogDateTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_dp15"
+            android:textSize="@dimen/default_font14"
+            android:hint="请输入装货时间"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/base_lineview_include"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_dp15"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/PublishConfirmPrefixTextStyle"
+            android:text="备注"/>
+
+        <EditText
+            android:id="@+id/prDialogRemarkEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入备注信息"
+            android:textSize="@dimen/default_font14"
+            android:layout_marginStart="@dimen/default_dp15"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/base_lineview_include"/>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/prDialogFlowLayout"
+        android:layout_width="match_parent"
+        android:padding="@dimen/default_dp15"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

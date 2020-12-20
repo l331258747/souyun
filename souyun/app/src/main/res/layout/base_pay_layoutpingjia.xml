@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/pingjiaLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/default_dp10"
+    android:layout_marginBottom="@dimen/default_dp10">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/topLY"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_marginStart="@dimen/default_dp10"
+        android:layout_marginEnd="@dimen/default_dp10"
+        android:layout_marginTop="@dimen/default_dp1"
+        android:background="@drawable/yirenzheng"
+        android:orientation="horizontal"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <TextView
+                android:id="@+id/nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16飕云"
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp50"
+                android:layout_marginStart="110dp"
+                />
+
+            <TextView
+                android:id="@+id/telTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18803578888"
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp10"
+                android:layout_marginStart="110dp"
+                />
+
+            <TextView
+                android:id="@+id/chexingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6.8米"
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp10"
+                android:layout_marginStart="110dp"
+
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <TextView
+                android:id="@+id/pingfenTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.0分"
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp50"
+                android:layout_marginStart="0dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp10"
+                android:layout_marginStart="@dimen/default_dp20"
+                />
+
+            <TextView
+                android:id="@+id/chehaoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="晋L9999"
+                android:textSize="@dimen/default_font14"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/default_dp10"
+                android:layout_marginStart="0dp"
+
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/default_dp30"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/default_dp10"
+
+                android:text="服务质量"/>
+            <com.xrwl.owner.module.order.owner.ui.StarBar
+                android:id="@+id/starBar"
+                android:layout_below="@+id/display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ratingbar:starEmpty="@drawable/star_empty"
+                ratingbar:starFill="@drawable/star_full"
+                ratingbar:starDistance="5dp"
+                android:layout_marginStart="@dimen/default_dp10"
+                ratingbar:starCount="5"
+                ratingbar:starSize="20dp"/>
+
+            <TextView
+                android:id="@+id/display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="0"
+                android:visibility="gone"
+                />
+            <Button
+                android:id="@+id/she3_6"
+                android:layout_below="@+id/starBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置3.6分"
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/getStar"
+                android:layout_below="@+id/starBar"
+                android:layout_toRightOf="@+id/she3_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="获取评分"/>
+
+            <Button
+                android:id="@+id/integer"
+                android:layout_below="@+id/starBar"
+                android:layout_toRightOf="@+id/getStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="整数评分: false"/>
+        </LinearLayout>
+
+
+  </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/default_dp30"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginLeft="@dimen/default_dp10"
+
+                android:text="运输速度"/>
+            <com.xrwl.owner.module.order.owner.ui.StarBar
+                android:id="@+id/starBars"
+                android:layout_below="@+id/displays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ratingbar:starEmpty="@drawable/star_empty"
+                ratingbar:starFill="@drawable/star_full"
+                ratingbar:starDistance="5dp"
+                ratingbar:starCount="5"
+                android:layout_marginStart="@dimen/default_dp10"
+                ratingbar:starSize="20dp"/>
+
+            <TextView
+                android:id="@+id/displays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:text="0"/>
+
+            <Button
+                android:id="@+id/she3_6s"
+                android:layout_below="@+id/starBars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="设置3.6分"/>
+
+            <Button
+                android:id="@+id/getStars"
+                android:layout_below="@+id/starBars"
+                android:layout_toRightOf="@+id/she3_6s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="获取评分"/>
+
+            <Button
+                android:id="@+id/integers"
+                android:layout_below="@+id/starBars"
+                android:layout_toRightOf="@+id/getStars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="整数评分: false"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/default_dp30"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/default_dp10"
+
+                android:text="售后保证"/>
+
+            <com.xrwl.owner.module.order.owner.ui.StarBar
+                android:id="@+id/starBarss"
+                android:layout_below="@+id/displayss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ratingbar:starEmpty="@drawable/star_empty"
+                ratingbar:starFill="@drawable/star_full"
+                ratingbar:starDistance="5dp"
+                ratingbar:starCount="5"
+                android:layout_marginStart="@dimen/default_dp10"
+                ratingbar:starSize="20dp"/>
+
+
+            <TextView
+                android:id="@+id/displayss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:text="0"/>
+
+            <Button
+                android:id="@+id/she3_6ss"
+                android:layout_below="@+id/starBarss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="设置3.6分"/>
+
+            <Button
+                android:id="@+id/getStarss"
+                android:layout_below="@+id/starBarss"
+                android:layout_toRightOf="@+id/she3_6ss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="获取评分"/>
+
+            <Button
+                android:id="@+id/integerss"
+                android:layout_below="@+id/starBarss"
+                android:layout_toRightOf="@+id/getStarss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="整数评分: false"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/default_dp30"
+        >
+
+        <EditText
+            android:id="@+id/pingjiacontent"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:inputType="textMultiLine"
+            android:gravity="left|top"
+            android:minLines="6"
+            android:hint="请输入评价内容"
+            android:background="@drawable/edit_bg"
+            android:visibility="gone"
+            />
+
+        <Button
+            style="@style/BaseBtnTheme"
+            android:id="@+id/dianpingbt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+             android:layout_marginLeft="@dimen/default_dp20"
+            android:layout_marginRight="@dimen/default_dp20"
+            android:layout_marginTop="@dimen/default_dp50"
+            android:text="确认点评"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

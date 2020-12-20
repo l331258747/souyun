@@ -1,0 +1,299 @@
+<resources>
+    <style name="Theme.Light" parent="@android:style/Theme.Light">
+        <item name="android:windowBackground">@drawable/bg</item>
+        <item name="android:textColor">@color/Text</item>
+    </style>
+    <!--dialog的样式-->
+    <style name="custom_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <!-- 模仿dialog的遮罩层属性 -->
+    <style name="mask_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/SystemBtnStyle</item>
+        <item name="android:listDivider">@drawable/list_divider</item>
+    </style>
+
+    <style name="BaseBtnTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+
+        <item name="android:background">@drawable/base_btn_selector</item>
+    </style>
+
+
+
+    <style name="BaseBtnThemebackground">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+
+        <item name="android:background">@drawable/base_btn_selectorbackgroud</item>
+    </style>
+
+
+
+    <style name="BaseBtnThemebackgrounds">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+
+        <item name="android:background">@drawable/base_btn_selectorbackgroud</item>
+    </style>
+
+
+
+
+
+    <style name="BaseBtnThemes">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+
+        <item name="android:background">@drawable/base_btn_selector</item>
+    </style>
+
+
+    <style name="BasehuangBtnTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+
+        <item name="android:background">@drawable/base_btn_selector</item>
+    </style>
+
+
+    <style name="BaseBtnThemehuise">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:padding">@dimen/default_dp10</item>
+        <item name="android:background">@drawable/base_btn_selectorhuise</item>
+    </style>
+
+    <style name="PublishLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_dp15</item>
+        <item name="android:layout_marginEnd">@dimen/default_dp15</item>
+        <item name="android:layout_marginTop">@dimen/default_dp8</item>
+        <item name="android:layout_marginBottom">@dimen/default_dp8</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="PublishLayoutfahuoStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/default_dp15</item>
+        <item name="android:layout_marginEnd">@dimen/default_dp15</item>
+        <item name="android:layout_marginTop">@dimen/default_dp8</item>
+        <item name="android:layout_marginBottom">@dimen/default_dp8</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="PublishIconStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/default_dp6</item>
+    </style>
+    <style name="PublishIconfahuoStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/default_dp6</item>
+    </style>
+    <style name="PublishEditStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/default_font12</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="PublishDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/PopTranslateAnimStyle</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:buttonStyle">@style/SystemBtnTheme</item>
+    </style>
+
+    <style name="SystemBtnTheme" parent="@android:style/Widget.Button">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="PopTranslateAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/pop_translate_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_translate_out</item>
+    </style>
+
+    <style name="PopAlphaAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/pop_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_anim_out</item>
+    </style>
+
+    <style name="PopTranslateAnimReverseStyle">
+        <item name="android:windowEnterAnimation">@anim/pop_translate_out</item>
+        <item name="android:windowExitAnimation">@anim/pop_translate_in</item>
+    </style>
+
+    <style name="PublishDialogTextStyle">
+        <item name="android:textSize">@dimen/default_font14</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="PublishConfirmPrefixTextStyles">
+        <item name="android:textSize">@dimen/default_font14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">30dp</item>
+
+    </style>
+
+
+    <style name="PublishConfirmPrefixTextStyle">
+        <item name="android:textSize">@dimen/default_font14</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">35dp</item>
+    </style>
+
+    <style name="DefaultTextStyle">
+        <item name="android:textSize">@dimen/default_font16</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="OrderDetailBtnStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/order_detail_btn_selector</item>
+        <item name="android:paddingTop">@dimen/default_dp6</item>
+        <item name="android:paddingBottom">@dimen/default_dp6</item>
+        <item name="android:paddingStart">@dimen/default_dp15</item>
+        <item name="android:paddingEnd">@dimen/default_dp15</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="MaterialDialogButtonLayout" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_dialog_button_layout_height</item>
+        <item name="android:layout_marginTop">@dimen/base_dialog_button_layout_margin</item>
+        <item name="android:layout_marginLeft">@dimen/base_dialog_button_layout_margin</item>
+        <item name="android:layout_marginRight">@dimen/base_dialog_button_layout_margin</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="MaterialDialogButton" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:background">@drawable/base_bg_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/base_dialog_btn_color_selector</item>
+    </style>
+
+    <style name="MaterialDialogCancelButton" parent="MaterialDialogButton">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="DefaultBtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/default_dp10</item>
+        <item name="android:paddingBottom">@dimen/default_dp10</item>
+        <item name="android:paddingStart">@dimen/default_dp15</item>
+        <item name="android:paddingEnd">@dimen/default_dp15</item>
+        <item name="android:background">@drawable/base_btn_selector</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DefaultSmallBtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/default_dp4</item>
+        <item name="android:paddingBottom">@dimen/default_dp4</item>
+        <item name="android:paddingStart">@dimen/default_dp6</item>
+        <item name="android:paddingEnd">@dimen/default_dp6</item>
+        <item name="android:background">@drawable/base_btn_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/default_font12</item>
+    </style>
+
+
+
+
+
+
+
+    <style name="DownloadingProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <!-- 最大高度50dp，最小高度10dp，进度值确定，Drawable样式文件引用 -->
+        <item name="android:maxHeight">40dp</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/downloading_progressbar</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

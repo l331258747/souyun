@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_list_selector"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/default_dp10">
+
+    <CheckBox
+        android:id="@+id/friendItemCb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/friend_checkbox_selector"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/friendItemAvatarIv"
+        android:layout_width="@dimen/default_dp40"
+        android:layout_height="@dimen/default_dp40"
+        android:layout_marginStart="@dimen/default_dp8"
+        android:src="@drawable/ic_default_avatar"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp15"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/friendItemNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_cell_title_color"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/default_dp6">
+
+            <TextView
+                android:id="@+id/friendItemPhoneTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/default_cell_info_color"
+                android:layout_weight="0.7"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/friendItemInviteBtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/base_btn_selector"
+         android:layout_marginLeft="90dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.xrwl.owner"
+    android:versionCode="27"
+    android:versionName="27.0">
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEM" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- ~~~~~~~~~~~~~~退出APP~~~~~~~~~~~~~~ -->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- ~~~~~~~~~~~~~~新加动态申请权限~~~~~~~~~~~~~~ -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- ~~~~~~~~~~~~~~高德地图所需要的权限Start~~~~~~~~~~~~~~ -->
+    <!-- 用于提高GPS定位速度 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 读取缓存数据 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.launcher3.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.huawei.launcher2.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.launcher2.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission
+        android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 更改设置 -->
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- 支付宝配置 -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- ~~~~~~~~~~~~~~高德地图所需要的权限End~~~~~~~~~~~~~~ -->
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/myfile_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="8d8002f269c4e62fe91dd688be67a884" />
+
+        <service
+            android:name=".module.publish.ui.HideService"
+            android:process=":pointread" />
+        <service android:name="com.amap.api.location.APSService"></service>
+        <activity
+            android:name=".module.loading.activity.LoadingActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".easier.ui.CalendarView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.business.ui.BusinessFragmentActivty"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.ImageLookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.LoginsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.SingleNumberQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.RegulationsQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".module.account.activity.ModifyPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.WebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.account.activity.WebActivityputong"
+            android:screenOrientation="portrait" />
+
+        <!-- <activity -->
+        <!-- android:name=".module.account.activity.LoadingWebActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
+
+        <activity
+            android:name=".module.tab.activity.TabActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".module.publish.ui.PublishConfirmActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".module.friend.ui.FriendAddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.friend.ui.FriendSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.ui.TruckActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.map.SearchLocationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".module.publish.ui.OrderConfirmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.ui.ChongzhiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.ui.ChongzhighActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.ui.HongbaoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.MeInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.publish.ui.PublishSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.RuZhuSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.OwnerOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.QianDaoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.ZhouGongActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.OwnerOrderDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.OwnerOrderDianpingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.owner.ui.PayDemosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.HistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.MainPicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.NormalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.OverFlyingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.OwnerAuthActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".module.home.ui.OwnerAuthtelActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name=".module.me.ui.BankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.BankcanshuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.BankyueActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.AddBankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.AddHezuoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.ZaiXianGouMai_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.Success_erweimaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.me.ui.BankyuejinduActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.driver.ui.DriverOrderDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.driver.ui.DriverOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.NearLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.QinLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.friend.ui.FriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.order.driver.ui.GrapSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".module.home.ui.DriverAuthActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module.home.ui.Ad_listActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mysigndate.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mysigndate.YuanbanDemoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".module.publish.ui.AddressActivity" />
+        <activity android:name=".module.publish.ui.NewsActivity" />
+        <activity android:name=".module.publish.ui.NewsshowActivity" />
+        <activity android:name=".module.publish.ui.Address_zhongzhuandianActivity" />
+        <activity android:name=".module.publish.ui.ReceiptActivity" />
+        <activity android:name=".module.publish.ui.AddReceiptActivity" />
+        <activity android:name=".module.business.ui.BusinessDetailActivity" />
+        <activity android:name=".module.me.ui.CouponActivity" />
+        <activity
+            android:name=".payfor.PayDemoActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity android:name=".module.home.ui.saoyisaoActivity" />
+        <activity android:name=".module.home.ui.HongbaolistActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".module.publish.ui.AddActivity" />
+        <activity android:name=".Main3Activity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+    </application>
+
+</manifest>

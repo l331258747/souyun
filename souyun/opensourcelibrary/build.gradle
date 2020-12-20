@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion appConfig.compileSdkVersion
+    buildToolsVersion appConfig.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion appConfig.minSdkVersion
+        targetSdkVersion appConfig.targetSdkVersion
+        versionCode 6
+        versionName '4.0.1.55'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion '28.0.3'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["support-vector-drawable"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["materialprogressbar"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["logging-interceptor"]
+    api rootProject.ext.dependencies["utilcode"]
+    api rootProject.ext.dependencies["flowlayout"]
+
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["magicindicator"]
+    api rootProject.ext.dependencies["eventbus"]
+    api rootProject.ext.dependencies["baservadapterhelper"]
+    api rootProject.ext.dependencies["pictureselector"]
+    api rootProject.ext.dependencies["rxjavapermissions"]
+    api rootProject.ext.dependencies["cardview-v7"]
+
+    api 'com.amap.api:3dmap:6.2.0'
+//    api 'com.amap.api:location:4.1.0'
+    api 'com.amap.api:search:6.1.0'
+//  api 'com.amap.api:navi-3dmap:latest.integration'
+    compileOnly 'com.amap.api:navi-3dmap:6.4.0_3dmap6.5.0'
+
+}

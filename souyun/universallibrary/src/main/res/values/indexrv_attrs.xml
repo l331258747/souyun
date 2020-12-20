@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IndexRecyclerView">
+        <attr name="textSize" format="dimension|float" />
+        <attr name="previewTextSize" format="dimension|float" />
+        <attr name="barWidth" format="dimension|float" />
+        <attr name="barMargin" format="dimension|float" />
+        <attr name="previewPadding" format="dimension|float" />
+        <attr name="cornerRadius" format="dimension|integer" />
+        <attr name="transparentValue" format="dimension|float" />
+        <attr name="backgroundColor" format="color|string" />
+        <attr name="textColor" format="color|string" />
+        <attr name="highlightedTextColor" format="color|string" />
+    </declare-styleable>
+</resources>

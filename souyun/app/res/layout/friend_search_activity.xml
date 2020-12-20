@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/global_bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_dp8">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/baseBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/default_dp8"
+            android:paddingStart="@dimen/default_dp8"
+            app:srcCompat="@drawable/ic_primary_back"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/friendSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/friend_searchview_bg"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textColor="#757575"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@null"
+                app:queryHint="请输入关键字"/>
+
+            <TextView
+                android:id="@+id/friendSearchNoResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="没有搜索到匹配的内容"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friendSearchRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+</LinearLayout>

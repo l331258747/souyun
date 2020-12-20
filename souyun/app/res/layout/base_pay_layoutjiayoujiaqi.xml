@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/payLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="vertical"
+
+    android:layout_marginBottom="@dimen/default_dp10">
+
+
+    <LinearLayout
+        android:id="@+id/yingcanglo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:id="@+id/onlinezhifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="@dimen/default_dp15"
+            android:layout_marginTop="@dimen/default_dp1"
+
+            >
+            <CheckBox
+                android:id="@+id/xuanzeonline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_marginLeft="7dp"
+                android:text="线上支付"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/ocYuePayLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="@dimen/default_dp20"
+            android:layout_marginTop="15dp"
+            >
+            <CheckBox
+                android:id="@+id/yueCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_marginLeft="30dp"
+                android:text=""
+
+                />
+            <ImageView
+                android:id="@+id/wxyeIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+
+                android:src="@drawable/yuezhifu"/>
+
+            <TextView
+                android:id="@+id/wxyeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/default_font12"
+                android:layout_toEndOf="@id/wxyeIv"
+                android:layout_marginStart="@dimen/default_dp4"
+                android:text="余额支付"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/pay_recommend_bg"
+                android:textColor="@color/white"
+                android:layout_alignStart="@id/wxyeTv"
+                android:textSize="@dimen/default_font10"
+                android:text="推荐"
+                android:layout_below="@id/wxyeTv"
+                android:padding="1dp"/>
+
+
+
+
+            <TextView
+                android:id="@+id/yumoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:textSize="@dimen/default_font10"
+                android:text="100"
+                android:layout_below="@id/wxyeTv"
+                android:padding="1dp"/>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/wxPayLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:layout_marginStart="@dimen/default_dp50"
+            >
+            <CheckBox
+                android:id="@+id/weixinCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:text=""
+
+                />
+            <ImageView
+                android:id="@+id/wxIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_weixin"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/wxTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_dp4"
+                android:layout_toEndOf="@id/wxIv"
+                android:layout_marginLeft="@dimen/default_dp80"
+                android:text="微信支付"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/default_font12"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/wxTv"
+                android:layout_below="@id/wxTv"
+                android:background="@drawable/pay_recommend_bg"
+                android:padding="1dp"
+                android:text="推荐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font10"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/aliPayLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:layout_marginStart="@dimen/default_dp50"
+            >
+            <CheckBox
+                android:id="@+id/zhifubaoCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:text="" />
+            <ImageView
+                android:id="@+id/aliPayIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_alipay"/>
+
+            <TextView
+                android:id="@+id/aliPayTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_dp4"
+                android:layout_toEndOf="@id/aliPayIv"
+                android:text="支付宝支付"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/default_font12"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/aliPayTv"
+                android:layout_below="@id/aliPayTv"
+                android:background="@drawable/pay_recommend_bg"
+                android:padding="1dp"
+                android:text="推荐"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font10"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/yinhangkazhifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:layout_marginStart="@dimen/default_dp50"
+            >
+            <CheckBox
+                android:id="@+id/yinhangkaCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:text="" />
+            <ImageView
+                android:id="@+id/aliPayIvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/yinlian"/>
+
+            <TextView
+                android:id="@+id/aliPayTvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_dp70"
+                android:text="银行卡支付"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/default_font12" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

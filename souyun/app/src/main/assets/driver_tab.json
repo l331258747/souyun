@@ -1,0 +1,30 @@
+{
+  "data":[
+    {
+      "title":"主页",
+      "icon":"tab_home",
+      "page":".module.home.ui.HomeFragment"
+    },
+    {
+      "title":"消息",
+      "icon":"tab_business",
+      "page":".module.business.ui.BusinessFragment"
+    },
+
+    {
+      "title":"找货",
+      "icon":"tab_publish",
+      "page":".module.find.ui.FindFragment"
+    },
+    {
+      "title":"好友",
+      "icon":"tab_news",
+      "page":".module.friend.ui.FriendFragment"
+    },
+    {
+      "title":"我",
+      "icon":"tab_me",
+      "page":".module.me.ui.MeFragment"
+    }
+  ]
+}

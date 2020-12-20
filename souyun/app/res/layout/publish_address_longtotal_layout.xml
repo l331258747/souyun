@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/publishAddressLongTotalLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/PublishLayoutStyle"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/PublishIconStyle"
+            android:drawableStart="@drawable/publish_ic_fhdw"
+            android:text="发货地址"/>
+
+        <include android:id="@+id/paLongStartSpinnerLayout" layout="@layout/publish_area_spinner_layout"/>
+    </LinearLayout>
+
+    <include layout="@layout/base_lineview_include"/>
+
+    <LinearLayout
+        style="@style/PublishLayoutStyle"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/PublishIconStyle"
+            android:drawableStart="@drawable/publish_ic_dhdw"
+            android:text="收货地址"/>
+
+        <include android:id="@+id/paLongEndSpinnerLayout" layout="@layout/publish_area_spinner_layout"/>
+    </LinearLayout>
+</LinearLayout>
+
+<!--长途整车选择始终点-->

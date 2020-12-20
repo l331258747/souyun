@@ -1,0 +1,151 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'io.objectbox'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion appConfig.compileSdkVersion
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+         //方法数超限时分割dex
+        multiDexEnabled true
+        applicationId appConfig.applicationId
+        minSdkVersion appConfig.minSdkVersion
+        targetSdkVersion appConfig.targetSdkVersion
+        versionName '4.0.1.81'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        ndk {
+
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "arm64-v8a", "x86_64"
+        }
+        versionCode = 20191211
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+
+            outputFileName = "${variant.name}-${variant.versionName}.apk"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    signingConfigs {
+//        debug {
+//            keyAlias appConfig.keyAlias
+//            keyPassword appConfig.keyPassword
+//            storeFile file(appConfig.storeFile)
+//            storePassword appConfig.storePassword
+//        }
+//        release {
+//            keyAlias appConfig.keyAlias
+//            keyPassword appConfig.keyPassword
+//            storeFile file(appConfig.storeFile)
+//            storePassword appConfig.storePassword
+//        }
+//    }
+        signingConfigs {
+            newrelease {
+                keyAlias 'appConfig.keyAlias'
+                keyPassword 'appConfig.keyPassword'
+                storeFile file('appConfig.storeFile')
+                storePassword 'appConfig.storePassword'
+            }
+        }
+//        buildTypes {
+//            release {
+//                signingConfig signingConfigs.newrelease
+//            }
+//            debug {
+//                signingConfig signingConfigs.newrelease
+//            }
+//        }
+        productFlavors {
+        }
+
+
+    greendao {
+        schemaVersion 1
+    }
+
+    dependencies {
+
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        //    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+        implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+        testImplementation 'junit:junit:4.12'
+        implementation project(':opensourcelibrary')
+        implementation project(':universallibrary')
+        implementation rootProject.ext.dependencies["butterknife"]
+        annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+        implementation rootProject.ext.dependencies["glide"]
+        annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+        implementation 'org.greenrobot:greendao:3.2.2'
+        api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.1.4'
+        // all below should be added automatically by the plugin
+        //    implementation "io.objectbox:objectbox-android:1.4.4"
+        //    annotationProcessor "io.objectbox:objectbox-processor:1.4.4"
+        implementation files('libs/alipaySingle-20160825.jar')
+//        implementation 'com.android.support:appcompat-v7:26.1.0'
+
+
+//        implementation 'androidx.appcompat:appcompat:1.1.0'
+//        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+//        testImplementation 'junit:junit:4.12'
+//        androidTestImplementation 'androidx.test:runner:1.2.0'
+//        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+        /*添加依赖*/
+        implementation 'com.github.yuzhiqiang1993:zxing:2.2.5'
+        implementation files('libs/alipaySingle-20160825.jar')
+        implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+//        api 'com.android.support:appcompat-v7:27.0.2'
+//        api 'com.android.support:recyclerview-v7:27.0.2'
+//        api 'com.android.support:cardview-v7:27.0.2'
+        api 'com.github.bumptech.glide:glide:3.6.1'
+        implementation project(path: ':library')
+        //  implementation files('libs\\AMap3DMap_5.6.0_AMapNavi_5.5.0_AMapSearch_5.5.0_AMapLocation_3.6.1_20171130.jar')
+        //  implementation files('libs\\Msc.jar')
+        //  implementation files('libs\\Sunflower.jar')
+        implementation 'org.jetbrains:annotations-java5:15.0'
+        implementation 'com.ycjiang:imgepreviewlibrary:1.1.3'
+        //无车承运
+        implementation 'com.lzy.net:okgo:3.0.4'
+        implementation 'com.alibaba:fastjson:1.2.61'
+        implementation 'org.bouncycastle:bcprov-jdk15on:1.47'
+        implementation(name: 'locationsdk-1.0.0', ext: 'aar')
+
+  //滴滴页面
+        implementation 'com.jaeger.statusbarutil:library:1.5.1'
+        implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+        implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+        implementation 'com.github.mmin18:realtimeblurview:1.2.1'
+        //侧滑
+//        compile 'com.android.support:design:25.2.0'
+        implementation project(':compns')
+//        compile 'com.android.support:design:24.1.1'
+        implementation 'com.android.support:palette-v7:27.0.2'
+    }
+}
+

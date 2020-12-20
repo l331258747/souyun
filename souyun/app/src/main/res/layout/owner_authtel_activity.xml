@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xrwl.owner.module.account.view.LoginView
+    android:id="@+id/loginRootView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/neibufanhuifanhuijian"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/neifanhuifanhuijian"
+            android:layout_width="18dp"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:text="电话认证"
+            android:textSize="@dimen/default_font14"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/topLY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp1"
+
+        >
+           <ImageView
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:layout_marginEnd="@dimen/default_dp10"
+            android:layout_height="215dp"
+            android:src="@drawable/weirenzheng" />
+    </LinearLayout>
+
+
+
+
+  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/aliyun"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:text="实名认证服务由阿里云计算有限公司提供"
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:textSize="@dimen/default_font14" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp30"
+                android:layout_marginStart="@dimen/default_dp30"
+                android:layout_marginTop="@dimen/default_dp30"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/login_ic_username"
+                    android:gravity="center_vertical"
+                    android:text="手机号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_font18"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:background="@color/divider_color"/>
+
+                <com.ldw.library.view.ClearEditText
+                    android:id="@+id/loginUsernameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp6"
+                    android:lines="1"
+                    android:maxLength="11"
+                    android:inputType="number"
+                    android:background="@null"
+                    android:hint="请输入手机号码"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_dp30"
+                android:layout_marginStart="@dimen/default_dp30"
+                android:layout_marginTop="@dimen/default_dp20"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/login_ic_password"
+                    android:gravity="center_vertical"
+                    android:text="验证码"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_font18" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:background="@color/divider_color"/>
+
+                <com.ldw.library.view.ClearEditText
+                    android:id="@+id/loginPwdEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp6"
+                    android:background="@null"
+                    android:lines="1"
+                    android:layout_weight="1"
+                    android:hint="验证码"
+                    android:maxLength="6"
+                    android:inputType="number"/>
+
+                <Button
+                    android:id="@+id/loginCodeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_forgetpwd_btn_selector"
+                    android:text="获取验证码"
+                    android:paddingStart="@dimen/default_dp8"
+                    android:paddingEnd="@dimen/default_dp8"
+                    android:paddingTop="@dimen/default_dp8"
+                    android:paddingBottom="@dimen/default_dp8"
+                    android:textColor="@color/register_codebtn_selector"/>
+
+
+            </LinearLayout>
+
+
+               <Button
+                android:id="@+id/loginBtn"
+                style="@style/BaseBtnTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_dp20"
+                android:layout_marginEnd="@dimen/default_dp25"
+                android:layout_marginStart="@dimen/default_dp25"
+                android:layout_marginTop="150dp"
+                android:text="确认提交"
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/authDesTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_dp10"
+                android:gravity="center"
+                android:text="上传成功后，工作人员会在1-2个工作日内审核认证。"
+                android:textColor="@color/light_gray"/>
+
+        </LinearLayout>
+
+
+      <CheckBox
+          android:id="@+id/loginCb"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="我已阅读并同意"
+          android:visibility="gone"
+          android:textColor="@color/gray"/>
+
+      <TextView
+          android:id="@+id/loginProtocolTv"
+          android:visibility="gone"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="用户协议"
+          android:textColor="@color/red" />
+
+
+    </LinearLayout>
+
+</com.xrwl.owner.module.account.view.LoginView>

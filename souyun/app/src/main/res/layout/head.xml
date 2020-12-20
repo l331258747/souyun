@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/person"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/zbbw" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/yhjpic"
+                android:layout_width="110dp"
+                android:layout_height="@dimen/default_dp40"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/newyouhuijuan" />
+
+            <ImageView
+                android:id="@+id/yhkpic"
+                android:layout_width="110dp"
+                android:layout_height="@dimen/default_dp40"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/newbank" />
+
+            <ImageView
+                android:id="@+id/yepic"
+                android:layout_width="110dp"
+                android:layout_height="@dimen/default_dp40"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/newyue" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/yhj"
+            android:layout_width="110dp"
+            android:layout_height="@dimen/default_dp40"
+            android:gravity="center"
+            android:text="优惠卷"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/yhk"
+            android:layout_width="110dp"
+            android:layout_height="@dimen/default_dp40"
+            android:gravity="center"
+            android:text="银行卡"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/ye"
+            android:layout_width="110dp"
+            android:layout_height="@dimen/default_dp40"
+            android:gravity="center"
+            android:text="余额"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

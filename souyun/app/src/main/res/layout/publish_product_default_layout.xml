@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/publishProductDefaultLayout"
+    style="@style/PublishLayoutStyle"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dun"
+
+        />
+
+
+
+    <CheckBox
+        android:id="@+id/dunfangCb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:text=""
+         android:visibility="gone"
+        />
+    <TextView
+        style="@style/PublishIconStyle"
+        android:id="@+id/huowudunshu"
+
+        android:text="  货物吨数             " />
+
+    <EditText
+        android:id="@+id/ppDefaultWeightEt"
+        style="@style/PublishEditStyle"
+        android:layout_marginStart="@dimen/default_dp6"
+        android:background="@null"
+        android:gravity="right"
+        android:hint="请输入"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:lines="1"
+        android:textCursorDrawable="@drawable/color_cursor"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp15"
+        android:text="吨"/>
+
+    <EditText
+        android:id="@+id/ppDefaultAreaEt"
+        style="@style/PublishEditStyle"
+        android:layout_marginStart="@dimen/default_dp6"
+        android:background="@null"
+        android:gravity="right"
+        android:hint="请输入"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:textCursorDrawable="@drawable/color_cursor"/>
+
+    <TextView
+        android:id="@+id/quxiaojianTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp15"
+        android:text="方"/>
+
+    <EditText
+        android:id="@+id/jianDefaultWeightEt"
+        style="@style/PublishEditStyle"
+        android:layout_marginStart="@dimen/default_dp6"
+        android:background="@null"
+        android:gravity="right"
+        android:hint="请输入"
+        android:maxLength="4"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:textCursorDrawable="@drawable/color_cursor"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp15"
+        android:text="件" />
+
+
+
+
+
+</LinearLayout>
+<!--默认货物 输入-->
+
+
