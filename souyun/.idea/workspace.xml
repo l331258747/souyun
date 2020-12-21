@@ -13,7 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="886527f8-5b10-49e8-aed0-64825d7ec9eb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/Base/BaseActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/Base/BaseFragmentActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/auxiliary/NetBroadcastReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java" beforeDir="false" afterPath="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/SlidingMenu/.gradle/" />
     <ignored path="$PROJECT_DIR$/apppingjia/.gradle/" />
@@ -81,26 +84,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/RegisterPresenter.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-              <folding>
-                <element signature="e#828#829#0" expanded="true" />
-                <element signature="e#876#877#0" expanded="true" />
-                <element signature="e#1246#1247#0" expanded="true" />
-                <element signature="e#1301#1302#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="320">
+              <caret line="249" column="53" selection-start-line="249" selection-start-column="53" selection-end-line="249" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/StatusBarUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+            <state relative-caret-position="646">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/retrofitapi/NetService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesKitKat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/Eyes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -108,75 +141,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/DriverAuthActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="1950">
+              <caret line="218" column="32" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
               <folding>
-                <element signature="e#2053#2074#0" expanded="true" />
-                <element signature="e#2321#2342#0" expanded="true" />
-                <element signature="e#2449#2472#0" expanded="true" />
-                <element signature="e#2851#2872#0" expanded="true" />
-                <element signature="e#2912#2933#0" expanded="true" />
-                <element signature="e#3347#3368#0" expanded="true" />
-                <element signature="e#3408#3429#0" expanded="true" />
-                <element signature="e#3678#3699#0" expanded="true" />
-                <element signature="e#3733#3754#0" expanded="true" />
-                <element signature="e#5551#5572#0" expanded="true" />
-                <element signature="e#5606#5627#0" expanded="true" />
-                <element signature="e#7423#7444#0" expanded="true" />
-                <element signature="e#7478#7499#0" expanded="true" />
-                <element signature="e#10680#10701#0" expanded="true" />
-                <element signature="e#11238#11259#0" expanded="true" />
-                <element signature="e#12188#12209#0" expanded="true" />
-                <element signature="e#12748#12769#0" expanded="true" />
-                <element signature="e#20244#20265#0" expanded="true" />
-                <element signature="e#20323#20344#0" expanded="true" />
-                <element signature="e#23733#23754#0" expanded="true" />
-                <element signature="e#23796#23817#0" expanded="true" />
-                <element signature="e#23861#23882#0" expanded="true" />
-                <element signature="e#23924#23945#0" expanded="true" />
-                <element signature="e#24334#24355#0" expanded="true" />
-                <element signature="e#24397#24418#0" expanded="true" />
-                <element signature="e#24462#24483#0" expanded="true" />
-                <element signature="e#24525#24546#0" expanded="true" />
-                <element signature="e#24894#24915#0" expanded="true" />
-                <element signature="e#24957#24978#0" expanded="true" />
-                <element signature="e#25022#25043#0" expanded="true" />
-                <element signature="e#25085#25106#0" expanded="true" />
-                <element signature="e#25457#25478#0" expanded="true" />
-                <element signature="e#25520#25541#0" expanded="true" />
-                <element signature="e#25585#25606#0" expanded="true" />
-                <element signature="e#25648#25669#0" expanded="true" />
+                <element signature="e#6621#6622#0" expanded="true" />
+                <element signature="e#6682#6683#0" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="329" column="29" selection-start-line="329" selection-start-column="29" selection-end-line="329" selection-end-column="29" />
+              <folding>
+                <element signature="e#2590#2591#0" expanded="true" />
+                <element signature="e#2635#2636#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -196,8 +181,10 @@
       <find>常用发票</find>
       <find>app_name</find>
       <find>实名认证</find>
-      <find>fanhuijian</find>
       <find>再按一次</find>
+      <find>OwnerAuthActivity.class</find>
+      <find>fanhuijian</find>
+      <find>setStatusBarColor(</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -217,6 +204,10 @@
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" />
+        <option value="$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/StatusBarUtil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/HomeFragment.java" />
       </list>
     </option>
   </component>
@@ -261,6 +252,33 @@
             <path>
               <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
               <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="owner" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="owner" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -292,6 +310,62 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="values" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="universallibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="library" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="statusbar" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -332,12 +406,10 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\DU\owner\XRWL_Owner\app\src\main\res\layout" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\java\com\xrwl\owner\utils" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-xhdpi" />
-      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-v24" />
-      <recent name="D:\NewApp\owner\XRWL_Owner" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.xrwl.owner.utils.behavior" />
+      <recent name="com.pengguanming.mimusicbehavior" />
+      <recent name="com.xrwl.owner.Frame.AppUpdate.http" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.xrwl.owner" />
@@ -346,13 +418,16 @@
       <recent name="com.xrwl.owner.Fragment" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xrwl.owner.utils" />
       <recent name="com.xrwl.owner.Fragment" />
       <recent name="com.pengguanming.mimusicbehavior" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.xrwl.owner.utils.behavior" />
-      <recent name="com.pengguanming.mimusicbehavior" />
-      <recent name="com.xrwl.owner.Frame.AppUpdate.http" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\DU\owner\XRWL_Owner\app\src\main\res\layout" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\java\com\xrwl\owner\utils" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-xhdpi" />
+      <recent name="D:\NewApp\owner\XRWL_Owner\app\src\main\res\drawable-v24" />
+      <recent name="D:\NewApp\owner\XRWL_Owner" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -507,6 +582,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" />
       <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32995737" />
@@ -701,20 +777,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -761,13 +823,6 @@
             <element signature="e#321#322#0" expanded="true" />
             <element signature="e#359#360#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/mvp/BaseMVP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -852,19 +907,6 @@
             <element signature="e#833#834#0" expanded="true" />
             <element signature="e#1029#1030#0" expanded="true" />
             <element signature="e#1055#1056#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/RegisterPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding>
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#1246#1247#0" expanded="true" />
-            <element signature="e#1301#1302#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -993,20 +1035,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/com/autonavi/amap/mapcore/AMapNativeParticleSystem.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1022,10 +1050,143 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/META-INF/maven/com.alibaba/fastjson/pom.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/mvp/BaseMVP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/RegisterPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+          <folding>
+            <element signature="e#828#829#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="44" column="30" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/order/owner/ui/OwnerOrderActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/27.1.0/3c44f49e13d5963398f87259293ee6a766afa82a/support-fragment-27.1.0-sources.jar!/android/support/v4/app/DialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="137" column="16" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="456">
+          <caret line="329" column="29" selection-start-line="329" selection-start-column="29" selection-end-line="329" selection-end-column="29" />
+          <folding>
+            <element signature="e#2590#2591#0" expanded="true" />
+            <element signature="e#2635#2636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesKitKat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/sdk/sources/android-29/android/graphics/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="297" column="38" selection-start-line="297" selection-start-column="38" selection-end-line="297" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/EyesLollipop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/universallibrary/src/main/java/com/ldw/library/utils/statusbar/Eyes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/Base/BaseFragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1280">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/auxiliary/NetBroadcastReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/Base/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/Frame/retrofitapi/NetService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="218" column="32" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
+          <folding>
+            <element signature="e#6621#6622#0" expanded="true" />
+            <element signature="e#6682#6683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/utils/StatusBarUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="249" column="53" selection-start-line="249" selection-start-column="53" selection-end-line="249" selection-end-column="53" />
         </state>
       </provider>
     </entry>

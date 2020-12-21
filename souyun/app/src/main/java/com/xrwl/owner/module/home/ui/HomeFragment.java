@@ -10,24 +10,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.library.banner.BannerLayout;
-import com.ldw.library.adapter.recycler.MultiItemTypeAdapter;
 import com.ldw.library.mvp.BaseMVP;
-import com.ldw.library.utils.Utils;
-import com.ldw.library.view.GridSpacingItemDecoration;
 import com.xrwl.owner.Fragment.BlankFragment;
 import com.xrwl.owner.Fragment.CtldFragment;
 import com.xrwl.owner.Fragment.CtzcFragment;
@@ -37,42 +28,18 @@ import com.xrwl.owner.Fragment.TcldFragment;
 import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseFragment;
-import com.xrwl.owner.bean.Account;
-import com.xrwl.owner.bean.HomeItem;
-import com.xrwl.owner.easier.ui.CalendarView;
-import com.xrwl.owner.event.TabCheckEvent;
-import com.xrwl.owner.module.account.activity.SingleNumberQueryActivity;
-import com.xrwl.owner.module.account.activity.WebActivity;
-import com.xrwl.owner.module.account.activity.WebActivityputong;
-import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
-import com.xrwl.owner.module.home.adapter.HomeRecyclerAdapter;
-import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
-import com.xrwl.owner.module.home.adapter.WebBannerAdapter;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
 import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
-import com.xrwl.owner.module.order.owner.ui.QianDaoActivity;
-import com.xrwl.owner.module.order.owner.ui.ZhouGongActivity;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
-import com.xrwl.owner.module.publish.ui.NewsActivity;
 import com.xrwl.owner.module.publish.ui.ReceiptActivity;
-import com.xrwl.owner.retrofit.BaseSimpleObserver;
-import com.xrwl.owner.retrofit.RxSchedulers;
-import com.xrwl.owner.utils.AccountUtil;
-
-import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.xrwl.owner.utils.StatusBarUtil;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * Created by www.longdw.com on 2018/3/25 下午10:58.
@@ -220,22 +187,18 @@ public class HomeFragment extends BaseFragment {
                     Intent intent = new Intent(mContext, OwnerOrderActivity.class);
                     intent.putExtra("title", "我的订单");
                     startActivity(intent);
-                    finish();
                 }
                if(item.toString().contains("实名认证"))
                {
                    startActivity(new Intent(getContext(), OwnerAuthActivity.class));
-                   finish();
                }
                 if(item.toString().contains("地址管理"))
                {
                    startActivity(new Intent(getContext(), AddressActivity.class));
-                   finish();
                }
                 if(item.toString().contains("发票管理"))
                {
                    startActivity(new Intent(getContext(), ReceiptActivity.class));
-                   finish();
                }
                 if(item.toString().contains("联系客服"))
                {
@@ -278,9 +241,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void z1() {
-        Window window = this.getActivity().getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.zbb));
+//        Window window = this.getActivity().getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        window.setStatusBarColor(this.getResources().getColor(R.color.zbb));
+
+//        Eyes.setStatusBarColor(this.getActivity(),this.getResources().getColor(R.color.zbb));
+
+        StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.zbb));
     }
 
     @OnClick({R.id.wode, R.id.sys})
