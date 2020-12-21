@@ -89,9 +89,9 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
         String appId = "com.xrwl.owner";
         String appSecurity = "978943b74c8f42328567d50479940344fa439712ea1d4949b664de25d3ca773a";
         String enterpriseSenderCode = "14101810";
-       String environment = "debug";
+        String environment = "debug";
         String ShippingNoteInfo[];
-        LocationOpenApi.init(TabActivity.this, appId, appSecurity,enterpriseSenderCode,environment , new OnResultListener() {
+        LocationOpenApi.init(TabActivity.this, appId, appSecurity, enterpriseSenderCode, environment, new OnResultListener() {
             @Override
             public void onSuccess() {
 
@@ -106,11 +106,6 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 
             }
         });
-
-
-
-
-
 
 
         openGPSSEtting();
@@ -141,28 +136,18 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
         getBadgeCount();
 
 
-
-
-
-
-
-
-
         //启用服务。context 必须为 activity。
         LocationOpenApi.start(this, (com.hdgq.locationlib.entity.ShippingNoteInfo[]) shippingNoteInfos, new OnResultListener() {
-                    @Override
-                    public void onSuccess() {
+            @Override
+            public void onSuccess() {
 
-                    }
+            }
 
-                    @Override
-                    public void onFailure(String s, String s1) {
+            @Override
+            public void onFailure(String s, String s1) {
 
-                    }
-                });
-
-
-
+            }
+        });
 
 
 //
@@ -181,7 +166,6 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 //                });
 
     }
-
 
 
     private void initNavBar() {
@@ -332,9 +316,9 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
                         /*
                          *  在这里实现你自己的逻辑
                          */
-                           finish();
-                    ActivityManager am = (ActivityManager)getSystemService (Context.ACTIVITY_SERVICE);
-                     am.restartPackage(getPackageName());
+                        finish();
+                        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                        am.restartPackage(getPackageName());
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -412,7 +396,7 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
         hashMap.put("RoadTransportCertificateNumber", "5454545");
         hashMap.put("TrailerVehiclePlateNumber", "5454545");
         hashMap.put("Remark", "5454545");
-   RetrofitManager1 retrofitManager = RetrofitManager1.getInstance();
+        RetrofitManager1 retrofitManager = RetrofitManager1.getInstance();
         retrofitManager.createReq(NetService.class)
                 .Cljbxx(hashMap)
                 .subscribeOn(Schedulers.io())
@@ -430,8 +414,6 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
                         Toast.makeText(TabActivity.this, "ok", Toast.LENGTH_SHORT).show();
 
                     }
-
-
 
 
                     @Override

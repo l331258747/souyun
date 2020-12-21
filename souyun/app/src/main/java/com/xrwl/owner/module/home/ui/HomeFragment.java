@@ -8,7 +8,6 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -33,6 +32,7 @@ import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.ReceiptActivity;
 import com.xrwl.owner.utils.StatusBarUtil;
+import com.xrwl.owner.view.ControlScrollViewPager;
 
 import java.util.ArrayList;
 
@@ -53,7 +53,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.tablayout)
     TabLayout tablayout;
     @BindView(R.id.viewpager)
-    ViewPager viewpager;
+    ControlScrollViewPager viewpager;
 
     Unbinder unbinder;
     @BindView(R.id.wode)
@@ -66,10 +66,6 @@ public class HomeFragment extends BaseFragment {
     DrawerLayout nidaye;
     private ArrayList<String> title_list;
     private ArrayList<Fragment> fragment_list;
-
-
-
-
 
 
     public static HomeFragment newInstance(String title) {
@@ -118,9 +114,6 @@ public class HomeFragment extends BaseFragment {
         title_list.add("跑腿");
 
 
-
-
-
         BlankFragment f = new BlankFragment();
         fragment_list.add(f);
         DzysFragment twoFragment4 = new DzysFragment();
@@ -135,9 +128,6 @@ public class HomeFragment extends BaseFragment {
         fragment_list.add(twoFragment);
         PaotuiFragment paotuiFragment = new PaotuiFragment();
         fragment_list.add(paotuiFragment);
-
-
-
 
 
     }
@@ -182,36 +172,30 @@ public class HomeFragment extends BaseFragment {
 
                 showToast(item.toString());
 
-               if(item.toString().contains("我的订单"))
-                {
+                if (item.toString().contains("我的订单")) {
                     Intent intent = new Intent(mContext, OwnerOrderActivity.class);
                     intent.putExtra("title", "我的订单");
                     startActivity(intent);
                 }
-               if(item.toString().contains("实名认证"))
-               {
-                   startActivity(new Intent(getContext(), OwnerAuthActivity.class));
-               }
-                if(item.toString().contains("地址管理"))
-               {
-                   startActivity(new Intent(getContext(), AddressActivity.class));
-               }
-                if(item.toString().contains("发票管理"))
-               {
-                   startActivity(new Intent(getContext(), ReceiptActivity.class));
-               }
-                if(item.toString().contains("联系客服"))
-               {
-                   Intent intent = new Intent(Intent.ACTION_DIAL);
-                   Uri data = Uri.parse("tel:" + "0357-2591666");
-                   intent.setData(data);
-                   startActivity(intent);
-               }
-                if(item.toString().contains("退出登录"))
-               {
-                   ExitDialog dialog = new ExitDialog();
-                   dialog.show(getFragmentManager(), "exit");
-               }
+                if (item.toString().contains("实名认证")) {
+                    startActivity(new Intent(getContext(), OwnerAuthActivity.class));
+                }
+                if (item.toString().contains("地址管理")) {
+                    startActivity(new Intent(getContext(), AddressActivity.class));
+                }
+                if (item.toString().contains("发票管理")) {
+                    startActivity(new Intent(getContext(), ReceiptActivity.class));
+                }
+                if (item.toString().contains("联系客服")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri data = Uri.parse("tel:" + "0357-2591666");
+                    intent.setData(data);
+                    startActivity(intent);
+                }
+                if (item.toString().contains("退出登录")) {
+                    ExitDialog dialog = new ExitDialog();
+                    dialog.show(getFragmentManager(), "exit");
+                }
                 nidaye.closeDrawer(nav);
 
 
@@ -263,12 +247,11 @@ public class HomeFragment extends BaseFragment {
 
                 break;
             case R.id.sys:
-                Intent intent =new Intent(getContext(),NearLocationActivity.class);
+                Intent intent = new Intent(getContext(), NearLocationActivity.class);
                 startActivity(intent);
                 break;
         }
     }
-
 
 
 }

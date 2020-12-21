@@ -52,16 +52,6 @@ import io.reactivex.disposables.Disposable;
 public class BlankFragment extends Fragment implements LocationSource, AMapLocationListener {
 
 
-
-
-
-
-
-
-
-
-
-
     private Account mAccount;
     private Disposable mDisposable;
     private HomeAdAdapter mHomeAdAdapter;
@@ -73,15 +63,11 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     private CustomDialog mRedPacketDialog;
 
 
-
-
-
-
     private Double latitude;
     private Double longitude;
     private static final int REQUEST_CODE_INSTALL_PERMISSION = 107;
     private static final int NOT_NOTICE = 2;
-    private static final int PERMISSION_GRANTED =1 ;
+    private static final int PERMISSION_GRANTED = 1;
     private AlertDialog alertDialog;
     private AlertDialog mDialog;
     private boolean shouldBack;
@@ -100,8 +86,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
     //定位蓝点
     MyLocationStyle myLocationStyle;
-
-
 
 
     private final String[] mTitles = {
@@ -163,18 +147,11 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
 
 
-
-
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
 
 
         // Inflate the layout for this fragment
@@ -217,7 +194,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             }
         });
 
-
         return inflate;
     }
 
@@ -243,7 +219,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent=new Intent(getContext(), HongbaolistActivity.class);
+                        Intent intent = new Intent(getContext(), HongbaolistActivity.class);
                         startActivity(intent);
                         mRedPacketDialog.dismiss();
                         // finish();
@@ -266,10 +242,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             Field mTouchSlop = ViewPager.class.getDeclaredField("mTouchSlop");
             mTouchSlop.setAccessible(true);
             mTouchSlop.setInt(mViewPager, dp2px(50));
-            Log.d("Msg","往下滑动阻尼设置");
+            Log.d("Msg", "往下滑动阻尼设置");
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
-            Log.e("Msg","这是错误信息");
+            Log.e("Msg", "这是错误信息");
         }
         mViewPager.setOffscreenPageLimit(mFragments.size());
     }
@@ -286,7 +262,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
 
     }
-
 
 
     private class MyFragmentAdapter extends FragmentPagerAdapter {
@@ -307,9 +282,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     }
 
 
-
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -321,18 +293,21 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mMapView.onResume();
     }
+
     @Override
     public void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
         mMapView.onPause();
     }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -396,8 +371,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             }
         }
     }
-
-
 
 
 }
