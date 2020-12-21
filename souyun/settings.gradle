@@ -1,1 +1,1 @@
-include ':app', ':opensourcelibrary', ':universallibrary', ':apppingjia', ':library',':SlidingMenu', ':compns'
+include ':app', ':opensourcelibrary', ':universallibrary', ':library', ':compns'
