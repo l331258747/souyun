@@ -13,235 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="886527f8-5b10-49e8-aed0-64825d7ec9eb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/loading_alpha_anim.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/pop_anim_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/pop_anim_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/pop_translate_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/pop_translate_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/slide_left_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/slide_left_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/slide_right_in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/anim/slide_right_out.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/color/base_dialog_btn_color_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/color/choose_address_rb_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/color/publish_category_rb_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/color/publish_remark_tag_text_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/color/register_codebtn_selector.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_add_receipt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_basic_navi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_coupon.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_gaode.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_hongbaolist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_main2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_over_flying.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_poisearch.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_rilimain.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_saoyisao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_wxentry.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_youhuijuan.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_yuanban.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activity_zhongjie.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/activty_hongbao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ad_listactivity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/add_showphotos_addphoto_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/add_showphotos_item_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/add_showphotos_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/add_showphotos_recyclerview_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/add_showphotos_recyclerview_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/addbank_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/addhezuo_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/addreceipt_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_add_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_add_layout_zhongzhuandian.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_recycler_item_zhongzhuandian.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/address_zhongzhuandian.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bank_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bank_footer_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bank_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bankyue_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bankyue_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/bankyuejindu_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_lineview_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_list_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_pay_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_pay_layoutfinish.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_pay_layoutjiayoujiaqi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_pay_layoutpingjia.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_retryview_include.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/base_vertical_pay_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/baseweb_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_detail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_fragment1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_recycler_itemqianbao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/business_recycler_itemxitong.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/calendar_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chongzhi_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chongzhigh_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chooseaddress_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chooseaddress_history_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chooseaddress_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/chooseaddress_selected_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/content_add_receipt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/content_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/coupon_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/coupon_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/dialog_red_packet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/dialog_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/driver_auth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/driverorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/driverorderdetail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/exit_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/find_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/find_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_search_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_search_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friend_sectiontitle_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friendadd_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/friendadd_header_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/grapsuccess_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/history_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/historyorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/home_ad_viewpager_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/home_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/home_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/homes_ad_viewpager_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/insurance_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/insurance_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/item_image.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/item_image_over.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/layout_poi_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/loading_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/login_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/logins_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/me_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/me_header_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/me_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/meinfo_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/modifypassword_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/modifypwd_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/my_youhuijuan_yinhangka_yue.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/nearlocation_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/news_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/news_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/newsshow_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/notify_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ordercomfirm_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/owner_auth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/owner_authtel_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerauth_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerorder_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerorder_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerorder_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerorderdetail_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ownerorderdianping_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/pay_external.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/pay_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/permission_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/pic_lunbo.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/pic_lunbo2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/productsearch_busmodel_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/productsearch_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_address_default_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_address_longtotal_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_area_spinner_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_area_spinners_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_auth_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_category_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_product_default__fanglayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_product_default_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_product_dialog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_product_dialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_product_longtotal_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_remark_dialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_remark_dialog_tag_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_spinner_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_truck_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publish_truck_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publishconfirm_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publishconfirm_pricedetail_pop_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/publishsuccess_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/qiandao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/qinlocation_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/receipt_add_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/receipt_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/receipt_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/register_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/regulations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/ruzhusuccess_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/searchlocation_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/searchlocation_listview_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/singlenumberquery.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/spinnerdialog_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/spinnerdialog_recycler_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/successerweima_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/tab_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/web_storage.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/web_storageputong.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/zaixiangoumai_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/zhifu_alipay.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/layout/zhougong_activity.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/menu/menu_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/raw/gongxininqiangdanchenggong.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/raw/huanying.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/raw/nindehuodanyibeijieshou.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/raw/quanxianbuzushimingrenzheng.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/constants.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res/xml/myfile_paths.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/xrwl/owner/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/xrwl/owner/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/libs/core-3.3.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/BeepManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/CaptureActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/CaptureActivityHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/FinishListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/InactivityTimer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/android/Intents.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/bean/ZxingConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/camera/AutoFocusManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/camera/CameraConfigurationManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/camera/CameraManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/camera/OpenCameraInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/camera/PreviewCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/common/Constant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/BitmapLuminanceSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/DecodeFormatManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/DecodeHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/DecodeImgCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/DecodeImgThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/DecodeThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/decode/ImageUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/encode/CodeCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/view/ViewfinderResultPointCallback.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/java/com/yzq/zxinglibrary/view/ViewfinderView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/drawable/ic_back.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/drawable/ic_close.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/drawable/ic_open.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/drawable/ic_photo.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/drawable/scan_light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/layout/activity_capture.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/raw/beep.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/zxinglibrary/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/SlidingMenu/.gradle/" />
     <ignored path="$PROJECT_DIR$/apppingjia/.gradle/" />
@@ -327,8 +99,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="184" column="35" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
+            <state relative-caret-position="76">
+              <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/DriverAuthActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -336,20 +135,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="475">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#2053#2074#0" expanded="true" />
+                <element signature="e#2321#2342#0" expanded="true" />
+                <element signature="e#2449#2472#0" expanded="true" />
+                <element signature="e#2851#2872#0" expanded="true" />
+                <element signature="e#2912#2933#0" expanded="true" />
+                <element signature="e#3347#3368#0" expanded="true" />
+                <element signature="e#3408#3429#0" expanded="true" />
+                <element signature="e#3678#3699#0" expanded="true" />
+                <element signature="e#3733#3754#0" expanded="true" />
+                <element signature="e#5551#5572#0" expanded="true" />
+                <element signature="e#5606#5627#0" expanded="true" />
+                <element signature="e#7423#7444#0" expanded="true" />
+                <element signature="e#7478#7499#0" expanded="true" />
+                <element signature="e#10680#10701#0" expanded="true" />
+                <element signature="e#11238#11259#0" expanded="true" />
+                <element signature="e#12188#12209#0" expanded="true" />
+                <element signature="e#12748#12769#0" expanded="true" />
+                <element signature="e#20244#20265#0" expanded="true" />
+                <element signature="e#20323#20344#0" expanded="true" />
+                <element signature="e#23733#23754#0" expanded="true" />
+                <element signature="e#23796#23817#0" expanded="true" />
+                <element signature="e#23861#23882#0" expanded="true" />
+                <element signature="e#23924#23945#0" expanded="true" />
+                <element signature="e#24334#24355#0" expanded="true" />
+                <element signature="e#24397#24418#0" expanded="true" />
+                <element signature="e#24462#24483#0" expanded="true" />
+                <element signature="e#24525#24546#0" expanded="true" />
+                <element signature="e#24894#24915#0" expanded="true" />
+                <element signature="e#24957#24978#0" expanded="true" />
+                <element signature="e#25022#25043#0" expanded="true" />
+                <element signature="e#25085#25106#0" expanded="true" />
+                <element signature="e#25457#25478#0" expanded="true" />
+                <element signature="e#25520#25541#0" expanded="true" />
+                <element signature="e#25585#25606#0" expanded="true" />
+                <element signature="e#25648#25669#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -366,8 +193,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>handleError</find>
-      <find>实名认证</find>
       <find>常用发票</find>
+      <find>app_name</find>
+      <find>实名认证</find>
+      <find>fanhuijian</find>
+      <find>再按一次</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -384,8 +214,9 @@
       <list>
         <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml" />
         <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java" />
       </list>
     </option>
   </component>
@@ -426,6 +257,41 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="souyun" type="b2602c69:ProjectViewProjectNode" />
+              <item name="souyun" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="opensourcelibrary" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="values" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -641,10 +507,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" />
-      <window_info content_ui="combo" id="Project" visible="true" weight="0.32995737" />
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32995737" />
       <window_info id="Structure" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Build Variants" side_tool="true" />
@@ -660,7 +525,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Debug" />
-      <window_info active="true" anchor="bottom" id="Build" visible="true" weight="0.32962137" />
+      <window_info anchor="bottom" id="Build" weight="0.32962137" />
       <window_info anchor="bottom" id="Android Profiler" />
       <window_info anchor="right" id="Device File Explorer" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -955,13 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="181" column="19" selection-start-line="181" selection-start-column="19" selection-end-line="181" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/activity/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -998,13 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/DriverAuthActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/account/mvp/RegisterPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -1015,13 +866,6 @@
             <element signature="e#1246#1247#0" expanded="true" />
             <element signature="e#1301#1302#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="184" column="35" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1072,13 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opensourcelibrary/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opensourcelibrary/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -1086,18 +923,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/opensourcelibrary/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opensourcelibrary/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" selection-start-column="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/DriverAuthActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/owner_auth_activity.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="475">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#2053#2074#0" expanded="true" />
+            <element signature="e#2321#2342#0" expanded="true" />
+            <element signature="e#2449#2472#0" expanded="true" />
+            <element signature="e#2851#2872#0" expanded="true" />
+            <element signature="e#2912#2933#0" expanded="true" />
+            <element signature="e#3347#3368#0" expanded="true" />
+            <element signature="e#3408#3429#0" expanded="true" />
+            <element signature="e#3678#3699#0" expanded="true" />
+            <element signature="e#3733#3754#0" expanded="true" />
+            <element signature="e#5551#5572#0" expanded="true" />
+            <element signature="e#5606#5627#0" expanded="true" />
+            <element signature="e#7423#7444#0" expanded="true" />
+            <element signature="e#7478#7499#0" expanded="true" />
+            <element signature="e#10680#10701#0" expanded="true" />
+            <element signature="e#11238#11259#0" expanded="true" />
+            <element signature="e#12188#12209#0" expanded="true" />
+            <element signature="e#12748#12769#0" expanded="true" />
+            <element signature="e#20244#20265#0" expanded="true" />
+            <element signature="e#20323#20344#0" expanded="true" />
+            <element signature="e#23733#23754#0" expanded="true" />
+            <element signature="e#23796#23817#0" expanded="true" />
+            <element signature="e#23861#23882#0" expanded="true" />
+            <element signature="e#23924#23945#0" expanded="true" />
+            <element signature="e#24334#24355#0" expanded="true" />
+            <element signature="e#24397#24418#0" expanded="true" />
+            <element signature="e#24462#24483#0" expanded="true" />
+            <element signature="e#24525#24546#0" expanded="true" />
+            <element signature="e#24894#24915#0" expanded="true" />
+            <element signature="e#24957#24978#0" expanded="true" />
+            <element signature="e#25022#25043#0" expanded="true" />
+            <element signature="e#25085#25106#0" expanded="true" />
+            <element signature="e#25457#25478#0" expanded="true" />
+            <element signature="e#25520#25541#0" expanded="true" />
+            <element signature="e#25585#25606#0" expanded="true" />
+            <element signature="e#25648#25669#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/home/ui/OwnerAuthActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="76">
+          <caret line="44" column="44" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/base/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="142" column="54" selection-start-line="142" selection-start-column="54" selection-end-line="142" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/com/autonavi/amap/mapcore/AMapNativeParticleSystem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#2997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/META-INF/maven/com.alibaba/fastjson/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/META-INF/maven/com.alibaba/fastjson/pom.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/xrwl/owner/module/tab/activity/TabActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>

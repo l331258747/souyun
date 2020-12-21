@@ -340,11 +340,13 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /*
-                         *  在这里实现你自己的逻辑
-                         */
-                        Intent intent = new Intent(TabActivity.this, TabActivity.class);
-                        startActivity(intent);
+//                        /*
+//                         *  在这里实现你自己的逻辑
+//                         */
+//                        Intent intent = new Intent(TabActivity.this, TabActivity.class);
+//                        startActivity(intent);
+
+                        dialog.dismiss();
                     }
                 });
                 builder.create().show();
