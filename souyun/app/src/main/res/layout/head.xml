@@ -57,9 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/yhj"
@@ -67,7 +65,7 @@
             android:layout_height="@dimen/default_dp40"
             android:gravity="center"
             android:text="优惠卷"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/yhk"
@@ -75,7 +73,7 @@
             android:layout_height="@dimen/default_dp40"
             android:gravity="center"
             android:text="银行卡"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/ye"
@@ -83,6 +81,6 @@
             android:layout_height="@dimen/default_dp40"
             android:gravity="center"
             android:text="余额"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>
