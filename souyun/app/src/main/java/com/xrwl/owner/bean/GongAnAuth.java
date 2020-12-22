@@ -1,9 +1,5 @@
 package com.xrwl.owner.bean;
 
-import android.text.TextUtils;
-
-import com.google.gson.annotations.SerializedName;
-
 /**
  * 实名认证
  * Created by www.longdw.com on 2018/4/29 下午8:43.
@@ -28,9 +24,9 @@ public class GongAnAuth {
     public String address;
     public String birth;
     public String config_str;
-    public String name;
+    public String name;//姓名
     public String nationality;
-    public String num;
+    public String num;//证件号码
     public String sex;
     public String request_id;
 }

@@ -1,7 +1,10 @@
 package com.xrwl.owner.module.home.mvp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
+import android.util.Base64;
 
 import com.ldw.library.bean.BaseEntity;
 import com.xrwl.owner.bean.Auth;
@@ -10,6 +13,7 @@ import com.xrwl.owner.bean.MsgCode;
 import com.xrwl.owner.retrofit.BaseObserver;
 import com.xrwl.owner.retrofit.BaseSimpleObserver;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -34,6 +38,7 @@ public class AuthPresenter extends AuthContract.APresenter {
 
     @Override
     public void postData(Map<String, String> picMaps, Map<String, String> params) {
+
         params.put("userid", getAccount().getId());
         Map<String, RequestBody> finalParams = new HashMap<>();
 
@@ -183,10 +188,21 @@ public class AuthPresenter extends AuthContract.APresenter {
 
     @Override
     public void shenfenzheng(String face_cardimg) {
+        Bitmap bitmap = BitmapFactory.decodeFile(face_cardimg);
+        //Log.d(TAG, "bitmap width: " + bitmap.getWidth() + " height: " + bitmap.getHeight());
+        //convert to byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] bytes = baos.toByteArray();
+        //base64 encode
+        byte[] encode = Base64.encode(bytes, Base64.DEFAULT);
+        String encodeString = new String(encode);
+
         Map<String, String> params = new HashMap<>();
         params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
         params.put("type", "1");
-        params.put("face_cardimg", face_cardimg);
+        params.put("face_cardimg", encodeString);
+
         mModel.shenfenzheng(params).subscribe(new BaseObserver<GongAnAuth>() {
             @Override
             public void onSubscribe(Disposable d) {

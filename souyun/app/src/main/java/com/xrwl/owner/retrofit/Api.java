@@ -121,9 +121,9 @@ public interface Api {
 
 
  /** 身份证 */
- @GET("admin/idcar/cardids")
- Observable<BaseEntity<GongAnAuth>> shenfenzheng(@QueryMap Map<String, String> params);
-
+ @FormUrlEncoded
+ @POST("admin/idcar/cardids")
+ Observable<BaseEntity<GongAnAuth>> shenfenzheng(@FieldMap Map<String, String> params);
 
  /** 检查更新 */
  @GET("Other/Update")

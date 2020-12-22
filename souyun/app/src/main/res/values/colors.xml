@@ -35,6 +35,7 @@
     <color name="light_black">#222222</color>
     <color name="dark_gray">#757575</color>
     <color name="gray">#aaaaaa</color>
+    <color name="gray_33">#33aaaaaa</color>
     <color name="light_gray">#a7a7a7</color>
     <!-- 钢兰色 -->
     <color name="royalblue">#4169e1</color>
