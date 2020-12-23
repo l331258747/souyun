@@ -192,7 +192,7 @@ public class HomeFragment extends BaseFragment {
                     intent.setData(data);
                     startActivity(intent);
                 }
-                if (item.toString().contains("退出登录")) {
+                if (item.toString().contains("退出登陆")) {
                     ExitDialog dialog = new ExitDialog();
                     dialog.show(getFragmentManager(), "exit");
                 }

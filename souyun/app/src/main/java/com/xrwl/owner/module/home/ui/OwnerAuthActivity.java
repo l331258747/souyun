@@ -376,6 +376,8 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         //------------1
         mPresenter.postData(picMaps, params);
 
+        mPresenter.shenfenzheng(mIdPath);
+
     }
 
     public void showLoading(String msg) {
@@ -481,10 +483,7 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         dismissLoading();
 
         //------------2
-        if(postType == 0){
-            showLoading("阿里身份证验证...");
-            mPresenter.shenfenzheng(mIdPath);
-        }else if(postType == 3){
+        if(postType == 3){
             getData();
         }
     }
@@ -528,15 +527,12 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         mauthidentifiedEt.setText(dd.num);
 
         showToast("验证成功");
-        dismissLoading();
-
     }
 
     @Override
     public void shenfenzhengError(BaseEntity entity) {
         //------------2.2
         showToast("验证失败，请重新上传正面照");
-        dismissLoading();
     }
 
     @Override

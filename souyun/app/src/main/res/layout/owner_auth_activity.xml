@@ -320,7 +320,7 @@
                     <ImageView
                         android:id="@+id/authIdIv"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:scaleType="fitCenter"
                         android:src="@drawable/zhengmian"
                         android:visibility="gone" />
@@ -371,7 +371,7 @@
                     <ImageView
                         android:id="@+id/authAvatarIv"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:scaleType="fitCenter"
                         android:src="@drawable/fanmian"
                         android:visibility="gone" />
@@ -551,7 +551,7 @@
                             android:id="@+id/authLicenseIv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:scaleType="centerCrop"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/zhizhao"
                             android:visibility="gone" />
 
