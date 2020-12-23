@@ -23,6 +23,7 @@ public interface AuthContract {
         void onPostError(BaseEntity entity);
         void onPostError(Throwable e);
         void shenfenzhengSuccess(BaseEntity<GongAnAuth> entity);
+        void shenfenzhengError(BaseEntity entity);
         void onGetCodeSuccess(BaseEntity<MsgCode> entity);
         void onGetCodeError(Throwable e);
 

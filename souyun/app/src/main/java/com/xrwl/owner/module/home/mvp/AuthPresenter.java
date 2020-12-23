@@ -214,7 +214,7 @@ public class AuthPresenter extends AuthContract.APresenter {
                 if (entity.isSuccess()) {
                     mView.shenfenzhengSuccess(entity);
                 } else {
-                    mView.onError(entity);
+                    mView.shenfenzhengError(entity);
                 }
             }
 

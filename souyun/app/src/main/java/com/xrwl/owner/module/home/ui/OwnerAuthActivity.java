@@ -3,11 +3,7 @@ package com.xrwl.owner.module.home.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.view.dialog.LoadingProgress;
 import com.luck.picture.lib.PictureSelector;
@@ -46,42 +41,42 @@ import butterknife.OnClick;
 
 public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPresenter> implements AuthContract.IView {
 
-    private static Handler handler = new Handler();
-
-    private long TIME_LISTEN = 1000;//设置2秒的延迟
-
-    private Runnable runnable = new Runnable() {
-        @Override
-
-        public void run() {
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-                    String abc = "";
-                    String bca = "";
-                    String cba = "";
-                    if (TextUtils.isEmpty(mNameEt.getText().toString()) || mNameEt.getText().toString().length() == 0) {
-                        abc = " ";
-                    } else {
-                        abc = mNameEt.getText().toString();
-                    }
-                    if (TextUtils.isEmpty(mauthidentifiedEt.getText().toString()) || mauthidentifiedEt.getText().toString().length() == 0) {
-                        bca = " ";
-                    } else {
-                        bca = mauthidentifiedEt.getText().toString();
-                    }
-                    if (TextUtils.isEmpty(mUnitNameEt.getText().toString()) || mUnitNameEt.getText().toString().length() == 0) {
-                        cba = " ";
-                    } else {
-                        cba = mUnitNameEt.getText().toString();
-                    }
-                    doSomeThing(abc, bca, cba);
-                }
-            });
-        }
-    };
+//    private static Handler handler = new Handler();
+//
+//    private long TIME_LISTEN = 1000;//设置2秒的延迟
+//
+//    private Runnable runnable = new Runnable() {
+//        @Override
+//
+//        public void run() {
+//
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    String abc = "";
+//                    String bca = "";
+//                    String cba = "";
+//                    if (TextUtils.isEmpty(mNameEt.getText().toString()) || mNameEt.getText().toString().length() == 0) {
+//                        abc = " ";
+//                    } else {
+//                        abc = mNameEt.getText().toString();
+//                    }
+//                    if (TextUtils.isEmpty(mauthidentifiedEt.getText().toString()) || mauthidentifiedEt.getText().toString().length() == 0) {
+//                        bca = " ";
+//                    } else {
+//                        bca = mauthidentifiedEt.getText().toString();
+//                    }
+//                    if (TextUtils.isEmpty(mUnitNameEt.getText().toString()) || mUnitNameEt.getText().toString().length() == 0) {
+//                        cba = " ";
+//                    } else {
+//                        cba = mUnitNameEt.getText().toString();
+//                    }
+//                    doSomeThing(abc, bca, cba);
+//                }
+//            });
+//        }
+//    };
 
 
     public static final int RESULT_ID = 100;
@@ -91,7 +86,7 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     @BindView(R.id.authIdIv)
     ImageView mIdIv;//身份证
     @BindView(R.id.authNameEt)
-    EditText mNameEt;//姓名
+    TextView mNameEt;//姓名
     @BindView(R.id.authAvatarIv)
     ImageView mAvatarIv;//本人照片
 
@@ -110,7 +105,7 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
 
 
     @BindView(R.id.authidentifiedEt)
-    EditText mauthidentifiedEt;
+    TextView mauthidentifiedEt;
 
 
     @BindView(R.id.authConfirmBtn)
@@ -154,6 +149,9 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     @BindView(R.id.mainLayout)
     LinearLayout mmainLayout;
 
+    int postType;//0身份证，1执照，2提交信息
+    boolean status;
+
     @Override
     protected AuthPresenter initPresenter() {
         return new AuthPresenter(this);
@@ -184,6 +182,8 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         mLicenseIv.setVisibility(View.GONE);//图片-
         mTotalView.setVisibility(View.GONE);//整车视图-图
 
+        mConfirmBtn.setVisibility(View.VISIBLE);
+
         getData();
     }
 
@@ -191,67 +191,67 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     @Override
     protected void getData() {
 
-        mNameEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                handler.removeCallbacks(runnable);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!"".equals(s.toString().trim())) {
-
-                    handler.postDelayed(runnable, TIME_LISTEN);
-
-                }
-            }
-        });
-
-        mauthidentifiedEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                handler.removeCallbacks(runnable);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!"".equals(s.toString().trim())) {
-
-                    handler.postDelayed(runnable, TIME_LISTEN);
-
-                }
-            }
-        });
-        mUnitNameEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                handler.removeCallbacks(runnable);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!"".equals(s.toString().trim())) {
-
-                    handler.postDelayed(runnable, TIME_LISTEN);
-
-                }
-            }
-        });
+//        mNameEt.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                handler.removeCallbacks(runnable);
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (!"".equals(s.toString().trim())) {
+//
+//                    handler.postDelayed(runnable, TIME_LISTEN);
+//
+//                }
+//            }
+//        });
+//
+//        mauthidentifiedEt.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                handler.removeCallbacks(runnable);
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (!"".equals(s.toString().trim())) {
+//
+//                    handler.postDelayed(runnable, TIME_LISTEN);
+//
+//                }
+//            }
+//        });
+//        mUnitNameEt.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                handler.removeCallbacks(runnable);
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (!"".equals(s.toString().trim())) {
+//
+//                    handler.postDelayed(runnable, TIME_LISTEN);
+//
+//                }
+//            }
+//        });
 
 
         // mGetDialog = LoadingProgress.showProgress(this, "正在加载...");
@@ -259,18 +259,18 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     }
     //方法一：
 
-    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-        Log.e("TAG", "onLayoutChange: bottom" + bottom + " ---- oldBottom" + oldBottom);
-        if (bottom > oldBottom && oldBottom != 0) {
-            //键盘收起
-            Log.e("TAG", "onLayoutChange:  键盘被收起了");
-            //执行相关操作
-            String s = mNameEt.getText().toString();
-//            if(!"".equals(s.trim())){
-//                doSomeThing(s);
-//            }
-        }
-    }
+//    public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+//        Log.e("TAG", "onLayoutChange: bottom" + bottom + " ---- oldBottom" + oldBottom);
+//        if (bottom > oldBottom && oldBottom != 0) {
+//            //键盘收起
+//            Log.e("TAG", "onLayoutChange:  键盘被收起了");
+//            //执行相关操作
+//            String s = mNameEt.getText().toString();
+////            if(!"".equals(s.trim())){
+////                doSomeThing(s);
+////            }
+//        }
+//    }
 
 
     //执行操作
@@ -308,6 +308,8 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
             }
         }
 
+        //------------3
+        postType = 2;
         Map<String, String> picMaps = new HashMap<>();
         Map<String, String> params = new HashMap<>();
         params.put("username", a);
@@ -332,8 +334,26 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         } else if(id == R.id.fanhuizhuyejian){
             finish();
         }else if (id == R.id.authConfirmBtn) {
-            checkPost();
-            checkPostzhizhao();
+            if(TextUtils.isEmpty(mNameEt.getText().toString())){
+                showToast("请上传身份证");
+                return;
+            }
+            if(TextUtils.isEmpty(mauthidentifiedEt.getText().toString())){
+                showToast("请上传身份证");
+                return;
+            }
+            if (mCheckBox.isChecked()) {
+                if(TextUtils.isEmpty(mUnitNameEt.getText().toString())){
+                    showToast("请输入单位名称");
+                    return;
+                }
+                if(TextUtils.isEmpty(mLicensePath)){
+                    showToast("请上传营业执照");
+                    return;
+                }
+            }
+            String zhizhao = mCheckBox.isChecked()?mUnitNameEt.getText().toString():"";
+            doSomeThing(mNameEt.getText().toString(),mauthidentifiedEt.getText().toString(),zhizhao);
         }
     }
 
@@ -352,7 +372,10 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
 
         showLoading("上传身份证...");
 
+        postType = 0;
+        //------------1
         mPresenter.postData(picMaps, params);
+
     }
 
     public void showLoading(String msg) {
@@ -375,18 +398,23 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         }
         picMaps.put("pic_licence", mLicensePath);
 
+        showLoading("上传营业执照...");
+
+        //------------1
+        postType = 1;
         mPresenter.postData(picMaps, params);
     }
 
-    @OnClick({R.id.authIdIvUn, R.id.authAvatarIvUn, R.id.authLicenseIvUn})
+    @OnClick({R.id.authIdIvUn, R.id.authAvatarIvUn, R.id.authLicenseIvUn,R.id.authIdIv,R.id.authAvatarIv,R.id.authLicenseIv})
     public void camera(View v) {
+        if(status) return;
         int id = v.getId();
         int result = RESULT_ID;
-        if (id == R.id.authIdIvUn) {
+        if (id == R.id.authIdIvUn || id == R.id.authIdIv) {
             result = RESULT_ID;
-        } else if (id == R.id.authAvatarIvUn) {
+        } else if (id == R.id.authAvatarIvUn || id == R.id.authAvatarIv) {
             result = RESULT_AVATAR;
-        } else if (id == R.id.authLicenseIvUn) {
+        } else if (id == R.id.authLicenseIvUn || id == R.id.authLicenseIv) {
             result = RESULT_LICENSE;
         }
 
@@ -414,6 +442,8 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
             }
 
             Glide.with(mContext).load(Uri.fromFile(new File(mIdPath))).into(mIdIv);
+            mauthIdIvUn.setVisibility(View.GONE);
+            mIdIv.setVisibility(View.VISIBLE);
             checkPost();
         } else if (requestCode == RESULT_AVATAR) {
             if (lm.isCompressed()) {
@@ -422,6 +452,8 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
                 mAvatarPath = lm.getPath();
             }
             Glide.with(mContext).load(Uri.fromFile(new File(mAvatarPath))).into(mAvatarIv);
+            mauthAvatarIvUn.setVisibility(View.GONE);
+            mAvatarIv.setVisibility(View.VISIBLE);
             checkPost();
         } else if (requestCode == RESULT_LICENSE) {
             if (lm.isCompressed()) {
@@ -430,6 +462,9 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
                 mLicensePath = lm.getPath();
             }
             Glide.with(mContext).load(Uri.fromFile(new File(mLicensePath))).into(mLicenseIv);
+            mauthLicenseIvUn.setVisibility(View.GONE);
+            mLicenseIv.setVisibility(View.VISIBLE);
+            checkPostzhizhao();
         }
 
     }
@@ -441,18 +476,41 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         //  startActivity(new Intent(mContext, OwnerAuthActivity.class));
         //finish();
 
+        //------------1.1
         showToast("提交成功");
-
         dismissLoading();
-        showLoading("阿里身份证验证...");
-        mPresenter.shenfenzheng(mIdPath);
 
+        //------------2
+        if(postType == 0){
+            showLoading("阿里身份证验证...");
+            mPresenter.shenfenzheng(mIdPath);
+        }else if(postType == 3){
+            getData();
+        }
     }
 
     @Override
     public void onPostError(BaseEntity entity) {
+        //------------1.2
+        if(postType == 0){
+            mauthIdIvUn.setVisibility(View.VISIBLE);
+            mIdIv.setVisibility(View.GONE);
+            mIdPath = "";
+            mauthAvatarIvUn.setVisibility(View.VISIBLE);
+            mAvatarIv.setVisibility(View.GONE);
+            mAvatarPath = "";
+            showToast("上传失败，请重新上传");
+        }else if(postType == 1){
+            mauthLicenseIvUn.setVisibility(View.VISIBLE);
+            mLicenseIv.setVisibility(View.GONE);
+            mLicensePath = "";
+            showToast("上传失败，请重新上传");
+        }else if(postType == 2){
+            handleError(entity);
+        }
+
         dismissLoading();
-        handleError(entity);
+
     }
 
     @Override
@@ -465,12 +523,20 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     public void shenfenzhengSuccess(BaseEntity<GongAnAuth> entity) {
         GongAnAuth dd = entity.getData();
 
+        //------------2.1
         mNameEt.setText(dd.name);
         mauthidentifiedEt.setText(dd.num);
 
         showToast("验证成功");
         dismissLoading();
 
+    }
+
+    @Override
+    public void shenfenzhengError(BaseEntity entity) {
+        //------------2.2
+        showToast("验证失败，请重新上传正面照");
+        dismissLoading();
     }
 
     @Override
@@ -491,45 +557,52 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
         if (auth != null) {
             if (!"0".equals(auth.name) && !"0".equals(auth.invitePhones)) {
                 if (auth.name == null && auth.invitePhones == null) {
-
                 } else {
                     mdiyiweiwanshanbt.setText("审核中");
                     mdiyiweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
                 }
-
             }
 
             if ((!TextUtils.isEmpty(auth.picId)) && !TextUtils.isEmpty(auth.picAvatar)) {
                 mdierweiwanshanbt.setText("审核中");
                 mdierweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
-
-
             }
             if (!"0".equals(auth.unit) && (!TextUtils.isEmpty(auth.picLicence))) {
                 if (auth.unit == null) {
-
+                    mmainLayout.setVisibility(View.GONE);
                 } else {
                     mdisanweiwanshanbt.setText("审核中");
                     mdisanweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
                 }
-
             }
             if ("1".equals(auth.review)) {
 
+                status = true;
+
                 mtoply.setVisibility(View.GONE);
                 mtoprzLY.setVisibility(View.VISIBLE);
+                mConfirmBtn.setVisibility(View.GONE);
+
                 if ((!TextUtils.isEmpty(auth.name)) && (!TextUtils.isEmpty(auth.invitePhones))) {
                     mdiyiweiwanshanbt.setText("审核通过");
                     mdiyiweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
+
+                    maliyun.setVisibility(View.GONE);
                 }
 
                 if ((!TextUtils.isEmpty(auth.picId)) && !TextUtils.isEmpty(auth.picAvatar)) {
                     mdierweiwanshanbt.setText("审核通过");
                     mdierweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
+
+                    mDesTv.setVisibility(View.GONE);
                 }
                 if ((!TextUtils.isEmpty(auth.unit)) && (!TextUtils.isEmpty(auth.picLicence))) {
                     mdisanweiwanshanbt.setText("审核通过");
                     mdisanweiwanshanbt.setTextColor(android.graphics.Color.BLUE);
+
+                    mCheckBoxView.setVisibility(View.GONE);
+                }else{
+                    mmainLayout.setVisibility(View.GONE);
                 }
 
             }
@@ -563,9 +636,7 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
                         e.printStackTrace();
                     }
                 }
-
             }
-
 
             if ("0".equals(auth.unit)) {
                 mUnitNameEt.setText("");
@@ -579,21 +650,24 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
                         e.printStackTrace();
                     }
                 }
-
             }
-            if (!TextUtils.isEmpty(auth.picId)) {//身份证
-                RequestOptions options = new RequestOptions()
-                        .placeholder(R.drawable.fanmianshili)//图片加载出来前，显示的图片
-                        .fallback( R.drawable.fanmianshili) //url为空的时候,显示的图片
-                        .error(R.drawable.fanmianshili);//图片加载失败后，显示的图片
-                Glide.with(this).load(auth.picId).apply(options).into(mIdIv);
 
+            if (!TextUtils.isEmpty(auth.picId)) {//身份证
+                Glide.with(this).load(auth.picId).into(mIdIv);
+
+                mauthIdIvUn.setVisibility(View.GONE);
+                mIdIv.setVisibility(View.VISIBLE);
             }
             if (!TextUtils.isEmpty(auth.picAvatar)) {//本人
                 Glide.with(this).load(auth.picAvatar).into(mAvatarIv);
+                mauthAvatarIvUn.setVisibility(View.GONE);
+                mAvatarIv.setVisibility(View.VISIBLE);
             }
             if (!TextUtils.isEmpty(auth.picLicence)) {//营业执照
                 Glide.with(this).load(auth.picLicence).into(mLicenseIv);
+                mauthLicenseIvUn.setVisibility(View.GONE);
+                mLicenseIv.setVisibility(View.VISIBLE);
+                mTotalView.setVisibility(View.VISIBLE);
             }
 //                if (auth.isCarLoad()) {
 //                    mTotalView.setVisibility(View.VISIBLE);
@@ -601,8 +675,6 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
 //                        Glide.with(this).load(auth.picLicence).into(mLicenseIv);
 //                    }
 //                }
-
-
         }
 
 
@@ -617,7 +689,6 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
     @Override
     public void onError(BaseEntity entity) {
         handleError(entity);
-        showToast("验证失败请重新上传");
         dismissLoading();
         //mGetDialog.dismiss();
     }

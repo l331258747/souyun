@@ -4,27 +4,13 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.view.dialog.LoadingProgress;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
 import com.xrwl.owner.bean.Auth;
@@ -36,13 +22,6 @@ import com.xrwl.owner.module.home.mvp.AuthContract;
 import com.xrwl.owner.module.home.mvp.AuthPresenter;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -51,7 +30,6 @@ import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 
 public class OwnerAuthtelActivity extends BaseActivity<AuthContract.IView, AuthPresenter> implements AuthContract.IView {
 
@@ -214,6 +192,11 @@ public class OwnerAuthtelActivity extends BaseActivity<AuthContract.IView, AuthP
 
     @Override
     public void shenfenzhengSuccess(BaseEntity<GongAnAuth> entity) {
+
+    }
+
+    @Override
+    public void shenfenzhengError(BaseEntity entity) {
 
     }
 
