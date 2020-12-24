@@ -586,6 +586,20 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
         mDefaultStartLon = 0;
         mDefaultEndLat = 0;
         mDefaultEndLon = 0;
+
+        mpublishTruckTv.setText("");
+        mpublishAddressDefaultStartLocationTv.setText("");
+        mppDefaultWeightEt.setText("");
+        mppDefaultAreaEt.setText("");
+        mjianDefaultWeightEt.setText("");
+        mpublishStartPhonepersonEt.setText("");
+        mpublishStartPhoneEt.setText("");
+        mpublishAddressDefaultEndLocationTv.setText("");
+        mpublishGetPersonEt.setText("");
+        mpublishGetPhoneEt.setText("");
+        mpublishProductTv.setText("");
+        madd_content.setText("");
+
         mPhotoScrollView.setDatas(null, null);
         mImagePaths = null;
     }

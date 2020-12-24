@@ -18,7 +18,6 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocationClient;
 import com.hdgq.locationlib.LocationOpenApi;
@@ -81,7 +80,7 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class PublishFragment extends BaseEventFragment<PublishContract.IView, PublishPresenter> implements PublishContract.IView {
-    public static  String fanhuijiagelo;
+    public static String fanhuijiagelo;
     protected static String chexingid;
     public static final int RESULT_TRUCK = 111;//已选车型
     public static final int RESULT_POSITION_START = 222;//发货定位
@@ -89,8 +88,8 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
     public static final int RESULT_FRIEND_START_PHONE = 444;//发货电话
     public static final int RESULT_FRIEND_GET_PERSON = 555;//收货人
     public static final int RESULT_FRIEND_GET_PHONE = 666;//收货电话
-    public   String shijianlo;
-    public   String julilo;
+    public String shijianlo;
+    public String julilo;
     private CategoryDialog.CategoryEnum mCategory;
     private String name;
     private ArrayList<String> mImagePaths;
@@ -100,23 +99,17 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
     private String mEndProvince;
     private String mStartCity;
     private String mStartProvince;
-    private  String mHuowuweizhi="0";
-    private String appjianshu="0";
-    private String appdun="0";
-    private String appfang="0";
-    private String gouzao="0";
+    private String mHuowuweizhi = "0";
+    private String appjianshu = "0";
+    private String appdun = "0";
+    private String appfang = "0";
+    private String gouzao = "0";
     private String carnametype;
     private String string;
     private double mDefaultStartLat, mDefaultStartLon;
     private double mDefaultEndLat, mDefaultEndLon;
     private Address mStartCityAddress, mEndCityAddress, mStartPro, mEndPro;
     private AMapLocationClient mLocationClient;
-
-
-
-
-
-
 
 
     public String all_price;
@@ -229,35 +222,44 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected PublishPresenter initPresenter() {
         return new PublishPresenter(mContext);
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.publish_fragment;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     protected void initView(final View view) {
-        fanhuijiagelo="0";
+        fanhuijiagelo = "0";
         setName(name); //初始化全局变量
         setGouzao(gouzao);
         //吨的焦点
         mDefaultWeightEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {if (hasFocus) {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
 
-                // 获得焦点
-                mDefaultWeightEt.setText("");
+                    // 获得焦点
+                    mDefaultWeightEt.setText("");
 
 
-            } else { } }  });
+                } else {
+                }
+            }
+        });
         //监听数字输入为0显示0.
         mDefaultWeightEt.addTextChangedListener(new TextWatcher() {   // 这是主要方法，下面为一些处理
             @Override
@@ -270,13 +272,12 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
 
-
-                if(s.toString().equals("0"))
-                {
+                if (s.toString().equals("0")) {
                     mDefaultWeightEt.setText("0.");
                     mDefaultWeightEt.setSelection(mDefaultWeightEt.getText().length());
                     mDefaultWeightEt.removeTextChangedListener(this);
@@ -317,13 +318,12 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
 
-
-                if(s.toString().equals("0"))
-                {
+                if (s.toString().equals("0")) {
                     mDefaultAreaEt.setText("0.");
                     mDefaultAreaEt.setSelection(mDefaultAreaEt.getText().length());
                     mDefaultAreaEt.removeTextChangedListener(this);
@@ -364,13 +364,12 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
 
-
-                if(s.toString().equals("0"))
-                {
+                if (s.toString().equals("0")) {
                     mjianEt.setText("0.");
                     mjianEt.setSelection(mjianEt.getText().length());
                     mjianEt.removeTextChangedListener(this);
@@ -380,23 +379,19 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
             }
         });
-        if("选择配送类型".equals(mCategoryTv.getText().toString()))
-        {
+        if ("选择配送类型".equals(mCategoryTv.getText().toString())) {
             categoryClick();
         }
-        String usernamess="";
+        String usernamess = "";
         /**判断数据库都出来吨用户名*/
-        if("0".equals(mAccount.getName())){
-            usernamess="";
-        }else{
-            if(mAccount.getName()==null)
-            {
-                usernamess="";
-            }
-            else
-            {
+        if ("0".equals(mAccount.getName())) {
+            usernamess = "";
+        } else {
+            if (mAccount.getName() == null) {
+                usernamess = "";
+            } else {
                 try {
-                    usernamess=(URLDecoder.decode(mAccount.getName(),"UTF-8"));
+                    usernamess = (URLDecoder.decode(mAccount.getName(), "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -464,6 +459,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         mjiancb.setChecked(false);
         mNocb.setChecked(false);
     }
+
     @OnClick(R.id.publishCategoryLayout)
     public void categoryClick() {
         CategoryDialog dialog = new CategoryDialog();
@@ -533,7 +529,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     mTruckTv.setText("");
                 }
                 /**同城整车*/
-                else  if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL ){
+                else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL) {
 
                     mchangjia.setVisibility(View.GONE);
                     mshouhuodanwei.setVisibility(View.GONE);
@@ -564,7 +560,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     mTruckTv.setText("");
                 }
                 /**长途整车*/
-                else  if(mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche){
+                else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche) {
                     mchangjia.setVisibility(View.GONE);
                     mshouhuodanwei.setVisibility(View.GONE);
                     mdunfangcb.setVisibility(View.VISIBLE);
@@ -594,7 +590,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     mTruckTv.setText("");
                 }
                 /**同城零担*/
-                else  if(mCategory == CategoryDialog.CategoryEnum.TYPE_SHORT){
+                else if (mCategory == CategoryDialog.CategoryEnum.TYPE_SHORT) {
                     mchangjia.setVisibility(View.GONE);
                     mshouhuodanwei.setVisibility(View.GONE);
                     mdunfangcb.setVisibility(View.VISIBLE);
@@ -621,7 +617,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     mTruckTv.setText("");
                 }
                 /**矿产运输*/
-                else  if(mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
+                else if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
                     mchangjia.setVisibility(View.VISIBLE);
                     mshouhuodanwei.setVisibility(View.VISIBLE);
                     mdunfangcb.setChecked(true);
@@ -682,6 +678,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         dialog.mCategory = mCategory;
         dialog.show(getFragmentManager(), "category");
     }
+
     @OnClick(R.id.publishTruckLayout)
     public void truckClick() {
         if (mCategory == null) {
@@ -699,21 +696,19 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_ZERO) {
             intent.putExtra("categoty", "2");
             intent.putExtra("title", getString(R.string.publish_category_longzero));
-        }
-        else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche) {
+        } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche) {
             intent.putExtra("categoty", "5");
             intent.putExtra("title", getString(R.string.publish_category_zhuanche));
-        }
-        else if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
+        } else if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
             intent.putExtra("categoty", "6");
             intent.putExtra("title", getString(R.string.publish_category_Mineral));
-        }
-        else if (mCategory == CategoryDialog.CategoryEnum.TYPE_paotui) {
+        } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_paotui) {
             intent.putExtra("categoty", "7");
             intent.putExtra("title", getString(R.string.publish_category_paotui));
         }
         startActivityForResult(intent, RESULT_TRUCK);
     }
+
     //然后尝试使用editText.setFocusable(false);和editText.setEnabled(false);设置不可编辑状态；editText.setFocusable(true);和 editText.setEnabled(true);设置可编辑状态。
     @OnClick({
             R.id.publishAddressDefaultStartLocationTv, R.id.publishAddressDefaultEndLocationTv,
@@ -740,10 +735,11 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             startActivityForResult(new Intent(mContext, AddressActivity.class), RESULT_POSITION_END);
         }
     }
+
     @OnClick({
             R.id.publishProductTv, R.id.publishStartPhoneIv,
             R.id.publishGetPersonIv, R.id.publishGetPhoneIv,
-            R.id.publishTimeTv,R.id.dunfangCb,R.id.jianCb,R.id.NoCb,R.id.publishCompanyTv,R.id.ppDefaultWeightEt
+            R.id.publishTimeTv, R.id.dunfangCb, R.id.jianCb, R.id.NoCb, R.id.publishCompanyTv, R.id.ppDefaultWeightEt
     })
     public void onClick(View v) {
         /**货物名称*/
@@ -759,28 +755,27 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             dialog.show(Objects.requireNonNull(getFragmentManager()), "product");
         }
         /**货物吨数*/
-        else if(v.getId()==R.id.ppDefaultWeightEt){
-            if(mDefaultWeightEt.getText().toString().substring(0).equals("0"))
-            {
+        else if (v.getId() == R.id.ppDefaultWeightEt) {
+            if (mDefaultWeightEt.getText().toString().substring(0).equals("0")) {
                 mDefaultWeightEt.setText("0.0");
             }
         }
         /**发货单位*/
-        else if(v.getId()==R.id.publishCompanyTv) {
-            mPublishBean.company=mpublishCompanyTv.getText().toString();
+        else if (v.getId() == R.id.publishCompanyTv) {
+            mPublishBean.company = mpublishCompanyTv.getText().toString();
         }
         /**发货人电话*/
-        else if (v.getId() == R.id.publishStartPhoneIv){
+        else if (v.getId() == R.id.publishStartPhoneIv) {
             Intent intent = new Intent(getContext(), FriendActivity.class);
             startActivityForResult(intent, RESULT_FRIEND_START_PHONE);
         }
         /**收货人电话*/
-        else if (v.getId() == R.id.publishGetPersonIv){
+        else if (v.getId() == R.id.publishGetPersonIv) {
             Intent intent = new Intent(getContext(), FriendActivity.class);
             startActivityForResult(intent, RESULT_FRIEND_GET_PERSON);
         }
         /**收货人号码*/
-        else if (v.getId() == R.id.publishGetPhoneIv){
+        else if (v.getId() == R.id.publishGetPhoneIv) {
             Intent intent = new Intent(getContext(), FriendActivity.class);
             startActivityForResult(intent, RESULT_FRIEND_GET_PHONE);
         }
@@ -790,7 +785,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             final Time now = new Time();
             now.setToNow();
 
-            new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener(){
+            new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener() {
 
                 @Override
                 public void onDateSet(DatePicker arg0, final int year, final int month, int day) {
@@ -798,7 +793,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     now.month = month;
                     now.monthDay = day;
 
-                    new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener(){
+                    new TimePickerDialog(mContext, new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker arg0, int hour, int minute) {
                             now.hour = hour;
@@ -836,8 +831,10 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
                             mTimeTv.setText(des);
 
-                        }} , now.hour, now.minute, true).show();
-                }}, now.year, now.month, now.monthDay).show();
+                        }
+                    }, now.hour, now.minute, true).show();
+                }
+            }, now.year, now.month, now.monthDay).show();
 
         }
     }
@@ -849,182 +846,146 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             showToast("请先选择配送类型");
             return;
         }
-        mPublishBean.consignorPhone = mStartPhoneEt.getText().toString().replace("-","").replace("+","").replace(" ","");
+        mPublishBean.consignorPhone = mStartPhoneEt.getText().toString().replace("-", "").replace("+", "").replace(" ", "");
         mPublishBean.consigneeName = mGetPersonEt.getText().toString();
-        mPublishBean.consigneePhone = mGetPhoneEt.getText().toString().replace("-","").replace("+","").replace(" ","");
-        mPublishBean.packingType =  mGoodspackingEt.getSelectedItem().toString();
-        mPublishBean.defaultNo=mHuowuweizhi;
+        mPublishBean.consigneePhone = mGetPhoneEt.getText().toString().replace("-", "").replace("+", "").replace(" ", "");
+        mPublishBean.packingType = mGoodspackingEt.getSelectedItem().toString();
+        mPublishBean.defaultNo = mHuowuweizhi;
         /**长途整车*/
-        if(mCategory==CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche ){
+        if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche) {
             Map<String, String> params = new HashMap<>();
             params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
-            params.put("type","3");
-            params.put("time",mPublishBean.duration);
-            params.put("distance",mPublishBean.distance);
+            params.put("type", "3");
+            params.put("time", mPublishBean.duration);
+            params.put("distance", mPublishBean.distance);
             // params.put("car_type",chexingid);
-            if(TextUtils.isEmpty(mDefaultWeightEt.getText().toString()))
-            {
-                params.put("ton","0");
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())) {
+                params.put("ton", "0");
+            } else {
+                params.put("ton", mDefaultWeightEt.getText().toString());
             }
-            else
-            {
-                params.put("ton",mDefaultWeightEt.getText().toString());
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())) {
+                params.put("square", "0");
+            } else {
+                params.put("square", mDefaultAreaEt.getText().toString());
             }
-            if(TextUtils.isEmpty(mDefaultAreaEt.getText().toString()))
-            {
-                params.put("square","0");
-            }
-            else
-            {
-                params.put("square",mDefaultAreaEt.getText().toString());
-            }
-            if(TextUtils.isEmpty(mjianEt.getText().toString()))
-            {
-                params.put("piece","0");
-            }
-            else
-            {
-                params.put("piece",mjianEt.getText().toString());
+            if (TextUtils.isEmpty(mjianEt.getText().toString())) {
+                params.put("piece", "0");
+            } else {
+                params.put("piece", mjianEt.getText().toString());
             }
 
             //    mPresenter.calculateDistancecount(params);
         }
         /**长途零担*/
-        if(mCategory==CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL ){
+        if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL) {
             Map<String, String> params = new HashMap<>();
             params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
-            params.put("type","4");
-            params.put("time",mPublishBean.duration);
-            params.put("distance",mPublishBean.distance);
-            params.put("car_type",chexingid);
-            if(TextUtils.isEmpty(mDefaultWeightEt.getText().toString()))
-            {
-                params.put("ton","0");
+            params.put("type", "4");
+            params.put("time", mPublishBean.duration);
+            params.put("distance", mPublishBean.distance);
+            params.put("car_type", chexingid);
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())) {
+                params.put("ton", "0");
+            } else {
+                params.put("ton", mDefaultWeightEt.getText().toString());
             }
-            else
-            {
-                params.put("ton",mDefaultWeightEt.getText().toString());
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())) {
+                params.put("square", "0");
+            } else {
+                params.put("square", mDefaultAreaEt.getText().toString());
             }
-            if(TextUtils.isEmpty(mDefaultAreaEt.getText().toString()))
-            {
-                params.put("square","0");
-            }
-            else
-            {
-                params.put("square",mDefaultAreaEt.getText().toString());
-            }
-            if(TextUtils.isEmpty(mjianEt.getText().toString()))
-            {
-                params.put("piece","0");
-            }
-            else
-            {
-                params.put("piece",mjianEt.getText().toString());
+            if (TextUtils.isEmpty(mjianEt.getText().toString())) {
+                params.put("piece", "0");
+            } else {
+                params.put("piece", mjianEt.getText().toString());
             }
             mPresenter.calculateDistancecount(params);
         }
         /**矿产运输*/
-        if(mCategory == CategoryDialog.CategoryEnum.Type_Mineral){
-            mPublishBean.defaultWeight= mDefaultWeightEt.getText().toString();
+        if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
+            mPublishBean.defaultWeight = mDefaultWeightEt.getText().toString();
 
-            mPublishBean.defaultArea="0";
-            mPublishBean.defaultNum="0";
-            mPublishBean.zhesunlv=myunxuzhesunlvEt.getText().toString();
-            mPublishBean.danjia=mchanpindanjiaEt.getText().toString();
-            mPublishBean.company=mpublishCompanyTv.getText().toString();
-            mPublishBean.shouhuodanweiname=mpublishCompanyshouhuoTv.getText().toString();
+            mPublishBean.defaultArea = "0";
+            mPublishBean.defaultNum = "0";
+            mPublishBean.zhesunlv = myunxuzhesunlvEt.getText().toString();
+            mPublishBean.danjia = mchanpindanjiaEt.getText().toString();
+            mPublishBean.company = mpublishCompanyTv.getText().toString();
+            mPublishBean.shouhuodanweiname = mpublishCompanyshouhuoTv.getText().toString();
         }
 
         /**同城零担*/
-        if(mCategory==CategoryDialog.CategoryEnum.TYPE_SHORT){
-            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())||mDefaultWeightEt.getText().toString().equals("0")) {
+        if (mCategory == CategoryDialog.CategoryEnum.TYPE_SHORT) {
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString()) || mDefaultWeightEt.getText().toString().equals("0")) {
                 showToast("请输入货物吨数");
                 return;
             }
-            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())||mDefaultAreaEt.getText().toString().equals("0")) {
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString()) || mDefaultAreaEt.getText().toString().equals("0")) {
                 showToast("请输入货物方数");
                 return;
             }
-            if (TextUtils.isEmpty(mjianEt.getText().toString())||mjianEt.getText().toString().equals("0")) {
+            if (TextUtils.isEmpty(mjianEt.getText().toString()) || mjianEt.getText().toString().equals("0")) {
                 showToast("请输入货物件数");
                 return;
             }
             Map<String, String> params = new HashMap<>();
             params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
-            params.put("type","1");
-            params.put("time",mPublishBean.duration);
-            params.put("distance",mPublishBean.distance);
-            params.put("car_type","1");
-            if(TextUtils.isEmpty(mDefaultWeightEt.getText().toString()))
-            {
-                params.put("ton","0");
+            params.put("type", "1");
+            params.put("time", mPublishBean.duration);
+            params.put("distance", mPublishBean.distance);
+            params.put("car_type", "1");
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())) {
+                params.put("ton", "0");
+            } else {
+                params.put("ton", mDefaultWeightEt.getText().toString());
             }
-            else
-            {
-                params.put("ton",mDefaultWeightEt.getText().toString());
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())) {
+                params.put("square", "0");
+            } else {
+                params.put("square", mDefaultAreaEt.getText().toString());
             }
-            if(TextUtils.isEmpty(mDefaultAreaEt.getText().toString()))
-            {
-                params.put("square","0");
-            }
-            else
-            {
-                params.put("square",mDefaultAreaEt.getText().toString());
-            }
-            if(TextUtils.isEmpty(mjianEt.getText().toString()))
-            {
-                params.put("piece","0");
-            }
-            else
-            {
-                params.put("piece",mjianEt.getText().toString());
+            if (TextUtils.isEmpty(mjianEt.getText().toString())) {
+                params.put("piece", "0");
+            } else {
+                params.put("piece", mjianEt.getText().toString());
             }
             mPresenter.calculateDistancecount(params);
         }
         /**同城整车*/
-        if(mCategory==CategoryDialog.CategoryEnum.TYPE_LONG_ZERO ){
-            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())||mDefaultWeightEt.getText().toString().equals("0")) {
+        if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_ZERO) {
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString()) || mDefaultWeightEt.getText().toString().equals("0")) {
                 showToast("请输入货物吨数");
                 return;
             }
-            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())||mDefaultAreaEt.getText().toString().equals("0")) {
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString()) || mDefaultAreaEt.getText().toString().equals("0")) {
                 showToast("请输入货物方数");
                 return;
             }
-            if (TextUtils.isEmpty(mjianEt.getText().toString())||mjianEt.getText().toString().equals("0")) {
+            if (TextUtils.isEmpty(mjianEt.getText().toString()) || mjianEt.getText().toString().equals("0")) {
                 showToast("请输入货物件数");
                 return;
             }
 
             Map<String, String> params = new HashMap<>();
             params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
-            params.put("type","2");
-            params.put("time",mPublishBean.duration);
-            params.put("distance",mPublishBean.distance);
-            params.put("car_type","2");
-            if(TextUtils.isEmpty(mDefaultWeightEt.getText().toString()))
-            {
-                params.put("ton","0");
+            params.put("type", "2");
+            params.put("time", mPublishBean.duration);
+            params.put("distance", mPublishBean.distance);
+            params.put("car_type", "2");
+            if (TextUtils.isEmpty(mDefaultWeightEt.getText().toString())) {
+                params.put("ton", "0");
+            } else {
+                params.put("ton", mDefaultWeightEt.getText().toString());
             }
-            else
-            {
-                params.put("ton",mDefaultWeightEt.getText().toString());
+            if (TextUtils.isEmpty(mDefaultAreaEt.getText().toString())) {
+                params.put("square", "0");
+            } else {
+                params.put("square", mDefaultAreaEt.getText().toString());
             }
-            if(TextUtils.isEmpty(mDefaultAreaEt.getText().toString()))
-            {
-                params.put("square","0");
-            }
-            else
-            {
-                params.put("square",mDefaultAreaEt.getText().toString());
-            }
-            if(TextUtils.isEmpty(mjianEt.getText().toString()))
-            {
-                params.put("piece","0");
-            }
-            else
-            {
-                params.put("piece",mjianEt.getText().toString());
+            if (TextUtils.isEmpty(mjianEt.getText().toString())) {
+                params.put("piece", "0");
+            } else {
+                params.put("piece", mjianEt.getText().toString());
             }
 
             mPresenter.calculateDistancecount(params);
@@ -1032,56 +993,51 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
 
         /**跑腿*/
-        if(mCategory == CategoryDialog.CategoryEnum.TYPE_paotui){
-            mPublishBean.defaultWeight= "0";
+        if (mCategory == CategoryDialog.CategoryEnum.TYPE_paotui) {
+            mPublishBean.defaultWeight = "0";
 
-            mPublishBean.defaultArea="0";
-            mPublishBean.defaultNum="0";
+            mPublishBean.defaultArea = "0";
+            mPublishBean.defaultNum = "0";
 
         }
 
         mPublishBean.time = mTimeTv.getText().toString();
         mPublishBean.imagePaths = mImagePaths;
-        mPublishBean.defaultNum=mjianEt.getText().toString();
-        mPublishBean.defaultWeight=mDefaultWeightEt.getText().toString();
-        mPublishBean.defaultArea=mDefaultAreaEt.getText().toString();
+        mPublishBean.defaultNum = mjianEt.getText().toString();
+        mPublishBean.defaultWeight = mDefaultWeightEt.getText().toString();
+        mPublishBean.defaultArea = mDefaultAreaEt.getText().toString();
 
-          if (mPublishBean.check()) {
+        if (mPublishBean.check()) {
 
-              ShippingNoteInfo shippingNoteInfo = new ShippingNoteInfo();
-              shippingNoteInfo.setShippingNoteNumber("123");
-              shippingNoteInfo.setSerialNumber("123");
-              shippingNoteInfo.setStartCountrySubdivisionCode("123");
-              shippingNoteInfo.setEndCountrySubdivisionCode("123");
+            ShippingNoteInfo shippingNoteInfo = new ShippingNoteInfo();
+            shippingNoteInfo.setShippingNoteNumber("123");
+            shippingNoteInfo.setSerialNumber("123");
+            shippingNoteInfo.setStartCountrySubdivisionCode("123");
+            shippingNoteInfo.setEndCountrySubdivisionCode("123");
 
-              shippingNoteInfo.setSendCount(Integer.parseInt("123"));
-              shippingNoteInfo.setAlreadySendCount(Integer.parseInt("123"));
-              ShippingNoteInfo[] shippingNoteInfos = new  ShippingNoteInfo[1];
-              int s = shippingNoteInfos.length;
-              shippingNoteInfos[0] = shippingNoteInfo;
+            shippingNoteInfo.setSendCount(Integer.parseInt("123"));
+            shippingNoteInfo.setAlreadySendCount(Integer.parseInt("123"));
+            ShippingNoteInfo[] shippingNoteInfos = new ShippingNoteInfo[1];
+            int s = shippingNoteInfos.length;
+            shippingNoteInfos[0] = shippingNoteInfo;
             //启用服务。context 必须为 activity。
 
-             LocationOpenApi.start(getContext(),shippingNoteInfos, new OnResultListener() {
-                          @Override
-                          public void onSuccess() {
-                             // Toast.makeText(mContext, "成功了", Toast.LENGTH_SHORT).show();
-                          }
+            LocationOpenApi.start(getContext(), shippingNoteInfos, new OnResultListener() {
+                @Override
+                public void onSuccess() {
+                    // Toast.makeText(mContext, "成功了", Toast.LENGTH_SHORT).show();
+                }
 
-                          @Override
-                          public void onFailure(String s, String s1) {
-                             // Toast.makeText(mContext, s1.toString(), Toast.LENGTH_SHORT).show();
-                          }
-                      });
-
-
+                @Override
+                public void onFailure(String s, String s1) {
+                    // Toast.makeText(mContext, s1.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
-
-              Intent intent = new Intent(mContext, PublishConfirmActivity.class);
+            Intent intent = new Intent(mContext, PublishConfirmActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("data", (Serializable) mPublishBean);
-
-
 
 
             intent.putExtras(bundle);
@@ -1091,6 +1047,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             showToast("有选项没有填写");
         }
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -1113,9 +1070,9 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
         }
         /**已选车型*/
-        else if (requestCode == RESULT_TRUCK){
+        else if (requestCode == RESULT_TRUCK) {
             Truck truck = (Truck) data.getSerializableExtra("data");
-            chexingid=truck.getId();
+            chexingid = truck.getId();
             mTruckTv.setText(truck.getTitle());
             mPublishBean.truck = truck;
         }
@@ -1153,9 +1110,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.defaultStartPosDes = title;
 
                 checkDefaultLocation();
-            }
-
-            else if(mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche)//同城专车
+            } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche)//同城专车
             {
                 if (mStartCity != null && mEndCity != null) {
                     if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
@@ -1176,8 +1131,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.defaultStartPosDes = title;
 
                 checkDefaultLocation();
-            }
-            else if(mCategory == CategoryDialog.CategoryEnum.Type_Mineral)//矿产
+            } else if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral)//矿产
             {
                 mDefaultStartLat = data.getDoubleExtra("lat", 0);
                 mDefaultStartLon = data.getDoubleExtra("lon", 0);
@@ -1190,9 +1144,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.longStartAreaDes = title;
 
                 checkLongLocation();
-            }
-            else if(mCategory == CategoryDialog.CategoryEnum.TYPE_paotui)
-            {
+            } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_paotui) {
                 if (mStartCity != null && mEndCity != null) {
                     if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
                         showLongToast("同城订单不能出现不同的城市，请重新选择城市");
@@ -1214,14 +1166,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 checkLongLocation();
 
 
-
-
-
-
-            }
-
-            else
-            {
+            } else {
                 if (mStartCity != null && mEndCity != null) {
                     if (mStartCity.equals(mEndCity) || mStartCity.contains(mEndCity) || mEndCity.contains(mStartCity)) {
                         showLongToast("长途订单不能出现相同的城市，请重新选择城市");
@@ -1272,9 +1217,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.longEndProvinceDes = mEndProvince;
                 mPublishBean.defaultEndPosDes = title;
                 checkDefaultLocation();
-            }
-
-            else if(mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche){
+            } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche) {
                 if (mStartCity != null && mEndCity != null) {
                     if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
                         showLongToast("同城专车订单不能出现不同的城市，请重新选择城市");
@@ -1291,8 +1234,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.longEndProvinceDes = mEndProvince;
                 mPublishBean.defaultEndPosDes = title;
                 checkDefaultLocation();
-            }
-            else if(mCategory == CategoryDialog.CategoryEnum.Type_Mineral){
+            } else if (mCategory == CategoryDialog.CategoryEnum.Type_Mineral) {
                 mDefaultEndLat = data.getDoubleExtra("lat", 0);
                 mDefaultEndLon = data.getDoubleExtra("lon", 0);
                 mPublishBean.defaultEndLon = mDefaultEndLon;
@@ -1300,9 +1242,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                 mPublishBean.longEndProvinceDes = mEndProvince;
                 mPublishBean.defaultEndPosDes = title;
                 checkDefaultLocation();
-            }
-            else if(mCategory == CategoryDialog.CategoryEnum.TYPE_paotui)
-            {
+            } else if (mCategory == CategoryDialog.CategoryEnum.TYPE_paotui) {
                 if (mStartCity != null && mEndCity != null) {
                     if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
                         showLongToast("同城专车订单不能出现不同的城市，请重新选择城市");
@@ -1315,13 +1255,12 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
                 mDefaultEndLat = data.getDoubleExtra("lat", 0);
                 mDefaultEndLon = data.getDoubleExtra("lon", 0);
-                mPublishBean.defaultEndLon= mDefaultEndLon;
+                mPublishBean.defaultEndLon = mDefaultEndLon;
                 mPublishBean.defaultEndLat = mDefaultEndLat;
                 mPublishBean.longEndProvinceDes = mEndProvince;
                 mPublishBean.longEndAreaDes = title;
                 checkDefaultLocation();
-            }
-            else {
+            } else {
                 if (mStartCity != null && mEndCity != null) {
                     if (mStartCity.equals(mEndCity) || mStartCity.contains(mEndCity) || mEndCity.contains(mStartCity)) {
                         showLongToast("长途订单不能出现相同的城市，请重新选择城市");
@@ -1333,7 +1272,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
                 mDefaultEndLat = data.getDoubleExtra("lat", 0);
                 mDefaultEndLon = data.getDoubleExtra("lon", 0);
-                mPublishBean.defaultEndLon= mDefaultEndLon;
+                mPublishBean.defaultEndLon = mDefaultEndLon;
                 mPublishBean.defaultEndLat = mDefaultEndLat;
                 mPublishBean.longEndProvinceDes = mEndProvince;
                 mPublishBean.longEndAreaDes = title;
@@ -1343,24 +1282,25 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         /**发货电话*/
         else if (requestCode == RESULT_FRIEND_START_PHONE) {
             Friend friend = (Friend) data.getSerializableExtra("data");
-            mStartPhoneEt.setText(friend.getPhone().replace("-","").replace("+","").replace(" ",""));
+            mStartPhoneEt.setText(friend.getPhone().replace("-", "").replace("+", "").replace(" ", ""));
             mPublishBean.consignorPhone = friend.getPhone();
         }
         /**收货人*/
         else if (requestCode == RESULT_FRIEND_GET_PERSON) {
             Friend friend = (Friend) data.getSerializableExtra("data");
             mGetPersonEt.setText(friend.getName());
-            mGetPhoneEt.setText(friend.getPhone().replace("-","").replace("+","").replace(" ",""));
-            mPublishBean.consigneeName = friend.getName().replace("-","").replace("+","").replace(" ","");
-            mPublishBean.consigneePhone = friend.getPhone().replace("-","").replace("+","").replace(" ","");
+            mGetPhoneEt.setText(friend.getPhone().replace("-", "").replace("+", "").replace(" ", ""));
+            mPublishBean.consigneeName = friend.getName().replace("-", "").replace("+", "").replace(" ", "");
+            mPublishBean.consigneePhone = friend.getPhone().replace("-", "").replace("+", "").replace(" ", "");
         }
         /**收货电话*/
-        else if (requestCode == RESULT_FRIEND_GET_PHONE){
+        else if (requestCode == RESULT_FRIEND_GET_PHONE) {
             Friend friend = (Friend) data.getSerializableExtra("data");
-            mGetPhoneEt.setText(friend.getPhone().replace("-","").replace("+","").replace(" ",""));
-            mPublishBean.consigneePhone = friend.getPhone().replace("-","").replace("+","").replace(" ","");
+            mGetPhoneEt.setText(friend.getPhone().replace("-", "").replace("+", "").replace(" ", ""));
+            mPublishBean.consigneePhone = friend.getPhone().replace("-", "").replace("+", "").replace(" ", "");
         }
     }
+
     /**
      * 计算城市的经纬度
      */
@@ -1369,6 +1309,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             mPresenter.requestCityLonLat(mStartCity, mEndCity);
         }
     }
+
     /**
      * 检查默认情况下（目前可特指同城配送）地理位置检查
      */
@@ -1380,8 +1321,9 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             mPresenter.calculateDistanceWithLonLat(mDefaultStartLon, mDefaultStartLat, mDefaultEndLon, mDefaultEndLat);
         }
     }
-    public static String submitPostData(String strUrlPath,Map<String, String> params, String encode) {
-        byte[] data= getRequestData(params, encode).toString().getBytes();//获得请求体
+
+    public static String submitPostData(String strUrlPath, Map<String, String> params, String encode) {
+        byte[] data = getRequestData(params, encode).toString().getBytes();//获得请求体
         try {
 
             //String urlPath = "http://192.168.1.9:80/JJKSms/RecSms.php";
@@ -1394,7 +1336,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
             HttpURLConnection httpURLConnection = null;
             try {
-                httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection = (HttpURLConnection) url.openConnection();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -1412,7 +1354,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
             outputStream.write(data);
 
             int response = httpURLConnection.getResponseCode();            //获得服务器的响应码
-            if(response == HttpURLConnection.HTTP_OK) {
+            if (response == HttpURLConnection.HTTP_OK) {
                 InputStream inptStream = httpURLConnection.getInputStream();
                 return dealResponseResult(inptStream);                     //处理服务器的响应结果
             }
@@ -1422,6 +1364,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         }
         return "-1";
     }
+
     /*
      * Function  :   封装请求体信息
      * Param     :   params请求体内容，encode编码格式
@@ -1429,7 +1372,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
     public static StringBuffer getRequestData(Map<String, String> params, String encode) {
         StringBuffer stringBuffer = new StringBuffer();        //存储封装好的请求体信息
         try {
-            for(Map.Entry<String, String> entry : params.entrySet()) {
+            for (Map.Entry<String, String> entry : params.entrySet()) {
                 stringBuffer.append(entry.getKey())
                         .append("=")
                         .append(URLEncoder.encode(entry.getValue(), encode))
@@ -1452,7 +1395,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         byte[] data = new byte[1024];
         int len = 0;
         try {
-            while((len = inputStream.read(data)) != -1) {
+            while ((len = inputStream.read(data)) != -1) {
                 byteArrayOutputStream.write(data, 0, len);
             }
         } catch (IOException e) {
@@ -1461,6 +1404,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         resultData = new String(byteArrayOutputStream.toByteArray());
         return resultData;
     }
+
     /**
      * 目前该方法没啥用--正在请求关键数据
      */
@@ -1471,7 +1415,10 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
                     (), mEndPro.getName());
         }
     }
-    /**正在请求关键数据*/
+
+    /**
+     * 正在请求关键数据
+     */
     private void checkLongLocation() {
         if (mStartCity != null && mEndCity != null) {
             mGetDistanceDialog = LoadingProgress.showProgress(mContext, "正在请求关键数据...");
@@ -1485,23 +1432,26 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         d = entity.getData();
 
         mPublishBean.distance = d.distance;
-        mPublishBean.duration= d.duration;
-        mPublishBean.end= d.end;
-        mPublishBean.start= d.start;
+        mPublishBean.duration = d.duration;
+        mPublishBean.end = d.end;
+        mPublishBean.start = d.start;
         mPublishBean.singleTonPrice = d.ton;
         mPublishBean.singleAreaPrice = d.square;
-        julilo= d.distance;
-        shijianlo= d.duration.replace("小时","");
+        julilo = d.distance;
+        shijianlo = d.duration.replace("小时", "");
     }
+
     @Override
     public void onRefreshError(Throwable e) {
         mGetDistanceDialog.dismiss();
         showNetworkError();
     }
+
     @Override
     public void onError(BaseEntity entity) {
         mGetDistanceDialog.dismiss();
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefresh(PublishClearCacheEvent event) {
         mPublishBean = null;
@@ -1531,7 +1481,7 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
         mchanpindanjiaEt.setText("");
         mPhotoScrollView.setDatas(null, null);
         mImagePaths = null;
-        mHuowuweizhi="0";
+        mHuowuweizhi = "0";
     }
 
     @Override
@@ -1545,25 +1495,22 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
     @Override
     public void onRequestSuccessa(BaseEntity<Integer> entity) {
-        Integer d =entity.getData();
-        mPublishBean.nidaye  =d.toString();
+        Integer d = entity.getData();
+        mPublishBean.nidaye = d.toString();
 //        Intent intent = new Intent(mContext, PublishConfirmActivity.class);
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable("data", (Serializable) mPublishBean);
 //        intent.putExtras(bundle);
 //        startActivity(intent);
     }
+
     public String getGouzao() {
         return gouzao;
     }
+
     public void setGouzao(String gouzao) {
         this.gouzao = gouzao;
     }
-
-
-
-
-
 
 
 }
