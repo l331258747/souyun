@@ -187,7 +187,7 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
     protected void initView(View view) {
         mAccount = AccountUtil.getAccount(getActivity());
         mPublishBean = new PublishBean();
-        mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL.getValue();
+        mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_LONG_ZERO.getValue();
 
         mpublishStartPhonepersonEt.setText(mAccount.getName());
         mpublishStartPhoneEt.setText(mAccount.getPhone());
