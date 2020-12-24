@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -31,6 +30,7 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Cljbxx;
+import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.bean.Tab;
 import com.xrwl.owner.event.BusinessTabCountEvent;
 import com.xrwl.owner.event.TabCheckEvent;
@@ -71,23 +71,23 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
     private Object shippingNoteInfos;
     private RetrofitManager1 retrofitManager;
 
-    public String myLocation;//出发地
-    public String destination;//目的地
+    public MarkerBean myLocation;//出发地
+    public MarkerBean destination;//目的地
 
-    public String getMyLocation() {
+    public MarkerBean getMyLocation() {
         return myLocation;
     }
 
-    public String getDestination() {
+    public MarkerBean getDestination() {
         return destination;
     }
 
-    public void setMyLocation(String myLocation) {
-        if(!TextUtils.isEmpty(this.myLocation))
+    public void setMyLocation(MarkerBean myLocation) {
+        if(this.myLocation == null)
             this.myLocation = myLocation;
     }
 
-    public void setDestination(String destination) {
+    public void setDestination(MarkerBean destination) {
         this.destination = destination;
     }
 

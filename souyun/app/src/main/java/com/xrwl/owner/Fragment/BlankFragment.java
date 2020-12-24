@@ -38,6 +38,7 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.xrwl.owner.Fragment.dialog.MarkerDialog;
 import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
+import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
@@ -373,7 +374,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         mlocationClient = null;
     }
 
-
+    MarkerBean locationBean;
     //定位回调  在回调方法中调用“mListener.onLocationChanged(amapLocation);”可以在地图上显示系统小蓝点。
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
@@ -381,9 +382,16 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
 
-                ((TabActivity)getActivity()).setMyLocation(aMapLocation.getAddress());
+                if(locationBean == null){
+                    locationBean = new MarkerBean();
+                }
+                locationBean.setCity(aMapLocation.getCity());
+                locationBean.setProvince(aMapLocation.getProvince());
+                locationBean.setAddress(aMapLocation.getAddress());
+                locationBean.setLat(aMapLocation.getLatitude());
+                locationBean.setLon(aMapLocation.getLongitude());
 
-                Log.e("--------", ((TabActivity)getActivity()).getMyLocation());
+                ((TabActivity)getActivity()).setMyLocation(locationBean);
 
             } else {
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
@@ -392,6 +400,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
+
+    MarkerBean destinationBean;
 
     @OnClick({R.id.bt_search})
     public void onViewClicked(View view) {
@@ -420,7 +430,16 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 double lon = pi.getLatLonPoint().getLongitude();
                                 aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
 
-                                ((TabActivity)getActivity()).setDestination(pi.getTitle());
+                                if(destinationBean == null){
+                                    destinationBean = new MarkerBean();
+                                }
+                                destinationBean.setCity(pi.getCityName());
+                                destinationBean.setProvince(pi.getProvinceName());
+                                destinationBean.setAddress(pi.getTitle());
+                                destinationBean.setLat(pi.getLatLonPoint().getLatitude());
+                                destinationBean.setLon(pi.getLatLonPoint().getLongitude());
+
+                                ((TabActivity)getActivity()).setDestination(destinationBean);
                                 et_location.setText(pi.getTitle());
                                 et_location.setSelection(et_location.getText().toString().length());
 

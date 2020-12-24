@@ -54,34 +54,6 @@
 
             <include layout="@layout/base_lineview_include" />
 
-            <LinearLayout
-                android:id="@+id/publishTruckLayout"
-                style="@style/PublishLayoutStyle">
-
-                <TextView
-                    style="@style/PublishIconStyle"
-                    android:drawableStart="@drawable/publish_ic_yxcx"
-                    android:text="已选车型        " />
-
-                <TextView
-                    android:id="@+id/publishTruckTv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_dp15"
-                    android:layout_weight="1"
-                    android:hint="点击选择" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:src="@drawable/ic_green_arrow" />
-            </LinearLayout>
-
-            <include
-                android:id="@+id/truckLine"
-                layout="@layout/base_lineview_include" />
-
             <!-- 始终点start 如果是长途整车 这里始终点有点不一样 -->
             <FrameLayout
                 android:layout_width="match_parent"
@@ -93,12 +65,6 @@
 
             </FrameLayout>
             <!--始终点 end-->
-
-
-
-
-
-
 
             <LinearLayout
                 style="@style/PublishLayoutStyle">

@@ -3,7 +3,6 @@ package com.xrwl.owner.module.publish.bean;
 import android.text.TextUtils;
 
 import com.xrwl.owner.bean.Account;
-import com.xrwl.owner.bean.PostOrder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -193,9 +192,9 @@ import java.util.Map;
             return false;
         }
 
-        if (TextUtils.isEmpty(time)) {
-            return false;
-        }
+//        if (TextUtils.isEmpty(time)) {
+//            return false;
+//        }
 
         if (category == 0) {
             if (defaultStartLat == 0 || defaultStartLon == 0) {
