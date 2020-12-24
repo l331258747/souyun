@@ -30,6 +30,7 @@ import com.xrwl.owner.base.BaseFragment;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
 import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
+import com.xrwl.owner.module.publish.ui.PublishFragment;
 import com.xrwl.owner.module.publish.ui.ReceiptActivity;
 import com.xrwl.owner.utils.StatusBarUtil;
 import com.xrwl.owner.view.ControlScrollViewPager;
@@ -66,7 +67,6 @@ public class HomeFragment extends BaseFragment {
     DrawerLayout nidaye;
     private ArrayList<String> title_list;
     private ArrayList<Fragment> fragment_list;
-
 
     public static HomeFragment newInstance(String title) {
 
@@ -106,6 +106,7 @@ public class HomeFragment extends BaseFragment {
 
     private void loadData() {
         title_list.add("主页");
+        title_list.add("111");
         title_list.add("大宗运输");
         title_list.add("长途零担");
         title_list.add("长途整车");
@@ -116,6 +117,8 @@ public class HomeFragment extends BaseFragment {
 
         BlankFragment f = new BlankFragment();
         fragment_list.add(f);
+        PublishFragment twoFragment1 = new PublishFragment();
+        fragment_list.add(twoFragment1);
         DzysFragment twoFragment4 = new DzysFragment();
         fragment_list.add(twoFragment4);
         CtldFragment twoFragment6 = new CtldFragment();
@@ -249,6 +252,7 @@ public class HomeFragment extends BaseFragment {
             case R.id.sys:
                 Intent intent = new Intent(getContext(), NearLocationActivity.class);
                 startActivity(intent);
+
                 break;
         }
     }

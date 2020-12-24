@@ -3,13 +3,13 @@ package com.xrwl.owner.Fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -26,8 +26,16 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.core.PoiItem;
+import com.amap.api.services.poisearch.PoiResult;
+import com.amap.api.services.poisearch.PoiSearch;
+import com.blankj.utilcode.util.ToastUtils;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.xrwl.owner.Fragment.dialog.MarkerDialog;
 import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
@@ -37,12 +45,15 @@ import com.xrwl.owner.module.home.ui.HongbaolistActivity;
 import com.xrwl.owner.module.home.ui.OnRedPacketDialogClickListener;
 import com.xrwl.owner.module.home.ui.RedPacketEntity;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
+import com.xrwl.owner.module.tab.activity.TabActivity;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.reactivex.disposables.Disposable;
 
@@ -191,13 +202,13 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
         myLocationStyle.showMyLocation(true);
 
-        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
-                Log.e("Msg", "location：" + location.getExtras().toString());
-            }
-        });
+//        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
+//            @Override
+//            public void onMyLocationChange(Location location) {
+//                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
+//                Log.e("Msg", "location：" + location.getExtras().toString());
+//            }
+//        });
 
         return inflate;
     }
@@ -370,10 +381,70 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
 
+                ((TabActivity)getActivity()).setMyLocation(aMapLocation.getAddress());
+
+                Log.e("--------", ((TabActivity)getActivity()).getMyLocation());
+
             } else {
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
                 Log.e("定位AmapErr", errText);
             }
+        }
+    }
+
+
+    @OnClick({R.id.bt_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.bt_search:
+                if(TextUtils.isEmpty(et_location.getText().toString())){
+                    ToastUtils.showShort("请输入目的地");
+                    return;
+                }
+                PoiSearch.Query query = new PoiSearch.Query(et_location.getText().toString(), "");
+//                query.setPageSize(10);//设置每页最多返回多少条poiitem
+//                query.setPageNum(0);//设置查第一页
+                //query.setCityLimit(true);
+                PoiSearch poiSearch = new PoiSearch(getContext(), query);
+                poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+                    @Override
+                    public void onPoiSearched(PoiResult poiResult, int i) {
+                        List<PoiItem> datas = poiResult.getPois();
+                        if(datas.size() > 0){
+                            new MarkerDialog(getContext(),datas).setOnItemClickListener(position -> {
+
+                                aMap.clear();
+
+                                PoiItem pi = datas.get(position);
+                                double lat = pi.getLatLonPoint().getLatitude();
+                                double lon = pi.getLatLonPoint().getLongitude();
+                                aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+
+                                ((TabActivity)getActivity()).setDestination(pi.getTitle());
+                                et_location.setText(pi.getTitle());
+                                et_location.setSelection(et_location.getText().toString().length());
+
+                                aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lon)));
+
+                            }).show();
+                        }else{
+                            ToastUtils.showShort("未搜索出目的地");
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onPoiItemSearched(PoiItem poiItem, int i) {
+                    }
+                });
+                if (mCurrentLocation != null) {
+                    LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                    poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
+                }
+                poiSearch.searchPOIAsyn();// 异步搜索
+
+
+                break;
         }
     }
 

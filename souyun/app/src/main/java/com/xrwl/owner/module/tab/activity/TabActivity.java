@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -70,6 +71,25 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
     private Object shippingNoteInfos;
     private RetrofitManager1 retrofitManager;
 
+    public String myLocation;//出发地
+    public String destination;//目的地
+
+    public String getMyLocation() {
+        return myLocation;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setMyLocation(String myLocation) {
+        if(!TextUtils.isEmpty(this.myLocation))
+            this.myLocation = myLocation;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
     @Override
     protected TabPresenter initPresenter() {
