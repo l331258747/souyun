@@ -154,7 +154,7 @@ public class HomeFragment extends BaseFragment {
         });
         //关联到一起
         tablayout.setupWithViewPager(viewpager);
-
+        viewpager.setOffscreenPageLimit(fragment_list.size());
 
     }
 

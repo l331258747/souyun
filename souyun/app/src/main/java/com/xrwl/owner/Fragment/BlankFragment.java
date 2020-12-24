@@ -15,6 +15,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -71,12 +73,15 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     private AlertDialog alertDialog;
     private AlertDialog mDialog;
     private boolean shouldBack;
-    private AMapLocationClient mLocationClient;
     private String mCurrentCity;
     private AMapLocation mCurrentLocation;
     private Context context;
     @BindView(R.id.nlMapView)
     MapView mMapView;
+    @BindView(R.id.bt_search)
+    Button bt_search;
+    @BindView(R.id.et_location)
+    EditText et_location;
     private AMap aMap;
 
 
@@ -184,13 +189,13 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）默认执行此种模式。
 
-
         myLocationStyle.showMyLocation(true);
 
         aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
                 //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
+                Log.e("Msg", "location：" + location.getExtras().toString());
             }
         });
 
