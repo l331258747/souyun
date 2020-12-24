@@ -445,6 +445,15 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             mPublishBean.startDesc = title;
             requestCityLonLat();
 
+            if (mStartCity != null && mEndCity != null) {
+                if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
+                    showLongToast("同城专车订单不能出现不同的城市，请重新选择城市");
+                    mStartCity = null;
+                    mpublishAddressDefaultStartLocationTv.setText("");
+                    return;
+                }
+            }
+
             mDefaultStartLat = data.getDoubleExtra("lat", 0);
             mDefaultStartLon = data.getDoubleExtra("lon", 0);
 
@@ -468,6 +477,15 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             mPublishBean.longEndCityDes = mEndCity;
             mPublishBean.endDesc = title;
             requestCityLonLat();
+
+            if (mStartCity != null && mEndCity != null) {
+                if (!mStartCity.contains(mEndCity) && !mEndCity.contains(mStartCity)) {
+                    showLongToast("同城专车订单不能出现不同的城市，请重新选择城市");
+                    mEndCity = null;
+                    mpublishAddressDefaultEndLocationTv.setText("");
+                    return;
+                }
+            }
 
             mDefaultEndLat = data.getDoubleExtra("lat", 0);
             mDefaultEndLon = data.getDoubleExtra("lon", 0);
