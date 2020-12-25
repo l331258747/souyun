@@ -204,6 +204,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                     mPublishBean.longStartCityDes = mStartCity;
                     mPublishBean.longStartProvinceDes = mStartProvince;
                     mPublishBean.longStartAreaDes = bean.getAddress();
+
+                    checkLongLocation();
                 }
             }
             if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString())) {
@@ -223,6 +225,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                     mPublishBean.longEndCityDes = mStartCity;
                     mPublishBean.longEndProvinceDes = mStartProvince;
                     mPublishBean.longEndAreaDes = bean.getAddress();
+
+                    checkDefaultLocation();
 
                 }
             }

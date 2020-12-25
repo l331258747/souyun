@@ -214,6 +214,8 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mPublishBean.longStartCityDes = mStartCity;
                     mPublishBean.longStartProvinceDes = mStartProvince;
                     mPublishBean.longStartAreaDes = bean.getAddress();
+
+                    checkLongLocation();
                 }
             }
             if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString())) {
@@ -233,6 +235,8 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mPublishBean.longEndCityDes = mStartCity;
                     mPublishBean.longEndProvinceDes = mStartProvince;
                     mPublishBean.longEndAreaDes = bean.getAddress();
+
+                    checkDefaultLocation();
 
                 }
             }
