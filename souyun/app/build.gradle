@@ -154,6 +154,9 @@ android {
         implementation project(':compns')
 //        compile 'com.android.support:design:24.1.1'
         implementation 'com.android.support:palette-v7:27.0.2'
+
+        //三级联动
+        implementation 'liji.library.dev:citypickerview:1.1.0'
     }
 }
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/default_dp40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="单位名称"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="单位地址"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_address_des"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="详细地址"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="联系电话"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

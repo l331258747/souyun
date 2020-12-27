@@ -258,6 +258,9 @@
             android:name=".module.me.ui.ZaiXianGouMai_Activity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".module.publish.view.CompanyManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".module.me.ui.Success_erweimaActivity"
             android:screenOrientation="portrait" />
         <activity

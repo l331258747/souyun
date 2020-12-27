@@ -26,6 +26,22 @@
         android:id="@+id/fpgl"
         android:icon="@drawable/ic_green_arrow"
         android:title="    发票管理"/>
+
+    <item
+        android:id="@+id/clgl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    车辆管理"/>
+
+    <item
+        android:id="@+id/dzdzgl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    大宗地址管理"/>
+
+    <item
+        android:id="@+id/dzmcgl"
+        android:icon="@drawable/ic_green_arrow"
+        android:title="    大宗名称管理"/>
+
     <item
         android:id="@+id/lxkf"
         android:icon="@drawable/ic_green_arrow"

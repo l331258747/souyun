@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/default_dp10"
+        android:text="大宗地址管理"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/default_font16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_dp10"
+        android:text="添加"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_dp1"
+        android:background="@color/divider_color"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <LinearLayout
+            android:id="@+id/ll_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp40"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="单位名称"
+                android:textColor="@color/dark_gray" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/default_dp10"
+                android:layout_marginEnd="@dimen/default_dp10"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="请输入"
+                android:maxLength="20"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp1"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_name" />
+
+        <LinearLayout
+            android:id="@+id/ll_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp40"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_name">
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="单位地址"
+                android:textColor="@color/dark_gray" />
+
+            <TextView
+                android:id="@+id/sel_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/default_dp10"
+                android:layout_marginEnd="@dimen/default_dp10"
+                android:background="@null"
+                android:hint="请选择"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp1"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_address" />
+
+        <LinearLayout
+            android:id="@+id/ll_address_des"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp40"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_address">
+
+            <TextView
+                android:id="@+id/tv_address_des"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="详细地址"
+                android:textColor="@color/dark_gray" />
+
+            <EditText
+                android:id="@+id/et_address_des"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/default_dp10"
+                android:layout_marginEnd="@dimen/default_dp10"
+                android:background="@null"
+                android:hint="请输入"
+                android:maxLength="30"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp1"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_address_des" />
+
+        <LinearLayout
+            android:id="@+id/ll_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp40"
+            android:layout_marginStart="@dimen/default_dp10"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_address_des">
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text=" 联系电话"
+                android:textColor="@color/dark_gray" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/default_dp10"
+                android:layout_marginEnd="@dimen/default_dp10"
+                android:background="@null"
+                android:hint="请输入"
+                android:inputType="number"
+                android:maxLength="11"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp1"
+            android:background="@color/divider_color"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_phone" />
+
+        <TextView
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:background="@color/gray_33"
+            android:paddingStart="@dimen/default_dp20"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/default_dp20"
+            android:paddingBottom="5dp"
+            android:text="提交"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_phone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_send" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            tools:visibility="gone"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/default_dp30"
+                    android:background="@color/gray_33"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="单位名称"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="单位地址"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="详细地址"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="联系电话"
+                        android:textSize="@dimen/sp_12" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_dp200"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_dp10"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

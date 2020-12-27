@@ -23,6 +23,7 @@ import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.me.bean.Bank;
 import com.xrwl.owner.module.me.bean.Tixianlist;
 import com.xrwl.owner.module.publish.bean.Changtulingdan;
+import com.xrwl.owner.module.publish.bean.CompanyManageBean;
 import com.xrwl.owner.module.publish.bean.PayResult;
 import com.xrwl.owner.module.publish.bean.Truck;
 
@@ -457,6 +458,13 @@ public interface Api {
  @Multipart
  @POST("Order/DriverPic")
  Observable<BaseEntity<OrderDetail>> uploadDriverImages(@PartMap Map<String, RequestBody> params);
+
+ @GET("Car/dezhilist")
+ Observable<BaseEntity<List<CompanyManageBean>>> getCompany(@QueryMap Map<String, String> params);
+
+ @Multipart
+ @POST("Car/dezhiadd")
+ Observable<BaseEntity> addCompany(@PartMap Map<String, String> params);
 
 
 

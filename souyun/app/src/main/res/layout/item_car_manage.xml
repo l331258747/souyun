@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/default_dp40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="车主名称"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="联系电话"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_car_type"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="货车类型"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_car_no"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="车牌号"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_car_load"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="车辆载重"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_jiashizheng"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="驾驶证"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
