@@ -45,6 +45,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -189,7 +191,24 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
         mPublishBean = new PublishBean();
         mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche.getValue();
 
-        mpublishStartPhonepersonEt.setText(mAccount.getName());
+        String usernamess = "";
+        /**判断数据库都出来吨用户名*/
+        if ("0".equals(mAccount.getName())) {
+            usernamess = "";
+        } else {
+            if (mAccount.getName() == null) {
+                usernamess = "";
+            } else {
+                try {
+                    usernamess = (URLDecoder.decode(mAccount.getName(), "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        mpublishStartPhonepersonEt.setText(usernamess);
         mpublishStartPhoneEt.setText(mAccount.getPhone());
 
         mPhotoScrollView.setOnSelectListener(v -> PictureSelector.create(TczcFragment.this).openGallery(PictureMimeType.ofImage())
