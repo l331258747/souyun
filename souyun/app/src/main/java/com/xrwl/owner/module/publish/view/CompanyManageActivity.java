@@ -1,6 +1,7 @@
 package com.xrwl.owner.module.publish.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -150,8 +151,12 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
         recyclerView.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(position -> {
-            mListener.onProductSelect(list.get(position).getName());
+
+            Intent intent = new Intent();
+            intent.putExtra("name", list.get(position).getName());
+            setResult(RESULT_OK, intent);
             finish();
+
         });
 
     }
@@ -306,13 +311,4 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
         }
     }
 
-    private OnProductSelectListener mListener;
-
-    public void setOnProductSelectListener(OnProductSelectListener l) {
-        mListener = l;
-    }
-
-    public interface OnProductSelectListener {
-        void onProductSelect(String name);
-    }
 }

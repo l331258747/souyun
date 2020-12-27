@@ -29,6 +29,7 @@ import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
+import com.xrwl.owner.module.publish.dialog.CompanyManageDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
 import com.xrwl.owner.module.publish.mvp.PublishContract;
@@ -63,6 +64,8 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     public static final int RESULT_POSITION_END = 333;//到货定位
     public static final int RESULT_FRIEND_START = 444;//发货电话
     public static final int RESULT_FRIEND_END = 555;//收货人
+    public static final int RESULT_CONPANY_START = 666;//发货单位
+    public static final int RESULT_CONPANY_END = 777;//收货单位
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -82,6 +85,10 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     EditText mpublishCompanyTv;
     @BindView(R.id.publishCompanyshouhuoTv)
     EditText mpublishCompanyshouhuoTv;
+    @BindView(R.id.publishCompanyIv)
+    ImageView mpublishCompanyIv;
+    @BindView(R.id.publishCompanyshouhuoIv)
+    ImageView mpublishCompanyshouhuoIv;
 
     //货物吨数
     @BindView(R.id.ppDefaultWeightEt)
@@ -250,6 +257,23 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     checkDefaultLocation();
                 }
             }
+        }
+    }
+
+    @OnClick({
+            R.id.publishCompanyshouhuoIv, R.id.publishCompanyIv
+    })
+    public void CompanyClick(View v) {
+        Intent intent = new Intent(getContext(), CompanyManageDialog.class);
+        /**请选择发货单位*/
+        if (v.getId() == R.id.publishCompanyshouhuoIv) {
+            intent.putExtra("title", "请选择发货单位");
+            startActivityForResult(intent, RESULT_CONPANY_START);
+        }
+        /**请选择收货单位*/
+        if (v.getId() == R.id.publishCompanyIv) {
+            intent.putExtra("title", "请选择收货单位");
+            startActivityForResult(intent, RESULT_CONPANY_END);
         }
     }
 
@@ -447,6 +471,16 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             Friend friend = (Friend) data.getSerializableExtra("data");
             mpublishGetPersonEt.setText(friend.getName());
             mpublishGetPhoneEt.setText(friend.getPhone().replace("-", "").replace("+", "").replace(" ", ""));
+        }
+        /**发货单位*/
+        else if(requestCode == RESULT_CONPANY_START){
+            String name = data.getStringExtra("name");
+            mpublishCompanyTv.setText(name);
+        }
+        /**收货单位*/
+        else if(requestCode == RESULT_CONPANY_END){
+            String name = data.getStringExtra("name");
+            mpublishCompanyshouhuoTv.setText(name);
         }
     }
 

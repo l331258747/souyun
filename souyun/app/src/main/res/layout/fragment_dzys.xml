@@ -102,20 +102,28 @@
                 <TextView
                     style="@style/PublishIconStyle"
                     android:drawableStart="@drawable/publish_ic_hw"
-                    android:text="发货单位             " />
-
+                    android:text="发货单位         " />
 
 
                 <EditText
                     android:id="@+id/publishCompanyTv"
-                    style="@style/PublishEditStyle"
-                    android:layout_marginStart="5dp"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_weight="1"
                     android:background="@null"
-                    android:gravity="start"
-                    android:hint="请输入"
-                    android:textSize="@dimen/default_font14"
-                    android:textCursorDrawable="@drawable/color_cursor"
-                    />
+                    android:hint="点击选择"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/default_font14" />
+
+                <ImageView
+                    android:id="@+id/publishCompanyIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:src="@drawable/ic_green_arrow"/>
+
             </LinearLayout>
             <include layout="@layout/base_lineview_include" />
 
@@ -136,21 +144,27 @@
                 <TextView
                     style="@style/PublishIconStyle"
                     android:drawableStart="@drawable/publish_ic_hw"
-                    android:text="收货单位             " />
-
+                    android:text="收货单位         " />
 
 
                 <EditText
                     android:id="@+id/publishCompanyshouhuoTv"
-                    style="@style/PublishEditStyle"
-                    android:layout_marginStart="5dp"
-                    android:background="@null"
-                    android:gravity="start"
-                    android:hint="请输入"
-                    android:textCursorDrawable="@drawable/color_cursor"
-                    android:textSize="@dimen/default_font14"
-                    />
 
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="点击选择"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/default_font14" />
+
+                <ImageView
+                    android:id="@+id/publishCompanyshouhuoIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:src="@drawable/ic_green_arrow"/>
 
 
 

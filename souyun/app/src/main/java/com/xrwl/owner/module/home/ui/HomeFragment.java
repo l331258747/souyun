@@ -30,7 +30,6 @@ import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.dialog.CarManageDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
-import com.xrwl.owner.module.publish.ui.PublishFragment;
 import com.xrwl.owner.module.publish.ui.ReceiptActivity;
 import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.utils.StatusBarUtil;
@@ -108,7 +107,6 @@ public class HomeFragment extends BaseFragment {
 
     private void loadData() {
         title_list.add("主页");
-        title_list.add("111");
         title_list.add("大宗运输");
         title_list.add("长途零担");
         title_list.add("长途整车");
@@ -119,8 +117,6 @@ public class HomeFragment extends BaseFragment {
 
         BlankFragment f = new BlankFragment();
         fragment_list.add(f);
-        PublishFragment twoFragment1 = new PublishFragment();
-        fragment_list.add(twoFragment1);
         DzysFragment twoFragment4 = new DzysFragment();
         fragment_list.add(twoFragment4);
         CtldFragment twoFragment6 = new CtldFragment();
