@@ -151,6 +151,7 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
         mAdapter.setOnItemClickListener(position -> {
             mListener.onProductSelect(list.get(position).getName());
+            finish();
         });
 
     }
@@ -163,12 +164,11 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
                 break;
             case R.id.btn_send:
                 if(TextUtils.isEmpty(et_name.getText().toString())){
-                    ToastUtils.showShort("请输入车主名称");
+                    ToastUtils.showShort("请输入单位名称");
                     return;
                 }
 
                 Map<String,String> params = new HashMap<String,String>();
-                params.put("userid",mAccount.getId());
                 params.put("danweidezhi",et_name.getText().toString());
                 params.put("sheng",province);
                 params.put("shi",city);
@@ -176,9 +176,7 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
                 params.put("xiangxidezhi",et_address_des.getText().toString());
                 params.put("lianxidianhua",et_phone.getText().toString());
                 mPresenter.addData(params);
-
                 break;
-
             case R.id.sel_address:
                 mCP.show();
                 break;
@@ -212,6 +210,11 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
         mPresenter.getData();
         setView(isAdd = false);
         showToast("添加成功");
+
+        et_name.setText("");
+        et_address_des.setText("");
+        sel_address.setText("");
+        et_phone.setText("");
     }
 
     @Override

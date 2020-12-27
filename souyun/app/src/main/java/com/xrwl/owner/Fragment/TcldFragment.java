@@ -29,7 +29,7 @@ import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
-import com.xrwl.owner.module.publish.dialog.ProductDialog;
+import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
 import com.xrwl.owner.module.publish.mvp.PublishContract;
 import com.xrwl.owner.module.publish.mvp.PublishPresenter;
@@ -292,7 +292,7 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void onProductClick(View v) {
         /**货物名称*/
         if (v.getId() == R.id.publishProductTv) {
-            ProductDialog dialog = new ProductDialog();
+            ProductDialog2 dialog = new ProductDialog2();
             dialog.setOnProductSelectListener(name -> {
                 mpublishProductTv.setText(name);
             });

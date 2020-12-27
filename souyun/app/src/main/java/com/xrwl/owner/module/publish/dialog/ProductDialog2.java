@@ -6,23 +6,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.ldw.library.adapter.recycler.CommonAdapter;
 import com.ldw.library.adapter.recycler.MultiItemTypeAdapter;
 import com.ldw.library.adapter.recycler.base.ViewHolder;
 import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.utils.DisplayUtil;
-import com.xrwl.owner.MyApplication;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BasePopDialog;
-import com.xrwl.owner.bean.Distance;
-import com.xrwl.owner.module.publish.bean.Product;
-import com.xrwl.owner.module.publish.bean.ProductDao;
-import com.xrwl.owner.module.publish.mvp.PublishContract;
-import com.xrwl.owner.module.publish.mvp.PublishPresenter;
+import com.xrwl.owner.module.publish.bean.DzNameManageBean;
+import com.xrwl.owner.module.publish.mvp.DzNameContract;
+import com.xrwl.owner.module.publish.mvp.DzNamePresenter;
 
-import org.greenrobot.greendao.query.Query;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,18 +30,18 @@ import butterknife.OnClick;
  * Created by www.longdw.com on 2018/4/2 下午8:42.
  */
 
-public class ProductDialog2 extends BasePopDialog implements PublishContract.IView{
+public class ProductDialog2 extends BasePopDialog implements DzNameContract.IView {
 
     @BindView(R.id.ppDialogRv)
     RecyclerView mRv;
     @BindView(R.id.ppDialogEt)
     EditText mEt;
 
-    private ProductDao mDao;
     private ProductAdapter mAdapter;
     private OnProductSelectListener mListener;
 
-    PublishPresenter mPresenter;
+    DzNamePresenter mPresenter;
+    List<DzNameManageBean> list;
 
     @Override
     protected int getLayoutId() {
@@ -55,74 +54,49 @@ public class ProductDialog2 extends BasePopDialog implements PublishContract.IVi
     @Override
     protected void initView() {
 
-        mPresenter = new PublishPresenter(mContext);
-        if (mPresenter != null) {
-            mPresenter.attach(this);
-        }
-
-        mPresenter.calculateDistanceWithCityName("长沙","岳阳","岳麓区","");
+        mPresenter = new DzNamePresenter(mContext);
+        mPresenter.attach(this);
 
         initBaseRv(mRv);
-
-        mDao = ((MyApplication)getActivity().getApplication()).getDaoSession().getProductDao();
-
         initList();
+
+        mPresenter.getData();
     }
 
     private void initList() {
-        final List<Product> datas = mDao.queryBuilder().orderDesc(ProductDao.Properties.Id).list();
-        if (mAdapter == null) {
-            mAdapter = new ProductAdapter(mContext, R.layout.publish_product_dialog_recycler_item, datas);
-            mRv.setAdapter(mAdapter);
+        mAdapter = new ProductAdapter(mContext, R.layout.publish_product_dialog_recycler_item, new ArrayList<>());
+        mRv.setAdapter(mAdapter);
 
-            mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    mListener.onProductSelect(datas.get(position).getName());
-                    dismiss();
-                }
+        mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                mListener.onProductSelect(list.get(position).getName());
+                dismiss();
+            }
 
-                @Override
-                public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    return false;
-                }
-            });
-        } else {
-            mAdapter.setDatas(datas);
-        }
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
     }
 
     @OnClick(R.id.ppDialogAddIv)
     public void onClick() {
-        String name = mEt.getText().toString();
-        if (TextUtils.isEmpty(name)) {
+        if(TextUtils.isEmpty(mEt.getText().toString())){
+            ToastUtils.showShort("请输入货物名称");
             return;
         }
-        Query<Product> query = mDao.queryBuilder().where(ProductDao.Properties.Name.eq(name)).build();
-        if (query.list().size() > 0) {
-            mDao.delete(query.list().get(0));
-        }
-        Product p = new Product();
-        p.setName(name);
-        mDao.save(p);
 
-        mListener.onProductSelect(name);
+        Map<String,String> params = new HashMap<String,String>();
+        params.put("name",mEt.getText().toString());
 
-        dismiss();
+        mPresenter.addData(params);
     }
 
-    @Override
-    public void onRequestCityLatLonSuccess(BaseEntity<Distance> entity) {
-
-    }
 
     @Override
-    public void onRequestSuccessa(BaseEntity<Integer> entity) {
-
-    }
-
-    @Override
-    public void onRefreshSuccess(BaseEntity<Distance> entity) {
+    public void onRefreshSuccess(BaseEntity<List<DzNameManageBean>> entity) {
 
     }
 
@@ -136,14 +110,42 @@ public class ProductDialog2 extends BasePopDialog implements PublishContract.IVi
 
     }
 
-    private class ProductAdapter extends CommonAdapter<Product> {
+    @Override
+    public void addDataSuccess(BaseEntity entity) {
+        mPresenter.getData();
+        ToastUtils.showShort("添加成功");
+        mEt.setText("");
+    }
 
-        public ProductAdapter(Context context, int layoutId, List<Product> datas) {
+    @Override
+    public void addDataError(BaseEntity entity) {
+        ToastUtils.showShort(entity.getMsg());
+    }
+
+    @Override
+    public void getDataSuccess(BaseEntity<List<DzNameManageBean>> datas) {
+        list = new ArrayList<>();
+        for (int i =0;i<10;i++){
+            DzNameManageBean item = new DzNameManageBean();
+            item.setName("" + i);
+            list.add(item);
+        }
+        mAdapter.setDatas(list);
+    }
+
+    @Override
+    public void getDataError(BaseEntity entity) {
+        ToastUtils.showShort(entity.getMsg());
+    }
+
+    private class ProductAdapter extends CommonAdapter<DzNameManageBean> {
+
+        public ProductAdapter(Context context, int layoutId, List<DzNameManageBean> datas) {
             super(context, layoutId, datas);
         }
 
         @Override
-        protected void convert(ViewHolder holder, Product product, int position) {
+        protected void convert(ViewHolder holder, DzNameManageBean product, int position) {
             holder.setText(R.id.pdItemTitleTv, product.getName());
         }
     }

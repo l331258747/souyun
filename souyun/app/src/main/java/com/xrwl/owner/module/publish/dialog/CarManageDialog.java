@@ -14,17 +14,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
+import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.utils.DisplayUtil;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BasePopDialog;
 import com.xrwl.owner.module.publish.bean.CarManageBean;
+import com.xrwl.owner.module.publish.mvp.CarContract;
+import com.xrwl.owner.module.publish.mvp.CarPresenter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
-public class CarManageDialog extends BasePopDialog implements View.OnClickListener {
+public class CarManageDialog extends BasePopDialog implements View.OnClickListener, CarContract.IView {
 
     @BindView(R.id.tv_add)
     TextView tv_add;
@@ -53,6 +58,9 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
 
     boolean isAdd;
 
+    CarPresenter mPresenter;
+    List<CarManageBean> list;
+
     @Override
     protected int getLayoutId() {
 
@@ -70,8 +78,12 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
         cl_add.setVisibility(View.GONE);
         cl_list.setVisibility(View.VISIBLE);
 
-
         initRecycler();
+
+        mPresenter = new CarPresenter(mContext);
+        mPresenter.attach(this);
+
+        mPresenter.getData();
     }
 
     //初始化recyclerview
@@ -82,11 +94,67 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
         mAdapter = new CarManageAdapter(mContext, new ArrayList<>());
         recyclerView.setAdapter(mAdapter);
 
-        getData();
+        mAdapter.setOnItemClickListener(position -> {
+            mListener.onProductSelect(list.get(position).getName());
+
+            dismiss();
+        });
     }
 
-    private void getData() {
-        List<CarManageBean> list = new ArrayList<>();
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_add:
+                setView(isAdd = !isAdd);
+                break;
+            case R.id.btn_send:
+                if(TextUtils.isEmpty(et_name.getText().toString())){
+                    ToastUtils.showShort("请输入车主名称");
+                    return;
+                }
+
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("chezhumingcheng",et_name.getText().toString());
+                params.put("chezhudianhua",et_phone.getText().toString());
+                params.put("huocheleixing",et_car_type.getText().toString());
+                params.put("chepaihao",et_car_no.getText().toString());
+                params.put("cheliangzaizhong",et_car_load.getText().toString());
+                params.put("jiashizheng",et_jiashiz.getText().toString());
+                mPresenter.addData(params);
+
+                break;
+        }
+    }
+
+    public void setView(boolean isAdd){
+        cl_add.setVisibility(isAdd?View.VISIBLE:View.GONE);
+        cl_list.setVisibility(isAdd?View.GONE:View.VISIBLE);
+        tv_add.setText(isAdd?"返回":"添加");
+    }
+
+    @Override
+    public void addDataSuccess(BaseEntity entity) {
+        mPresenter.getData();
+        setView(isAdd = false);
+        ToastUtils.showShort("添加成功");
+
+        et_name.setText("");
+        et_phone.setText("");
+        et_car_type.setText("");
+        et_car_no.setText("");
+        et_car_load.setText("");
+        et_jiashiz.setText("");
+    }
+
+    @Override
+    public void addDataError(BaseEntity entity) {
+        ToastUtils.showShort(entity.getMsg());
+    }
+
+    @Override
+    public void getDataSuccess(BaseEntity<List<CarManageBean>> datas) {
+        list = new ArrayList<>();
         for (int i =0;i<10;i++){
             CarManageBean item = new CarManageBean();
             item.setName("" + i);
@@ -96,28 +164,23 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.tv_add:
-                isAdd = !isAdd;
-                cl_add.setVisibility(isAdd?View.VISIBLE:View.GONE);
-                cl_list.setVisibility(isAdd?View.GONE:View.VISIBLE);
-                tv_add.setText(isAdd?"返回":"添加");
-                break;
-            case R.id.btn_send:
-                if(TextUtils.isEmpty(et_name.getText().toString())){
-                    ToastUtils.showShort("请输入车主名称");
-                    return;
-                }
-                if(TextUtils.isEmpty(et_phone.getText().toString())){
-                    ToastUtils.showShort("请输入联系电话");
-                    return;
-                }
+    public void getDataError(BaseEntity entity) {
+        ToastUtils.showShort(entity.getMsg());
+    }
 
-                //TODO 请求 成功后
+    @Override
+    public void onRefreshSuccess(BaseEntity<List<CarManageBean>> entity) {
 
-                break;
-        }
+    }
+
+    @Override
+    public void onRefreshError(Throwable e) {
+
+    }
+
+    @Override
+    public void onError(BaseEntity entity) {
+
     }
 
     private static class CarManageAdapter extends RecyclerView.Adapter<CarManageAdapter.ViewHolder> {

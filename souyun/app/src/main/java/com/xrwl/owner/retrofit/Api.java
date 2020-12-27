@@ -22,8 +22,10 @@ import com.xrwl.owner.bean.WxCode;
 import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.me.bean.Bank;
 import com.xrwl.owner.module.me.bean.Tixianlist;
+import com.xrwl.owner.module.publish.bean.CarManageBean;
 import com.xrwl.owner.module.publish.bean.Changtulingdan;
 import com.xrwl.owner.module.publish.bean.CompanyManageBean;
+import com.xrwl.owner.module.publish.bean.DzNameManageBean;
 import com.xrwl.owner.module.publish.bean.PayResult;
 import com.xrwl.owner.module.publish.bean.Truck;
 
@@ -459,15 +461,31 @@ public interface Api {
  @POST("Order/DriverPic")
  Observable<BaseEntity<OrderDetail>> uploadDriverImages(@PartMap Map<String, RequestBody> params);
 
+ /** 大宗地址管理-列表 */
  @GET("Car/dezhilist")
  Observable<BaseEntity<List<CompanyManageBean>>> getCompany(@QueryMap Map<String, String> params);
 
+ /** 大宗地址管理-添加 */
  @Multipart
  @POST("Car/dezhiadd")
  Observable<BaseEntity> addCompany(@PartMap Map<String, String> params);
 
+ /** 大宗名称管理-列表 */
+ @GET("Car/mingchenglist")
+ Observable<BaseEntity<List<DzNameManageBean>>> getDzName(@QueryMap Map<String, String> params);
 
+ /** 大宗名称管理-添加 */
+ @Multipart
+ @POST("Car/mingchengadd")
+ Observable<BaseEntity> addDzName(@PartMap Map<String, String> params);
 
+ /** 大宗车辆管理-列表 */
+ @GET("Car/chelianglist")
+ Observable<BaseEntity<List<CarManageBean>>> getCar(@QueryMap Map<String, String> params);
 
+ /** 大宗车辆管理-添加 */
+ @Multipart
+ @POST("Car/cheliangadd")
+ Observable<BaseEntity> addCar(@PartMap Map<String, String> params);
 
 }
