@@ -29,13 +29,13 @@ import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
-import com.xrwl.owner.module.publish.dialog.CompanyManageDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
 import com.xrwl.owner.module.publish.mvp.PublishContract;
 import com.xrwl.owner.module.publish.mvp.PublishPresenter;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.PublishConfirmActivity;
+import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.view.PhotoScrollView;
@@ -264,7 +264,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             R.id.publishCompanyshouhuoIv, R.id.publishCompanyIv
     })
     public void CompanyClick(View v) {
-        Intent intent = new Intent(getContext(), CompanyManageDialog.class);
+        Intent intent = new Intent(getContext(), CompanyManageActivity.class);
         /**请选择发货单位*/
         if (v.getId() == R.id.publishCompanyshouhuoIv) {
             intent.putExtra("title", "请选择发货单位");
