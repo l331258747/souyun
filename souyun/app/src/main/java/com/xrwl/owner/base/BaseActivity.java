@@ -26,6 +26,7 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.module.publish.ui.HideService;
 import com.xrwl.owner.utils.AccountUtil;
+import com.xrwl.owner.utils.ActivityCollect;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -89,6 +90,8 @@ public abstract class BaseActivity<V extends BaseMVP.IBaseView, P extends BaseMV
         windowLayoutParams.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL;
         window.setAttributes(windowLayoutParams);
         handleEvents();
+
+        ActivityCollect.getAppCollect().addActivity(this);
     }
 
     /**
@@ -177,6 +180,7 @@ public abstract class BaseActivity<V extends BaseMVP.IBaseView, P extends BaseMV
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }
+        ActivityCollect.getAppCollect().finishActivity(this);
     }
 
     public void handleError(BaseEntity entity) {

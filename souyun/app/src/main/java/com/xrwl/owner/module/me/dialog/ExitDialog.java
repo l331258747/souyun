@@ -7,8 +7,8 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BasePopDialog;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.module.account.activity.LoginActivity;
-import com.xrwl.owner.module.loading.activity.LoadingActivity;
 import com.xrwl.owner.utils.AccountUtil;
+import com.xrwl.owner.utils.ActivityCollect;
 
 import butterknife.OnClick;
 
@@ -35,9 +35,12 @@ public class ExitDialog extends BasePopDialog {
             account.setFirst(false);
             AccountUtil.saveAccount(getContext(), account);
 
-            Intent intent = new Intent(getActivity(), LoadingActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            ActivityCollect.getAppCollect().finishAllActivity();
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+
+//            Intent intent = new Intent(getActivity(), LoadingActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
         } else {
             dismiss();
         }
