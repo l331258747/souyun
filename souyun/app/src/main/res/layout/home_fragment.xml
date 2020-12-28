@@ -7,37 +7,26 @@
     android:background="@color/whiteColorPrimary"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/hx"
             android:orientation="horizontal"
             android:paddingVertical="@dimen/default_dp8">
 
-            <LinearLayout
+            <ImageView
                 android:id="@+id/wode"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_home_more" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="5dp"
-                    android:src="@drawable/me" />
-
-            </LinearLayout>
-
+                android:layout_marginStart="@dimen/default_dp10"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/default_dp10"
+                android:src="@drawable/me"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -70,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true"
+            android:layout_below="@+id/ll_title"
             app:tabIndicatorColor="@android:color/holo_orange_light"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@android:color/holo_orange_light"
@@ -77,13 +67,23 @@
 
         <com.xrwl.owner.view.ControlScrollViewPager
             android:id="@+id/viewpager"
+            android:layout_below="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </com.xrwl.owner.view.ControlScrollViewPager>
 
+        <ImageView
+            android:id="@+id/wode2"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:paddingTop="@dimen/default_dp10"
+            android:paddingBottom="@dimen/default_dp10"
+            android:src="@drawable/ic_home_more"
+            android:background="@color/gray_33"
+            android:layout_centerVertical="true"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav"

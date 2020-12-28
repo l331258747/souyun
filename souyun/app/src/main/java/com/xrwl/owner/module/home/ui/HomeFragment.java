@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ldw.library.mvp.BaseMVP;
@@ -60,7 +59,9 @@ public class HomeFragment extends BaseFragment {
 
     Unbinder unbinder;
     @BindView(R.id.wode)
-    LinearLayout wode;
+    ImageView wode;
+    @BindView(R.id.wode2)
+    ImageView wode2;
     @BindView(R.id.sys)
     ImageView sys;
     @BindView(R.id.nav)
@@ -242,10 +243,11 @@ public class HomeFragment extends BaseFragment {
         StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.zbb));
     }
 
-    @OnClick({R.id.wode, R.id.sys})
+    @OnClick({R.id.wode,R.id.wode2, R.id.sys})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.wode:
+            case R.id.wode2:
                 if (nidaye.isDrawerOpen(nav)) {
                     nidaye.closeDrawer(nav);
                 } else {
