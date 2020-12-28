@@ -1,12 +1,15 @@
 package com.xrwl.owner.module.publish.mvp;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.ldw.library.bean.BaseEntity;
 import com.xrwl.owner.module.publish.bean.CarManageBean;
 import com.xrwl.owner.retrofit.BaseObserver;
 import com.xrwl.owner.retrofit.BaseSimpleObserver;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +54,22 @@ public class CarPresenter extends CarContract.APresenter{
     @Override
     public void addData(Map<String, String> params) {
         params.put("userid", getAccount().getId());
+        Map<String, String> sendParams = new HashMap<>();
 
-        mModel.addData(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
+        for (String key : params.keySet()) {
+            try {
+                String value = params.get(key);
+                if (!TextUtils.isEmpty(value)) {
+                    String encodedParam = URLEncoder.encode(value, "UTF-8");
+                    sendParams.put(key, encodedParam);
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        mModel.addData(sendParams).subscribe(new BaseSimpleObserver<BaseEntity>() {
             @Override
             public void onSubscribe(Disposable d) {
                 addDisposable(d);
@@ -64,6 +81,32 @@ public class CarPresenter extends CarContract.APresenter{
                     mView.addDataSuccess(entity);
                 } else {
                     mView.addDataError(entity);
+                }
+            }
+
+            @Override
+            protected void onHandleError(Throwable e) {
+                mView.onRefreshError(e);
+            }
+        });
+    }
+
+    @Override
+    public void searchData(Map<String, String> params) {
+        params.put("userid", getAccount().getId());
+
+        mModel.searchCar(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            protected void onHandleSuccess(BaseEntity entity) {
+                if (entity.isSuccess()) {
+                    mView.searchDataSuccess(entity);
+                } else {
+                    mView.searchDataError(entity);
                 }
             }
 

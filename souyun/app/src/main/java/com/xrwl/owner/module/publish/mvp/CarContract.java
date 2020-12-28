@@ -5,6 +5,7 @@ import android.content.Context;
 import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.mvp.BaseMVP;
 import com.xrwl.owner.module.publish.bean.CarManageBean;
+import com.xrwl.owner.module.publish.bean.CarManageSearchBean;
 import com.xrwl.owner.mvp.MyPresenter;
 
 import java.util.List;
@@ -20,6 +21,9 @@ public interface CarContract {
 
         void getDataSuccess(BaseEntity<List<CarManageBean>> list);
         void getDataError(BaseEntity entity);
+
+        void searchDataSuccess(BaseEntity<List<CarManageSearchBean>> list);
+        void searchDataError(BaseEntity entity);
     }
 
     abstract class APresenter extends MyPresenter<IView> {
@@ -29,11 +33,13 @@ public interface CarContract {
 
         public abstract void getData();
         public abstract void addData(Map<String, String> params);
+        public abstract void searchData(Map<String, String> params);
     }
 
     interface IModel {
         Observable<BaseEntity<List<CarManageBean>>> getData(Map<String, String> params);
         Observable<BaseEntity> addData(Map<String, String> params);
+        Observable<BaseEntity<List<CarManageSearchBean>>> searchCar(Map<String, String> params);
     }
 
 }

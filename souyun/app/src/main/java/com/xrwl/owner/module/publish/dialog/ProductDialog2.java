@@ -90,8 +90,7 @@ public class ProductDialog2 extends BasePopDialog implements DzNameContract.IVie
         }
 
         Map<String,String> params = new HashMap<String,String>();
-        params.put("name",mEt.getText().toString());
-
+        params.put("name", mEt.getText().toString());
         mPresenter.addData(params);
     }
 

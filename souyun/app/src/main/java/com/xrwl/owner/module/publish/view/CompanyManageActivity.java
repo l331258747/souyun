@@ -186,6 +186,7 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
                 params.put("xian",district);
                 params.put("xiangxidezhi",et_address_des.getText().toString());
                 params.put("lianxidianhua",et_phone.getText().toString());
+
                 mPresenter.addData(params);
                 break;
             case R.id.sel_address:

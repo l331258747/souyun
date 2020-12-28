@@ -23,6 +23,7 @@ import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.me.bean.Bank;
 import com.xrwl.owner.module.me.bean.Tixianlist;
 import com.xrwl.owner.module.publish.bean.CarManageBean;
+import com.xrwl.owner.module.publish.bean.CarManageSearchBean;
 import com.xrwl.owner.module.publish.bean.Changtulingdan;
 import com.xrwl.owner.module.publish.bean.CompanyManageBean;
 import com.xrwl.owner.module.publish.bean.DzNameManageBean;
@@ -484,5 +485,9 @@ public interface Api {
  /** 大宗车辆管理-添加 */
  @GET("Car/cheliangadd")
  Observable<BaseEntity> addCar(@QueryMap Map<String, String> params);
+
+ /** 大宗车辆管理-搜索 */
+ @GET("Car/chelianglistsousuo")
+ Observable<BaseEntity<List<CarManageSearchBean>>> searchCar(@QueryMap Map<String, String> params);
 
 }
