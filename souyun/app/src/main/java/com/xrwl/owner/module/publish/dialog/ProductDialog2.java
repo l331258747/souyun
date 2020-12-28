@@ -70,6 +70,7 @@ public class ProductDialog2 extends BasePopDialog implements DzNameContract.IVie
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                if(mListener == null) return;
                 mListener.onProductSelect(list.get(position).getName());
                 dismiss();
             }
@@ -124,12 +125,8 @@ public class ProductDialog2 extends BasePopDialog implements DzNameContract.IVie
 
     @Override
     public void getDataSuccess(BaseEntity<List<DzNameManageBean>> datas) {
-        list = new ArrayList<>();
-        for (int i =0;i<10;i++){
-            DzNameManageBean item = new DzNameManageBean();
-            item.setName("" + i);
-            list.add(item);
-        }
+        if(datas == null || datas.getData() == null)  list = new ArrayList<>();
+        else list = datas.getData();
         mAdapter.setDatas(list);
     }
 

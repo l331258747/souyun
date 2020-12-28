@@ -290,6 +290,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     })
     public void CompanyClick(View v) {
         Intent intent = new Intent(getContext(), CompanyManageActivity.class);
+        intent.putExtra("isItemClick", true);
         /**请选择发货单位*/
         if (v.getId() == R.id.publishCompanyshouhuoIv) {
             intent.putExtra("title", "请选择发货单位");

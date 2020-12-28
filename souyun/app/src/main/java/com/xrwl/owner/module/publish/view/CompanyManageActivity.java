@@ -61,6 +61,8 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
     List<CompanyManageBean> list;
 
+    boolean isItemClick;
+
     @Override
     protected CompanyPresenter initPresenter() {
         return new CompanyPresenter(this);
@@ -73,6 +75,8 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
     @Override
     protected void initViews() {
+        isItemClick = getIntent().getBooleanExtra("isItemClick",false);
+
         tv_add.setOnClickListener(this);
         btn_send.setOnClickListener(this);
         sel_address.setOnClickListener(this);
@@ -152,8 +156,10 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
         mAdapter.setOnItemClickListener(position -> {
 
+            if(!isItemClick) return;
+
             Intent intent = new Intent();
-            intent.putExtra("name", list.get(position).getName());
+            intent.putExtra("name", list.get(position).getDanweidezhi());
             setResult(RESULT_OK, intent);
             finish();
 
@@ -229,12 +235,8 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
     @Override
     public void getDataSuccess(BaseEntity<List<CompanyManageBean>> datas) {
-        list = new ArrayList<>();
-        for (int i =0;i<10;i++){
-            CompanyManageBean item = new CompanyManageBean();
-            item.setName("" + i);
-            list.add(item);
-        }
+        if(datas == null || datas.getData() == null) list = new ArrayList<>();
+        else list = datas.getData();
         mAdapter.setData(list);
     }
 
@@ -267,10 +269,10 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
             final CompanyManageBean data = datas.get(position);
             if (data == null) return;
 
-            holder.tv_name.setText(data.getName());
-            holder.tv_phone.setText(data.getPhone());
-            holder.tv_address.setText(data.getAddress());
-            holder.tv_address_des.setText(data.getAddressDes());
+            holder.tv_name.setText(data.getDanweidezhi());
+            holder.tv_phone.setText(data.getLianxidianhua());
+            holder.tv_address.setText(data.getShengshixina());
+            holder.tv_address_des.setText(data.getXiangxidezhi());
 
             if (mOnItemClickListener != null) {
                 holder.itemView.setOnClickListener(v -> mOnItemClickListener.onClick(position));

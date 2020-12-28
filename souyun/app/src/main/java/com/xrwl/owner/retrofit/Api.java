@@ -466,26 +466,23 @@ public interface Api {
  Observable<BaseEntity<List<CompanyManageBean>>> getCompany(@QueryMap Map<String, String> params);
 
  /** 大宗地址管理-添加 */
- @Multipart
- @POST("Car/dezhiadd")
- Observable<BaseEntity> addCompany(@PartMap Map<String, String> params);
+ @GET("Car/dezhiadd")
+ Observable<BaseEntity> addCompany(@QueryMap Map<String, String> params);
 
  /** 大宗名称管理-列表 */
  @GET("Car/mingchenglist")
  Observable<BaseEntity<List<DzNameManageBean>>> getDzName(@QueryMap Map<String, String> params);
 
  /** 大宗名称管理-添加 */
- @Multipart
- @POST("Car/mingchengadd")
- Observable<BaseEntity> addDzName(@PartMap Map<String, String> params);
+ @GET("Car/mingchengadd")
+ Observable<BaseEntity> addDzName(@QueryMap Map<String, String> params);
 
  /** 大宗车辆管理-列表 */
  @GET("Car/chelianglist")
  Observable<BaseEntity<List<CarManageBean>>> getCar(@QueryMap Map<String, String> params);
 
  /** 大宗车辆管理-添加 */
- @Multipart
- @POST("Car/cheliangadd")
- Observable<BaseEntity> addCar(@PartMap Map<String, String> params);
+ @GET("Car/cheliangadd")
+ Observable<BaseEntity> addCar(@QueryMap Map<String, String> params);
 
 }

@@ -47,8 +47,6 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
     EditText et_car_no;
     @BindView(R.id.et_car_load)
     EditText et_car_load;
-    @BindView(R.id.et_jiashiz)
-    EditText et_jiashiz;
     @BindView(R.id.btn_send)
     TextView btn_send;
     @BindView(R.id.recycler_view)
@@ -95,8 +93,8 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
         recyclerView.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(position -> {
-            mListener.onProductSelect(list.get(position).getName());
-
+            if(mListener == null) return;
+            mListener.onProductSelect(list.get(position).getChezhumingcheng());
             dismiss();
         });
     }
@@ -120,7 +118,6 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
                 params.put("huocheleixing",et_car_type.getText().toString());
                 params.put("chepaihao",et_car_no.getText().toString());
                 params.put("cheliangzaizhong",et_car_load.getText().toString());
-                params.put("jiashizheng",et_jiashiz.getText().toString());
                 mPresenter.addData(params);
 
                 break;
@@ -144,7 +141,6 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
         et_car_type.setText("");
         et_car_no.setText("");
         et_car_load.setText("");
-        et_jiashiz.setText("");
     }
 
     @Override
@@ -154,12 +150,8 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
 
     @Override
     public void getDataSuccess(BaseEntity<List<CarManageBean>> datas) {
-        list = new ArrayList<>();
-        for (int i =0;i<10;i++){
-            CarManageBean item = new CarManageBean();
-            item.setName("" + i);
-            list.add(item);
-        }
+        if(datas == null || datas.getData() == null)  list = new ArrayList<>();
+        else list = datas.getData();
         mAdapter.setData(list);
     }
 
@@ -207,12 +199,11 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
             final CarManageBean data = datas.get(position);
             if (data == null) return;
 
-            holder.tv_name.setText(data.getName());
-            holder.tv_phone.setText(data.getPhone());
-            holder.tv_car_type.setText(data.getCarType());
-            holder.tv_car_no.setText(data.getCarNo());
-            holder.tv_car_load.setText(data.getCarLoad());
-            holder.tv_jiashizheng.setText(data.getJiashizheng());
+            holder.tv_name.setText(data.getChezhumingcheng());
+            holder.tv_phone.setText(data.getChezhudianhua());
+            holder.tv_car_type.setText(data.getHuocheleixing());
+            holder.tv_car_no.setText(data.getGuachepaihao());
+            holder.tv_car_load.setText(data.getCheliangzaizhong());
 
             if (mOnItemClickListener != null) {
                 holder.itemView.setOnClickListener(v -> mOnItemClickListener.onClick(position));
@@ -231,7 +222,7 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tv_name,tv_phone,tv_car_type,tv_car_no,tv_car_load,tv_jiashizheng;
+            TextView tv_name,tv_phone,tv_car_type,tv_car_no,tv_car_load;
             public ViewHolder(View itemView) {
                 super(itemView);
                 tv_name = itemView.findViewById(R.id.tv_name);
@@ -239,7 +230,6 @@ public class CarManageDialog extends BasePopDialog implements View.OnClickListen
                 tv_car_type = itemView.findViewById(R.id.tv_car_type);
                 tv_car_no = itemView.findViewById(R.id.tv_car_no);
                 tv_car_load = itemView.findViewById(R.id.tv_car_load);
-                tv_jiashizheng = itemView.findViewById(R.id.tv_jiashizheng);
             }
         }
 

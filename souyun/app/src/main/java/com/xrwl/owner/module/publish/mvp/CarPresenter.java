@@ -51,6 +51,7 @@ public class CarPresenter extends CarContract.APresenter{
     @Override
     public void addData(Map<String, String> params) {
         params.put("userid", getAccount().getId());
+
         mModel.addData(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
             @Override
             public void onSubscribe(Disposable d) {
