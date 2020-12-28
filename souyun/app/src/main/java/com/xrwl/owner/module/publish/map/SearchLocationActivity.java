@@ -38,6 +38,8 @@ import com.ldw.library.utils.AppUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
+import com.xrwl.owner.module.friend.bean.Friend;
+import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 
 import java.util.List;
@@ -53,6 +55,9 @@ import io.reactivex.disposables.Disposable;
  */
 
 public class SearchLocationActivity extends BaseActivity implements AMapLocationListener {
+
+    public static final int RESULT_FRIEND_START = 444;//发货电话
+
     private int GPS_REQUEST_CODE = 1;
     @BindView(R.id.slMapView)
     MapView mMapView;
@@ -68,11 +73,20 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
     ListView mListView;
     @BindView(R.id.slResultLayout)
     View mResultLayout;
+
+
+    @BindView(R.id.rl_phone)
+    View rl_phone;
+    @BindView(R.id.tv_phone)
+    TextView tv_phone;
+
     private AMap mAmap;
     private SearchLocationAdapter mAdapter;
     private AMapLocationClient mLocationClient;
     private BitmapDescriptor mMarkerIcon;
     private Disposable mDisposable;
+
+    boolean showName;
 
     @Override
     protected BaseMVP.BasePresenter initPresenter() {
@@ -86,6 +100,9 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
 
     @Override
     protected void initViews() {
+        showName = getIntent().getBooleanExtra("showName",false);
+
+        rl_phone.setVisibility(showName?View.VISIBLE:View.GONE);
 
         openGPSSEtting();
 
@@ -187,6 +204,12 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
         mLocationClient.startLocation();
     }
 
+    @OnClick(R.id.tv_phone_search)
+    public void phoneSearch() {
+        Intent intent = new Intent(this, FriendActivity.class);
+        startActivityForResult(intent, RESULT_FRIEND_START);
+    }
+
     @OnClick(R.id.slSearchTv)
     public void startSearch() {
         String keyword = mKeyEt.getText().toString();
@@ -226,6 +249,8 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
                             intent.putExtra("lat", lat);
                             intent.putExtra("city", pi.getCityName());
                             intent.putExtra("pro", pi.getProvinceName());
+                            intent.putExtra("tel", phone);
+                            intent.putExtra("userName", phoneName);
                             setResult(RESULT_OK, intent);
                             finish();
 
@@ -380,5 +405,28 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
         }
     }
 
+    String phone;
+    String phoneName;
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == RESULT_FRIEND_START) {
+            Friend friend = (Friend) data.getSerializableExtra("data");
+            phoneName = friend.getName();
+            phone = friend.getPhone().replace("-", "").replace("+", "").replace(" ", "");
+
+            String str = "";
+            if(!TextUtils.isEmpty(phoneName))
+                str = str + phoneName + " ";
+            if(!TextUtils.isEmpty(phone))
+                str = "tel:" + str +  phone;
+
+            tv_phone.setText(str);
+        }
+    }
 }

@@ -24,6 +24,8 @@ public class Address2Adapter extends CommonAdapter<Address2> {
     @Override
     protected void convert(ViewHolder holder, Address2 address2, int position) {
         holder.setText(R.id.addressItemTv, address2.des);
+        holder.setText(R.id.addressDesTv, address2.getShengshixian());
+        holder.setText(R.id.addressNameTv, address2.getName());
 
         RadioButton rb = holder.getView(R.id.addressRb);
         if (mSelectedPos == position) {

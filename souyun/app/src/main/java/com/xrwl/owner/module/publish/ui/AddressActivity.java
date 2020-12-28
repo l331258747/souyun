@@ -18,8 +18,6 @@ import com.xrwl.owner.module.publish.map.SearchLocationActivity;
 import com.xrwl.owner.module.publish.mvp.AddressContract;
 import com.xrwl.owner.module.publish.mvp.AddressPresenter;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +39,9 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
     private List<Address2> mDatas;
     private HeaderAndFooterWrapper mWrapper;
 
+    boolean isItemClick = true;
+
+
     @Override
     protected AddressPresenter initPresenter() {
         return new AddressPresenter(this);
@@ -53,6 +54,8 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
 
     @Override
     protected void initViews() {
+        isItemClick = getIntent().getBooleanExtra("isItemClick",true);
+
         initBaseRv(mRv);
 
         mAdapter = new Address2Adapter(this, R.layout.address_recycler_item, new ArrayList<Address2>());
@@ -67,6 +70,7 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, SearchLocationActivity.class);
                 intent.putExtra("title", "请选择位置");
+                intent.putExtra("showName", true);
                 startActivityForResult(intent, RESULT_POSITION);
             }
         });
@@ -74,6 +78,8 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                if(!isItemClick) return;
+
                 mAdapter.setSelectedPos(position);
 
                 Address2 item = mDatas.get(position);
@@ -84,6 +90,8 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
                 intent.putExtra("lat", Double.parseDouble(item.lat));
                 intent.putExtra("city", item.city);
                 intent.putExtra("pro", item.province);
+                intent.putExtra("tel", item.tel);
+                intent.putExtra("userName", item.userName);
                 setResult(RESULT_OK, intent);
                 finish();
             }
@@ -115,42 +123,23 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
         String city = data.getStringExtra("city");
         String province = data.getStringExtra("pro");
 
+        String userName = data.getStringExtra("userName");
+        String tel = data.getStringExtra("tel");
+
         double lat = data.getDoubleExtra("lat", 0);
         double lng = data.getDoubleExtra("lon", 0);
 
         HashMap<String, String> params = new HashMap<>();
 
 
-        try {
-            params.put("des",URLEncoder.encode(des,"UTF-8") );
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            params.put("city", URLEncoder.encode(city,"UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            params.put("province",URLEncoder.encode(province,"UTF-8") );
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            params.put("lat", URLEncoder.encode(String.valueOf(lat),"UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            params.put("lng", URLEncoder.encode(String.valueOf(lng),"UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            params.put("userid", URLEncoder.encode(mAccount.getId(),"UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        params.put("userName",userName);
+        params.put("tel",tel);
+        params.put("des",des);
+        params.put("city", des);
+        params.put("province",province);
+        params.put("lat", String.valueOf(lat));
+        params.put("lng", String.valueOf(lng));
+        params.put("userid", mAccount.getId());
 
         mPostDialog = LoadingProgress.showProgress(this, "正在添加");
         mPresenter.postData(params);

@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/base_list_selector"
-    android:padding="@dimen/default_dp10"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
     <RadioButton
         android:id="@+id/addressRb"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/addressItemTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_dp10"
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:textColor="@color/black"
         android:textSize="@dimen/default_font16"
-        android:textColor="@color/black"/>
+        tools:text="地址" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/addressDesTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp10"
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintTop_toBottomOf="@+id/addressItemTv"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_font14"
+        tools:text="省市县" />
+
+    <TextView
+        android:id="@+id/addressNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_dp10"
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintTop_toBottomOf="@+id/addressDesTv"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_font14"
+        tools:text="姓名电话" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/default_dp10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressNameTv"/>
+
+</android.support.constraint.ConstraintLayout>

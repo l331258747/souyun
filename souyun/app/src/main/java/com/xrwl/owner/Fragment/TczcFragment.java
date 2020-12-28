@@ -505,6 +505,14 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             mEndCity = data.getStringExtra("city");
             mEndProvince = data.getStringExtra("pro");
 
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishGetPersonEt.setText(data.getStringExtra("userName"));
+            }
+
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishGetPhoneEt.setText(data.getStringExtra("tel"));
+            }
+
             mPublishBean.endDesc = title;
             requestCityLonLat();
 

@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ldw.library.mvp.BaseMVP;
@@ -59,7 +60,7 @@ public class HomeFragment extends BaseFragment {
 
     Unbinder unbinder;
     @BindView(R.id.wode)
-    ImageView wode;
+    LinearLayout wode;
     @BindView(R.id.sys)
     ImageView sys;
     @BindView(R.id.nav)
@@ -180,7 +181,9 @@ public class HomeFragment extends BaseFragment {
                 startActivity(new Intent(getContext(), OwnerAuthActivity.class));
             }
             if (item.toString().trim().equals("地址管理")) {
-                startActivity(new Intent(getContext(), AddressActivity.class));
+                Intent intent = new Intent(getContext(), AddressActivity.class);
+                intent.putExtra("isItemClick", false);
+                startActivity(intent);
             }
             if (item.toString().trim().equals("发票管理")) {
                 startActivity(new Intent(getContext(), ReceiptActivity.class));

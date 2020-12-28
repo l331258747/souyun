@@ -19,12 +19,25 @@
             android:orientation="horizontal"
             android:paddingVertical="@dimen/default_dp8">
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/wode"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="@dimen/default_dp10"
-                android:src="@drawable/me" />
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_home_more" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/me" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="0dp"
