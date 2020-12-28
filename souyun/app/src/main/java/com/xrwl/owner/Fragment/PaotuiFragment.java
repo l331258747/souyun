@@ -213,6 +213,9 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                     mStartCity = bean.getCity();
                     mStartProvince = bean.getProvince();
 
+                    mDefaultStartLat = bean.getLat();
+                    mDefaultStartLon = bean.getLon();
+
                     mPublishBean.startDesc = bean.getAddress();
                     mPublishBean.startX = bean.getLon() + "";
                     mPublishBean.startY = bean.getLat() + "";
@@ -233,6 +236,9 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                     mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
                     mEndCity = bean.getCity();
                     mEndProvince = bean.getProvince();
+
+                    mDefaultEndLat = bean.getLat();
+                    mDefaultEndLon = bean.getLon();
 
                     mPublishBean.endDesc = bean.getAddress();
                     mPublishBean.endX = bean.getLon() + "";
@@ -386,6 +392,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
             mPhotoScrollView.setActivity(getActivity());
             mPhotoScrollView.setDatas(mImagePaths, selectList);
         }
+
         /**发货定位*/
         else if (requestCode == RESULT_POSITION_START) {
             String title = data.getStringExtra("title");
@@ -393,7 +400,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
-            mPublishBean.longStartCityDes = mStartCity;
+
             mPublishBean.startDesc = title;
             requestCityLonLat();
 
@@ -413,6 +420,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
             mPublishBean.defaultStartLon = mDefaultStartLon;
             mPublishBean.defaultStartLat = mDefaultStartLat;
 
+            mPublishBean.longStartCityDes = mStartCity;
             mPublishBean.longStartProvinceDes = mStartProvince;
             mPublishBean.longStartAreaDes = title;
 
@@ -426,7 +434,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
             mEndCity = data.getStringExtra("city");
             mEndProvince = data.getStringExtra("pro");
-            mPublishBean.longEndCityDes = mEndCity;
+
             mPublishBean.endDesc = title;
             requestCityLonLat();
 
@@ -441,10 +449,15 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
             mDefaultEndLat = data.getDoubleExtra("lat", 0);
             mDefaultEndLon = data.getDoubleExtra("lon", 0);
+
             mPublishBean.defaultEndLon = mDefaultEndLon;
             mPublishBean.defaultEndLat = mDefaultEndLat;
-            mPublishBean.longEndProvinceDes = mEndProvince;
             mPublishBean.defaultEndPosDes = title;
+
+            mPublishBean.longEndProvinceDes = mEndProvince;
+            mPublishBean.longEndCityDes = mEndCity;
+            mPublishBean.longEndAreaDes = title;
+
             checkDefaultLocation();
         }
         /**发货电话*/
@@ -506,7 +519,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
     @Override
     public void onRefreshSuccess(BaseEntity<Distance> entity) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
         d = entity.getData();
 
         mPublishBean.distance = d.distance;
@@ -521,13 +535,15 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
     @Override
     public void onRefreshError(Throwable e) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
         showNetworkError();
     }
 
     @Override
     public void onError(BaseEntity entity) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

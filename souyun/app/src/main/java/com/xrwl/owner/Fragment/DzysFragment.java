@@ -241,6 +241,9 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mStartCity = bean.getCity();
                     mStartProvince = bean.getProvince();
 
+                    mDefaultStartLat = bean.getLat();
+                    mDefaultStartLon = bean.getLon();
+
                     mPublishBean.startDesc = bean.getAddress();
                     mPublishBean.startX = bean.getLon() + "";
                     mPublishBean.startY = bean.getLat() + "";
@@ -261,6 +264,9 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
                     mEndCity = bean.getCity();
                     mEndProvince = bean.getProvince();
+
+                    mDefaultEndLat = bean.getLat();
+                    mDefaultEndLon = bean.getLon();
 
                     mPublishBean.endDesc = bean.getAddress();
                     mPublishBean.endX = bean.getLon() + "";
@@ -443,7 +449,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
-            mPublishBean.longStartCityDes = mStartCity;
+
             mPublishBean.startDesc = title;
             requestCityLonLat();
 
@@ -454,6 +460,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             mPublishBean.defaultStartLon = mDefaultStartLon;
             mPublishBean.defaultStartLat = mDefaultStartLat;
 
+            mPublishBean.longStartCityDes = mStartCity;
             mPublishBean.longStartProvinceDes = mStartProvince;
             mPublishBean.longStartAreaDes = title;
 
@@ -467,16 +474,21 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mEndCity = data.getStringExtra("city");
             mEndProvince = data.getStringExtra("pro");
-            mPublishBean.longEndCityDes = mEndCity;
+
             mPublishBean.endDesc = title;
             requestCityLonLat();
 
             mDefaultEndLat = data.getDoubleExtra("lat", 0);
             mDefaultEndLon = data.getDoubleExtra("lon", 0);
+
             mPublishBean.defaultEndLon = mDefaultEndLon;
             mPublishBean.defaultEndLat = mDefaultEndLat;
-            mPublishBean.longEndProvinceDes = mEndProvince;
             mPublishBean.defaultEndPosDes = title;
+
+            mPublishBean.longEndProvinceDes = mEndProvince;
+            mPublishBean.longEndCityDes = mEndCity;
+            mPublishBean.longEndAreaDes = title;
+
             checkDefaultLocation();
         }
         /**发货电话*/
@@ -548,7 +560,8 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
     @Override
     public void onRefreshSuccess(BaseEntity<Distance> entity) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
         d = entity.getData();
 
         mPublishBean.distance = d.distance;
@@ -563,13 +576,15 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
     @Override
     public void onRefreshError(Throwable e) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
         showNetworkError();
     }
 
     @Override
     public void onError(BaseEntity entity) {
-        mGetDistanceDialog.dismiss();
+        if(mGetDistanceDialog != null && mGetDistanceDialog.isShowing())
+            mGetDistanceDialog.dismiss();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
