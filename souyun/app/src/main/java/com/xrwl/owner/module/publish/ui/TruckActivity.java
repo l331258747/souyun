@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.ldw.library.adapter.recycler.MultiItemTypeAdapter;
@@ -49,12 +50,7 @@ public class TruckActivity extends BaseActivity<TruckContract.IView, TruckPresen
     protected void initViews() {
         initBaseRv(mRv);
 
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getData();
-            }
-        });
+        mRefreshLayout.setOnRefreshListener(() -> getData());
 
         getData();
     }
@@ -63,24 +59,32 @@ public class TruckActivity extends BaseActivity<TruckContract.IView, TruckPresen
     protected void getData() {
         String type = getIntent().getStringExtra("categoty");
         Map<String, String> params = new HashMap<>();
-        if ("0".equals(type)) {
-            params.put("type", "1");
+        if(TextUtils.equals("0",type) || TextUtils.equals("5",type) || TextUtils.equals("7",type)){
+            params.put("type", "2");//同城
+        }else if(TextUtils.equals("1",type) || TextUtils.equals("2",type) || TextUtils.equals("6",type)){
+            params.put("type", "1");//长途
+        }else{
+            params.put("type", "2");//同城
         }
-        else if("5".equals(type))
-        {
-            params.put("type","2");
-        }
-        else if("6".equals(type))
-        {
-            params.put("type","4");
-        }
-        else if("1".equals(type))
-        {
-            params.put("type","1");
-        }
-        else {
-            params.put("type", "2");
-        }
+
+//        if ("0".equals(type)) {
+//            params.put("type", "1");
+//        }
+//        else if("5".equals(type))
+//        {
+//            params.put("type","2");
+//        }
+//        else if("6".equals(type))
+//        {
+//            params.put("type","4");
+//        }
+//        else if("1".equals(type))
+//        {
+//            params.put("type","1");
+//        }
+//        else {
+//            params.put("type", "2");
+//        }
        // mPresenter.getList(params);
 
 

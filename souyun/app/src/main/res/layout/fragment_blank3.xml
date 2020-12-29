@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:didi="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,12 +14,13 @@
         didi:header_init_top="0"
         didi:inn_id="@+id/inner_rv"
         didi:target_id="@+id/target_layout"
-        didi:target_init_bottom="250">
+        didi:target_init_bottom="280">
 
         <com.amap.api.maps.MapView
             android:id="@+id/nlMapView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/default_dp100"/>
 
         <LinearLayout
             android:id="@+id/target_layout"
@@ -39,29 +40,260 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_marginStart="@dimen/default_dp10"
+                    android:text="出发地" />
+
+                <EditText
+                    android:id="@+id/et_chufadi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:background="@null"
+                    android:hint="请输入出发地"
+                    android:textSize="@dimen/sp_14"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10" />
+
+                <TextView
+                    android:id="@+id/bt_chufadi_sousuo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="搜索"
+                    android:background="@drawable/btn_blue_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
+
+                <TextView
+                    android:id="@+id/bt_chufadi_xuanze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择"
+                    android:background="@drawable/btn_red_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp1"
+                android:background="@color/divider_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/default_dp10"
                     android:text="目的地" />
 
                 <EditText
-                    android:id="@+id/et_location"
+                    android:id="@+id/et_mudidi"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/default_dp15"
                     android:background="@null"
                     android:hint="请输入目的地"
+                    android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLines="1"
                     android:paddingStart="@dimen/default_dp10"
                     android:paddingEnd="@dimen/default_dp10" />
 
-                <Button
-                    android:id="@+id/bt_search"
+                <TextView
+                    android:id="@+id/bt_mudidi_sousuo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="搜索"
+                    android:background="@drawable/btn_blue_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
+
+                <TextView
+                    android:id="@+id/bt_mudidi_xuanze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择"
+                    android:background="@drawable/btn_red_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp1"
+                android:background="@color/divider_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:text="车    型" />
+
+                <Spinner
+                    android:id="@+id/sp_chexing"
+                    android:layout_width="120dp"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:textSize="10sp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_chexing"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="请选择车型"
+                    android:layout_marginEnd="@dimen/default_dp10"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/bt_chexing_xuanze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择"
+                    android:background="@drawable/btn_red_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingStart="@dimen/default_dp10"
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp1"
+                android:background="@color/divider_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_dp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:text="货物吨数" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_huowu_dun"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/sp_14"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:lines="1"
+                        android:hint="请输入"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="吨"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/default_dp10"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_huowu_fang"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/sp_14"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:lines="1"
+                        android:hint="请输入"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="方"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_marginStart="@dimen/default_dp10"
                     android:layout_marginEnd="@dimen/default_dp10"
-                    android:text="搜索"/>
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_huowu_jian"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/sp_14"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:lines="1"
+                        android:hint="请输入"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="件"/>
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -144,6 +376,7 @@
                         android:background="@color/colorPrimary"
                         android:orientation="horizontal"
                         android:paddingTop="25dp"
+                        android:visibility="gone"
                         android:paddingBottom="25dp">
 
                         <LinearLayout
@@ -345,4 +578,19 @@
 
     </com.comp.ns.CompNsViewGroup>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/slResultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/slListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

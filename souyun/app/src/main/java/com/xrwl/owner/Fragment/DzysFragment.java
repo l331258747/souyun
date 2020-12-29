@@ -23,6 +23,7 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventFragment;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Distance;
+import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.event.PublishClearCacheEvent;
 import com.xrwl.owner.module.friend.bean.Friend;
@@ -238,6 +239,13 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
                 if (bean != null) {
                     mpublishAddressDefaultStartLocationTv.setText(bean.getAddress());
+                    if(!TextUtils.isEmpty(bean.getName())){
+                        mpublishStartPhonepersonEt.setText(bean.getName());
+                    }
+                    if(!TextUtils.isEmpty(bean.getTel())){
+                        mpublishStartPhoneEt.setText(bean.getTel());
+                    }
+
                     mStartCity = bean.getCity();
                     mStartProvince = bean.getProvince();
 
@@ -262,6 +270,13 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 MarkerBean bean = ((TabActivity) getActivity()).getDestination();
                 if (bean != null) {
                     mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
+                    if(!TextUtils.isEmpty(bean.getName())){
+                        mpublishGetPersonEt.setText(bean.getName());
+                    }
+                    if(!TextUtils.isEmpty(bean.getTel())){
+                        mpublishGetPhoneEt.setText(bean.getTel());
+                    }
+
                     mEndCity = bean.getCity();
                     mEndProvince = bean.getProvince();
 
@@ -280,6 +295,27 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mPublishBean.longEndAreaDes = bean.getAddress();
 
                     checkDefaultLocation();
+                }
+            }
+            //吨
+            if (TextUtils.isEmpty(mppDefaultWeightEt.getText().toString())) {
+                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                if (bean != null) {
+                    mppDefaultWeightEt.setText(bean.getDun());
+                }
+            }
+            //方
+            if (TextUtils.isEmpty(mppDefaultAreaEt.getText().toString())) {
+                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                if (bean != null) {
+                    mppDefaultAreaEt.setText(bean.getFang());
+                }
+            }
+            //件
+            if (TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString())) {
+                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                if (bean != null) {
+                    mjianDefaultWeightEt.setText(bean.getJian());
                 }
             }
         }

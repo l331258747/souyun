@@ -210,6 +210,13 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                 MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
                 if (bean != null) {
                     mpublishAddressDefaultStartLocationTv.setText(bean.getAddress());
+                    if(!TextUtils.isEmpty(bean.getName())){
+                        mpublishStartPhonepersonEt.setText(bean.getName());
+                    }
+                    if(!TextUtils.isEmpty(bean.getTel())){
+                        mpublishStartPhoneEt.setText(bean.getTel());
+                    }
+
                     mStartCity = bean.getCity();
                     mStartProvince = bean.getProvince();
 
@@ -234,6 +241,13 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                 MarkerBean bean = ((TabActivity) getActivity()).getDestination();
                 if (bean != null) {
                     mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
+                    if(!TextUtils.isEmpty(bean.getName())){
+                        mpublishGetPersonEt.setText(bean.getName());
+                    }
+                    if(!TextUtils.isEmpty(bean.getTel())){
+                        mpublishGetPhoneEt.setText(bean.getTel());
+                    }
+
                     mEndCity = bean.getCity();
                     mEndProvince = bean.getProvince();
 

@@ -30,6 +30,8 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Cljbxx;
+import com.xrwl.owner.bean.HomeChexingBean;
+import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.bean.Tab;
 import com.xrwl.owner.event.BusinessTabCountEvent;
@@ -73,18 +75,45 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 
     public MarkerBean myLocation;//出发地
     public MarkerBean destination;//目的地
+    public HomeChexingBean chexing;
+    public HomeHuowuBean huowu;
+
+    public HomeChexingBean getChexing() {
+        return chexing;
+    }
+
+    public void setChexing(HomeChexingBean chexing) {
+        this.chexing = chexing;
+    }
+
+    public HomeHuowuBean getHuowu() {
+        return huowu;
+    }
+
+    public void setHuowu(HomeHuowuBean huowu) {
+        this.huowu = huowu;
+    }
 
     public MarkerBean getMyLocation() {
         return myLocation;
     }
 
-    public MarkerBean getDestination() {
-        return destination;
+    public void setMyLocation(MarkerBean myLocation) {
+        setMyLocation(myLocation,false);
     }
 
-    public void setMyLocation(MarkerBean myLocation) {
-        if(this.myLocation == null)
+    //isAdd 强行添加数据
+    public void setMyLocation(MarkerBean myLocation,boolean isAdd) {
+        if(isAdd){
             this.myLocation = myLocation;
+        }else{
+            if(this.myLocation == null)
+                this.myLocation = myLocation;
+        }
+    }
+
+    public MarkerBean getDestination() {
+        return destination;
     }
 
     public void setDestination(MarkerBean destination) {
@@ -375,23 +404,16 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
             new AlertDialog.Builder(this).setTitle("请打开定位权限")
                     .setMessage("打开位置信息")
                     //  取消选项
-                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(TabActivity.this, "close", Toast.LENGTH_SHORT).show();
-                            // 关闭dialog
-                            dialogInterface.dismiss();
-                        }
+                    .setNegativeButton("取消", (dialogInterface, i) -> {
+                        Toast.makeText(TabActivity.this, "close", Toast.LENGTH_SHORT).show();
+                        // 关闭dialog
+                        dialogInterface.dismiss();
                     })
                     //  确认选项
-                    .setPositiveButton("设置", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            //跳转到手机原生设置页面
-                            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivityForResult(intent, GPS_REQUEST_CODE);
-                        }
+                    .setPositiveButton("设置", (dialogInterface, i) -> {
+                        //跳转到手机原生设置页面
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(intent, GPS_REQUEST_CODE);
                     })
                     .setCancelable(false)
                     .show();

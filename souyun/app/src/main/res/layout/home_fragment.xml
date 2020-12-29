@@ -75,7 +75,7 @@
 
         <ImageView
             android:id="@+id/wode2"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:paddingTop="@dimen/default_dp10"
             android:paddingBottom="@dimen/default_dp10"

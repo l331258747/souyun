@@ -1,5 +1,6 @@
 package com.xrwl.owner.Fragment;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +10,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -29,15 +37,17 @@ import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.blankj.utilcode.util.ToastUtils;
 import com.flyco.tablayout.SlidingTabLayout;
-import com.xrwl.owner.Fragment.dialog.MarkerDialog;
+import com.ldw.library.utils.AppUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
+import com.xrwl.owner.bean.HomeChexingBean;
+import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
@@ -46,7 +56,12 @@ import com.xrwl.owner.module.home.ui.HongbaolistActivity;
 import com.xrwl.owner.module.home.ui.OnRedPacketDialogClickListener;
 import com.xrwl.owner.module.home.ui.RedPacketEntity;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
+import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
+import com.xrwl.owner.module.publish.bean.Truck;
+import com.xrwl.owner.module.publish.ui.AddressActivity;
+import com.xrwl.owner.module.publish.ui.TruckActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
+import com.xrwl.owner.utils.MyTextWatcher;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -56,7 +71,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,6 +83,9 @@ import io.reactivex.disposables.Disposable;
  */
 public class BlankFragment extends Fragment implements LocationSource, AMapLocationListener {
 
+    public static final int RESULT_TRUCK = 111;//已选车型
+    public static final int RESULT_POSITION_START = 222;//发货定位
+    public static final int RESULT_POSITION_END = 333;//到货定位
 
     private Account mAccount;
     private Disposable mDisposable;
@@ -90,13 +111,52 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     private Context context;
     @BindView(R.id.nlMapView)
     MapView mMapView;
-    @BindView(R.id.bt_search)
-    Button bt_search;
-    @BindView(R.id.et_location)
-    EditText et_location;
+
+    //出发地
+    @BindView(R.id.et_chufadi)
+    EditText et_chufadi;
+    @BindView(R.id.bt_chufadi_sousuo)
+    TextView bt_chufadi_sousuo;
+    @BindView(R.id.bt_chufadi_xuanze)
+    TextView bt_chufadi_xuanze;
+    //目的地
+    @BindView(R.id.et_mudidi)
+    EditText et_mudidi;
+    @BindView(R.id.bt_mudidi_sousuo)
+    TextView bt_mudidi_sousuo;
+    @BindView(R.id.bt_mudidi_xuanze)
+    TextView bt_mudidi_xuanze;
+    //货物吨数
+    @BindView(R.id.et_huowu_dun)
+    EditText et_huowu_dun;
+    @BindView(R.id.et_huowu_fang)
+    EditText et_huowu_fang;
+    @BindView(R.id.et_huowu_jian)
+    EditText et_huowu_jian;
+    //车型
+    @BindView(R.id.sp_chexing)
+    Spinner sp_chexing;
+    @BindView(R.id.tv_chexing)
+    TextView tv_chexing;
+    @BindView(R.id.bt_chexing_xuanze)
+    TextView bt_chexing_xuanze;
+    //选择
+    @BindView(R.id.slResultLayout)
+    RelativeLayout mResultLayout;
+    @BindView(R.id.slListView)
+    ListView mListView;
+
+    private SearchLocationAdapter mAdapter;
+    private SearchLocationAdapter mAdapter2;
+    String city = "";
+    boolean locationFirst;
+    MarkerBean locationBean;//出发地
+    MarkerBean destinationBean;//目的地
+    HomeChexingBean chexingBean;
+    HomeHuowuBean huowuBean;
+    int chexingType = 0;
+
     private AMap aMap;
-
-
     LocationSource.OnLocationChangedListener mListener;
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;
@@ -163,7 +223,98 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
         }
 
+    }
 
+    private void initView() {
+        sp_chexing.setAdapter(new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item, android.R.id.text1,
+                new String[]{ "同城车型","长途车型"}));
+        sp_chexing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                chexingType = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        et_huowu_dun.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!TextUtils.isEmpty(s.toString())){
+                    if(huowuBean == null){
+                        huowuBean = new HomeHuowuBean();
+                    }
+                    huowuBean.setDun(s.toString());
+                    ((TabActivity)getActivity()).setHuowu(huowuBean);
+                }
+            }
+        });
+
+        et_huowu_fang.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(huowuBean == null){
+                    huowuBean = new HomeHuowuBean();
+                }
+                huowuBean.setFang(s.toString());
+                ((TabActivity)getActivity()).setHuowu(huowuBean);
+            }
+        });
+
+        et_huowu_jian.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(huowuBean == null){
+                    huowuBean = new HomeHuowuBean();
+                }
+                huowuBean.setJian(s.toString());
+                ((TabActivity)getActivity()).setHuowu(huowuBean);
+            }
+        });
+
+        quanxian();
+    }
+
+    boolean goPermission;
+    public void quanxian(){
+        RxPermissions rxPermissions = new RxPermissions(getActivity());
+        rxPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION).subscribe
+                (new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mDisposable = d;
+                    }
+
+                    @Override
+                    public void onNext(Boolean granted) {
+                        if (granted) {
+                            initMap();
+                        } else {
+                            new AlertDialog.Builder(getContext())
+                                    .setMessage("本页面需要您授权位置权限，否则将无法使用该模块的功能，是否授权？")
+                                    .setNegativeButton("取消", (dialog, which) -> {
+
+                                    })
+                                    .setPositiveButton("授权定位", (dialog, which) -> {
+                                        AppUtils.toSelfSetting(getContext());
+                                        goPermission = true;
+                                    }).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
@@ -181,8 +332,23 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         //
         if (aMap == null) {
             aMap = mMapView.getMap();
-
         }
+
+//        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
+//            @Override
+//            public void onMyLocationChange(Location location) {
+//                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
+//                Log.e("Msg", "location：" + location.getExtras().toString());
+//            }
+//        });
+
+        initView();
+
+        return inflate;
+    }
+
+    private void initMap() {
+
         //设置地图的放缩级别
         aMap.moveCamera(CameraUpdateFactory.zoomTo(12));
         // 设置定位监听
@@ -191,7 +357,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         aMap.setMyLocationEnabled(true);
         // 设置定位的类型为定位模式，有定位、跟随或地图根据面向方向旋转几种
         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
-
 
         //蓝点初始化
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
@@ -203,15 +368,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
         myLocationStyle.showMyLocation(true);
 
-//        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
-//            @Override
-//            public void onMyLocationChange(Location location) {
-//                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
-//                Log.e("Msg", "location：" + location.getExtras().toString());
-//            }
-//        });
-
-        return inflate;
     }
 
     public void showRedPacketDialog(RedPacketEntity entity) {
@@ -316,6 +472,22 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         super.onResume();
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mMapView.onResume();
+
+        //返回键监听
+        getView().setOnKeyListener((view, i, keyEvent) -> {
+            if(keyEvent.getAction() == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_BACK){
+                if(mResultLayout.getVisibility() == View.VISIBLE){
+                    mResultLayout.setVisibility(View.GONE);
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        if(goPermission){
+            quanxian();
+            goPermission = false;
+        }
     }
 
     @Override
@@ -374,7 +546,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         mlocationClient = null;
     }
 
-    MarkerBean locationBean;
     //定位回调  在回调方法中调用“mListener.onLocationChanged(amapLocation);”可以在地图上显示系统小蓝点。
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
@@ -393,6 +564,12 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
                 ((TabActivity)getActivity()).setMyLocation(locationBean);
 
+                if(TextUtils.isEmpty(et_chufadi.getText().toString()) && !locationFirst){
+                    et_chufadi.setText(aMapLocation.getAddress());
+                    city = aMapLocation.getCity();
+                    locationFirst = false;
+                }
+
             } else {
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
                 Log.e("定位AmapErr", errText);
@@ -400,35 +577,100 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
-
-    MarkerBean destinationBean;
-
-    @OnClick({R.id.bt_search})
+    @OnClick({R.id.bt_chufadi_sousuo,R.id.bt_mudidi_sousuo,
+            R.id.bt_chufadi_xuanze,R.id.bt_mudidi_xuanze,
+            R.id.bt_chexing_xuanze})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.bt_search:
-                if(TextUtils.isEmpty(et_location.getText().toString())){
-                    ToastUtils.showShort("请输入目的地");
+            case R.id.bt_chufadi_sousuo:
+                String chufadi = et_chufadi.getText().toString();
+                if (TextUtils.isEmpty(chufadi)) {
+                    ToastUtils.showShort("请输入出发地");
                     return;
                 }
-                PoiSearch.Query query = new PoiSearch.Query(et_location.getText().toString(), "");
-//                query.setPageSize(10);//设置每页最多返回多少条poiitem
-//                query.setPageNum(0);//设置查第一页
-                //query.setCityLimit(true);
+
+                PoiSearch.Query query = new PoiSearch.Query(chufadi, "", city);
+                query.setPageSize(10);//设置每页最多返回多少条poiitem
+                query.setPageNum(0);//设置查第一页
                 PoiSearch poiSearch = new PoiSearch(getContext(), query);
                 poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
                     @Override
                     public void onPoiSearched(PoiResult poiResult, int i) {
                         List<PoiItem> datas = poiResult.getPois();
-                        if(datas.size() > 0){
-                            new MarkerDialog(getContext(),datas).setOnItemClickListener(position -> {
 
-                                aMap.clear();
-
-                                PoiItem pi = datas.get(position);
+                        if (mAdapter == null) {
+                            mAdapter = new SearchLocationAdapter(getContext(), R.layout.searchlocation_listview_item, datas);
+                            mAdapter.setOnPoiItemClickListener(pi -> {
                                 double lat = pi.getLatLonPoint().getLatitude();
                                 double lon = pi.getLatLonPoint().getLongitude();
+
+                                if(locationBean == null){
+                                    locationBean = new MarkerBean();
+                                }
+                                locationBean.setCity(pi.getCityName());
+                                locationBean.setProvince(pi.getProvinceName());
+                                locationBean.setAddress(pi.getTitle());
+                                locationBean.setLat(pi.getLatLonPoint().getLatitude());
+                                locationBean.setLon(pi.getLatLonPoint().getLongitude());
+                                locationBean.setName("");
+                                locationBean.setTel("");
+
+                                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+
+                                et_chufadi.setText(pi.getTitle());
+
+                                aMap.clear();
                                 aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+                                aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lon)));
+
+                                mResultLayout.setVisibility(View.GONE);
+
+                            });
+                        }
+
+                        mListView.setAdapter(mAdapter);
+                        if(datas !=null && datas.size() > 0){
+
+                            //返回键监听
+                            getView().setFocusableInTouchMode(true);
+                            getView().requestFocus();
+
+                            mResultLayout.setVisibility(View.VISIBLE);
+                            mAdapter.setDatas(datas);
+                        }else{
+                            ToastUtils.showShort("未搜索出目的地");
+                        }
+                    }
+
+                    @Override
+                    public void onPoiItemSearched(PoiItem poiItem, int i) {
+
+                    }
+                });
+                poiSearch.searchPOIAsyn();// 异步搜索
+
+                break;
+            case R.id.bt_mudidi_sousuo:
+                String mudidi = et_mudidi.getText().toString();
+                if (TextUtils.isEmpty(mudidi)) {
+                    ToastUtils.showShort("请输入目的地");
+                    return;
+                }
+
+                PoiSearch.Query query2 = new PoiSearch.Query(mudidi, "", city);
+                query2.setPageSize(10);//设置每页最多返回多少条poiitem
+                query2.setPageNum(0);//设置查第一页
+                PoiSearch poiSearch2 = new PoiSearch(getContext(), query2);
+                poiSearch2.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+                    @Override
+                    public void onPoiSearched(PoiResult poiResult, int i) {
+                        List<PoiItem> datas = poiResult.getPois();
+
+                        if (mAdapter2 == null) {
+                            mAdapter2 = new SearchLocationAdapter(getContext(), R.layout.searchlocation_listview_item, datas);
+                            mAdapter2.setOnPoiItemClickListener(pi -> {
+                                double lat = pi.getLatLonPoint().getLatitude();
+                                double lon = pi.getLatLonPoint().getLongitude();
 
                                 if(destinationBean == null){
                                     destinationBean = new MarkerBean();
@@ -438,34 +680,135 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 destinationBean.setAddress(pi.getTitle());
                                 destinationBean.setLat(pi.getLatLonPoint().getLatitude());
                                 destinationBean.setLon(pi.getLatLonPoint().getLongitude());
+                                destinationBean.setName("");
+                                destinationBean.setTel("");
 
                                 ((TabActivity)getActivity()).setDestination(destinationBean);
-                                et_location.setText(pi.getTitle());
-                                et_location.setSelection(et_location.getText().toString().length());
 
+                                et_mudidi.setText(pi.getTitle());
+
+                                aMap.clear();
+                                aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
                                 aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lon)));
 
-                            }).show();
+                                mResultLayout.setVisibility(View.GONE);
+
+                            });
+                        }
+
+                        mListView.setAdapter(mAdapter2);
+                        if(datas !=null && datas.size() > 0){
+
+                            //返回键监听
+                            getView().setFocusableInTouchMode(true);
+                            getView().requestFocus();
+
+                            mResultLayout.setVisibility(View.VISIBLE);
+                            mAdapter2.setDatas(datas);
                         }else{
                             ToastUtils.showShort("未搜索出目的地");
-                            return;
                         }
                     }
 
                     @Override
                     public void onPoiItemSearched(PoiItem poiItem, int i) {
+
                     }
                 });
-                if (mCurrentLocation != null) {
-                    LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-                    poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
+                poiSearch2.searchPOIAsyn();// 异步搜索
+                break;
+            case R.id.bt_chufadi_xuanze:
+                startActivityForResult(new Intent(getContext(), AddressActivity.class), RESULT_POSITION_START);
+                break;
+            case R.id.bt_mudidi_xuanze:
+                startActivityForResult(new Intent(getContext(), AddressActivity.class), RESULT_POSITION_END);
+                break;
+            case R.id.bt_chexing_xuanze:
+                Intent intent = new Intent(getContext(), TruckActivity.class);
+                if(chexingType == 0){//同城车型
+                    intent.putExtra("categoty", "5");
+                }else if(chexingType == 1){//长途车型
+                    intent.putExtra("categoty", "1");
                 }
-                poiSearch.searchPOIAsyn();// 异步搜索
-
-
+                intent.putExtra("title", chexingType == 0?"同城车型":"长途车型");
+                startActivityForResult(intent, RESULT_TRUCK);
                 break;
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        if (requestCode == RESULT_POSITION_START) {
 
+            String title = data.getStringExtra("title");
+            String city = data.getStringExtra("city");
+            String province = data.getStringExtra("pro");
+            double lat = data.getDoubleExtra("lat", 0);
+            double lon = data.getDoubleExtra("lon", 0);
+            String userName = data.getStringExtra("userName");
+            String tel = data.getStringExtra("tel");
+
+            if(locationBean == null){
+                locationBean = new MarkerBean();
+            }
+            locationBean.setCity(city);
+            locationBean.setProvince(province);
+            locationBean.setAddress(title);
+            locationBean.setLat(lat);
+            locationBean.setLon(lon);
+            locationBean.setName(userName);
+            locationBean.setTel(tel);
+
+            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+
+            et_chufadi.setText(title);
+
+        } else if (requestCode == RESULT_POSITION_END) {
+
+            String title = data.getStringExtra("title");
+            String city = data.getStringExtra("city");
+            String province = data.getStringExtra("pro");
+            double lat = data.getDoubleExtra("lat", 0);
+            double lon = data.getDoubleExtra("lon", 0);
+            String userName = data.getStringExtra("userName");
+            String tel = data.getStringExtra("tel");
+
+            if(destinationBean == null){
+                destinationBean = new MarkerBean();
+            }
+            destinationBean.setCity(city);
+            destinationBean.setProvince(province);
+            destinationBean.setAddress(title);
+            destinationBean.setLat(lat);
+            destinationBean.setLon(lon);
+            destinationBean.setName(userName);
+            destinationBean.setTel(tel);
+
+            ((TabActivity)getActivity()).setDestination(locationBean);
+
+            et_mudidi.setText(title);
+
+        }
+        /**已选车型*/
+        else if (requestCode == RESULT_TRUCK) {
+            Truck truck = (Truck) data.getSerializableExtra("data");
+
+            if(chexingBean == null){
+                chexingBean = new HomeChexingBean();
+            }
+
+            chexingBean.setChexing(truck.getTitle());
+            chexingBean.setTruck(truck);
+            chexingBean.setChexingType(chexingType);
+
+            ((TabActivity)getActivity()).setChexing(chexingBean);
+
+            tv_chexing.setText(truck.getTitle());
+
+        }
+    }
 }

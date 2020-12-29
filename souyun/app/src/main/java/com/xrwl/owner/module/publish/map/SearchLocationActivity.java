@@ -12,7 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +32,7 @@ import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.blankj.utilcode.util.ToastUtils;
 import com.ldw.library.mvp.BaseMVP;
 import com.ldw.library.utils.AppUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -79,6 +79,8 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
     View rl_phone;
     @BindView(R.id.tv_phone)
     TextView tv_phone;
+    @BindView(R.id.tv_send)
+    TextView tv_send;
 
     private AMap mAmap;
     private SearchLocationAdapter mAdapter;
@@ -87,6 +89,8 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
     private Disposable mDisposable;
 
     boolean showName;
+
+    public PoiItem mPoiItem;
 
     @Override
     protected BaseMVP.BasePresenter initPresenter() {
@@ -103,6 +107,7 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
         showName = getIntent().getBooleanExtra("showName",false);
 
         rl_phone.setVisibility(showName?View.VISIBLE:View.GONE);
+        tv_send.setVisibility(showName?View.VISIBLE:View.GONE);
 
         openGPSSEtting();
 
@@ -110,20 +115,17 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
         mMarkerIcon = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R
                 .drawable.poi_marker_pressed));
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                PoiItem pi = mAdapter.getItem(position);
-                LatLng ll = new LatLng(pi.getLatLonPoint().getLatitude(), pi.getLatLonPoint().getLongitude());
-                //设置缩放级别
-                mAmap.animateCamera(CameraUpdateFactory.zoomTo(mAmap.getMaxZoomLevel() - 3));
-                //将地图移动到定位点
-                mAmap.animateCamera(CameraUpdateFactory.changeLatLng(ll));
+        mListView.setOnItemClickListener((parent, view, position, id) -> {
+            PoiItem pi = mAdapter.getItem(position);
+            LatLng ll = new LatLng(pi.getLatLonPoint().getLatitude(), pi.getLatLonPoint().getLongitude());
+            //设置缩放级别
+            mAmap.animateCamera(CameraUpdateFactory.zoomTo(mAmap.getMaxZoomLevel() - 3));
+            //将地图移动到定位点
+            mAmap.animateCamera(CameraUpdateFactory.changeLatLng(ll));
 
-                mAmap.clear();
+            mAmap.clear();
 
-                mAmap.addMarker(new MarkerOptions().icon(mMarkerIcon).position(ll));
-            }
+            mAmap.addMarker(new MarkerOptions().icon(mMarkerIcon).position(ll));
         });
     }
 
@@ -150,18 +152,8 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
                         } else {
                             new AlertDialog.Builder(mContext)
                                     .setMessage("本页面需要您授权位置权限，否则将无法使用该模块的功能，是否授权？")
-                                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            finish();
-                                        }
-                                    })
-                                    .setPositiveButton("授权定位", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            AppUtils.toSelfSetting(mContext);
-                                        }
-                                    }).show();
+                                    .setNegativeButton("取消", (dialog, which) -> finish())
+                                    .setPositiveButton("授权定位", (dialog, which) -> AppUtils.toSelfSetting(mContext)).show();
                         }
                     }
 
@@ -210,6 +202,30 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
         startActivityForResult(intent, RESULT_FRIEND_START);
     }
 
+    @OnClick(R.id.tv_send)
+    public void send(){
+
+        if(mPoiItem == null){
+            ToastUtils.showShort("请选择定位");
+            return;
+        }
+
+        double lat = mPoiItem.getLatLonPoint().getLatitude();
+        double lon = mPoiItem.getLatLonPoint().getLongitude();
+
+//                            LatLng ll = new LatLng(lat, lon);
+        Intent intent = new Intent();
+        intent.putExtra("title", mPoiItem.getTitle());
+        intent.putExtra("lon", lon);
+        intent.putExtra("lat", lat);
+        intent.putExtra("city", mPoiItem.getCityName());
+        intent.putExtra("pro", mPoiItem.getProvinceName());
+        intent.putExtra("tel", phone);
+        intent.putExtra("userName", phoneName);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
     @OnClick(R.id.slSearchTv)
     public void startSearch() {
         String keyword = mKeyEt.getText().toString();
@@ -229,6 +245,7 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
 //        query.setCityLimit(true);
         PoiSearch poiSearch = new PoiSearch(this, query);
         poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+
             @Override
             public void onPoiSearched(PoiResult poiResult, int i) {
                 List<PoiItem> datas = poiResult.getPois();
@@ -236,35 +253,31 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
 
                 if (mAdapter == null) {
                     mAdapter = new SearchLocationAdapter(mContext, R.layout.searchlocation_listview_item, datas);
-                    mAdapter.setOnPoiItemClickListener(new SearchLocationAdapter.OnPoiItemClickListener() {
-                        @Override
-                        public void poiItemClick(PoiItem pi) {
+                    mAdapter.setOnPoiItemClickListener(pi -> {
+                        if(showName){
+                            mPoiItem = pi;
+
+                            mKeyEt.setText(pi.getTitle());
+
+                        }else{
                             double lat = pi.getLatLonPoint().getLatitude();
                             double lon = pi.getLatLonPoint().getLongitude();
 
-//                            LatLng ll = new LatLng(lat, lon);
                             Intent intent = new Intent();
                             intent.putExtra("title", pi.getTitle());
                             intent.putExtra("lon", lon);
                             intent.putExtra("lat", lat);
                             intent.putExtra("city", pi.getCityName());
                             intent.putExtra("pro", pi.getProvinceName());
-                            intent.putExtra("tel", phone);
-                            intent.putExtra("userName", phoneName);
                             setResult(RESULT_OK, intent);
                             finish();
-
-//                            //设置缩放级别
-//                            mAmap.animateCamera(CameraUpdateFactory.zoomTo(mAmap.getMaxZoomLevel() - 3));
-//                            //将地图移动到定位点
-//                            mAmap.animateCamera(CameraUpdateFactory.changeLatLng(ll));
                         }
                     });
-                    mListView.setAdapter(mAdapter);
-                    mResultLayout.setVisibility(View.VISIBLE);
-                } else {
-                    mAdapter.setDatas(datas);
                 }
+
+                mListView.setAdapter(mAdapter);
+                mResultLayout.setVisibility(View.VISIBLE);
+                mAdapter.setDatas(datas);
             }
 
             @Override

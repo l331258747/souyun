@@ -123,12 +123,34 @@
                 android:gravity="center_vertical"
                 android:hint="请选择关联客户"
                 android:paddingStart="@dimen/default_dp10"
+                android:layout_marginEnd="@dimen/default_dp6"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_send"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/default_dp40"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/btn_blue_r10"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/default_dp10"
+        android:layout_marginStart="@dimen/default_dp10"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:paddingEnd="@dimen/default_dp12"
+        android:paddingStart="@dimen/default_dp12"
+        android:layout_below="@+id/rl_phone"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:text="发送"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_font12"
+        android:focusable="true"/>
 
     <RelativeLayout
         android:id="@+id/slResultLayout"

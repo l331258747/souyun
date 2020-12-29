@@ -103,7 +103,6 @@ public class HomeFragment extends BaseFragment {
         //关联到一起
         showView();
 
-
     }
 
 
@@ -216,13 +215,9 @@ public class HomeFragment extends BaseFragment {
         });
 
 
-        viewpager.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // TODO Auto-generated method stub
-                return true;
-            }
+        viewpager.setOnTouchListener((v, event) -> {
+            // TODO Auto-generated method stub
+            return true;
         });
         return rootView;
     }
