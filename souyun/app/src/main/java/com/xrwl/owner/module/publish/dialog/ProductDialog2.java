@@ -18,6 +18,8 @@ import com.xrwl.owner.module.publish.bean.DzNameManageBean;
 import com.xrwl.owner.module.publish.mvp.DzNameContract;
 import com.xrwl.owner.module.publish.mvp.DzNamePresenter;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -142,7 +144,11 @@ public class ProductDialog2 extends BasePopDialog implements DzNameContract.IVie
 
         @Override
         protected void convert(ViewHolder holder, DzNameManageBean product, int position) {
-            holder.setText(R.id.pdItemTitleTv, product.getName());
+            try {
+                holder.setText(R.id.pdItemTitleTv, URLDecoder.decode(product.getName(), "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
     }
 
