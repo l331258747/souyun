@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,24 +44,24 @@ import com.ldw.library.utils.AppUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
+import com.xrwl.owner.bean.CompanyFahuoBean;
+import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
-import com.xrwl.owner.module.home.ui.HongbaolistActivity;
-import com.xrwl.owner.module.home.ui.OnRedPacketDialogClickListener;
-import com.xrwl.owner.module.home.ui.RedPacketEntity;
+import com.xrwl.owner.module.home.ui.HomeFragment;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
+import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.MyTextWatcher;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,6 +84,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     public static final int RESULT_TRUCK = 111;//已选车型
     public static final int RESULT_POSITION_START = 222;//发货定位
     public static final int RESULT_POSITION_END = 333;//到货定位
+    public static final int RESULT_CONPANY_START = 666;//发货单位
+    public static final int RESULT_CONPANY_END = 777;//收货单位
 
     private Account mAccount;
     private Disposable mDisposable;
@@ -119,6 +119,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView bt_chufadi_sousuo;
     @BindView(R.id.bt_chufadi_xuanze)
     TextView bt_chufadi_xuanze;
+    @BindView(R.id.et_fahuoren)
+    EditText et_fahuoren;
+    @BindView(R.id.et_fahuotel)
+    EditText et_fahuotel;
     //目的地
     @BindView(R.id.et_mudidi)
     EditText et_mudidi;
@@ -126,6 +130,20 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView bt_mudidi_sousuo;
     @BindView(R.id.bt_mudidi_xuanze)
     TextView bt_mudidi_xuanze;
+    @BindView(R.id.et_shouhuoren)
+    EditText et_shouhuoren;
+    @BindView(R.id.et_shouhuotel)
+    EditText et_shouhuotel;
+    //发货单位
+    @BindView(R.id.et_fahuodanwei)
+    EditText et_fahuodanwei;
+    @BindView(R.id.bt_fahuodanwei_xuanze)
+    TextView bt_fahuodanwei_xuanze;
+    //收货单位
+    @BindView(R.id.et_shouhuodanwei)
+    EditText et_shouhuodanwei;
+    @BindView(R.id.bt_shouhuodanwei_xuanze)
+    TextView bt_shouhuodanwei_xuanze;
     //货物吨数
     @BindView(R.id.et_huowu_dun)
     EditText et_huowu_dun;
@@ -140,6 +158,19 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView tv_chexing;
     @BindView(R.id.bt_chexing_xuanze)
     TextView bt_chexing_xuanze;
+    //tab
+    @BindView(R.id.tv_dzys)
+    TextView tv_dzys;
+    @BindView(R.id.tv_ctld)
+    TextView tv_ctld;
+    @BindView(R.id.tv_ctzc)
+    TextView tv_ctzc;
+    @BindView(R.id.tv_tczc)
+    TextView tv_tczc;
+    @BindView(R.id.tv_tcld)
+    TextView tv_tcld;
+    @BindView(R.id.tv_pt)
+    TextView tv_pt;
     //选择
     @BindView(R.id.slResultLayout)
     RelativeLayout mResultLayout;
@@ -150,10 +181,12 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     private SearchLocationAdapter mAdapter2;
     String city = "";
     boolean locationFirst;
-    MarkerBean locationBean;//出发地
-    MarkerBean destinationBean;//目的地
-    HomeChexingBean chexingBean;
-    HomeHuowuBean huowuBean;
+    MarkerBean locationBean = new MarkerBean();//出发地
+    MarkerBean destinationBean = new MarkerBean();//目的地
+    CompanyFahuoBean fahuodanweiBean = new CompanyFahuoBean();
+    CompanyShouhuoBean shouhuodanweiBean = new CompanyShouhuoBean();
+    HomeChexingBean chexingBean = new HomeChexingBean();
+    HomeHuowuBean huowuBean = new HomeHuowuBean();
     int chexingType = 0;
 
     private AMap aMap;
@@ -244,9 +277,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void afterTextChanged(Editable s) {
                 if(!TextUtils.isEmpty(s.toString())){
-                    if(huowuBean == null){
-                        huowuBean = new HomeHuowuBean();
-                    }
                     huowuBean.setDun(s.toString());
                     ((TabActivity)getActivity()).setHuowu(huowuBean);
                 }
@@ -256,9 +286,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         et_huowu_fang.addTextChangedListener(new MyTextWatcher(){
             @Override
             public void afterTextChanged(Editable s) {
-                if(huowuBean == null){
-                    huowuBean = new HomeHuowuBean();
-                }
                 huowuBean.setFang(s.toString());
                 ((TabActivity)getActivity()).setHuowu(huowuBean);
             }
@@ -267,11 +294,53 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         et_huowu_jian.addTextChangedListener(new MyTextWatcher(){
             @Override
             public void afterTextChanged(Editable s) {
-                if(huowuBean == null){
-                    huowuBean = new HomeHuowuBean();
-                }
                 huowuBean.setJian(s.toString());
                 ((TabActivity)getActivity()).setHuowu(huowuBean);
+            }
+        });
+
+        et_fahuoren.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                locationBean.setName(s.toString());
+                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+            }
+        });
+        et_fahuotel.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                locationBean.setTel(s.toString());
+                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+            }
+        });
+
+        et_shouhuoren.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                destinationBean.setName(s.toString());
+                ((TabActivity)getActivity()).setDestination(destinationBean);
+            }
+        });
+        et_shouhuotel.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                destinationBean.setTel(s.toString());
+                ((TabActivity)getActivity()).setDestination(destinationBean);
+            }
+        });
+
+        et_fahuodanwei.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                fahuodanweiBean.setName(s.toString());
+                ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
+            }
+        });
+        et_shouhuodanwei.addTextChangedListener(new MyTextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                shouhuodanweiBean.setName(s.toString());
+                ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
             }
         });
 
@@ -333,6 +402,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
+        aMap.getUiSettings().setZoomControlsEnabled(false);
 
 //        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
 //            @Override
@@ -370,71 +440,68 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
     }
 
-    public void showRedPacketDialog(RedPacketEntity entity) {
-        if (mRedPacketDialogView == null) {
-            mRedPacketDialogView = View.inflate(getContext(), R.layout.dialog_red_packet, null);
-            mRedPacketViewHolder = new RedPacketViewHolder(getContext(), mRedPacketDialogView);
-            mRedPacketDialog = new CustomDialog(getContext(), mRedPacketDialogView, R.style.custom_dialog);
-            mRedPacketDialog.setCancelable(false);
-        }
-
-        mRedPacketViewHolder.setData(entity);
-        mRedPacketViewHolder.setOnRedPacketDialogClickListener(new OnRedPacketDialogClickListener() {
-            @Override
-            public void onCloseClick() {
-                mRedPacketDialog.dismiss();
-            }
-
-            @Override
-            public void onOpenClick() {
-                //领取红包,调用接口
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(getContext(), HongbaolistActivity.class);
-                        startActivity(intent);
-                        mRedPacketDialog.dismiss();
-                        // finish();
-                    }
-                }, 1000);
-
-            }
-        });
-
-        mRedPacketDialog.show();
-    }
-
-
-    private void initEvent() {
-        mViewPager.setAdapter(mFragmentAdapter);
-        mSl.setViewPager(mViewPager, mTitles);
-
-        //反射修改最少滑动距离
-        try {
-            Field mTouchSlop = ViewPager.class.getDeclaredField("mTouchSlop");
-            mTouchSlop.setAccessible(true);
-            mTouchSlop.setInt(mViewPager, dp2px(50));
-            Log.d("Msg", "往下滑动阻尼设置");
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-            Log.e("Msg", "这是错误信息");
-        }
-        mViewPager.setOffscreenPageLimit(mFragments.size());
-    }
-
-    public int dp2px(float dpVal) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                dpVal, getResources().getDisplayMetrics());
-    }
-
-    private void initData() {
-        mFragments.add(new SongFragment());
-
-        mFragmentAdapter = new MyFragmentAdapter(getActivity().getSupportFragmentManager());
-
-
-    }
+//    public void showRedPacketDialog(RedPacketEntity entity) {
+//        if (mRedPacketDialogView == null) {
+//            mRedPacketDialogView = View.inflate(getContext(), R.layout.dialog_red_packet, null);
+//            mRedPacketViewHolder = new RedPacketViewHolder(getContext(), mRedPacketDialogView);
+//            mRedPacketDialog = new CustomDialog(getContext(), mRedPacketDialogView, R.style.custom_dialog);
+//            mRedPacketDialog.setCancelable(false);
+//        }
+//
+//        mRedPacketViewHolder.setData(entity);
+//        mRedPacketViewHolder.setOnRedPacketDialogClickListener(new OnRedPacketDialogClickListener() {
+//            @Override
+//            public void onCloseClick() {
+//                mRedPacketDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onOpenClick() {
+//                //领取红包,调用接口
+//
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Intent intent = new Intent(getContext(), HongbaolistActivity.class);
+//                        startActivity(intent);
+//                        mRedPacketDialog.dismiss();
+//                        // finish();
+//                    }
+//                }, 1000);
+//
+//            }
+//        });
+//
+//        mRedPacketDialog.show();
+//    }
+//    private void initEvent() {
+//        mViewPager.setAdapter(mFragmentAdapter);
+//        mSl.setViewPager(mViewPager, mTitles);
+//
+//        //反射修改最少滑动距离
+//        try {
+//            Field mTouchSlop = ViewPager.class.getDeclaredField("mTouchSlop");
+//            mTouchSlop.setAccessible(true);
+//            mTouchSlop.setInt(mViewPager, dp2px(50));
+//            Log.d("Msg", "往下滑动阻尼设置");
+//        } catch (NoSuchFieldException | IllegalAccessException e) {
+//            e.printStackTrace();
+//            Log.e("Msg", "这是错误信息");
+//        }
+//        mViewPager.setOffscreenPageLimit(mFragments.size());
+//    }
+//    public int dp2px(float dpVal) {
+//        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+//                dpVal, getResources().getDisplayMetrics());
+//    }
+//
+//    private void initData() {
+//        mFragments.add(new SongFragment());
+//
+//        mFragmentAdapter = new MyFragmentAdapter(getActivity().getSupportFragmentManager());
+//
+//
+//    }
 
 
     private class MyFragmentAdapter extends FragmentPagerAdapter {
@@ -553,9 +620,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
 
-                if(locationBean == null){
-                    locationBean = new MarkerBean();
-                }
                 locationBean.setCity(aMapLocation.getCity());
                 locationBean.setProvince(aMapLocation.getProvince());
                 locationBean.setAddress(aMapLocation.getAddress());
@@ -577,9 +641,36 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
+    @OnClick({R.id.tv_dzys,R.id.tv_ctld,
+            R.id.tv_ctzc,R.id.tv_tcld,
+            R.id.tv_tczc,R.id.tv_pt})
+    public void onTabClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_dzys:
+                ((HomeFragment)getParentFragment()).setTabIndex(1);
+                break;
+            case R.id.tv_ctld:
+                ((HomeFragment)getParentFragment()).setTabIndex(2);
+                break;
+            case R.id.tv_ctzc:
+                ((HomeFragment)getParentFragment()).setTabIndex(3);
+                break;
+            case R.id.tv_tczc:
+                ((HomeFragment)getParentFragment()).setTabIndex(4);
+                break;
+            case R.id.tv_tcld:
+                ((HomeFragment)getParentFragment()).setTabIndex(5);
+                break;
+            case R.id.tv_pt:
+                ((HomeFragment)getParentFragment()).setTabIndex(6);
+                break;
+        }
+    }
+
     @OnClick({R.id.bt_chufadi_sousuo,R.id.bt_mudidi_sousuo,
             R.id.bt_chufadi_xuanze,R.id.bt_mudidi_xuanze,
-            R.id.bt_chexing_xuanze})
+            R.id.bt_chexing_xuanze,
+            R.id.bt_fahuodanwei_xuanze,R.id.bt_shouhuodanwei_xuanze})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_chufadi_sousuo:
@@ -604,16 +695,11 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 double lat = pi.getLatLonPoint().getLatitude();
                                 double lon = pi.getLatLonPoint().getLongitude();
 
-                                if(locationBean == null){
-                                    locationBean = new MarkerBean();
-                                }
                                 locationBean.setCity(pi.getCityName());
                                 locationBean.setProvince(pi.getProvinceName());
                                 locationBean.setAddress(pi.getTitle());
                                 locationBean.setLat(pi.getLatLonPoint().getLatitude());
                                 locationBean.setLon(pi.getLatLonPoint().getLongitude());
-                                locationBean.setName("");
-                                locationBean.setTel("");
 
                                 ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
@@ -672,9 +758,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 double lat = pi.getLatLonPoint().getLatitude();
                                 double lon = pi.getLatLonPoint().getLongitude();
 
-                                if(destinationBean == null){
-                                    destinationBean = new MarkerBean();
-                                }
                                 destinationBean.setCity(pi.getCityName());
                                 destinationBean.setProvince(pi.getProvinceName());
                                 destinationBean.setAddress(pi.getTitle());
@@ -733,6 +816,20 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 intent.putExtra("title", chexingType == 0?"同城车型":"长途车型");
                 startActivityForResult(intent, RESULT_TRUCK);
                 break;
+            case R.id.bt_fahuodanwei_xuanze:
+                Intent intentfahuo = new Intent(getContext(), CompanyManageActivity.class);
+                intentfahuo.putExtra("isItemClick", true);
+                /**请选择发货单位*/
+                intentfahuo.putExtra("title", "请选择发货单位");
+                startActivityForResult(intentfahuo, RESULT_CONPANY_START);
+                break;
+            case R.id.bt_shouhuodanwei_xuanze:
+                /**请选择收货单位*/
+                Intent intentshouhuo = new Intent(getContext(), CompanyManageActivity.class);
+                intentshouhuo.putExtra("isItemClick", true);
+                intentshouhuo.putExtra("title", "请选择收货单位");
+                startActivityForResult(intentshouhuo, RESULT_CONPANY_END);
+                break;
         }
     }
 
@@ -752,20 +849,23 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             String userName = data.getStringExtra("userName");
             String tel = data.getStringExtra("tel");
 
-            if(locationBean == null){
-                locationBean = new MarkerBean();
-            }
             locationBean.setCity(city);
             locationBean.setProvince(province);
             locationBean.setAddress(title);
             locationBean.setLat(lat);
             locationBean.setLon(lon);
-            locationBean.setName(userName);
-            locationBean.setTel(tel);
 
             ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
             et_chufadi.setText(title);
+            if(!TextUtils.isEmpty(userName)){
+                locationBean.setName(userName);
+                et_fahuoren.setText(userName);
+            }
+            if(!TextUtils.isEmpty(tel)){
+                locationBean.setTel(tel);
+                et_fahuotel.setText(tel);
+            }
 
         } else if (requestCode == RESULT_POSITION_END) {
 
@@ -777,29 +877,28 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             String userName = data.getStringExtra("userName");
             String tel = data.getStringExtra("tel");
 
-            if(destinationBean == null){
-                destinationBean = new MarkerBean();
-            }
             destinationBean.setCity(city);
             destinationBean.setProvince(province);
             destinationBean.setAddress(title);
             destinationBean.setLat(lat);
             destinationBean.setLon(lon);
-            destinationBean.setName(userName);
-            destinationBean.setTel(tel);
 
             ((TabActivity)getActivity()).setDestination(locationBean);
 
             et_mudidi.setText(title);
+            if(!TextUtils.isEmpty(userName)){
+                destinationBean.setName(userName);
+                et_shouhuoren.setText(userName);
+            }
+            if(!TextUtils.isEmpty(tel)){
+                destinationBean.setTel(tel);
+                et_shouhuotel.setText(tel);
+            }
 
         }
         /**已选车型*/
         else if (requestCode == RESULT_TRUCK) {
             Truck truck = (Truck) data.getSerializableExtra("data");
-
-            if(chexingBean == null){
-                chexingBean = new HomeChexingBean();
-            }
 
             chexingBean.setChexing(truck.getTitle());
             chexingBean.setTruck(truck);
@@ -809,6 +908,24 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
             tv_chexing.setText(truck.getTitle());
 
+        }
+        /**发货单位*/
+        else if(requestCode == RESULT_CONPANY_START){
+            String name = data.getStringExtra("name");
+            et_fahuodanwei.setText(name);
+
+            fahuodanweiBean.setName(name);
+
+            ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
+        }
+        /**收货单位*/
+        else if(requestCode == RESULT_CONPANY_END){
+            String name = data.getStringExtra("name");
+            et_shouhuodanwei.setText(name);
+
+            shouhuodanweiBean.setName(name);
+
+            ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
         }
     }
 }

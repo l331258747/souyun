@@ -3,13 +3,11 @@ package com.xrwl.owner.module.tab.activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
@@ -30,6 +28,8 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Cljbxx;
+import com.xrwl.owner.bean.CompanyFahuoBean;
+import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
@@ -37,6 +37,7 @@ import com.xrwl.owner.bean.Tab;
 import com.xrwl.owner.event.BusinessTabCountEvent;
 import com.xrwl.owner.event.TabCheckEvent;
 import com.xrwl.owner.module.account.activity.LoginActivity;
+import com.xrwl.owner.module.home.ui.HomeFragment;
 import com.xrwl.owner.module.tab.mvp.TabPresenter;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.BadgeUtil;
@@ -75,8 +76,26 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 
     public MarkerBean myLocation;//出发地
     public MarkerBean destination;//目的地
+    public CompanyFahuoBean fahuodanweiBean;
+    public CompanyShouhuoBean shouhuodanweiBean;
     public HomeChexingBean chexing;
     public HomeHuowuBean huowu;
+
+    public CompanyFahuoBean getFahuodanweiBean() {
+        return fahuodanweiBean;
+    }
+
+    public void setFahuodanweiBean(CompanyFahuoBean fahuodanweiBean) {
+        this.fahuodanweiBean = fahuodanweiBean;
+    }
+
+    public CompanyShouhuoBean getShouhuodanweiBean() {
+        return shouhuodanweiBean;
+    }
+
+    public void setShouhuodanweiBean(CompanyShouhuoBean shouhuodanweiBean) {
+        this.shouhuodanweiBean = shouhuodanweiBean;
+    }
 
     public HomeChexingBean getChexing() {
         return chexing;
@@ -342,52 +361,95 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 //
 //        }
 //    }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            long secondTime = System.currentTimeMillis();
-            if (secondTime - time > 1500) {//如果两次按键时间间隔大于1500毫秒，则不退出
-                Toast.makeText(TabActivity.this, "再按一次退出程序...",
-                        Toast.LENGTH_SHORT).show();
-                time = secondTime;//更新firstTime
-                return true;
-            } else {
-                //System.exit(0);//否则退出程序
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setIcon(android.R.drawable.ic_dialog_info);
-                builder.setTitle("温馨提示");
-                builder.setMessage("您正在退出16飕云系统，确定要继续吗？");
-                builder.setCancelable(true);
-
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        /*
-                         *  在这里实现你自己的逻辑
-                         */
-                        finish();
-                        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-                        am.restartPackage(getPackageName());
-                    }
-                });
-                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            long secondTime = System.currentTimeMillis();
+//            if (secondTime - time > 1500) {//如果两次按键时间间隔大于1500毫秒，则不退出
+//                Toast.makeText(TabActivity.this, "再按一次退出程序...",
+//                        Toast.LENGTH_SHORT).show();
+//                time = secondTime;//更新firstTime
+//                return true;
+//            } else {
+//                //System.exit(0);//否则退出程序
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setIcon(android.R.drawable.ic_dialog_info);
+//                builder.setTitle("温馨提示");
+//                builder.setMessage("您正在退出16飕云系统，确定要继续吗？");
+//                builder.setCancelable(true);
+//
+//                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
 //                        /*
 //                         *  在这里实现你自己的逻辑
 //                         */
-//                        Intent intent = new Intent(TabActivity.this, TabActivity.class);
-//                        startActivity(intent);
+//                        finish();
+//                        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+//                        am.restartPackage(getPackageName());
+//                    }
+//                });
+//                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+////                        /*
+////                         *  在这里实现你自己的逻辑
+////                         */
+////                        Intent intent = new Intent(TabActivity.this, TabActivity.class);
+////                        startActivity(intent);
+//
+//                        dialog.dismiss();
+//                    }
+//                });
+//                builder.create().show();
+//
+//            }
+//        }
+//
+//        return super.onKeyDown(keyCode, event);
+//    }
 
-                        dialog.dismiss();
-                    }
-                });
-                builder.create().show();
+    @Override
+    public void onBackPressed() {
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
 
+        for (Fragment fragment : fragments) {
+            /*如果是自己封装的Fragment的子类  判断是否需要处理返回事件*/
+            if (fragment instanceof HomeFragment) {
+                if (((HomeFragment) fragment).getCurrentPage() != 0) {
+                    ((HomeFragment) fragment).setTabIndex(0);
+                    return;
+                }
             }
         }
 
-        return super.onKeyDown(keyCode, event);
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - time > 1500) {//如果两次按键时间间隔大于1500毫秒，则不退出
+            Toast.makeText(TabActivity.this, "再按一次退出程序...",
+                    Toast.LENGTH_SHORT).show();
+            time = secondTime;//更新firstTime
+        } else {
+            //System.exit(0);//否则退出程序
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setIcon(android.R.drawable.ic_dialog_info);
+            builder.setTitle("温馨提示");
+            builder.setMessage("您正在退出16飕云系统，确定要继续吗？");
+            builder.setCancelable(true);
+
+            builder.setPositiveButton("确定", (dialog, which) -> {
+                /*
+                 *  在这里实现你自己的逻辑
+                 */
+                finish();
+                ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                am.restartPackage(getPackageName());
+            });
+            builder.setNegativeButton("取消", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            builder.create().show();
+        }
+//        super.onBackPressed();
     }
 
     private boolean checkGpsIsOpen() {

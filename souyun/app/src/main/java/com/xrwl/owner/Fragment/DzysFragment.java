@@ -22,6 +22,8 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventFragment;
 import com.xrwl.owner.bean.Account;
+import com.xrwl.owner.bean.CompanyFahuoBean;
+import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.Distance;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
@@ -316,6 +318,20 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
                     mjianDefaultWeightEt.setText(bean.getJian());
+                }
+            }
+            //发货单位
+            if (TextUtils.isEmpty(mpublishCompanyTv.getText().toString())) {
+                CompanyFahuoBean bean = ((TabActivity) getActivity()).getFahuodanweiBean();
+                if (bean != null) {
+                    mpublishCompanyTv.setText(bean.getName());
+                }
+            }
+            //收货单位
+            if (TextUtils.isEmpty(mpublishCompanyshouhuoTv.getText().toString())) {
+                CompanyShouhuoBean bean = ((TabActivity) getActivity()).getShouhuodanweiBean();
+                if (bean != null) {
+                    mpublishCompanyshouhuoTv.setText(bean.getName());
                 }
             }
         }

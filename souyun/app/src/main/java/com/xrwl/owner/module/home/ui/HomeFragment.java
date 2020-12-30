@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,6 @@ import com.xrwl.owner.module.me.dialog.ExitDialog;
 import com.xrwl.owner.module.me.ui.BankActivity;
 import com.xrwl.owner.module.me.ui.BankyueActivity;
 import com.xrwl.owner.module.me.ui.CouponActivity;
-import com.xrwl.owner.module.me.ui.MeFragment;
 import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.dialog.CarManageDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
@@ -73,6 +73,8 @@ public class HomeFragment extends BaseFragment {
     DrawerLayout nidaye;
     private ArrayList<String> title_list;
     private ArrayList<Fragment> fragment_list;
+
+    int currentPage;
 
     public static HomeFragment newInstance(String title) {
 
@@ -138,7 +140,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void showView() {
-        viewpager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
+        //getChildFragmentManager 要不然子fragment 通过 getparentfragment 找不到
+        viewpager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return fragment_list.get(position);
@@ -161,6 +164,28 @@ public class HomeFragment extends BaseFragment {
         tablayout.setupWithViewPager(viewpager);
         viewpager.setOffscreenPageLimit(fragment_list.size());
 
+        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+    public void setTabIndex(int i) {
+        viewpager.setCurrentItem(i);
+        currentPage = i;
     }
 
     @Override
@@ -241,10 +266,10 @@ public class HomeFragment extends BaseFragment {
         });
 
 
-        viewpager.setOnTouchListener((v, event) -> {
-            // TODO Auto-generated method stub
-            return true;
-        });
+//        viewpager.setOnTouchListener((v, event) -> {
+//            // TODO Auto-generated method stub
+//            return true;
+//        });
         return rootView;
     }
 
@@ -284,5 +309,7 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-
+    public int getCurrentPage() {
+        return currentPage;
+    }
 }
