@@ -48,14 +48,14 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
                     android:hint="请输入出发地"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <TextView
                     android:id="@+id/bt_chufadi_sousuo"
@@ -106,32 +106,45 @@
                 <EditText
                     android:id="@+id/et_fahuoren"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.8"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
                     android:hint="请输入发货人"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLength="5"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <EditText
                     android:id="@+id/et_fahuotel"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="5dp"
                     android:background="@null"
                     android:hint="请输入发货电话"
                     android:textSize="@dimen/sp_14"
                     android:inputType="number"
                     android:maxLines="1"
                     android:maxLength="11"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+                <TextView
+                    android:id="@+id/bt_fahuo_xuanze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择"
+                    android:background="@drawable/btn_red_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
 
             </LinearLayout>
 
@@ -160,14 +173,14 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
                     android:hint="请输入目的地"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <TextView
                     android:id="@+id/bt_mudidi_sousuo"
@@ -218,32 +231,45 @@
                 <EditText
                     android:id="@+id/et_shouhuoren"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.8"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
                     android:hint="请输入收货人"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLength="5"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <EditText
                     android:id="@+id/et_shouhuotel"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="5dp"
                     android:background="@null"
                     android:hint="请输入收货电话"
                     android:textSize="@dimen/sp_14"
                     android:inputType="number"
                     android:maxLines="1"
                     android:maxLength="11"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
+
+                <TextView
+                    android:id="@+id/bt_shouhuo_xuanze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择"
+                    android:background="@drawable/btn_red_r5"
+                    android:textColor="@color/white"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingEnd="@dimen/default_dp10"
+                    android:layout_marginEnd="@dimen/default_dp10"/>
 
             </LinearLayout>
 
@@ -271,14 +297,14 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
-                    android:hint="请选择发货单位"
+                    android:hint="请输入发货单位"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <TextView
                     android:id="@+id/bt_fahuodanwei_xuanze"
@@ -289,6 +315,7 @@
                     android:textColor="@color/white"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
+                    android:visibility="gone"
                     android:paddingStart="@dimen/default_dp10"
                     android:paddingEnd="@dimen/default_dp10"
                     android:layout_marginEnd="@dimen/default_dp10"/>
@@ -319,14 +346,14 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:background="@null"
-                    android:hint="请选择收货单位"
+                    android:hint="请输入收货单位"
                     android:textSize="@dimen/sp_14"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:paddingStart="@dimen/default_dp10"
-                    android:paddingEnd="@dimen/default_dp10" />
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <TextView
                     android:id="@+id/bt_shouhuodanwei_xuanze"
@@ -338,6 +365,7 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingStart="@dimen/default_dp10"
+                    android:visibility="gone"
                     android:paddingEnd="@dimen/default_dp10"
                     android:layout_marginEnd="@dimen/default_dp10"/>
 

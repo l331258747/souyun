@@ -49,6 +49,8 @@ import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
+import com.xrwl.owner.module.friend.bean.Friend;
+import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
@@ -84,6 +86,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     public static final int RESULT_TRUCK = 111;//已选车型
     public static final int RESULT_POSITION_START = 222;//发货定位
     public static final int RESULT_POSITION_END = 333;//到货定位
+    public static final int RESULT_FRIEND_START = 444;//发货人电话
+    public static final int RESULT_FRIEND_END = 555;//收货人电话
     public static final int RESULT_CONPANY_START = 666;//发货单位
     public static final int RESULT_CONPANY_END = 777;//收货单位
 
@@ -123,6 +127,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     EditText et_fahuoren;
     @BindView(R.id.et_fahuotel)
     EditText et_fahuotel;
+    @BindView(R.id.bt_fahuo_xuanze)
+    TextView bt_fahuo_xuanze;
     //目的地
     @BindView(R.id.et_mudidi)
     EditText et_mudidi;
@@ -134,6 +140,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     EditText et_shouhuoren;
     @BindView(R.id.et_shouhuotel)
     EditText et_shouhuotel;
+    @BindView(R.id.bt_shouhuo_xuanze)
+    TextView bt_shouhuo_xuanze;
     //发货单位
     @BindView(R.id.et_fahuodanwei)
     EditText et_fahuodanwei;
@@ -670,7 +678,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @OnClick({R.id.bt_chufadi_sousuo,R.id.bt_mudidi_sousuo,
             R.id.bt_chufadi_xuanze,R.id.bt_mudidi_xuanze,
             R.id.bt_chexing_xuanze,
-            R.id.bt_fahuodanwei_xuanze,R.id.bt_shouhuodanwei_xuanze})
+            R.id.bt_fahuodanwei_xuanze,R.id.bt_shouhuodanwei_xuanze,
+            R.id.bt_fahuo_xuanze,R.id.bt_shouhuo_xuanze})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_chufadi_sousuo:
@@ -830,6 +839,14 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 intentshouhuo.putExtra("title", "请选择收货单位");
                 startActivityForResult(intentshouhuo, RESULT_CONPANY_END);
                 break;
+            case R.id.bt_fahuo_xuanze:
+                Intent intentfahuotel = new Intent(getContext(), FriendActivity.class);
+                startActivityForResult(intentfahuotel, RESULT_FRIEND_START);
+                break;
+            case R.id.bt_shouhuo_xuanze:
+                Intent intentshouhuotel = new Intent(getContext(), FriendActivity.class);
+                startActivityForResult(intentshouhuotel, RESULT_FRIEND_END);
+                break;
         }
     }
 
@@ -926,6 +943,37 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             shouhuodanweiBean.setName(name);
 
             ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
+        }
+        /**发货电话*/
+        else if (requestCode == RESULT_FRIEND_START) {
+            Friend friend = (Friend) data.getSerializableExtra("data");
+
+            String name = friend.getName();
+            String tel = friend.getPhone().replace("-", "").replace("+", "").replace(" ", "");
+
+            et_fahuoren.setText(name);
+            et_fahuotel.setText(tel);
+
+            locationBean.setName(name);
+            locationBean.setTel(name);
+
+            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+
+        }
+        /**收货人*/
+        else if (requestCode == RESULT_FRIEND_END) {
+            Friend friend = (Friend) data.getSerializableExtra("data");
+            String name = friend.getName();
+            String tel = friend.getPhone().replace("-", "").replace("+", "").replace(" ", "");
+
+            et_shouhuoren.setText(name);
+            et_shouhuotel.setText(tel);
+
+            destinationBean.setName(name);
+            destinationBean.setTel(name);
+
+            ((TabActivity)getActivity()).setDestination(destinationBean);
+
         }
     }
 }
