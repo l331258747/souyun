@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,6 +25,10 @@ import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseFragment;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
+import com.xrwl.owner.module.me.ui.BankActivity;
+import com.xrwl.owner.module.me.ui.BankyueActivity;
+import com.xrwl.owner.module.me.ui.CouponActivity;
+import com.xrwl.owner.module.me.ui.MeFragment;
 import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.dialog.CarManageDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
@@ -167,6 +170,29 @@ public class HomeFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, rootView);
 
         View headerView = nav.getHeaderView(0);//获取头布局
+        View view_yhj = headerView.findViewById(R.id.view_yhj);
+        View view_yhk = headerView.findViewById(R.id.view_yhk);
+        View view_ye = headerView.findViewById(R.id.view_ye);
+
+        view_yhj.setOnClickListener(v -> {
+            //优惠卷pic
+            Intent intent = new Intent(mContext, CouponActivity.class);
+            intent.putExtra("title", "优惠卷");
+            startActivity(intent);
+        });
+        view_yhk.setOnClickListener(v -> {
+            //银行卡pic
+            Intent intent = new Intent(mContext, BankActivity.class);
+            intent.putExtra("title", "绑定银行卡");
+            startActivity(intent);
+        });
+        view_ye.setOnClickListener(v -> {
+            //鱼额pic
+            Intent intent = new Intent(mContext, BankyueActivity.class);
+            intent.putExtra("title", "金        额");
+            startActivity(intent);
+        });
+
 
         nav.setNavigationItemSelectedListener(item -> {
 

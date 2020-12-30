@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,75 +13,98 @@
         android:layout_marginTop="42dp"
         android:src="@drawable/zbbw" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/default_dp10">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <View
+            android:id="@+id/view_yhj"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view_yhk"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_yhj"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:id="@+id/iv_yhj"
+            android:layout_width="@dimen/default_dp40"
+            android:layout_height="@dimen/default_dp40"
+            app:layout_constraintStart_toStartOf="@+id/view_yhj"
+            app:layout_constraintEnd_toEndOf="@+id/view_yhj"
+            app:layout_constraintTop_toTopOf="@+id/view_yhj"
+            android:src="@drawable/newyouhuijuan2"/>
+
+        <TextView
+            android:id="@+id/tv_yhj"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="优惠券"
+            app:layout_constraintStart_toStartOf="@+id/view_yhj"
+            app:layout_constraintEnd_toEndOf="@+id/view_yhj"
+            android:textColor="@color/black"
             android:layout_marginTop="@dimen/default_dp10"
-            android:gravity="center"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@+id/iv_yhj"/>
 
-            <ImageView
-                android:id="@+id/yhjpic"
-                android:layout_width="110dp"
-                android:layout_height="@dimen/default_dp40"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/newyouhuijuan" />
+        <View
+            android:id="@+id/view_yhk"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@+id/view_yhj"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view_ye"
+            app:layout_constraintBottom_toBottomOf="@+id/view_yhj"
+            android:layout_height="0dp"/>
 
-            <ImageView
-                android:id="@+id/yhkpic"
-                android:layout_width="110dp"
-                android:layout_height="@dimen/default_dp40"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/newbank" />
-
-            <ImageView
-                android:id="@+id/yepic"
-                android:layout_width="110dp"
-                android:layout_height="@dimen/default_dp40"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/newyue" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/iv_yhk"
+            android:layout_width="@dimen/default_dp40"
+            android:layout_height="@dimen/default_dp40"
+            app:layout_constraintStart_toStartOf="@+id/view_yhk"
+            app:layout_constraintEnd_toEndOf="@+id/view_yhk"
+            app:layout_constraintTop_toTopOf="@+id/view_yhk"
+            android:src="@drawable/newbank2"/>
 
         <TextView
-            android:id="@+id/yhj"
-            android:layout_width="110dp"
-            android:layout_height="@dimen/default_dp40"
-            android:gravity="center"
-            android:text="优惠卷"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/yhk"
-            android:layout_width="110dp"
-            android:layout_height="@dimen/default_dp40"
-            android:gravity="center"
+            android:id="@+id/tv_yhk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="银行卡"
-            android:textColor="@color/black" />
+            app:layout_constraintStart_toStartOf="@+id/view_yhk"
+            app:layout_constraintEnd_toEndOf="@+id/view_yhk"
+            android:layout_marginTop="@dimen/default_dp10"
+            app:layout_constraintTop_toBottomOf="@+id/iv_yhk"/>
+
+        <View
+            android:id="@+id/view_ye"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@+id/view_yhk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_yhj"/>
+
+        <ImageView
+            android:id="@+id/iv_ye"
+            android:layout_width="@dimen/default_dp40"
+            android:layout_height="@dimen/default_dp40"
+            app:layout_constraintStart_toStartOf="@+id/view_ye"
+            app:layout_constraintEnd_toEndOf="@+id/view_ye"
+            app:layout_constraintTop_toTopOf="@+id/view_ye"
+            android:src="@drawable/newyue2"/>
 
         <TextView
-            android:id="@+id/ye"
-            android:layout_width="110dp"
-            android:layout_height="@dimen/default_dp40"
-            android:gravity="center"
+            android:id="@+id/tv_ye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="余额"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="@+id/view_ye"
+            app:layout_constraintEnd_toEndOf="@+id/view_ye"
+            android:layout_marginTop="@dimen/default_dp10"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/iv_ye"/>
+
+    </android.support.constraint.ConstraintLayout>
+
 </LinearLayout>
