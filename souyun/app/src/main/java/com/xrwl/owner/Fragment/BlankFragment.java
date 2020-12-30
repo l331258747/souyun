@@ -54,7 +54,6 @@ import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
-import com.xrwl.owner.module.home.ui.HomeFragment;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 import com.xrwl.owner.module.publish.bean.Truck;
@@ -166,19 +165,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView tv_chexing;
     @BindView(R.id.bt_chexing_xuanze)
     TextView bt_chexing_xuanze;
-    //tab
-    @BindView(R.id.tv_dzys)
-    TextView tv_dzys;
-    @BindView(R.id.tv_ctld)
-    TextView tv_ctld;
-    @BindView(R.id.tv_ctzc)
-    TextView tv_ctzc;
-    @BindView(R.id.tv_tczc)
-    TextView tv_tczc;
-    @BindView(R.id.tv_tcld)
-    TextView tv_tcld;
-    @BindView(R.id.tv_pt)
-    TextView tv_pt;
     //选择
     @BindView(R.id.slResultLayout)
     RelativeLayout mResultLayout;
@@ -646,32 +632,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
                 Log.e("定位AmapErr", errText);
             }
-        }
-    }
-
-    @OnClick({R.id.tv_dzys,R.id.tv_ctld,
-            R.id.tv_ctzc,R.id.tv_tcld,
-            R.id.tv_tczc,R.id.tv_pt})
-    public void onTabClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_dzys:
-                ((HomeFragment)getParentFragment()).setTabIndex(1);
-                break;
-            case R.id.tv_ctld:
-                ((HomeFragment)getParentFragment()).setTabIndex(2);
-                break;
-            case R.id.tv_ctzc:
-                ((HomeFragment)getParentFragment()).setTabIndex(3);
-                break;
-            case R.id.tv_tczc:
-                ((HomeFragment)getParentFragment()).setTabIndex(4);
-                break;
-            case R.id.tv_tcld:
-                ((HomeFragment)getParentFragment()).setTabIndex(5);
-                break;
-            case R.id.tv_pt:
-                ((HomeFragment)getParentFragment()).setTabIndex(6);
-                break;
         }
     }
 

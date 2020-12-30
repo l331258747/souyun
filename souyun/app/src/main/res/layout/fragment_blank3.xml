@@ -527,106 +527,12 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/default_dp1"
-                android:background="@color/divider_color"/>
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_dp80">
-
-                <TextView
-                    android:id="@+id/tv_dzys"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_ctld"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="大宗运输"/>
-                <TextView
-                    android:id="@+id/tv_ctld"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_dzys"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_ctzc"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="长途零担"/>
-                <TextView
-                    android:id="@+id/tv_ctzc"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_ctld"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:gravity="center"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="长途整车"/>
-                <View
-                    android:id="@+id/view_line"
-                    android:layout_width="0dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_dzys"
-                    android:layout_height="1dp"
-                    android:background="@color/divider_color"/>
-
-                <TextView
-                    android:id="@+id/tv_tczc"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_line"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_tcld"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="同城专车"/>
-                <TextView
-                    android:id="@+id/tv_tcld"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@+id/tv_tczc"
-                    app:layout_constraintTop_toBottomOf="@+id/view_line"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_pt"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="同城零担"/>
-                <TextView
-                    android:id="@+id/tv_pt"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:layout_constraintStart_toEndOf="@+id/tv_tcld"
-                    app:layout_constraintTop_toBottomOf="@+id/view_line"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_height="@dimen/default_dp40"
-                    android:text="跑腿"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_dzys"
-                    android:background="@color/divider_color"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_ctld"
-                    android:background="@color/divider_color"/>
-
-            </android.support.constraint.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/divider_color"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="@dimen/default_dp20"
                 android:gravity="center"
                 android:text="———16飕云———"
                 android:textColor="@color/gray"
