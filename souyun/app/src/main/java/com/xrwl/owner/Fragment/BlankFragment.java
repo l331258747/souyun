@@ -860,7 +860,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             destinationBean.setLat(lat);
             destinationBean.setLon(lon);
 
-            ((TabActivity)getActivity()).setDestination(locationBean);
+            ((TabActivity)getActivity()).setDestination(destinationBean);
 
             et_mudidi.setText(title);
             if(!TextUtils.isEmpty(userName)){
