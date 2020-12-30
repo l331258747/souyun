@@ -291,7 +291,17 @@ public class ZhouGongActivity extends BaseActivity<OwnerOrderContract.IDetailVie
 
     }
 
-    @Override
+ @Override
+ public void updateOrderdunSuccess(BaseEntity entity) {
+
+ }
+
+ @Override
+ public void updateOrderdunError(BaseEntity e) {
+
+ }
+
+ @Override
     public void onRefreshSuccess(BaseEntity<OrderDetail> entity) {
 
     }

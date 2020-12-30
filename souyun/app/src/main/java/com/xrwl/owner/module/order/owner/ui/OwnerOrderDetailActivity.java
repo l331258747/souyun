@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
@@ -82,6 +83,7 @@ import com.xrwl.owner.module.home.ui.OnRedPacketDialogClickListener;
 import com.xrwl.owner.module.home.ui.QinLocationActivity;
 import com.xrwl.owner.module.home.ui.RedPacketEntity;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
+import com.xrwl.owner.module.order.dialog.EditDialog;
 import com.xrwl.owner.module.order.owner.mvp.OwnerOrderContract;
 import com.xrwl.owner.module.order.owner.mvp.OwnerOrderDetailPresenter;
 import com.xrwl.owner.module.order.owner.ui.ui.route.DriveRouteOverlay;
@@ -278,6 +280,12 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     Button mdetailDianPingBtn;
     @BindView(R.id.detailSelectBtn)
     Button mdetailSelectBtn;
+    @BindView(R.id.shijimingcheng)
+    TextView shijimingcheng;
+    @BindView(R.id.shijidianhua)
+    TextView shijidianhua;
+    @BindView(R.id.shijichepai)
+    TextView shijichepai;
     private ProgressDialog mXrwlwxpayDialog;
 
     private AMapLocationClient mLocationClient;
@@ -296,6 +304,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     public LatLonPoint mEndPoint;
     private RouteSearch mRouteSearch;
     private RetrofitManager retrofitManager;
+
+    String mWeightValue = "";
 
 
     @Override
@@ -1900,6 +1910,19 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         mProductNameTv.setText("货名：" + mOrderDetail.productName);
 
+        if(!TextUtils.isEmpty(mOrderDetail.getDrivername())){
+            shijimingcheng.setText("司机名称：" + mOrderDetail.getDrivername());
+            shijimingcheng.setVisibility(View.VISIBLE);
+        }
+        if(!TextUtils.isEmpty(mOrderDetail.getDrivertel())){
+            shijidianhua.setText("司机电话：" + mOrderDetail.getDrivertel());
+            shijidianhua.setVisibility(View.VISIBLE);
+        }
+        if(!TextUtils.isEmpty(mOrderDetail.getDrviercar())){
+            shijichepai.setText("司机车牌号：" + mOrderDetail.getDrviercar());
+            shijichepai.setVisibility(View.VISIBLE);
+        }
+
         if (TextUtils.isEmpty(mOrderDetail.truck)) {
             mTruckTv.setText("车型：无车型需求");
         } else {
@@ -2058,6 +2081,20 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
              */
 
             Driverpositioning();
+
+            if ("6".equals(mOrderDetail.category)) {
+                mWeightTv.setTextColor(getResources().getColor(R.color.colorPrimary));
+                mWeightTv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
+                mWeightTv.getPaint().setAntiAlias(true);//抗锯齿
+
+                mWeightTv.setOnClickListener(v -> {
+                    new EditDialog(mContext).setTitle("修改重量").setSubmitListener((dialog, content) -> {
+                        mPresenter.updateOrderdun(mId,content);
+                        mWeightValue = content;
+                        dialog.dismiss();
+                    }).show();
+                });
+            }
 
 
             /**判断是否选择了自送这个事件*/
@@ -2951,6 +2988,17 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     @Override
     public void onWx_refundError(Throwable e) {
 
+    }
+
+    @Override
+    public void updateOrderdunSuccess(BaseEntity entity) {
+        mWeightTv.setText(mWeightValue);
+        showToast("修改成功");
+    }
+
+    @Override
+    public void updateOrderdunError(BaseEntity e) {
+        showToast("修改失败");
     }
 
 //    @Override

@@ -110,6 +110,9 @@ public class OrderDetail {
     public String renmibi;
     public String is_sendbyself;
     public String is_pickbyself;
+    public String drivername;
+    public String drivertel;
+    public String drviercar;
 
 
     /**
@@ -120,7 +123,17 @@ public class OrderDetail {
     public String chehao;
     public String pingfen;
 
+    public String getDrivername() {
+        return drivername;
+    }
 
+    public String getDrivertel() {
+        return drivertel;
+    }
+
+    public String getDrviercar() {
+        return drviercar;
+    }
 
     public String WaterId;//退款的那个值
 

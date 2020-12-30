@@ -73,7 +73,11 @@ public class ProductDialog2 extends BasePopDialog implements DzNameContract.IVie
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 if(mListener == null) return;
-                mListener.onProductSelect(list.get(position).getName());
+                try {
+                    mListener.onProductSelect(URLDecoder.decode(list.get(position).getName(), "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 dismiss();
             }
 

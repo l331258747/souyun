@@ -32,6 +32,7 @@ public interface OwnerOrderContract {
         public abstract void getOrderList(String type);
 
         public abstract void getMoreOrderList(String type);
+
     }
 
     interface IModel {
@@ -108,6 +109,10 @@ public interface OwnerOrderContract {
         void onWx_refundError(Throwable e);
 
 
+        void updateOrderdunSuccess(BaseEntity entity);
+        void updateOrderdunError(BaseEntity e);
+
+
     }
 
     abstract class ADetailPresenter extends MyPresenter<IDetailView> {
@@ -119,6 +124,8 @@ public interface OwnerOrderContract {
         public abstract void nav(String id);
 
         public abstract void getOrderDetail(String id);
+
+        public abstract void updateOrderdun(String id,String weight);
 
         public abstract void cancelOrder(String id);
 
@@ -170,6 +177,7 @@ public interface OwnerOrderContract {
         Observable<BaseEntity> tixian(Map<String, String> params);
         Observable<BaseEntity> yuepay(Map<String, String> params);
         Observable<BaseEntity> yuepayrefund(Map<String, String> params);
+        Observable<BaseEntity> updateOrderdun(Map<String, String> params);
        /**在线点评*/
         Observable<BaseEntity> dianping(Map<String, String> params);
 

@@ -23,8 +23,10 @@
     <color name="Noteback">#FFCC99</color>
 
 
-
+    <color name="color_99">#999999</color>
+    <color name="color_cc">#cccccc</color>
     <color name="colorPrimary">#1065b9</color>
+    <color name="color_4b_66">#664b4b4b</color>
     <color name="colorPrimaryDark">#0458AC</color>
     <color name="colorAccent">#1065b9</color>
     <color name="colorgold">#FFE384</color>

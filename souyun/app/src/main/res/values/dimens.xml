@@ -44,5 +44,13 @@
     <dimen name="content_trans_y">460dp</dimen>
     <dimen name="content_trans_down_end_y">500dp</dimen>
     <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
 
 </resources>

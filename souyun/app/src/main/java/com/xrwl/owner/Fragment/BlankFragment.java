@@ -616,14 +616,14 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
                 locationBean.setCity(aMapLocation.getCity());
                 locationBean.setProvince(aMapLocation.getProvince());
-                locationBean.setAddress(aMapLocation.getAddress());
+                locationBean.setAddress(aMapLocation.getAoiName());
                 locationBean.setLat(aMapLocation.getLatitude());
                 locationBean.setLon(aMapLocation.getLongitude());
 
                 ((TabActivity)getActivity()).setMyLocation(locationBean);
 
                 if(TextUtils.isEmpty(et_chufadi.getText().toString()) && !locationFirst){
-                    et_chufadi.setText(aMapLocation.getAddress());
+                    et_chufadi.setText(aMapLocation.getAoiName());
                     city = aMapLocation.getCity();
                     locationFirst = false;
                 }

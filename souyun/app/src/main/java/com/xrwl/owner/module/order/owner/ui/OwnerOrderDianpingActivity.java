@@ -465,6 +465,14 @@ public class OwnerOrderDianpingActivity extends BaseActivity<OwnerOrderContract.
     }
 
     @Override
+    public void updateOrderdunSuccess(BaseEntity entity) {
+    }
+
+    @Override
+    public void updateOrderdunError(BaseEntity e) {
+    }
+
+    @Override
     public void ongetlistpingjiaError(BaseEntity entity) {
 
     }

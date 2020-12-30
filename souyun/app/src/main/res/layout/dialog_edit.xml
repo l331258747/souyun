@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_parent"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_00_664b4b4b_r5"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提示"
+        android:padding="@dimen/dp_16"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="@dimen/sp_20"/>
+
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        tools:text=""
+        android:hint="请输入"
+        android:padding="@dimen/dp_15"
+        android:scrollbars="vertical"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="@dimen/dp_15"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:maxLength="4"
+        android:maxLines="1"
+        android:gravity="center"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginStart="@dimen/dp_15"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:background="@color/color_4b_66"/>
+
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_60"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_weight="1"
+            android:background="@drawable/btn_0_cc_r40"
+            android:text="取消"
+            android:layout_marginStart="@dimen/dp_20"
+            android:textColor="@color/color_99"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/btn_blue_r40"
+            android:textColor="@color/white"
+            android:text="确定"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"/>
+
+</LinearLayout>

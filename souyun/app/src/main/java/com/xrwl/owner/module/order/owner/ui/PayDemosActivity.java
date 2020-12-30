@@ -543,6 +543,16 @@ public class PayDemosActivity extends BaseActivity<OwnerOrderContract.IDetailVie
 
     }
 
+    @Override
+    public void updateOrderdunSuccess(BaseEntity entity) {
+
+    }
+
+    @Override
+    public void updateOrderdunError(BaseEntity e) {
+
+    }
+
 //    @Override
 //    public void onetlistpingjiasSuccess(String price) {
 //

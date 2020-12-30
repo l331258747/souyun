@@ -13,7 +13,7 @@
         android:id="@+id/wddd"
         android:icon="@drawable/ic_green_arrow"
 
-        android:title="     我的订单"/>
+        android:title="    我的订单"/>
     <item
         android:id="@+id/photo"
         android:icon="@drawable/ic_green_arrow"
