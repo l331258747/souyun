@@ -416,8 +416,7 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
         for (Fragment fragment : fragments) {
             /*如果是自己封装的Fragment的子类  判断是否需要处理返回事件*/
             if (fragment instanceof HomeFragment) {
-                if (((HomeFragment) fragment).getCurrentPage() != 0) {
-                    ((HomeFragment) fragment).setTabIndex(0);
+                if (((HomeFragment) fragment).onBackPressed()) {
                     return;
                 }
             }

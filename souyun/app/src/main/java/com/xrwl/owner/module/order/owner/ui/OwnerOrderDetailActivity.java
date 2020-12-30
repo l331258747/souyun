@@ -3163,8 +3163,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                                 .get(0);
                         DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
                                 this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
+                                mDriveRouteResult.getStartPos(),
+                                mDriveRouteResult.getTargetPos());
 
                         walkRouteOverlay.getWalkColor();//轨迹颜色修改
                         walkRouteOverlay.removeFromMap();
@@ -3194,8 +3194,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                                 .get(0);
                         DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
                                 this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
+                                mDriveRouteResult.getStartPos(),
+                                mDriveRouteResult.getTargetPos());
 
                         walkRouteOverlay.getWalkColor();//轨迹颜色修改
                         walkRouteOverlay.removeFromMap();
@@ -3224,8 +3224,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                                 .get(0);
                         DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
                                 this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
+                                mDriveRouteResult.getStartPos(),
+                                mDriveRouteResult.getTargetPos());
 
                         walkRouteOverlay.getWalkColor();//轨迹颜色修改
                         walkRouteOverlay.removeFromMap();

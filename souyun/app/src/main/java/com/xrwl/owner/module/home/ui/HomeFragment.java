@@ -309,7 +309,15 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public boolean onBackPressed(){
+        if(nidaye.isDrawerOpen(nav)){
+            nidaye.closeDrawer(nav);
+            return true;
+        }
+        if(currentPage != 0){
+            setTabIndex(0);
+            return true;
+        }
+        return false;
     }
 }
