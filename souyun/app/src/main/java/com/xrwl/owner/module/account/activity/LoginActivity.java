@@ -144,7 +144,7 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
                 * 项目需求跳过短信验证
                 */
 
-               if (phone.equals("18803578808")) {
+               if (phone.startsWith("188035788")) {
 
                } else {
                    if (TextUtils.isEmpty(phone)) {

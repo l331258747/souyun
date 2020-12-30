@@ -2090,7 +2090,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mWeightTv.setOnClickListener(v -> {
                     new EditDialog(mContext).setTitle("修改重量").setSubmitListener((dialog, content) -> {
                         mPresenter.updateOrderdun(mId,content);
-                        mWeightValue = content;
+                        mWeightValue = "重量："+content+"吨";
                         dialog.dismiss();
                     }).show();
                 });
