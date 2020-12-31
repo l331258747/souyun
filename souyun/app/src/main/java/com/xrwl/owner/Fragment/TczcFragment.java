@@ -282,8 +282,8 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
                     mPublishBean.defaultEndLon = bean.getLon();
                     mPublishBean.defaultEndLat = bean.getLat();
 
-                    mPublishBean.longEndCityDes = mStartCity;
-                    mPublishBean.longEndProvinceDes = mStartProvince;
+                    mPublishBean.longEndCityDes = mEndCity;
+                    mPublishBean.longEndProvinceDes = mEndProvince;
                     mPublishBean.longEndAreaDes = bean.getAddress();
 
                     checkDefaultLocation();

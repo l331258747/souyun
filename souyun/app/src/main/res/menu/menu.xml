@@ -4,28 +4,28 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/wdxx"
-            android:icon="@drawable/zbbxx"
+            android:icon="@drawable/ic_home_notify"
             android:checkable="true"
-            android:title="   我的消息"/>
+            android:title="我的消息"/>
 
     </group>
     <item
         android:id="@+id/wddd"
-        android:icon="@drawable/ic_green_arrow"
+        android:icon="@drawable/ic_home_order"
 
-        android:title="    我的订单"/>
+        android:title="我的订单"/>
     <item
         android:id="@+id/photo"
-        android:icon="@drawable/ic_green_arrow"
-        android:title="    实名认证"/>
+        android:icon="@drawable/ic_home_account"
+        android:title="实名认证"/>
     <item
         android:id="@+id/dzgl"
-        android:icon="@drawable/ic_green_arrow"
-        android:title="    地址管理"/>
+        android:icon="@drawable/ic_home_address"
+        android:title="地址管理"/>
     <item
         android:id="@+id/fpgl"
-        android:icon="@drawable/ic_green_arrow"
-        android:title="    发票管理"/>
+        android:icon="@drawable/ic_home_invoice"
+        android:title="发票管理"/>
 
 <!--    <item-->
 <!--        android:id="@+id/clgl"-->
@@ -44,11 +44,11 @@
 
     <item
         android:id="@+id/lxkf"
-        android:icon="@drawable/ic_green_arrow"
-        android:title="    联系客服"/>
+        android:icon="@drawable/ic_home_custom"
+        android:title="联系客服"/>
     <item
         android:id="@+id/tcdl"
-        android:icon="@drawable/ic_green_arrow"
-        android:title="    退出登陆"/>
+        android:icon="@drawable/ic_home_out"
+        android:title="退出登陆"/>
 
 </menu>

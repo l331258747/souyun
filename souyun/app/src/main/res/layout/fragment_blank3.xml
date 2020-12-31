@@ -15,13 +15,13 @@
         app:header_init_top="0"
         app:inn_id="@+id/inner_rv"
         app:target_id="@+id/target_layout"
-        app:target_init_bottom="260">
+        app:target_init_bottom="320">
 
         <com.amap.api.maps.MapView
             android:id="@+id/nlMapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="120dp"/>
+            android:paddingBottom="150dp"/>
 
         <LinearLayout
             android:id="@+id/target_layout"

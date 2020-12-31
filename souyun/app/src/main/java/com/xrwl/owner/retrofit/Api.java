@@ -260,7 +260,7 @@ public interface Api {
 
 
  /** 货主-->余额 */
- @GET("History/Balance")
+ @GET("History/Balanceprice")
  Observable<BaseEntity<HistoryOrder>> getHistoryBalanceList(@QueryMap Map<String, String> params);
 
  /** 添加发货地址 */

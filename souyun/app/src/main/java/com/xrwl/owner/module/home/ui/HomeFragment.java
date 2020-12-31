@@ -194,6 +194,12 @@ public class HomeFragment extends BaseFragment {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
 
+        nav.setItemIconTintList(null);
+
+        ViewGroup.LayoutParams params = nav.getLayoutParams();
+        params.width = getResources().getDisplayMetrics().widthPixels * 5 / 9; //屏幕的三分之一
+        nav.setLayoutParams(params);
+
         View headerView = nav.getHeaderView(0);//获取头布局
         View view_yhj = headerView.findViewById(R.id.view_yhj);
         View view_yhk = headerView.findViewById(R.id.view_yhk);
@@ -286,7 +292,7 @@ public class HomeFragment extends BaseFragment {
 
 //        Eyes.setStatusBarColor(this.getActivity(),this.getResources().getColor(R.color.zbb));
 
-        StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.zbb));
+        StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.color_4ac4bc));
     }
 
     @OnClick({R.id.wode,R.id.wode2, R.id.sys})

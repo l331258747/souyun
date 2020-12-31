@@ -261,8 +261,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                     mPublishBean.defaultEndLon = bean.getLon();
                     mPublishBean.defaultEndLat = bean.getLat();
 
-                    mPublishBean.longEndCityDes = mStartCity;
-                    mPublishBean.longEndProvinceDes = mStartProvince;
+                    mPublishBean.longEndCityDes = mEndCity;
+                    mPublishBean.longEndProvinceDes = mEndProvince;
                     mPublishBean.longEndAreaDes = bean.getAddress();
 
                     checkDefaultLocation();
