@@ -174,7 +174,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     private SearchLocationAdapter mAdapter;
     private SearchLocationAdapter mAdapter2;
     String city = "";
-    boolean locationFirst;
+    boolean locationFirst = true;
     MarkerBean locationBean = new MarkerBean();//出发地
     MarkerBean destinationBean = new MarkerBean();//目的地
     CompanyFahuoBean fahuodanweiBean = new CompanyFahuoBean();
@@ -254,7 +254,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
     private void initView() {
         sp_chexing.setAdapter(new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_spinner_dropdown_item, android.R.id.text1,
+                R.layout.my_simple_spinner_dropdown_item, android.R.id.text1,
                 new String[]{ "同城车型","长途车型"}));
         sp_chexing.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -616,14 +616,14 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
                 locationBean.setCity(aMapLocation.getCity());
                 locationBean.setProvince(aMapLocation.getProvince());
-                locationBean.setAddress(aMapLocation.getAoiName());
+                locationBean.setAddress(aMapLocation.getAddress());
                 locationBean.setLat(aMapLocation.getLatitude());
                 locationBean.setLon(aMapLocation.getLongitude());
 
                 ((TabActivity)getActivity()).setMyLocation(locationBean);
 
                 if(TextUtils.isEmpty(et_chufadi.getText().toString()) && !locationFirst){
-                    et_chufadi.setText(aMapLocation.getAoiName());
+                    et_chufadi.setText(aMapLocation.getAddress());
                     city = aMapLocation.getCity();
                     locationFirst = false;
                 }
@@ -732,8 +732,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 destinationBean.setAddress(pi.getTitle());
                                 destinationBean.setLat(pi.getLatLonPoint().getLatitude());
                                 destinationBean.setLon(pi.getLatLonPoint().getLongitude());
-                                destinationBean.setName("");
-                                destinationBean.setTel("");
 
                                 ((TabActivity)getActivity()).setDestination(destinationBean);
 

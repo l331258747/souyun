@@ -391,7 +391,7 @@
 
                 <Spinner
                     android:id="@+id/sp_chexing"
-                    android:layout_width="120dp"
+                    android:layout_width="140dp"
                     android:layout_marginStart="@dimen/default_dp10"
                     android:textSize="10sp"
                     android:layout_height="wrap_content"/>
