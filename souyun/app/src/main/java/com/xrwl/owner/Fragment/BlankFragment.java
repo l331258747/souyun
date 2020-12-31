@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -32,12 +33,18 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.LatLng;
-import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.amap.api.services.route.BusRouteResult;
+import com.amap.api.services.route.DrivePath;
+import com.amap.api.services.route.DriveRouteResult;
+import com.amap.api.services.route.RideRouteResult;
+import com.amap.api.services.route.RouteSearch;
+import com.amap.api.services.route.WalkRouteResult;
 import com.blankj.utilcode.util.ToastUtils;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.ldw.library.utils.AppUtils;
@@ -55,12 +62,14 @@ import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
+import com.xrwl.owner.module.order.owner.ui.ui.route.DriveRouteOverlay;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
 import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
+import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.MyTextWatcher;
 
 import java.util.ArrayList;
@@ -80,7 +89,7 @@ import static android.app.Activity.RESULT_OK;
  * Use the {@link BlankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment extends Fragment implements LocationSource, AMapLocationListener {
+public class BlankFragment extends Fragment implements LocationSource, AMapLocationListener,RouteSearch.OnRouteSearchListener {
 
     public static final int RESULT_TRUCK = 111;//已选车型
     public static final int RESULT_POSITION_START = 222;//发货定位
@@ -214,6 +223,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RouteSearch mRouteSearch;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -432,6 +443,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
         myLocationStyle.showMyLocation(true);
 
+        initSearchRoute();
     }
 
 //    public void showRedPacketDialog(RedPacketEntity entity) {
@@ -626,6 +638,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                     et_chufadi.setText(aMapLocation.getAddress());
                     city = aMapLocation.getCity();
                     locationFirst = false;
+
+                    mStartPoint  = new LatLonPoint(aMapLocation.getLatitude(), aMapLocation.getLongitude());
+                    searchRouteResult();
                 }
 
             } else {
@@ -670,13 +685,12 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 locationBean.setLat(pi.getLatLonPoint().getLatitude());
                                 locationBean.setLon(pi.getLatLonPoint().getLongitude());
 
+                                mStartPoint  = pi.getLatLonPoint();
+                                searchRouteResult();
+
                                 ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
                                 et_chufadi.setText(pi.getTitle());
-
-                                aMap.clear();
-                                aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-                                aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lon)));
 
                                 mResultLayout.setVisibility(View.GONE);
 
@@ -733,13 +747,12 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 destinationBean.setLat(pi.getLatLonPoint().getLatitude());
                                 destinationBean.setLon(pi.getLatLonPoint().getLongitude());
 
+                                mEndPoint  = pi.getLatLonPoint();
+                                searchRouteResult();
+
                                 ((TabActivity)getActivity()).setDestination(destinationBean);
 
                                 et_mudidi.setText(pi.getTitle());
-
-                                aMap.clear();
-                                aMap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-                                aMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lon)));
 
                                 mResultLayout.setVisibility(View.GONE);
 
@@ -830,6 +843,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             locationBean.setLat(lat);
             locationBean.setLon(lon);
 
+            mStartPoint  = new LatLonPoint(lat,lon);
+            searchRouteResult();
+
             ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
             et_chufadi.setText(title);
@@ -857,6 +873,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             destinationBean.setAddress(title);
             destinationBean.setLat(lat);
             destinationBean.setLon(lon);
+
+            mEndPoint  = new LatLonPoint(lat,lon);
+            searchRouteResult();
 
             ((TabActivity)getActivity()).setDestination(destinationBean);
 
@@ -933,5 +952,78 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             ((TabActivity)getActivity()).setDestination(destinationBean);
 
         }
+    }
+
+    LatLonPoint mStartPoint;
+    LatLonPoint mEndPoint;
+    private static final int ROUTE_TYPE_WALK = 3;
+    private DriveRouteResult mDriveRouteResult;
+    public void initSearchRoute(){
+        mRouteSearch = new RouteSearch(getContext());
+        mRouteSearch.setRouteSearchListener(this);
+    }
+
+    /**
+     * 开始搜索路线规划方案
+     */
+    public void searchRouteResult() {
+        if (mStartPoint == null) {
+            return;
+        }
+        if (mEndPoint == null) {
+            return;
+        }
+        final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
+                mStartPoint, mEndPoint);
+        RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, RouteSearch.DRIVING_SINGLE_DEFAULT,null,null,"");
+        mRouteSearch.calculateDriveRouteAsyn(query);
+    }
+
+    @Override
+    public void onBusRouteSearched(BusRouteResult busRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onDriveRouteSearched(DriveRouteResult result, int errorCode) {
+        aMap.clear();// 清理地图上的所有覆盖物
+        if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+            if (result != null && result.getPaths() != null) {
+                if (result.getPaths().size() > 0) {
+                    mDriveRouteResult = result;
+                    final DrivePath walkPath = mDriveRouteResult.getPaths()
+                            .get(0);
+                    DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+                            getContext(), aMap, walkPath,
+                            mDriveRouteResult.getStartPos(),
+                            mDriveRouteResult.getTargetPos());
+
+                    walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                    walkRouteOverlay.removeFromMap();
+                    walkRouteOverlay.addToMap();
+                    walkRouteOverlay.zoomToSpan();
+                    walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                    int dis = (int) walkPath.getDistance();
+                    int dur = (int) walkPath.getDuration();
+                    String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                } else if (result != null && result.getPaths() == null) {
+                    Toast.makeText(getContext(), "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getContext(), "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getContext(), errorCode, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
+
     }
 }
