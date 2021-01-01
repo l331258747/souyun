@@ -639,6 +639,7 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void onRefresh(PublishClearCacheEvent event) {
         mPublishBean = null;
         mPublishBean = new PublishBean();
+        mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_SHORT.getValue();
         mDefaultStartLat = 0;
         mDefaultStartLon = 0;
         mDefaultEndLat = 0;

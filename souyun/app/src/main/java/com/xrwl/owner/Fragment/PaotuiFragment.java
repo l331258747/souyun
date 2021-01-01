@@ -572,6 +572,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
     public void onRefresh(PublishClearCacheEvent event) {
         mPublishBean = null;
         mPublishBean = new PublishBean();
+        mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_paotui.getValue();
+
         mDefaultStartLat = 0;
         mDefaultStartLon = 0;
         mDefaultEndLat = 0;
