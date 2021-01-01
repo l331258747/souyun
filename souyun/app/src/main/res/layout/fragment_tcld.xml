@@ -116,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_dp15"
                     android:layout_weight="1"
+                    android:inputType="text"
                     android:hint="点击选择"/>
 
                 <ImageView
@@ -452,6 +453,7 @@
                     android:layout_marginStart="@dimen/default_dp15"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:inputType="text"
                     android:hint="点击选择"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/default_font14" />
@@ -536,6 +538,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_dp15"
                     android:layout_weight="1"
+                    android:inputType="text"
                     android:hint="点击选择"/>
 
                 <ImageView
@@ -562,6 +565,7 @@
                     android:layout_marginStart="@dimen/default_dp15"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:inputType="text"
                     android:hint="点击选择"
                     android:lines="1"
                     android:textColor="@color/dark_gray"
@@ -633,6 +637,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_dp15"
                     android:layout_weight="1"
+                    android:inputType="text"
                     android:hint="点击选择" />
 
                 <ImageView
