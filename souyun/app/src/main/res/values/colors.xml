@@ -68,6 +68,7 @@
     <color name="publish_category_selected_color">#f16415</color>
 
     <color name="indicator_color">#44a43b</color>
+    <color name="color_58E64A">#1BB10C</color>
 
     <color name="base_dialog_btn_color">@color/colorPrimary</color>
     <color name="base_dialog_btn_disable_color">#b5d4f3</color>

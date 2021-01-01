@@ -111,7 +111,7 @@ public class DriveRouteOverlay extends RouteOverlay {
     private void initPolylineOptions() {
 
         if(walkStationDescriptor == null) {
-            walkStationDescriptor = getWalkBitmapDescriptor();
+            walkStationDescriptor = getDriveBitmapDescriptor();
         }
         mPolylineOptions = null;
         mPolylineOptions = new PolylineOptions();
@@ -135,6 +135,6 @@ public class DriveRouteOverlay extends RouteOverlay {
 	 * @return
 	 */
 	public int getWalkColor() {
-		return Color.parseColor("#E62BCA");
+		return Color.parseColor("#1BB10C");
 	}
 }
