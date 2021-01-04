@@ -79,14 +79,14 @@
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
                    >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical"
-                    android:gravity="center"
+                   <LinearLayout
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="0.04"
+                       android:orientation="vertical"
+                       android:gravity="center"
 
-                    >
+                       >
                     <ImageView
                         android:layout_width="15px"
                         android:layout_height="15px"
@@ -125,7 +125,7 @@
                         />
                 </LinearLayout>
                    <LinearLayout
-                       android:layout_width="wrap_content"
+                       android:layout_width="0dp"
                        android:layout_height="wrap_content"
                        android:layout_weight="0.7"
                        android:orientation="horizontal"
@@ -143,6 +143,8 @@
                               android:gravity="center"
                               android:layout_marginTop="6dp"
                               android:textSize="@dimen/default_font14"
+                              android:maxLines="1"
+                              android:ellipsize="end"
                               android:text="山西省临汾市尧都区"
                               android:textColor="@color/black"/>
                           <TextView
@@ -151,6 +153,8 @@
                               android:layout_height="wrap_content"
                               android:gravity="center"
                               android:textSize="@dimen/default_font14"
+                              android:maxLines="1"
+                              android:ellipsize="end"
                               android:text="今井村"
                               android:textColor="@color/black"/>
 
@@ -161,6 +165,8 @@
                               android:gravity="center"
                               android:layout_marginTop="5dp"
                               android:textSize="@dimen/default_font14"
+                              android:maxLines="1"
+                              android:ellipsize="end"
                               android:text="山西省临汾市尧都区"
                               android:textColor="@color/black"/>
                           <TextView
@@ -169,13 +175,14 @@
                               android:layout_height="wrap_content"
                               android:gravity="center"
                               android:textSize="@dimen/default_font14"
+                              android:maxLines="1"
+                              android:ellipsize="end"
                               android:text="尧庙村"
                               android:textColor="@color/black"/>
                       </LinearLayout>
                        <LinearLayout
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
-                           android:layout_weight="0.3"
                            android:orientation="vertical"
                            >
                            <TextView
