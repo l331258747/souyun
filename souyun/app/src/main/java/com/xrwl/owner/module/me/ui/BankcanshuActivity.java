@@ -3,9 +3,9 @@ package com.xrwl.owner.module.me.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ldw.library.adapter.recycler.MultiItemTypeAdapter;
@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 银行卡
@@ -40,10 +41,13 @@ public class BankcanshuActivity extends BaseEventActivity<BankContract.IView, Ba
     TextView mPriceTv;
     @BindView(R.id.addTixianBtn)
     Button mTixianBtn;
+    @BindView(R.id.tianjiall)
+    LinearLayout tianjiall;
     private BankAdapter mAdapter;
     private HeaderAndFooterWrapper mWrapper;
     private ProgressDialog mTixianDialog;
     private List<Bank> mDatas;
+
     @Override
     protected BankPresenter initPresenter() {
         return new BankPresenter(this);
@@ -60,11 +64,16 @@ public class BankcanshuActivity extends BaseEventActivity<BankContract.IView, Ba
     }
 
 
-
     @Override
     protected void getData() {
         mPresenter.getBankList();
 
+    }
+
+    //到账银行卡
+    @OnClick(R.id.tianjiall)
+    public void tianjiaClick() {
+        startActivity(new Intent(mContext, AddBankActivity.class));
     }
 
     @Override
@@ -74,10 +83,8 @@ public class BankcanshuActivity extends BaseEventActivity<BankContract.IView, Ba
         mAdapter = new BankAdapter(this, R.layout.bank_recycler_item, new ArrayList<Bank>());
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
-
-        mWrapper.addFootView(view);
-
+//        View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
+//        mWrapper.addFootView(view);
 
 
         mRv.setAdapter(mWrapper);
@@ -98,15 +105,16 @@ public class BankcanshuActivity extends BaseEventActivity<BankContract.IView, Ba
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
 
 
-
                 return false;
             }
         });
         getData();
     }
+
     public void setSelectedPos(int selectedPos) {
         mSelectedPos = selectedPos;
     }
+
     @Override
     public void onRefreshSuccess(BaseEntity<List<Bank>> entity) {
         mAdapter.setDatas(entity.getData());

@@ -1,17 +1,14 @@
 package com.xrwl.owner.module.me.ui;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ldw.library.adapter.recycler.wrapper.HeaderAndFooterWrapper;
 import com.ldw.library.bean.BaseEntity;
-import com.ldw.library.view.dialog.LoadingProgress;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.event.BankListRefreshEvent;
@@ -74,13 +71,12 @@ public class BankActivity extends BaseEventActivity<BankContract.IView, BankPres
     @Override
     protected void getData() {
         mPresenter.getBankList();
-      //  mPresenter.getTotalPrice();
+        //  mPresenter.getTotalPrice();
     }
 
     @Override
     protected void initViews() {
         initBaseRv(mRv);
-
 
 
 //        View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
@@ -89,7 +85,6 @@ public class BankActivity extends BaseEventActivity<BankContract.IView, BankPres
 
         mAdapter = new BankAdapter(this, R.layout.bank_recycler_item, new ArrayList<Bank>());
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
-
 
 
 //        view.setOnClickListener(new View.OnClickListener() {

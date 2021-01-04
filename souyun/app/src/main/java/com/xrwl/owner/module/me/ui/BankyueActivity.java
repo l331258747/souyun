@@ -1,4 +1,5 @@
 package com.xrwl.owner.module.me.ui;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -56,9 +57,6 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
     Button mquanbutixianBtn;
 
 
-
-
-
     private BankyueAdapter mAdapter;
     private HeaderAndFooterWrapper mWrapper;
     private ProgressDialog mTixianDialog;
@@ -68,12 +66,12 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
     TextView mdaozhangyinhangkaTv;
 
 
-
     public static final int RESULT_POSITION_START = 222;//发货定位
     public static final int RESULT_POSITION_END = 333;//到货定位
 
 
     private static String yinhangkalo;
+
     @Override
     protected BankyuePresenter initPresenter() {
         return new BankyuePresenter(this);
@@ -90,21 +88,19 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
     }
 
     @OnClick({R.id.addTixianBtn})
-     public void tixian() {
+    public void tixian() {
 
-        if(!mAccount.auth.equals("1"))
-        {
+        if (!mAccount.auth.equals("1")) {
             showToast("请先实名认证，在继续提现");
             startActivity(new Intent(mContext, OwnerAuthActivity.class));
             finish();
         }
 
-       // String price = mPriceTv.getText().toString();
-        String price ="0";
-        float priceet=0;
+        // String price = mPriceTv.getText().toString();
+        String price = "0";
+        float priceet = 0;
 
-        if(TextUtils.isEmpty(mdaozhangyinhangkaTv.getText().toString().replace("点击选择","")))
-        {
+        if (TextUtils.isEmpty(mdaozhangyinhangkaTv.getText().toString().replace("点击选择", ""))) {
             new AlertDialog.Builder(this)
                     .setMessage("请选择到账的银行卡号")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -114,8 +110,7 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
                     }).show();
             return;
         }
-        if(null==mPriceEt.getText().toString() || TextUtils.isEmpty(mPriceEt.getText().toString()))
-        {
+        if (null == mPriceEt.getText().toString() || TextUtils.isEmpty(mPriceEt.getText().toString())) {
 
             new AlertDialog.Builder(this)
                     .setMessage("请填写提现金额")
@@ -125,22 +120,17 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
                         }
                     }).show();
             return;
-        }
-        else
-        {
-            priceet=Float.parseFloat(mPriceEt.getText().toString());
+        } else {
+            priceet = Float.parseFloat(mPriceEt.getText().toString());
         }
 
 
-
-        float pricezong=Float.parseFloat(mPriceTv.getText().toString());
+        float pricezong = Float.parseFloat(mPriceTv.getText().toString());
         //float pricezong=0;
-        if(priceet<=pricezong)
-        {
+        if (priceet <= pricezong) {
             price = mPriceEt.getText().toString();
-            shengyujine=(pricezong-priceet);
-        }
-        else {
+            shengyujine = (pricezong - priceet);
+        } else {
             new AlertDialog.Builder(this)
                     .setMessage("您输入的提现金额大于您的总额，系统驳回")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -148,27 +138,29 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     }).show();
-             return;
+            return;
         }
         mTixianDialog = LoadingProgress.showProgress(this, "正在提现...");
-        mPresenter.tixian(price,yinhangkalo);
+        mPresenter.tixian(price, yinhangkalo);
     }
+
     //到账银行卡
     @OnClick(R.id.daozhangyinhangkaTv)
     public void Daozhang() {
-        startActivityForResult(new Intent(mContext,BankcanshuActivity.class), RESULT_POSITION_START);
+        startActivityForResult(new Intent(mContext, BankcanshuActivity.class), RESULT_POSITION_START);
     }
 
-   @OnClick(R.id.quanbutixianBtn)
+    @OnClick(R.id.quanbutixianBtn)
     public void quanbutixian() {
-        String str1="";
-        TextView editText1 =(TextView)findViewById(R.id.totalPriceTv);
-        str1=editText1.getText().toString();
-       // str1="0";
-        EditText editText2 =(EditText)findViewById(R.id.totalPriceEt);
+        String str1 = "";
+        TextView editText1 = (TextView) findViewById(R.id.totalPriceTv);
+        str1 = editText1.getText().toString();
+        // str1="0";
+        EditText editText2 = (EditText) findViewById(R.id.totalPriceEt);
         editText2.setText(str1.toCharArray(), 0, str1.length());
 
     }
+
     @Override
     protected void getData() {
         mPresenter.getBankList();
@@ -181,32 +173,29 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
         initBaseRv(mRv);
 
         Intent intent = getIntent();
-        String nidaye=intent.getStringExtra("pricehongbao");
-        String orderid=intent.getStringExtra("orderid");
-        if(!TextUtils.isEmpty(nidaye))
-        {
-            mPresenter.hongbao(nidaye,mAccount.getId(),orderid);
+        String nidaye = intent.getStringExtra("pricehongbao");
+        String orderid = intent.getStringExtra("orderid");
+        if (!TextUtils.isEmpty(nidaye)) {
+            mPresenter.hongbao(nidaye, mAccount.getId(), orderid);
         }
         mAdapter = new BankyueAdapter(this, R.layout.bankyue_recycler_item, new ArrayList<Tixianlist>());
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
 
-        View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
-        mWrapper.addFootView(view);
-
-        view.setOnClickListener(v -> startActivity(new Intent(mContext, AddBankActivity.class)));
+//        View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
+//        mWrapper.addFootView(view);
+//        view.setOnClickListener(v -> startActivity(new Intent(mContext, AddBankActivity.class)));
 
         mRv.setAdapter(mWrapper);
 
         getData();
 
 
-
-
     }
 
-    public void onButtonClick (View view){
+    public void onButtonClick(View view) {
         startActivity(new Intent(mContext, ChongzhiActivity.class));
     }
+
     @Override
     public void onRefreshSuccess(BaseEntity<List<Tixianlist>> entity) {
         mAdapter.setDatas(entity.getData());
@@ -223,8 +212,8 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
 
         String title = data.getStringExtra("title");
         mdaozhangyinhangkaTv.setText(title);
-        yinhangkalo=title;
- }
+        yinhangkalo = title;
+    }
 
     @Override
     public void onRefreshError(Throwable e) {
@@ -239,18 +228,12 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
     @Override
     public void onTotalPriceSuccess(String price) {
 
-        if(TextUtils.isEmpty(price))
-        {
+        if (TextUtils.isEmpty(price)) {
             mPriceTv.setText("0");
-        }
-        else
-        {
-            if(Double.valueOf(price)<=0)
-            {
+        } else {
+            if (Double.valueOf(price) <= 0) {
                 mPriceTv.setText("0");
-            }
-            else
-            {
+            } else {
                 mPriceTv.setText(price);
             }
         }
@@ -262,9 +245,9 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
 
     @Override
     public void onTixianSuccess() {
-      //  mTixianDialog.dismiss();
+        //  mTixianDialog.dismiss();
         mPriceTv.setText(String.valueOf(shengyujine));
-       // mPriceTv.setText("0");
+        // mPriceTv.setText("0");
 
         new AlertDialog.Builder(this)
                 .setMessage("提现成功,等待管理审核，请关注您的账户")
