@@ -117,10 +117,10 @@ public class OwnerAuthActivity extends BaseActivity<AuthContract.IView, AuthPres
 
     //实名认证隐藏和显示的ly
     @BindView(R.id.topLY)
-    LinearLayout mtoply;
+    RelativeLayout mtoply;
 
     @BindView(R.id.toprzLY)
-    LinearLayout mtoprzLY;
+    RelativeLayout mtoprzLY;
 
 
     @BindView(R.id.diyiLY)
