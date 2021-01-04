@@ -3,6 +3,9 @@ package com.xrwl.owner.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * Created by www.longdw.com on 2018/3/25 下午4:18.
  */
@@ -83,6 +86,13 @@ public class Account {
 
     public String getName() {
         return name;
+    }
+    public String getNameDecode(){
+        try {
+            return  (URLDecoder.decode(name, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public void setName(String name) {

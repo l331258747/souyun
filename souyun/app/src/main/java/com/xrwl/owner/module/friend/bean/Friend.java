@@ -32,6 +32,9 @@ public class Friend extends BaseContact implements IndexableEntity, Serializable
         return "1".equals(register);
     }
 
+    public void setRegister(String register) {
+        this.register = register;
+    }
 
     public String getIs_registqubie() {
         return is_registqubie;
@@ -102,16 +105,13 @@ public class Friend extends BaseContact implements IndexableEntity, Serializable
      */
     public static <T extends IndexableEntity> List<EntityWrapper<T>> transform(final List<T> datas) {
         try {
-            TreeMap<String, List<EntityWrapper<T>>> map = new TreeMap<>(new Comparator<String>() {
-                @Override
-                public int compare(String lhs, String rhs) {
-                    if (lhs.equals(INDEX_SIGN)) {
-                        return rhs.equals(INDEX_SIGN) ? 0 : 1;
-                    } else if (rhs.equals(INDEX_SIGN)) {
-                        return -1;
-                    }
-                    return lhs.compareTo(rhs);
+            TreeMap<String, List<EntityWrapper<T>>> map = new TreeMap<>((lhs, rhs) -> {
+                if (lhs.equals(INDEX_SIGN)) {
+                    return rhs.equals(INDEX_SIGN) ? 0 : 1;
+                } else if (rhs.equals(INDEX_SIGN)) {
+                    return -1;
                 }
+                return lhs.compareTo(rhs);
             });
 
             for (int i = 0; i < datas.size(); i++) {

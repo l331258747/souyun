@@ -44,6 +44,15 @@ public class FriendPresenter extends FriendAddContract.APresenter {
                 if (entity.isSuccess()) {
                     BaseEntity<List<EntityWrapper<Friend>>> finalData = new BaseEntity<>();
                     if (entity.getData().size() > 0) {
+                        Friend my = new Friend();
+                        my.setPhone(getAccount().getPhone());
+                        my.setName(getAccount().getNameDecode());
+                        my.setPinyin("A");
+                        my.setRegister("1");
+                        my.setIs_registqubie("货主");
+
+                        entity.getData().add(my);
+
                         //组装数据
                         //转换List
                         List<EntityWrapper<Friend>> result = Friend.transform(entity.getData());

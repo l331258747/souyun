@@ -17,8 +17,6 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventFragment;
 import com.xrwl.owner.event.FriendRefreshEvent;
 import com.xrwl.owner.module.friend.adapter.FriendAdapter;
-import com.xrwl.owner.module.friend.adapter.FriendDelegate;
-import com.xrwl.owner.module.friend.adapter.FriendSearchDelegate;
 import com.xrwl.owner.module.friend.bean.EntityWrapper;
 import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.mvp.FriendAddContract;
@@ -121,12 +119,7 @@ public class FriendFragment extends BaseEventFragment<FriendAddContract.IView, F
             mTitleView.setBackVisible();
         }
 
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getData();
-            }
-        });
+        mRefreshLayout.setOnRefreshListener(() -> getData());
 
         getData();
     }
@@ -149,25 +142,18 @@ public class FriendFragment extends BaseEventFragment<FriendAddContract.IView, F
             showNoData();
             return;
         }
-        final FriendAdapter mAdapter = new FriendAdapter(mContext, mDatas, false, new FriendSearchDelegate
-                .OnAddressSearchListener() {
-            @Override
-            public void onSearch() {
-                //搜索
-                Intent intent = new Intent(mContext, FriendSearchActivity.class);
-                intent.putExtra("data", mSearchDatas);
-                startActivity(intent);
-                mContext.overridePendingTransition(0, 0);
-            }
-        }, new FriendDelegate.OnFriendInviteListener() {
-            @Override
-            public void onFriendInvite(Friend f) {
-                if (!TextUtils.isEmpty(f.getPhone())) {
-                    mSendMsgDialog = LoadingProgress.showProgress(mContext, "正在发送邀请");
-                    mPresenter.sendMsg(f.getPhone());
-                } else {
-                    showToast("该好友没有手机号码，没法发送邀请");
-                }
+        final FriendAdapter mAdapter = new FriendAdapter(mContext, mDatas, false, () -> {
+            //搜索
+            Intent intent = new Intent(mContext, FriendSearchActivity.class);
+            intent.putExtra("data", mSearchDatas);
+            startActivity(intent);
+            mContext.overridePendingTransition(0, 0);
+        }, f -> {
+            if (!TextUtils.isEmpty(f.getPhone())) {
+                mSendMsgDialog = LoadingProgress.showProgress(mContext, "正在发送邀请");
+                mPresenter.sendMsg(f.getPhone());
+            } else {
+                showToast("该好友没有手机号码，没法发送邀请");
             }
         });
         mRv.setAdapter(mAdapter);
