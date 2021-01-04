@@ -7,10 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ldw.library.adapter.recycler.wrapper.HeaderAndFooterWrapper;
@@ -20,13 +18,8 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.event.BankListRefreshEvent;
 import com.xrwl.owner.module.home.ui.OwnerAuthActivity;
-import com.xrwl.owner.module.home.ui.OwnerAuthtelActivity;
-import com.xrwl.owner.module.me.adapter.BankAdapter;
 import com.xrwl.owner.module.me.adapter.BankyueAdapter;
-import com.xrwl.owner.module.me.bean.Bank;
 import com.xrwl.owner.module.me.bean.Tixianlist;
-import com.xrwl.owner.module.me.mvp.BankContract;
-import com.xrwl.owner.module.me.mvp.BankPresenter;
 import com.xrwl.owner.module.me.mvp.BankyueContract;
 import com.xrwl.owner.module.me.mvp.BankyuePresenter;
 import com.xrwl.owner.module.publish.ui.ChongzhiActivity;
@@ -200,13 +193,7 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
         View view = LayoutInflater.from(this).inflate(R.layout.bank_footer_view, mRv, false);
         mWrapper.addFootView(view);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, AddBankActivity.class));
-            }
-        });
-
+        view.setOnClickListener(v -> startActivity(new Intent(mContext, AddBankActivity.class)));
 
         mRv.setAdapter(mWrapper);
 
@@ -230,6 +217,9 @@ public class BankyueActivity extends BaseEventActivity<BankyueContract.IView, Ba
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
 
         String title = data.getStringExtra("title");
         mdaozhangyinhangkaTv.setText(title);

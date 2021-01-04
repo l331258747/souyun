@@ -282,6 +282,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_dp40"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -325,12 +326,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_dp1"
-                android:background="@color/divider_color"/>
+                android:background="@color/divider_color"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_dp40"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -374,7 +377,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_dp1"
-                android:background="@color/divider_color"/>
+                android:background="@color/divider_color"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
