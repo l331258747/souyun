@@ -729,7 +729,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_dp30"
-                    android:layout_marginTop="@dimen/default_dp30"
+                    android:layout_marginTop="@dimen/default_dp10"
                     android:layout_marginEnd="@dimen/default_dp30"
                     android:layout_marginBottom="@dimen/default_dp15"
                     android:text="下一步" />
