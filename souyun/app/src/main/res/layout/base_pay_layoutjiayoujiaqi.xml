@@ -58,8 +58,8 @@
                 />
             <ImageView
                 android:id="@+id/wxyeIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/default_dp30"
+                android:layout_height="@dimen/default_dp30"
                 android:layout_marginLeft="60dp"
 
                 android:src="@drawable/yuezhifu"/>
@@ -128,8 +128,8 @@
                 />
             <ImageView
                 android:id="@+id/wxIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/default_dp30"
+                android:layout_height="@dimen/default_dp30"
                 android:src="@drawable/ic_weixin"
                 android:layout_marginLeft="30dp"/>
 
@@ -173,8 +173,8 @@
                 android:text="" />
             <ImageView
                 android:id="@+id/aliPayIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/default_dp30"
+                android:layout_height="@dimen/default_dp30"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/ic_alipay"/>
 
@@ -218,8 +218,8 @@
                 android:text="" />
             <ImageView
                 android:id="@+id/aliPayIvs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/default_dp30"
+                android:layout_height="@dimen/default_dp30"
                 android:layout_marginLeft="32dp"
                 android:src="@drawable/yinlian"/>
 
