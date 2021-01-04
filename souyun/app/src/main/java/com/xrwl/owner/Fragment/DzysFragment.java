@@ -259,10 +259,12 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
                     mPublishBean.defaultStartLon = bean.getLon();
                     mPublishBean.defaultStartLat = bean.getLat();
+                    mPublishBean.defaultStartPosDes = bean.getAddress();
 
                     mPublishBean.longStartCityDes = mStartCity;
                     mPublishBean.longStartProvinceDes = mStartProvince;
                     mPublishBean.longStartAreaDes = bean.getAddress();
+
 
                     checkLongLocation();
                 }
@@ -290,6 +292,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
                     mPublishBean.defaultEndLon = bean.getLon();
                     mPublishBean.defaultEndLat = bean.getLat();
+                    mPublishBean.defaultEndPosDes = bean.getAddress();
 
                     mPublishBean.longEndCityDes = mEndCity;
                     mPublishBean.longEndProvinceDes = mEndProvince;
@@ -511,6 +514,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             //设置发货定位
             mPublishBean.defaultStartLon = mDefaultStartLon;
             mPublishBean.defaultStartLat = mDefaultStartLat;
+            mPublishBean.defaultStartPosDes = title;
 
             mPublishBean.longStartCityDes = mStartCity;
             mPublishBean.longStartProvinceDes = mStartProvince;
