@@ -91,7 +91,6 @@
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.1"
                                     android:gravity="center"
                                     android:orientation="vertical"
 
@@ -135,9 +134,10 @@
                                 </LinearLayout>
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.7"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/dp_5"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -151,7 +151,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="6dp"
-                                            android:gravity="center"
                                             android:text="山西省临汾市尧都区"
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/default_font16" />
@@ -160,7 +159,6 @@
                                             android:id="@+id/detailStartPosTvs"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center"
                                             android:text="今井村"
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/default_font16" />
@@ -170,7 +168,6 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="5dp"
-                                            android:gravity="center"
                                             android:text="山西省临汾市尧都区"
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/default_font16" />
@@ -179,7 +176,6 @@
                                             android:id="@+id/detailEndPosTvs"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:gravity="center"
                                             android:text="尧庙村"
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/default_font16" />
