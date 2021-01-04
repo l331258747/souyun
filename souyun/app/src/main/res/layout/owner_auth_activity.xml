@@ -68,11 +68,11 @@
                     android:layout_marginEnd="@dimen/default_dp10">
 
                     <ImageView
-                        android:layout_width="@dimen/default_dp60"
-                        android:layout_height="@dimen/default_dp30"
+                        android:layout_width="@dimen/default_dp80"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentTop="true"
-                        android:layout_margin="@dimen/dp_10"
+                        android:layout_marginEnd="@dimen/dp_10"
                         android:src="@drawable/ic_auth_yes"/>
 
                 </RelativeLayout>
@@ -87,11 +87,11 @@
                     android:layout_marginEnd="@dimen/default_dp10">
 
                     <ImageView
-                        android:layout_width="@dimen/default_dp60"
-                        android:layout_height="@dimen/default_dp30"
+                        android:layout_width="@dimen/default_dp80"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentTop="true"
-                        android:layout_margin="@dimen/dp_10"
+                        android:layout_marginEnd="@dimen/dp_10"
                         android:src="@drawable/ic_auth_no"/>
 
                 </RelativeLayout>
@@ -99,7 +99,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_auth"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/gray_33"
                     android:layout_marginStart="@dimen/default_dp10"
