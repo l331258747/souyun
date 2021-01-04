@@ -27,7 +27,6 @@
     <TextView
         style="@style/PublishIconStyle"
         android:id="@+id/huowudunshu"
-
         android:text="  货物吨数             " />
 
     <EditText
@@ -35,7 +34,11 @@
         style="@style/PublishEditStyle"
         android:layout_marginStart="@dimen/default_dp6"
         android:background="@null"
-        android:gravity="right"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="right|center_vertical"
+        android:paddingEnd="@dimen/dp_5"
         android:hint="请输入"
         android:inputType="numberDecimal"
         android:maxLength="4"
@@ -46,7 +49,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_dp15"
         android:text="吨"/>
 
     <EditText
@@ -54,8 +56,12 @@
         style="@style/PublishEditStyle"
         android:layout_marginStart="@dimen/default_dp6"
         android:background="@null"
-        android:gravity="right"
         android:hint="请输入"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingEnd="@dimen/dp_5"
+        android:gravity="right|center_vertical"
         android:maxLength="4"
         android:inputType="numberDecimal"
         android:lines="1"
@@ -65,7 +71,6 @@
         android:id="@+id/quxiaojianTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_dp15"
         android:text="方"/>
 
     <EditText
@@ -73,7 +78,11 @@
         style="@style/PublishEditStyle"
         android:layout_marginStart="@dimen/default_dp6"
         android:background="@null"
-        android:gravity="right"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingEnd="@dimen/dp_5"
+        android:gravity="right|center_vertical"
         android:hint="请输入"
         android:maxLength="4"
         android:inputType="numberDecimal"
@@ -85,7 +94,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_dp15"
         android:text="件" />
 
 

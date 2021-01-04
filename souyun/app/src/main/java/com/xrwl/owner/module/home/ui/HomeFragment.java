@@ -25,6 +25,7 @@ import com.xrwl.owner.Fragment.TcldFragment;
 import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseFragment;
+import com.xrwl.owner.module.business.ui.BusinessFragment;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
 import com.xrwl.owner.module.me.ui.BankActivity;
 import com.xrwl.owner.module.me.ui.BankyueActivity;
@@ -228,7 +229,11 @@ public class HomeFragment extends BaseFragment {
         nav.setNavigationItemSelectedListener(item -> {
 
             showToast(item.toString().trim());
-
+            if (item.toString().trim().equals("我的消息")) {
+                Intent intent = new Intent(mContext, BusinessActivity.class);
+                intent.putExtra("title", "我的消息");
+                startActivity(intent);
+            }
             if (item.toString().trim().equals("我的订单")) {
                 Intent intent = new Intent(mContext, OwnerOrderActivity.class);
                 intent.putExtra("title", "我的订单");

@@ -432,12 +432,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/default_dp40"
                 android:gravity="center_vertical"
+                android:background="@drawable/btn_blue_r5"
+                android:layout_margin="@dimen/dp_5"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
+                    android:textColor="@color/white"
                     android:layout_marginStart="@dimen/default_dp10"
                     android:text="货物吨数" />
 
@@ -457,6 +460,9 @@
                         android:gravity="right|center_vertical"
                         android:textSize="@dimen/sp_14"
                         android:inputType="numberDecimal"
+                        android:paddingEnd="@dimen/dp_5"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
                         android:maxLength="4"
                         android:lines="1"
                         android:hint="请输入"/>
@@ -464,6 +470,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="吨"/>
 
 
@@ -485,6 +492,9 @@
                         android:gravity="right|center_vertical"
                         android:textSize="@dimen/sp_14"
                         android:inputType="numberDecimal"
+                        android:paddingEnd="@dimen/dp_5"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
                         android:maxLength="4"
                         android:lines="1"
                         android:hint="请输入"/>
@@ -492,6 +502,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="方"/>
 
 
@@ -514,6 +525,9 @@
                         android:gravity="right|center_vertical"
                         android:textSize="@dimen/sp_14"
                         android:inputType="numberDecimal"
+                        android:paddingEnd="@dimen/dp_5"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
                         android:maxLength="4"
                         android:lines="1"
                         android:hint="请输入"/>
@@ -521,6 +535,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:text="件"/>
 
 
@@ -533,6 +548,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/divider_color"/>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/default_dp60"-->
+<!--                android:background="@color/white"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/owner" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="你的订单有人接单   1天前"-->
+<!--                    android:textColor="@color/black" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="@dimen/default_dp80"-->
+<!--                    android:src="@drawable/ic_green_arrow"-->
+
+<!--                    />-->
+<!--            </LinearLayout>-->
+
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="2dp" />-->
+
+<!--            <android.support.v7.widget.RecyclerView-->
+<!--                android:id="@+id/homeIntroRv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="2dp"-->
+<!--                android:background="@color/white"-->
+
+<!--                />-->
 
             <TextView
                 android:layout_width="match_parent"
