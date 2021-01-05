@@ -34,6 +34,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
@@ -468,7 +469,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
      * other 张彬彬
      * 司机实时经纬度返回接口
      */
-
+    Marker sijiPos;
     private void Driverpositioning() {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userid", mDriverId);
@@ -494,12 +495,17 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                         Log.e("zbb", lon.toString());
                         Double lat = Double.valueOf(driverpositioningBeen.getData().getLat());
                         Log.e("zbb", lat.toString());
-                        mEndPoint = new LatLonPoint(lat, lon);
-                        Log.e("zbb", mEndPoint.toString());
-                        getEndBitmapDescriptor();
-                        getStartBitmapDescriptor();
-                        initjjdMap();
+//                        mEndPoint = new LatLonPoint(lat, lon);
+//                        Log.e("zbb", mEndPoint.toString());
+//                        getEndBitmapDescriptor();
+//                        getStartBitmapDescriptor();
+//                        initjjdMap();
 
+                        if(sijiPos != null) sijiPos.remove();
+                        sijiPos = mAmap.addMarker(new MarkerOptions()
+                                .position(AMapUtil.convertToLatLng(new LatLonPoint(lat,lon)))
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_car)));
+                        mAmap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat,lon)));
 
                     }
 
@@ -1974,9 +1980,11 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         mImagePaths = mOrderDetail.getPics();
 
         mPhotoView.setDatas(mOrderDetail.getPics());
-        if (mOrderDetail.type.equals("0")) {
-            initwjdMap();
 
+        initwjdMap();
+
+        if (mOrderDetail.type.equals("0")) {
+//            initwjdMap();
             mCancelBtn.setVisibility(View.VISIBLE);
             mLocationBtn.setVisibility(View.GONE);
             mConfirmBtn.setVisibility(View.GONE);
@@ -2079,8 +2087,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             /**
              * 已接单展示内容
              */
-
-            Driverpositioning();
+//            Driverpositioning();
 
             if ("6".equals(mOrderDetail.category)) {
                 mWeightTv.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -3171,128 +3178,158 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     public void onDriveRouteSearched(DriveRouteResult result, int errorCode) {
         dissmissProgressDialog();
 
-        if (mOrderDetail.type.equals("0")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mDriveRouteResult = result;
-                        final DrivePath walkPath = mDriveRouteResult.getPaths()
-                                .get(0);
-                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
-                                this, mAmap, walkPath,
-                                mDriveRouteResult.getStartPos(),
-                                mDriveRouteResult.getTargetPos());
+        mAmap.clear();// 清理地图上的所有覆盖物
+        if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+            if (result != null && result.getPaths() != null) {
+                if (result.getPaths().size() > 0) {
+                    mDriveRouteResult = result;
+                    final DrivePath walkPath = mDriveRouteResult.getPaths()
+                            .get(0);
+                    DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+                            this, mAmap, walkPath,
+                            mDriveRouteResult.getStartPos(),
+                            mDriveRouteResult.getTargetPos());
 
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+                    walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                    walkRouteOverlay.removeFromMap();
+                    walkRouteOverlay.addToMap();
+                    walkRouteOverlay.zoomToSpan();
+                    walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                    int dis = (int) walkPath.getDistance();
+                    int dur = (int) walkPath.getDuration();
+                    String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                } else if (result != null && result.getPaths() == null) {
+                    Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
             }
-        } else if (mOrderDetail.type.equals("1")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mDriveRouteResult = result;
-                        final DrivePath walkPath = mDriveRouteResult.getPaths()
-                                .get(0);
-                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
-                                this, mAmap, walkPath,
-                                mDriveRouteResult.getStartPos(),
-                                mDriveRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap2();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
-
-        } else if (mOrderDetail.type.equals("2")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mDriveRouteResult = result;
-                        final DrivePath walkPath = mDriveRouteResult.getPaths()
-                                .get(0);
-                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
-                                this, mAmap, walkPath,
-                                mDriveRouteResult.getStartPos(),
-                                mDriveRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
-        } else if (mOrderDetail.type.equals("3")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mDriveRouteResult = result;
-                        final DrivePath walkPath = mDriveRouteResult.getPaths()
-                                .get(0);
-                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
-                                this, mAmap, walkPath,
-                                mDriveRouteResult.getStartPos(),
-                                mDriveRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
+        } else {
+            Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
         }
+
+//        if (mOrderDetail.type.equals("0")) {
+//            mAmap.clear();// 清理地图上的所有覆盖物
+//            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+//                if (result != null && result.getPaths() != null) {
+//                    if (result.getPaths().size() > 0) {
+//                        mDriveRouteResult = result;
+//                        final DrivePath walkPath = mDriveRouteResult.getPaths()
+//                                .get(0);
+//                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+//                                this, mAmap, walkPath,
+//                                mDriveRouteResult.getStartPos(),
+//                                mDriveRouteResult.getTargetPos());
+//
+//                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+//                        walkRouteOverlay.removeFromMap();
+//                        walkRouteOverlay.addToMap();
+//                        walkRouteOverlay.zoomToSpan();
+//                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+//                        int dis = (int) walkPath.getDistance();
+//                        int dur = (int) walkPath.getDuration();
+//                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+//                    } else if (result != null && result.getPaths() == null) {
+//                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+//                    }
+//                } else {
+//                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+//                }
+//            } else {
+//                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+//            }
+//        } else if (mOrderDetail.type.equals("1")) {
+//            mAmap.clear();// 清理地图上的所有覆盖物
+//            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+//                if (result != null && result.getPaths() != null) {
+//                    if (result.getPaths().size() > 0) {
+//                        mDriveRouteResult = result;
+//                        final DrivePath walkPath = mDriveRouteResult.getPaths()
+//                                .get(0);
+//                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+//                                this, mAmap, walkPath,
+//                                mDriveRouteResult.getStartPos(),
+//                                mDriveRouteResult.getTargetPos());
+//
+//                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+//                        walkRouteOverlay.removeFromMap();
+//                        walkRouteOverlay.addToMap2();
+//                        walkRouteOverlay.zoomToSpan();
+//                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+//                        int dis = (int) walkPath.getDistance();
+//                        int dur = (int) walkPath.getDuration();
+//                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+//                    } else if (result != null && result.getPaths() == null) {
+//                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+//                    }
+//                } else {
+//                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+//                }
+//            } else {
+//                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+//            }
+//
+//        } else if (mOrderDetail.type.equals("2")) {
+//            mAmap.clear();// 清理地图上的所有覆盖物
+//            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+//                if (result != null && result.getPaths() != null) {
+//                    if (result.getPaths().size() > 0) {
+//                        mDriveRouteResult = result;
+//                        final DrivePath walkPath = mDriveRouteResult.getPaths()
+//                                .get(0);
+//                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+//                                this, mAmap, walkPath,
+//                                mDriveRouteResult.getStartPos(),
+//                                mDriveRouteResult.getTargetPos());
+//
+//                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+//                        walkRouteOverlay.removeFromMap();
+//                        walkRouteOverlay.addToMap();
+//                        walkRouteOverlay.zoomToSpan();
+//                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+//                        int dis = (int) walkPath.getDistance();
+//                        int dur = (int) walkPath.getDuration();
+//                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+//                    } else if (result != null && result.getPaths() == null) {
+//                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+//                    }
+//                } else {
+//                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+//                }
+//            } else {
+//                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+//            }
+//        } else if (mOrderDetail.type.equals("3")) {
+//            mAmap.clear();// 清理地图上的所有覆盖物
+//            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+//                if (result != null && result.getPaths() != null) {
+//                    if (result.getPaths().size() > 0) {
+//                        mDriveRouteResult = result;
+//                        final DrivePath walkPath = mDriveRouteResult.getPaths()
+//                                .get(0);
+//                        DriveRouteOverlay walkRouteOverlay = new DriveRouteOverlay(
+//                                this, mAmap, walkPath,
+//                                mDriveRouteResult.getStartPos(),
+//                                mDriveRouteResult.getTargetPos());
+//
+//                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+//                        walkRouteOverlay.removeFromMap();
+//                        walkRouteOverlay.addToMap();
+//                        walkRouteOverlay.zoomToSpan();
+//                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+//                        int dis = (int) walkPath.getDistance();
+//                        int dur = (int) walkPath.getDuration();
+//                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+//                    } else if (result != null && result.getPaths() == null) {
+//                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+//                    }
+//                } else {
+//                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+//                }
+//            } else {
+//                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+//            }
+//        }
     }
 
 
