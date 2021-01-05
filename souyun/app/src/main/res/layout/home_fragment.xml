@@ -68,9 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:fillViewport="true"
-            app:tabIndicatorColor="@android:color/holo_orange_light"
+            app:tabIndicatorColor="@color/color_ffbb33"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@android:color/holo_orange_light"
+            app:tabSelectedTextColor="@color/color_ffbb33"
             app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
         <ImageView
