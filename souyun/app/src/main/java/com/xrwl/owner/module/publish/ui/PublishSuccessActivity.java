@@ -8,7 +8,9 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
 import com.xrwl.owner.bean.PostOrder;
 import com.xrwl.owner.event.PublishClearCacheEvent;
+import com.xrwl.owner.module.order.owner.ui.OwnerOrderActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
+import com.xrwl.owner.utils.ActivityCollect;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -41,22 +43,27 @@ public class PublishSuccessActivity extends BaseActivity {
     public void onClick() {
 
         EventBus.getDefault().post(new PublishClearCacheEvent());
-        finish();
-    }
+//        finish();
 
-
-    public void onRefreshSuccess(BaseEntity<PostOrder> entity) {
-        //mPostDialog.dismiss();
-
-        Intent intent = new Intent(this, OrderConfirmActivity.class);
-        intent.putExtra("publishBean", (Serializable) mPublishBean);
-        intent.putExtra("postOrder", entity.getData());
-
+        ActivityCollect.getAppCollect().finishAllNotHome();
+        Intent intent = new Intent(mContext, OwnerOrderActivity.class);
+        intent.putExtra("title", "我的订单");
         startActivity(intent);
-
-        EventBus.getDefault().post(new PublishClearCacheEvent());
-
-        finish();
-
     }
+
+
+//    public void onRefreshSuccess(BaseEntity<PostOrder> entity) {
+//        //mPostDialog.dismiss();
+//
+//        Intent intent = new Intent(this, OrderConfirmActivity.class);
+//        intent.putExtra("publishBean", (Serializable) mPublishBean);
+//        intent.putExtra("postOrder", entity.getData());
+//
+//        startActivity(intent);
+//
+//        EventBus.getDefault().post(new PublishClearCacheEvent());
+//
+//        finish();
+//
+//    }
 }
