@@ -626,12 +626,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         if (v.getId() == R.id.pcPriceDetailLayout) {
             if (mPopView.isShown()) {
                 mPopView.setVisibility(View.GONE);
-                mArrowIv.setImageResource(R.drawable.publish_ic_arrow_up);
+                mArrowIv.setImageResource(R.drawable.publish_ic_arrow_up2);
             } else {
-                mPopView.setVisibility(View.GONE);
+                mPopView.setVisibility(View.VISIBLE);
                 mPopFreightTv.setText(String.valueOf(mFreightPrice));
                 mPopInsuranceTv.setText(String.valueOf(mInsurancePrice));
-                mArrowIv.setImageResource(R.drawable.publish_ic_arrow_down);
+                mArrowIv.setImageResource(R.drawable.publish_ic_arrow_down2);
             }
         }
         /**选择自送地*/
@@ -825,7 +825,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         /**弹出框--详细内容运费、优惠券、保险的FrameLayout*/
         else if (v.getId() == R.id.pcPopLayout) {
             mPopView.setVisibility(View.GONE);
-            mArrowIv.setImageResource(R.drawable.publish_ic_arrow_down);
+            mArrowIv.setImageResource(R.drawable.publish_ic_arrow_down2);
         }
         /**确认提交跳转到下一个提交的activty*/
 //        else if (v.getId() == R.id.pcOkBtn) {

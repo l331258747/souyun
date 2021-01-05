@@ -52,5 +52,6 @@
     <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_60">60dp</dimen>
     <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
 
 </resources>
