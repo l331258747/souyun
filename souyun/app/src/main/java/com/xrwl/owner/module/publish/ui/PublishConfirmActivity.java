@@ -82,6 +82,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     public static final int RESULT_FRIEND_GETs = 333;//获取中转点
     public static final int RESULT_FRIEND_GETss = 444;//获取中转点
     public static final int RESULT_POSITION_START = 222;//发货定位
+    public static final int RESULT_FAPIAO = 777;//发票
     public static int price = 0;
     public String renmibi = "0";
     private RemarkDialog mRemarkDialog;
@@ -178,6 +179,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     private int mMinPrice = 0;
     private int mMaxPrice = 1000000000;
     private int mInsurancePrice;//保险价格
+    private float mfuwufei;//服务费
     private int mFull, mReduce;//满 减
     private int mFreightPrice;//运费价格
     private double mMindon = 0;
@@ -476,7 +478,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mCouponTv.setText("");
                 }
 
-                calculateTotalPrice();
             }
         });
     }
@@ -544,7 +545,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     xianshijiage = "0";
                 }
 
-                mTotalPriceTv.setText(xianshijiage);
+                mFreightPrice = Integer.parseInt(xianshijiage);
+                if(mReceiptCb.isChecked()){
+                    mfuwufei = mFreightPrice * 0.099f;
+                }
+
+                calculateTotalPrice();
 
                 handler.postDelayed(delayRun, 5000);
             }
@@ -631,6 +637,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mPopView.setVisibility(View.VISIBLE);
                 mPopFreightTv.setText(String.valueOf(mFreightPrice));
                 mPopInsuranceTv.setText(String.valueOf(mInsurancePrice));
+                mPopCouponTv.setText(String.format("%.1f", mfuwufei));
                 mArrowIv.setImageResource(R.drawable.publish_ic_arrow_down2);
             }
         }
@@ -860,20 +867,16 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
                 new AlertDialog.Builder(this)
                         .setMessage("您尚无发票信息,请前往更新发票信息？")
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mReceiptCb.setChecked(false);
-                            }
-                        })
-                        .setPositiveButton("前往", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(mContext, ReceiptActivity.class));
-                            }
+                        .setNegativeButton("取消", (dialog, which) -> mReceiptCb.setChecked(false))
+                        .setPositiveButton("前往", (dialog, which) -> {
+                            mReceiptCb.setChecked(false);
+                            startActivityForResult(new Intent(mContext, ReceiptActivity.class),RESULT_FAPIAO);
                         }).show();
             } else {
                 mReceiptView.setVisibility(View.GONE);
+
+                mfuwufei = 0;
+                calculateTotalPrice();
             }
         }
         /**代付服务*/
@@ -1184,8 +1187,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @SuppressLint("SetTextI18n")
     private void calculateTotalPrice() {
-        int totalPrice = mFreightPrice + mInsurancePrice - mReduce;
-        mTotalPriceTv.setText(String.valueOf(totalPrice));
+        float totalPrice = mFreightPrice + mInsurancePrice + mfuwufei;
+        mTotalPriceTv.setText(String.format("%.1f", totalPrice));
     }
 
 
@@ -1195,8 +1198,13 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         if (resultCode != RESULT_OK) {
             return;
         }
+        if(requestCode == RESULT_FAPIAO){
+            mReceiptCb.setChecked(true);
+            mfuwufei = mFreightPrice * 0.099f;
+            calculateTotalPrice();
+        }
         /**代付人*/
-        if (requestCode == RESULT_FRIEND_PAY) {
+        else if (requestCode == RESULT_FRIEND_PAY) {
             Friend friend = (Friend) data.getSerializableExtra("data");
             if (!friend.isRegister()) {
                 showToast("好友未注册，暂无法提供代付服务");

@@ -932,7 +932,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             et_fahuotel.setText(tel);
 
             locationBean.setName(name);
-            locationBean.setTel(name);
+            locationBean.setTel(tel);
 
             ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
@@ -947,7 +947,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             et_shouhuotel.setText(tel);
 
             destinationBean.setName(name);
-            destinationBean.setTel(name);
+            destinationBean.setTel(tel);
 
             ((TabActivity)getActivity()).setDestination(destinationBean);
 
