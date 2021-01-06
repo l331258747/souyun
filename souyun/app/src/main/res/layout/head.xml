@@ -1,110 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/person"
+        android:id="@+id/iv_img"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginTop="42dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/default_dp20"
         android:src="@drawable/zbbw" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+    <View
+        android:id="@+id/view_yhj"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_yhj"
+        app:layout_constraintEnd_toStartOf="@+id/view_yhk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_img" />
+
+    <ImageView
+        android:id="@+id/iv_yhj"
+        android:layout_width="@dimen/default_dp40"
+        android:layout_height="@dimen/default_dp40"
+        android:src="@drawable/newyouhuijuan2"
+        app:layout_constraintEnd_toEndOf="@+id/view_yhj"
+        app:layout_constraintStart_toStartOf="@+id/view_yhj"
+        app:layout_constraintTop_toTopOf="@+id/view_yhj" />
+
+    <TextView
+        android:id="@+id/tv_yhj"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_dp10">
+        android:layout_marginTop="@dimen/default_dp10"
+        android:text="优惠券"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/view_yhj"
+        app:layout_constraintStart_toStartOf="@+id/view_yhj"
+        app:layout_constraintTop_toBottomOf="@+id/iv_yhj" />
 
-        <View
-            android:id="@+id/view_yhj"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/view_yhk"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_yhj"
-            android:layout_height="0dp" />
+    <View
+        android:id="@+id/view_yhk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="@+id/view_yhj"
+        app:layout_constraintEnd_toStartOf="@+id/view_ye"
+        app:layout_constraintStart_toEndOf="@+id/view_yhj"
+        app:layout_constraintTop_toBottomOf="@+id/iv_img"/>
 
-        <ImageView
-            android:id="@+id/iv_yhj"
-            android:layout_width="@dimen/default_dp40"
-            android:layout_height="@dimen/default_dp40"
-            app:layout_constraintStart_toStartOf="@+id/view_yhj"
-            app:layout_constraintEnd_toEndOf="@+id/view_yhj"
-            app:layout_constraintTop_toTopOf="@+id/view_yhj"
-            android:src="@drawable/newyouhuijuan2"/>
+    <ImageView
+        android:id="@+id/iv_yhk"
+        android:layout_width="@dimen/default_dp40"
+        android:layout_height="@dimen/default_dp40"
+        android:src="@drawable/newbank2"
+        app:layout_constraintEnd_toEndOf="@+id/view_yhk"
+        app:layout_constraintStart_toStartOf="@+id/view_yhk"
+        app:layout_constraintTop_toTopOf="@+id/view_yhk" />
 
-        <TextView
-            android:id="@+id/tv_yhj"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="优惠券"
-            app:layout_constraintStart_toStartOf="@+id/view_yhj"
-            app:layout_constraintEnd_toEndOf="@+id/view_yhj"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/default_dp10"
-            app:layout_constraintTop_toBottomOf="@+id/iv_yhj"/>
+    <TextView
+        android:id="@+id/tv_yhk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:text="银行卡"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/view_yhk"
+        app:layout_constraintStart_toStartOf="@+id/view_yhk"
+        app:layout_constraintTop_toBottomOf="@+id/iv_yhk" />
 
-        <View
-            android:id="@+id/view_yhk"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toEndOf="@+id/view_yhj"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/view_ye"
-            app:layout_constraintBottom_toBottomOf="@+id/view_yhj"
-            android:layout_height="0dp"/>
+    <View
+        android:id="@+id/view_ye"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_yhj"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toEndOf="@+id/view_yhk"
+        app:layout_constraintTop_toBottomOf="@+id/iv_img" />
 
-        <ImageView
-            android:id="@+id/iv_yhk"
-            android:layout_width="@dimen/default_dp40"
-            android:layout_height="@dimen/default_dp40"
-            app:layout_constraintStart_toStartOf="@+id/view_yhk"
-            app:layout_constraintEnd_toEndOf="@+id/view_yhk"
-            app:layout_constraintTop_toTopOf="@+id/view_yhk"
-            android:src="@drawable/newbank2"/>
+    <ImageView
+        android:id="@+id/iv_ye"
+        android:layout_width="@dimen/default_dp40"
+        android:layout_height="@dimen/default_dp40"
+        android:src="@drawable/newyue2"
+        app:layout_constraintEnd_toEndOf="@+id/view_ye"
+        app:layout_constraintStart_toStartOf="@+id/view_ye"
+        app:layout_constraintTop_toTopOf="@+id/view_ye" />
 
-        <TextView
-            android:id="@+id/tv_yhk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="银行卡"
-            app:layout_constraintStart_toStartOf="@+id/view_yhk"
-            app:layout_constraintEnd_toEndOf="@+id/view_yhk"
-            android:layout_marginTop="@dimen/default_dp10"
-            app:layout_constraintTop_toBottomOf="@+id/iv_yhk"/>
+    <TextView
+        android:id="@+id/tv_ye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_dp10"
+        android:text="余额"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/view_ye"
+        app:layout_constraintStart_toStartOf="@+id/view_ye"
+        app:layout_constraintTop_toBottomOf="@+id/iv_ye" />
 
-        <View
-            android:id="@+id/view_ye"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toEndOf="@+id/view_yhk"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view_yhj"/>
-
-        <ImageView
-            android:id="@+id/iv_ye"
-            android:layout_width="@dimen/default_dp40"
-            android:layout_height="@dimen/default_dp40"
-            app:layout_constraintStart_toStartOf="@+id/view_ye"
-            app:layout_constraintEnd_toEndOf="@+id/view_ye"
-            app:layout_constraintTop_toTopOf="@+id/view_ye"
-            android:src="@drawable/newyue2"/>
-
-        <TextView
-            android:id="@+id/tv_ye"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="余额"
-            app:layout_constraintStart_toStartOf="@+id/view_ye"
-            app:layout_constraintEnd_toEndOf="@+id/view_ye"
-            android:layout_marginTop="@dimen/default_dp10"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/iv_ye"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

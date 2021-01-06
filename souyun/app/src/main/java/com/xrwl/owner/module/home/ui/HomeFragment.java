@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -42,9 +41,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by www.longdw.com on 2018/3/25 下午10:58.
@@ -60,7 +57,6 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.viewpager)
     ControlScrollViewPager viewpager;
 
-    Unbinder unbinder;
     @BindView(R.id.wode)
     ImageView wode;
     @BindView(R.id.wode2)
@@ -108,6 +104,90 @@ public class HomeFragment extends BaseFragment {
         //关联到一起
         showView();
 
+        initNav();
+
+    }
+
+    private void initNav() {
+        nav.setItemIconTintList(null);
+
+        ViewGroup.LayoutParams params = nav.getLayoutParams();
+        params.width = getResources().getDisplayMetrics().widthPixels * 5 / 9; //屏幕的三分之一
+        nav.setLayoutParams(params);
+
+        View headerView = nav.getHeaderView(0);//获取头布局
+        View view_yhj = headerView.findViewById(R.id.view_yhj);
+        View view_yhk = headerView.findViewById(R.id.view_yhk);
+        View view_ye = headerView.findViewById(R.id.view_ye);
+        view_yhj.setOnClickListener(v -> {
+            //优惠卷pic
+            Intent intent = new Intent(mContext, CouponActivity.class);
+            intent.putExtra("title", "优惠卷");
+            startActivity(intent);
+        });
+        view_yhk.setOnClickListener(v -> {
+            //银行卡pic
+            Intent intent = new Intent(mContext, BankActivity.class);
+            intent.putExtra("title", "绑定银行卡");
+            startActivity(intent);
+        });
+        view_ye.setOnClickListener(v -> {
+            //鱼额pic
+            Intent intent = new Intent(mContext, BankyueActivity.class);
+            intent.putExtra("title", "金        额");
+            startActivity(intent);
+        });
+
+
+        nav.setNavigationItemSelectedListener(item -> {
+
+            showToast(item.toString().trim());
+            if (item.toString().trim().equals("我的消息")) {
+                Intent intent = new Intent(mContext, BusinessActivity.class);
+                intent.putExtra("title", "我的消息");
+                startActivity(intent);
+            }
+            if (item.toString().trim().equals("我的订单")) {
+                Intent intent = new Intent(mContext, OwnerOrderActivity.class);
+                intent.putExtra("title", "我的订单");
+                startActivity(intent);
+            }
+            if (item.toString().trim().equals("实名认证")) {
+                startActivity(new Intent(getContext(), OwnerAuthActivity.class));
+            }
+            if (item.toString().trim().equals("地址管理")) {
+                Intent intent = new Intent(getContext(), AddressActivity.class);
+                intent.putExtra("isItemClick", false);
+                startActivity(intent);
+            }
+            if (item.toString().trim().equals("发票管理")) {
+                startActivity(new Intent(getContext(), ReceiptActivity.class));
+            }
+            if (item.toString().trim().equals("联系客服")) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri data = Uri.parse("tel:" + "0357-2591666");
+                intent.setData(data);
+                startActivity(intent);
+            }
+            if (item.toString().trim().equals("退出登陆")) {
+                ExitDialog dialog = new ExitDialog();
+                dialog.show(getFragmentManager(), "exit");
+            }
+            if (item.toString().trim().equals("车辆管理")) {
+                CarManageDialog dialog = new CarManageDialog();
+                dialog.show(Objects.requireNonNull(getFragmentManager()), "carManage");
+            }
+            if (item.toString().trim().equals("大宗地址管理")) {
+                startActivity(new Intent(mContext, CompanyManageActivity.class));
+            }
+            if (item.toString().trim().equals("大宗名称管理")) {
+                ProductDialog2 dialog = new ProductDialog2();
+                dialog.show(Objects.requireNonNull(getFragmentManager()), "product");
+            }
+            nidaye.closeDrawer(nav);
+            return true;
+
+        });
     }
 
 
@@ -189,104 +269,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-
-        nav.setItemIconTintList(null);
-
-        ViewGroup.LayoutParams params = nav.getLayoutParams();
-        params.width = getResources().getDisplayMetrics().widthPixels * 5 / 9; //屏幕的三分之一
-        nav.setLayoutParams(params);
-
-        View headerView = nav.getHeaderView(0);//获取头布局
-        View view_yhj = headerView.findViewById(R.id.view_yhj);
-        View view_yhk = headerView.findViewById(R.id.view_yhk);
-        View view_ye = headerView.findViewById(R.id.view_ye);
-
-        view_yhj.setOnClickListener(v -> {
-            //优惠卷pic
-            Intent intent = new Intent(mContext, CouponActivity.class);
-            intent.putExtra("title", "优惠卷");
-            startActivity(intent);
-        });
-        view_yhk.setOnClickListener(v -> {
-            //银行卡pic
-            Intent intent = new Intent(mContext, BankActivity.class);
-            intent.putExtra("title", "绑定银行卡");
-            startActivity(intent);
-        });
-        view_ye.setOnClickListener(v -> {
-            //鱼额pic
-            Intent intent = new Intent(mContext, BankyueActivity.class);
-            intent.putExtra("title", "金        额");
-            startActivity(intent);
-        });
-
-
-        nav.setNavigationItemSelectedListener(item -> {
-
-            showToast(item.toString().trim());
-            if (item.toString().trim().equals("我的消息")) {
-                Intent intent = new Intent(mContext, BusinessActivity.class);
-                intent.putExtra("title", "我的消息");
-                startActivity(intent);
-            }
-            if (item.toString().trim().equals("我的订单")) {
-                Intent intent = new Intent(mContext, OwnerOrderActivity.class);
-                intent.putExtra("title", "我的订单");
-                startActivity(intent);
-            }
-            if (item.toString().trim().equals("实名认证")) {
-                startActivity(new Intent(getContext(), OwnerAuthActivity.class));
-            }
-            if (item.toString().trim().equals("地址管理")) {
-                Intent intent = new Intent(getContext(), AddressActivity.class);
-                intent.putExtra("isItemClick", false);
-                startActivity(intent);
-            }
-            if (item.toString().trim().equals("发票管理")) {
-                startActivity(new Intent(getContext(), ReceiptActivity.class));
-            }
-            if (item.toString().trim().equals("联系客服")) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                Uri data = Uri.parse("tel:" + "0357-2591666");
-                intent.setData(data);
-                startActivity(intent);
-            }
-            if (item.toString().trim().equals("退出登陆")) {
-                ExitDialog dialog = new ExitDialog();
-                dialog.show(getFragmentManager(), "exit");
-            }
-            if (item.toString().trim().equals("车辆管理")) {
-                CarManageDialog dialog = new CarManageDialog();
-                dialog.show(Objects.requireNonNull(getFragmentManager()), "carManage");
-            }
-            if (item.toString().trim().equals("大宗地址管理")) {
-                startActivity(new Intent(mContext, CompanyManageActivity.class));
-            }
-            if (item.toString().trim().equals("大宗名称管理")) {
-                ProductDialog2 dialog = new ProductDialog2();
-                dialog.show(Objects.requireNonNull(getFragmentManager()), "product");
-            }
-            nidaye.closeDrawer(nav);
-            return true;
-
-        });
-
-
-//        viewpager.setOnTouchListener((v, event) -> {
-//            // TODO Auto-generated method stub
-//            return true;
-//        });
-        return rootView;
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
     }
 
     public void z1() {
