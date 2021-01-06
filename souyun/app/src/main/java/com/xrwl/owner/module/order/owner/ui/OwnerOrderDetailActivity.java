@@ -160,6 +160,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     @BindView(R.id.yueCB)
     CheckBox myuecb;
 
+    private ProgressDialog mOperationDialog;
 
     @BindView(R.id.detailStartPosTv)
 
@@ -200,6 +201,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     Button mLocationBtn;
     @BindView(R.id.detailConfirmBtn)
     Button mConfirmBtn;
+    @BindView(R.id.detailUploadBtn)
+    Button detailUploadBtn;
     @BindView(R.id.zhifuweikuanBtn)
     Button mzhifuweikuanBtn;
     @BindView(R.id.zhifuweikuandaishouBtn)
@@ -311,7 +314,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     private RetrofitManager retrofitManager;
 
     String mWeightValue = "";
-
 
     @Override
     protected OwnerOrderDetailPresenter initPresenter() {
@@ -681,20 +683,15 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         /**
          * 选中
          */
-        mPhotoView.setOnPhotoRvControlListener(new PhotoRecyclerView.OnPhotoRvControlListener() {
-            @Override
-            public void onCamera() {
-                PictureSelector.create(mContext)
-                        .openGallery(PictureMimeType.ofImage())
-                        .maxSelectNum(5) //最大选则数
-                        .selectionMode(PictureConfig.MULTIPLE)
-                        .previewImage(true)
-                        .isCamera(true)
-                        .compress(true)
-                        .circleDimmedLayer(true)
-                        .forResult(PictureConfig.CHOOSE_REQUEST);
-            }
-        });
+        mPhotoView.setOnPhotoRvControlListener(() -> PictureSelector.create(mContext)
+                .openGallery(PictureMimeType.ofImage())
+                .maxSelectNum(5) //最大选则数
+                .selectionMode(PictureConfig.MULTIPLE)
+                .previewImage(true)
+                .isCamera(true)
+                .compress(true)
+                .circleDimmedLayer(true)
+                .forResult(PictureConfig.CHOOSE_REQUEST));
         mId = getIntent().getStringExtra("id");
         mDriverId = getIntent().getStringExtra("driverid");
         Log.e("=======", mDriverId.toString());
@@ -754,7 +751,14 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     }
 
 
-    @OnClick({R.id.shijidianhua,R.id.detailCancelBtn, R.id.detailLocationBtn, R.id.detailConfirmBtn, R.id.wxPayLayout, R.id.aliPayLayout, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.detailConfirmfaBtn, R.id.xuanzeonline, R.id.xuanzeonlinexianxia, R.id.huozhuxianxiazhifu, R.id.zhifuweikuanBtn, R.id.querenzhifuhuokuan, R.id.zhifuweikuandaishouBtn, R.id.detailSendByselfBtn, R.id.detailSendByselfquxiaoBtn, R.id.detailPickByselfBtn, R.id.detailPickByselfquxiaoBtn, R.id.dianpingbt, R.id.detailDianPingBtn, R.id.detailSelectBtn})
+
+
+    @OnClick({R.id.shijidianhua,R.id.detailCancelBtn, R.id.detailLocationBtn, R.id.detailConfirmBtn,
+            R.id.wxPayLayout, R.id.aliPayLayout, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB,
+            R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.detailConfirmfaBtn, R.id.xuanzeonline, R.id.xuanzeonlinexianxia,
+            R.id.huozhuxianxiazhifu, R.id.zhifuweikuanBtn, R.id.querenzhifuhuokuan, R.id.zhifuweikuandaishouBtn,
+            R.id.detailSendByselfBtn, R.id.detailSendByselfquxiaoBtn, R.id.detailPickByselfBtn, R.id.detailPickByselfquxiaoBtn,
+            R.id.dianpingbt, R.id.detailDianPingBtn, R.id.detailSelectBtn,R.id.detailUploadBtn})
     public void onClick(View v) {
         int id = v.getId();
         /**是否确定取消订单*/
@@ -787,6 +791,21 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
                         }
                     }).show();
+        }
+        else if (id == R.id.detailUploadBtn) {//上传图片
+            boolean canUpload = false;
+            for (Photo photo : mImagePaths) {
+                if (photo.isCanDelete()) {
+                    canUpload = true;
+                    break;
+                }
+            }
+            if (canUpload) {
+                mOperationDialog = LoadingProgress.showProgress(this, "正在提交...");
+                mPresenter.uploadImages(mId, mImagePaths);
+            } else {
+                showToast("请先选择图片后再上传");
+            }
         }
         /**  打电话*/
         else if(id == R.id.shijidianhua){
@@ -2536,6 +2555,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             }
         }
 
+        detailUploadBtn.setVisibility(View.VISIBLE);
+
         if (!mOrderDetail.showPay()) {
             mPayView.setVisibility(View.GONE);
         }
@@ -3039,6 +3060,27 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     @Override
     public void updateOrderdunError(BaseEntity e) {
         showToast("修改失败");
+    }
+
+    @Override
+    public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+        mOperationDialog.dismiss();
+        mPresenter.getOrderDetail(mId);
+    }
+
+    @Override
+    public void onUploadImagesError(BaseEntity e) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+        mOperationDialog.dismiss();
+        showToast(e.getMsg());
+    }
+
+    @Override
+    public void onUploadImagesError(Throwable e) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+            mOperationDialog.dismiss();
+        showNetworkError();
     }
 
 //    @Override

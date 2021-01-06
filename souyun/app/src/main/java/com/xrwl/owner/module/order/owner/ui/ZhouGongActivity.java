@@ -302,6 +302,21 @@ public class ZhouGongActivity extends BaseActivity<OwnerOrderContract.IDetailVie
  }
 
  @Override
+ public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
+
+ }
+
+ @Override
+ public void onUploadImagesError(BaseEntity e) {
+
+ }
+
+ @Override
+ public void onUploadImagesError(Throwable e) {
+
+ }
+
+ @Override
     public void onRefreshSuccess(BaseEntity<OrderDetail> entity) {
 
     }

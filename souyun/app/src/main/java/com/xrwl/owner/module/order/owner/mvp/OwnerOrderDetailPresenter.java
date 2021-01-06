@@ -1,23 +1,31 @@
 package com.xrwl.owner.module.order.owner.mvp;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.ldw.library.bean.BaseEntity;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.HistoryOrder;
 import com.xrwl.owner.bean.OrderDetail;
 import com.xrwl.owner.module.publish.bean.PayResult;
+import com.xrwl.owner.module.publish.bean.Photo;
 import com.xrwl.owner.retrofit.BaseObserver;
 import com.xrwl.owner.retrofit.BaseSimpleObserver;
 import com.xrwl.owner.utils.AccountUtil;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import io.reactivex.disposables.Disposable;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * Created by www.longdw.com on 2018/4/28 上午10:42.
@@ -369,6 +377,55 @@ public class OwnerOrderDetailPresenter extends OwnerOrderContract.ADetailPresent
         });
     }
 
+    @Override
+    public void uploadImages(String id, List<Photo> images) {
+        Map<String, RequestBody> params = new HashMap<>();
+
+        Map<String, String> strParams = new HashMap<>();
+        strParams.put("id", id);
+        strParams.put("userid", getAccount().getId());
+
+        for (String key : strParams.keySet()) {
+            try {
+                String value = strParams.get(key);
+                if (!TextUtils.isEmpty(value)) {
+                    String encodedParam = URLEncoder.encode(value, "UTF-8");
+                    params.put(key, RequestBody.create(MediaType.parse("text/plain"), encodedParam));
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (Photo photo : images) {
+            if (photo.isCanDelete()) {
+                File file = new File(photo.getPath());
+                RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+                params.put("images\"; filename=\"" + file.getName(), requestBody);
+            }
+        }
+
+        mModel.uploadImages(params).subscribe(new BaseObserver<OrderDetail>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            protected void onHandleSuccess(BaseEntity<OrderDetail> entity) {
+                if (entity.isSuccess()) {
+                    mView.onUploadImagesSuccess(entity);
+                } else {
+                    mView.onUploadImagesError(entity);
+                }
+            }
+
+            @Override
+            protected void onHandleError(Throwable e) {
+                mView.onUploadImagesError(e);
+            }
+        });
+    }
 
 
     @Override

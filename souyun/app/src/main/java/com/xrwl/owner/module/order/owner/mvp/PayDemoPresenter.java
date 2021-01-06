@@ -5,9 +5,11 @@ import android.content.Context;
 import com.ldw.library.bean.BaseEntity;
 import com.xrwl.owner.bean.OrderDetail;
 import com.xrwl.owner.module.publish.bean.PayResult;
+import com.xrwl.owner.module.publish.bean.Photo;
 import com.xrwl.owner.retrofit.BaseObserver;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.disposables.Disposable;
@@ -293,6 +295,11 @@ public class PayDemoPresenter extends OwnerOrderContract.ADetailPresenter {
                 mView.onRefreshError(e);
             }
         });
+    }
+
+    @Override
+    public void uploadImages(String id, List<Photo> images) {
+
     }
 
 

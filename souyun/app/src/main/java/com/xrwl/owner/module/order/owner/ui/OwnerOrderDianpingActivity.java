@@ -473,6 +473,21 @@ public class OwnerOrderDianpingActivity extends BaseActivity<OwnerOrderContract.
     }
 
     @Override
+    public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
+
+    }
+
+    @Override
+    public void onUploadImagesError(BaseEntity e) {
+
+    }
+
+    @Override
+    public void onUploadImagesError(Throwable e) {
+
+    }
+
+    @Override
     public void ongetlistpingjiaError(BaseEntity entity) {
 
     }

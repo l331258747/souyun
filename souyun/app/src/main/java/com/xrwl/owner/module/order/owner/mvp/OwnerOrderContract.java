@@ -8,6 +8,7 @@ import com.xrwl.owner.bean.HistoryOrder;
 import com.xrwl.owner.bean.Order;
 import com.xrwl.owner.bean.OrderDetail;
 import com.xrwl.owner.module.publish.bean.PayResult;
+import com.xrwl.owner.module.publish.bean.Photo;
 import com.xrwl.owner.mvp.MyLoadPresenter;
 import com.xrwl.owner.mvp.MyPresenter;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
 
 /**
  * Created by www.longdw.com on 2018/4/21 下午1:14.
@@ -112,6 +114,10 @@ public interface OwnerOrderContract {
         void updateOrderdunSuccess(BaseEntity entity);
         void updateOrderdunError(BaseEntity e);
 
+        void onUploadImagesSuccess(BaseEntity<OrderDetail> entity);
+        void onUploadImagesError(BaseEntity e);
+        void onUploadImagesError(Throwable e);
+
 
     }
 
@@ -158,6 +164,9 @@ public interface OwnerOrderContract {
         public abstract void wx_refund(Map<String, String> params);
 
         public abstract void results(Map<String, String> params);
+
+        /** 上传图片 */
+        public abstract void uploadImages(String id, List<Photo> images);
     }
 
     interface IDetailModel {
@@ -187,5 +196,7 @@ public interface OwnerOrderContract {
 
         Observable<BaseEntity<PayResult>> wx_refund(Map<String, String> params);
         Observable<BaseEntity<PayResult>> results(Map<String, String> params);
+
+        Observable<BaseEntity<OrderDetail>> uploadImages(Map<String, RequestBody> params);
     }
 }

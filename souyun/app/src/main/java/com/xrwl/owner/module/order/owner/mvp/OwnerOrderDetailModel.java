@@ -11,6 +11,7 @@ import com.xrwl.owner.retrofit.RxSchedulers;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
 
 /**
  * Created by www.longdw.com on 2018/4/28 上午10:39.
@@ -124,6 +125,11 @@ public class OwnerOrderDetailModel implements OwnerOrderContract.IDetailModel {
     @Override
     public Observable<BaseEntity<PayResult>> results(Map<String, String> params) {
         return RetrofitFactory.getInstance().results(params).compose(RxSchedulers.<BaseEntity<PayResult>>compose());
+    }
+
+    @Override
+    public Observable<BaseEntity<OrderDetail>> uploadImages(Map<String, RequestBody> params) {
+        return RetrofitFactory.getInstance().uploadDriverImages(params).compose(RxSchedulers.<BaseEntity<OrderDetail>>compose());
     }
 
 

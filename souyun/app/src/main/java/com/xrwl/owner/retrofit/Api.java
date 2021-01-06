@@ -459,7 +459,7 @@ public interface Api {
 
  /** 司机--->订单详情--->上传图片 */
  @Multipart
- @POST("Order/DriverPic")
+ @POST("Order/OwnerPic")
  Observable<BaseEntity<OrderDetail>> uploadDriverImages(@PartMap Map<String, RequestBody> params);
 
  /** 大宗地址管理-列表 */
