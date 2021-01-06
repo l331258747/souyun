@@ -25,7 +25,6 @@ import com.xrwl.owner.Fragment.TcldFragment;
 import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseFragment;
-import com.xrwl.owner.module.business.ui.BusinessFragment;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
 import com.xrwl.owner.module.me.ui.BankActivity;
 import com.xrwl.owner.module.me.ui.BankyueActivity;
@@ -297,7 +296,7 @@ public class HomeFragment extends BaseFragment {
 
 //        Eyes.setStatusBarColor(this.getActivity(),this.getResources().getColor(R.color.zbb));
 
-        StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.color_4ac4bc));
+        StatusBarUtil.setStatusBar(this.getActivity(), getResources().getColor(R.color.colorPrimaryDark));
     }
 
     @OnClick({R.id.wode,R.id.wode2, R.id.sys})
