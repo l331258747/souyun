@@ -42,7 +42,7 @@ public class RetrofitManager {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-        builder.connectTimeout(15, TimeUnit.SECONDS);
+        builder.connectTimeout(30, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);
         builder.writeTimeout(20, TimeUnit.SECONDS);
 
