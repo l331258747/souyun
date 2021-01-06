@@ -1959,7 +1959,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             mTruckTv.setText("车型：" + mOrderDetail.truck);
         }
 
-
         if (mOrderDetail.type.equals("1") || mOrderDetail.type.equals("2")) {
             mAreaTv.setText("体积：" + "整车");
             mWeightTv.setText("重量：" + "整车");
@@ -1971,7 +1970,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             } else {
                 mAreaTv.setText("体积：" + "0方");
             }
-
 
             String dunxianshi = "";
             if (!TextUtils.isEmpty(mOrderDetail.weight)) {
@@ -1990,6 +1988,15 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             }
         }
 
+        if(mOrderDetail.category.equals("6")){
+            String dunxianshi = "";
+            if (!TextUtils.isEmpty(mOrderDetail.weight)) {
+                dunxianshi = "吨数：" + mOrderDetail.weight + "吨";
+            } else {
+                dunxianshi = "吨数：" + "0吨";
+            }
+            mWeightTv.setText(dunxianshi);
+        }
 
         mPriceTv.setText("价格：" + mOrderDetail.overtotal_price + "元");
 
