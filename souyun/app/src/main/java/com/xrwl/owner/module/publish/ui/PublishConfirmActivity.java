@@ -947,15 +947,15 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         /**是否要发票*/
         if (mReceiptCb.isChecked()) {
             String taxNum = mTaxNumEt.getText().toString();
-            if (TextUtils.isEmpty(taxNum)) {
-                showToast("请输入税号");
-                return;
-            }
+//            if (TextUtils.isEmpty(taxNum)) {
+//                showToast("请输入税号");
+//                return;
+//            }
             String unitName = mUnitNameEt.getText().toString();
-            if (TextUtils.isEmpty(unitName)) {
-                showToast("请输入单位名称");
-                return;
-            }
+//            if (TextUtils.isEmpty(unitName)) {
+//                showToast("请输入单位名称");
+//                return;
+//            }
             String email = mEmailEt.getText().toString();
             mPublishBean.taxNum = taxNum;
             mPublishBean.unitName = unitName;
