@@ -1187,6 +1187,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @SuppressLint("SetTextI18n")
     private void calculateTotalPrice() {
+        mPopFreightTv.setText(String.valueOf(mFreightPrice));
+        mPopCouponTv.setText(String.format("%.1f", mfuwufei));
         float totalPrice = mFreightPrice + mInsurancePrice + mfuwufei;
         mTotalPriceTv.setText(String.format("%.1f", totalPrice));
     }
