@@ -1,5 +1,6 @@
 package com.xrwl.owner.module.order.owner.ui;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
@@ -55,6 +58,7 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 import com.hdgq.locationlib.LocationOpenApi;
 import com.hdgq.locationlib.entity.ShippingNoteInfo;
 import com.hdgq.locationlib.listener.OnResultListener;
@@ -750,7 +754,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     }
 
 
-    @OnClick({R.id.detailCancelBtn, R.id.detailLocationBtn, R.id.detailConfirmBtn, R.id.wxPayLayout, R.id.aliPayLayout, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.detailConfirmfaBtn, R.id.xuanzeonline, R.id.xuanzeonlinexianxia, R.id.huozhuxianxiazhifu, R.id.zhifuweikuanBtn, R.id.querenzhifuhuokuan, R.id.zhifuweikuandaishouBtn, R.id.detailSendByselfBtn, R.id.detailSendByselfquxiaoBtn, R.id.detailPickByselfBtn, R.id.detailPickByselfquxiaoBtn, R.id.dianpingbt, R.id.detailDianPingBtn, R.id.detailSelectBtn})
+    @OnClick({R.id.shijidianhua,R.id.detailCancelBtn, R.id.detailLocationBtn, R.id.detailConfirmBtn, R.id.wxPayLayout, R.id.aliPayLayout, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.detailConfirmfaBtn, R.id.xuanzeonline, R.id.xuanzeonlinexianxia, R.id.huozhuxianxiazhifu, R.id.zhifuweikuanBtn, R.id.querenzhifuhuokuan, R.id.zhifuweikuandaishouBtn, R.id.detailSendByselfBtn, R.id.detailSendByselfquxiaoBtn, R.id.detailPickByselfBtn, R.id.detailPickByselfquxiaoBtn, R.id.dianpingbt, R.id.detailDianPingBtn, R.id.detailSelectBtn})
     public void onClick(View v) {
         int id = v.getId();
         /**是否确定取消订单*/
@@ -784,8 +788,28 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                         }
                     }).show();
         }
-        /**
-         * 点击在线点评按钮*/
+        /**  打电话*/
+        else if(id == R.id.shijidianhua){
+            if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && PermissionUtils.isGranted(Manifest.permission.CALL_PHONE))
+                    || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                if (!TextUtils.isEmpty(mOrderDetail.getDrivertel())) {
+
+                    new AlertDialog.Builder(this).setMessage("是否拨打电话？")
+                            .setNegativeButton("取消", null)
+                            .setPositiveButton("拨打", (dialog, which) -> {
+                                Intent intent2 = new Intent();
+                                intent2.setData(Uri.parse("tel:" + mOrderDetail.getDrivertel()));
+                                intent2.setAction(Intent.ACTION_CALL);
+                                startActivity(intent2);
+                            }).show();
+                }
+            } else {
+                new AlertDialog.Builder(this).setMessage("请先打开电话权限")
+                        .setNegativeButton("取消", null)
+                        .setPositiveButton("设置", (dialog, which) -> PermissionUtils.openAppSettings()).show();
+            }
+        }
+        /**  点击在线点评按钮*/
         else if (id == R.id.detailDianPingBtn) {
 
             if ("1".equals(dianpinglo)) {
@@ -1921,11 +1945,11 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             shijimingcheng.setVisibility(View.VISIBLE);
         }
         if(!TextUtils.isEmpty(mOrderDetail.getDrivertel())){
-            shijidianhua.setText("司机电话：" + mOrderDetail.getDrivertel());
+            shijidianhua.setText("司机电话：" + mOrderDetail.getDrivertelXing());
             shijidianhua.setVisibility(View.VISIBLE);
         }
-        if(!TextUtils.isEmpty(mOrderDetail.getDrviercar())){
-            shijichepai.setText("司机车牌号：" + mOrderDetail.getDrviercar());
+        if(!TextUtils.isEmpty(mOrderDetail.getDrviercarStr())){
+            shijichepai.setText("司机车牌号：" + mOrderDetail.getDrviercarStr());
             shijichepai.setVisibility(View.VISIBLE);
         }
 
@@ -2572,6 +2596,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         mLoadingDialog.dismiss();
     }
+
+
 
 
     @Override

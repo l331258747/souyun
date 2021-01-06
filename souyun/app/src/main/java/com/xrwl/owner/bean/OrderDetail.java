@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.google.gson.annotations.SerializedName;
 import com.xrwl.owner.module.publish.bean.Photo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,8 +133,30 @@ public class OrderDetail {
         return drivertel;
     }
 
+    public String getDrivertelXing() {
+        if(TextUtils.isEmpty(drivertel)){
+            return "";
+        }
+        if(drivertel.length() == 11){
+            StringBuilder sb = new StringBuilder(drivertel);
+            sb.replace(3, 7, "****");
+            sb.substring(7, 11);
+            return sb.toString();
+        }else {
+            return drivertel;
+        }
+    }
+
     public String getDrviercar() {
         return drviercar;
+    }
+
+    public String getDrviercarStr() {
+        try {
+            return  (URLDecoder.decode(drviercar, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public String WaterId;//退款的那个值

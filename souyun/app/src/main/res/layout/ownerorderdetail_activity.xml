@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/global_bg_color"
     android:orientation="vertical">
 
@@ -77,10 +78,10 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="120dp"
-                            android:layout_weight="0.8"
-                            android:orientation="vertical">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/default_dp8">
 
 
                             <LinearLayout
@@ -209,6 +210,7 @@
                     android:layout_height="wrap_content"
                     android:text="司机名称："
                     android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_marginBottom="@dimen/default_dp8"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -219,6 +221,9 @@
                     android:layout_height="wrap_content"
                     android:text="司机电话："
                     android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:drawableEnd="@drawable/ic_call"
+                    tools:visibility="visible"
                     android:layout_marginBottom="@dimen/default_dp8"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -229,6 +234,7 @@
                     android:layout_height="wrap_content"
                     android:text="司机车牌号："
                     android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_marginBottom="@dimen/default_dp8"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
