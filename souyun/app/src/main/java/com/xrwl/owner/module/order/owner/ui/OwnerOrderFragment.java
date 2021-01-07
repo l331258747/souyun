@@ -60,7 +60,7 @@ public class OwnerOrderFragment extends BaseEventFragment<OwnerOrderContract.IVi
 
     @Override
     protected void initView(View view) {
-        initBaseRv(mRv);
+        initBaseRv2(mRv);
 
         mType = getArguments().getString("type");
 
