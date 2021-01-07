@@ -225,8 +225,9 @@
                 android:layout_height="wrap_content"
                 android:text="价格：100元"
                 android:textColor="@color/publish_category_selected_color"
-                android:textSize="@dimen/default_font12"
+                android:textSize="@dimen/default_font14"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

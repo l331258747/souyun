@@ -15,7 +15,7 @@
         app:header_init_top="0"
         app:inn_id="@+id/inner_rv"
         app:target_id="@+id/target_layout"
-        app:target_init_bottom="380">
+        app:target_init_bottom="340">
 
         <com.amap.api.maps.MapView
             android:id="@+id/nlMapView"
@@ -46,13 +46,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="600dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="600dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/btn_f5f5f5_r10"
                     android:layout_margin="@dimen/dp_5"
                     android:orientation="vertical">
