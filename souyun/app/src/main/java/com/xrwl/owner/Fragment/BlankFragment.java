@@ -179,6 +179,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     RelativeLayout mResultLayout;
     @BindView(R.id.slListView)
     ListView mListView;
+    @BindView(R.id.tv_clean)
+    TextView tv_clean;
 
     private SearchLocationAdapter mAdapter;
     private SearchLocationAdapter mAdapter2;
@@ -654,7 +656,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             R.id.bt_chufadi_xuanze,R.id.bt_mudidi_xuanze,
             R.id.bt_chexing_xuanze,
             R.id.bt_fahuodanwei_xuanze,R.id.bt_shouhuodanwei_xuanze,
-            R.id.bt_fahuo_xuanze,R.id.bt_shouhuo_xuanze})
+            R.id.bt_fahuo_xuanze,R.id.bt_shouhuo_xuanze,
+            R.id.tv_clean})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_chufadi_sousuo:
@@ -817,6 +820,28 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             case R.id.bt_shouhuo_xuanze:
                 Intent intentshouhuotel = new Intent(getContext(), FriendActivity.class);
                 startActivityForResult(intentshouhuotel, RESULT_FRIEND_END);
+                break;
+            case R.id.tv_clean:
+                locationBean = new MarkerBean();//出发地
+                destinationBean = new MarkerBean();//目的地
+                fahuodanweiBean = new CompanyFahuoBean();
+                shouhuodanweiBean = new CompanyShouhuoBean();
+                chexingBean = new HomeChexingBean();
+                huowuBean = new HomeHuowuBean();
+
+                et_chufadi.setText("");
+                et_fahuoren.setText("");
+                et_fahuotel.setText("");
+                et_mudidi.setText("");
+                et_shouhuoren.setText("");
+                et_shouhuotel.setText("");
+                et_fahuodanwei.setText("");
+                et_shouhuodanwei.setText("");
+                tv_chexing.setText("");
+                et_huowu_dun.setText("");
+                et_huowu_fang.setText("");
+                et_huowu_jian.setText("");
+
                 break;
         }
     }
