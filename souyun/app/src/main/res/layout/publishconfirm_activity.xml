@@ -718,7 +718,7 @@
                     android:layout_width="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="@dimen/default_font14"
-                    android:text="1000"
+                    android:text="0"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 

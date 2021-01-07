@@ -506,66 +506,10 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mFreightEt.setText("0");
         }
 
-
-        mFreightEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
-                if (delayRun != null) {
-                    //每次editText有变化的时候，则移除上次发出的延迟线程
-                    handler.removeCallbacks(delayRun);
-                }
-
-                //editString = s.toString();
-                String[] s1 = mFreightEt.getText().toString().split("\\.");
-                if (s1[0] != null && !"".equals(s1[0])) {
-                    String[] s2 = String.valueOf(price * 0.8).split("\\.");
-                    String[] s3 = String.valueOf(price * 1.2).split("\\.");
-                    if (Integer.parseInt(s1[0]) < Integer.parseInt(s2[0])) {
-                        xianshijiage = String.valueOf(s2[0]);
-                        //showToast("您输入的价格超出了最低价格，按照最低价格算");
-                        //mFreightEt.setText(xianshijiage);
-                    } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s3[0])) {
-                        xianshijiage = String.valueOf(s3[0]);
-                        // showToast("您输入的价格超出了最高价格，按照最低高格算");
-                        //mFreightEt.setText(xianshijiage);
-                    } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s2[0]) && Integer.parseInt(s1[0]) < Integer.parseInt(s3[0])) {
-                        xianshijiage = s.toString();
-                    }
-                } else {
-                    xianshijiage = "0";
-                }
-
-                mFreightPrice = Integer.parseInt(xianshijiage);
-                if(mReceiptCb.isChecked()){
-                    mfuwufei = mFreightPrice * 0.099f;
-                }
-
-                calculateTotalPrice();
-
-                handler.postDelayed(delayRun, 5000);
-            }
-        });
-
-        mFreightPrice = Integer.parseInt(xianshijiage);
-
-
-        myunfeijiagetv.setText("运费价格");
-        mtuijianyunfeijiagetv.setText("推荐运费价格");
         myouhuijuan.setVisibility(View.GONE);
         mProductNameTv.setText("货物：" + mPublishBean.productName);
         mStartPosTv.setText(mPublishBean.getStartPos());
         mEndPosTv.setText(mPublishBean.getEndPos());
-
 
         /**矿产运输*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.Type_Mineral.getValue()) {
@@ -584,6 +528,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             Date date = new Date(System.currentTimeMillis());
             mPriceTv.setText(simpleDateFormat.format(date));
             mRecommendPriceTv.setText(String.valueOf(price));
+            mMinPrice = (int) (1);
+            mMaxPrice = (int) (10000000);
             mPriceHintTv.setText("请在" + 1 + "-" + 10000000 + "之间选择输入");
             mFreightEt.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -617,6 +563,60 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             });
 
             mFreightPrice = Integer.parseInt(mzidongjieshouTv.getText().toString());
+        }else{
+            mFreightEt.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (delayRun != null) {
+                        //每次editText有变化的时候，则移除上次发出的延迟线程
+                        handler.removeCallbacks(delayRun);
+                    }
+
+                    //editString = s.toString();
+                    String[] s1 = mFreightEt.getText().toString().split("\\.");
+                    if (s1[0] != null && !"".equals(s1[0])) {
+                        String[] s2 = String.valueOf(price * 0.8).split("\\.");
+                        String[] s3 = String.valueOf(price * 1.2).split("\\.");
+                        if (Integer.parseInt(s1[0]) < Integer.parseInt(s2[0])) {
+                            xianshijiage = String.valueOf(s2[0]);
+                            //showToast("您输入的价格超出了最低价格，按照最低价格算");
+                            //mFreightEt.setText(xianshijiage);
+                        } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s3[0])) {
+                            xianshijiage = String.valueOf(s3[0]);
+                            // showToast("您输入的价格超出了最高价格，按照最低高格算");
+                            //mFreightEt.setText(xianshijiage);
+                        } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s2[0]) && Integer.parseInt(s1[0]) < Integer.parseInt(s3[0])) {
+                            xianshijiage = s.toString();
+                        }
+                    } else {
+                        xianshijiage = "0";
+                    }
+
+                    mFreightPrice = Integer.parseInt(xianshijiage);
+                    if (mReceiptCb.isChecked()) {
+                        mfuwufei = mFreightPrice * 0.099f;
+                    }
+
+                    calculateTotalPrice();
+
+                    handler.postDelayed(delayRun, 5000);
+                }
+            });
+
+            mFreightPrice = Integer.parseInt(xianshijiage);
+
+
+            myunfeijiagetv.setText("运费价格");
+            mtuijianyunfeijiagetv.setText("推荐运费价格");
         }
         mDistanceTv.setText("公里：" + mPublishBean.getDistance() + "公里");
         mHelpCollectTv.setText(mPublishBean.consigneeName);
@@ -870,7 +870,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                         .setNegativeButton("取消", (dialog, which) -> mReceiptCb.setChecked(false))
                         .setPositiveButton("前往", (dialog, which) -> {
                             mReceiptCb.setChecked(false);
-                            startActivityForResult(new Intent(mContext, ReceiptActivity.class),RESULT_FAPIAO);
+                            startActivityForResult(new Intent(mContext, ReceiptActivity.class), RESULT_FAPIAO);
                         }).show();
             } else {
                 mReceiptView.setVisibility(View.GONE);
@@ -929,7 +929,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mRemarkDialog.show(Objects.requireNonNull(getSupportFragmentManager()), "remark");
         }
     }
-//
+
+    //
     @OnClick(R.id.pcOkBtn)
 
     public void postOrder() {
@@ -1200,7 +1201,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         if (resultCode != RESULT_OK) {
             return;
         }
-        if(requestCode == RESULT_FAPIAO){
+        if (requestCode == RESULT_FAPIAO) {
             mReceiptCb.setChecked(true);
             mfuwufei = mFreightPrice * 0.099f;
             calculateTotalPrice();
@@ -1300,11 +1301,10 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mWeightTv.setText("重量：" + mPublishBean.getWeight() + "吨");
             mNumTv.setText("数量：" + mPublishBean.getNum() + "件");
         }
-
-
-            mFreightEt.setFocusable(true);   /**同城整车*/
-            if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche.getValue()) {
-                //同城专车
+        mFreightEt.setFocusable(true);
+        /**同城整车*/
+        if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_LONG_zhuanche.getValue()) {
+            //同城专车
             mAreaTv.setVisibility(View.VISIBLE);
             mWeightTv.setVisibility(View.VISIBLE);
             mNumTv.setVisibility(View.VISIBLE);
@@ -1429,7 +1429,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
 
             mMinPrice = (int) (price * 0.8);
-
             mMaxPrice = (int) (price * 1.2);
 
             mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
@@ -1448,7 +1447,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         intent.putExtra("postOrder", entity.getData().orderId);
         startActivity(intent);
         finish();
-
 
 
 //        mPublishBean.freight = mTotalPriceTv.getText().toString();

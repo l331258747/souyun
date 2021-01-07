@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,23 +34,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
-import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
-import com.amap.api.services.core.PoiItem;
-import com.amap.api.services.poisearch.PoiResult;
-import com.amap.api.services.poisearch.PoiSearch;
 import com.amap.api.services.route.BusRouteResult;
 import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveRouteResult;
@@ -106,7 +100,6 @@ import com.xrwl.owner.view.PhotoRecyclerView;
 import org.greenrobot.eventbus.EventBus;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -124,7 +117,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by www.longdw.com on 2018/4/4 下午1:26.
  */
 public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.IDetailView, OwnerOrderDetailPresenter>
-        implements OwnerOrderContract.IDetailView, AMapLocationListener, AMap.OnMapClickListener,
+        implements OwnerOrderContract.IDetailView, AMap.OnMapClickListener,
         AMap.OnMarkerClickListener, AMap.OnInfoWindowClickListener, AMap.InfoWindowAdapter, RouteSearch.OnRouteSearchListener {
     private static final int GPS_REQUEST_CODE = 1;
     private ProgressDialog progDialog = null;// 搜索时进度条
@@ -296,9 +289,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     TextView shijichepai;
     private ProgressDialog mXrwlwxpayDialog;
 
-    private AMapLocationClient mLocationClient;
+//    private AMapLocationClient mLocationClient;
     private Object shippingNoteInfos;
-
     private String mCurrentCity;
     private AMapLocation mCurrentLocation;
 
@@ -326,11 +318,19 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     }
 
     @Override
-    protected void initViews(Bundle savedInstanceState) {
-        mMapView.onCreate(savedInstanceState);// 此方法必须重写
+    protected void onCreate(@Nullable Bundle bundle) {
+        super.onCreate(bundle);
+
+        mMapView = (MapView) findViewById(R.id.nlMapView);
+        mMapView.onCreate(bundle);// 此方法必须重写
         if (mAmap == null) {
             mAmap = mMapView.getMap();
         }
+
+    }
+
+//    @Override
+//    protected void initViews(Bundle savedInstanceState) {
 //        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)) {
 //            new AlertDialog.Builder(this).setMessage("您需要打开定位权限才能使用此功能")
 //                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -349,9 +349,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 //        } else {
 //            initMap();
 //            // initLocation();
-
-
-    }
+//    }
 
     /**
      * 方法必须重写
@@ -384,10 +382,10 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
      * 注册监听
      */
     private void registerListener() {
-        mAmap.setOnMapClickListener((AMap.OnMapClickListener) OwnerOrderDetailActivity.this);
-        mAmap.setOnMarkerClickListener((AMap.OnMarkerClickListener) OwnerOrderDetailActivity.this);
-        mAmap.setOnInfoWindowClickListener((AMap.OnInfoWindowClickListener) OwnerOrderDetailActivity.this);
-        mAmap.setInfoWindowAdapter((AMap.InfoWindowAdapter) OwnerOrderDetailActivity.this);
+        mAmap.setOnMapClickListener(this);
+        mAmap.setOnMarkerClickListener(this);
+        mAmap.setOnInfoWindowClickListener(this);
+        mAmap.setInfoWindowAdapter(this);
 
     }
 
@@ -425,13 +423,13 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     }
 
-    public void initjjdMap() {
-        registerListener();
-        mRouteSearch = new RouteSearch(this);
-        mRouteSearch.setRouteSearchListener(this);
-        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
-
-    }
+//    public void initjjdMap() {
+//        registerListener();
+//        mRouteSearch = new RouteSearch(this);
+//        mRouteSearch.setRouteSearchListener(this);
+//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
+//
+//    }
 
     /**
      * 开始坐标
@@ -440,9 +438,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
      * @return 更换的Marker图片。
      * @since V2.1.0
      */
-    protected BitmapDescriptor getStartBitmapDescriptor() {
-        return BitmapDescriptorFactory.fromResource(R.drawable.amap_start);
-    }
+//    protected BitmapDescriptor getStartBitmapDescriptor() {
+//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_start);
+//    }
 
     /**
      * 结束坐标
@@ -451,24 +449,24 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
      * @return 更换的Marker图片。
      * @since V2.1.0
      */
-    protected BitmapDescriptor getEndBitmapDescriptor() {
-        return BitmapDescriptorFactory.fromResource(R.drawable.amap_car);
-    }
+//    protected BitmapDescriptor getEndBitmapDescriptor() {
+//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_car);
+//    }
 
-    private void inityjdMap() {
-        registerListener();
-
-        mRouteSearch = new RouteSearch(this);
-        mRouteSearch.setRouteSearchListener(this);
-        mAmap.addMarker(new MarkerOptions()
-                .position(AMapUtil.convertToLatLng(mStartPoint))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed)));
-        mAmap.addMarker(new MarkerOptions()
-                .position(AMapUtil.convertToLatLng(mEndPoint))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
-        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
-
-    }
+//    private void inityjdMap() {
+//        registerListener();
+//
+//        mRouteSearch = new RouteSearch(this);
+//        mRouteSearch.setRouteSearchListener(this);
+//        mAmap.addMarker(new MarkerOptions()
+//                .position(AMapUtil.convertToLatLng(mStartPoint))
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed)));
+//        mAmap.addMarker(new MarkerOptions()
+//                .position(AMapUtil.convertToLatLng(mEndPoint))
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
+//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
+//
+//    }
 
     /**
      * 2020年4月11日 10:39:46
@@ -527,51 +525,51 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 });
     }
 
-    private void initMap() {
-            MyLocationStyle myLocationStyle;
-        // MyLocationStyle myLocationIcon(;//设置定位蓝点的icon图标方法，需要用到BitmapDescriptor类对象作为参数。
-        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
-        // myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);//定位一次，且将视角移动到地图中心点。
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
-        // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-        myLocationStyle.strokeWidth(1);//设置定位蓝点精度圈的边框宽度的方法
-
-
-        mAmap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
-        mAmap.getUiSettings().setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
-        mAmap.getUiSettings().setCompassEnabled(true);   //设置指南针用于向 App 端用户展示地图方向，默认不显示
-        mAmap.getUiSettings().setScaleControlsEnabled(true);    //设置比例尺控件。位于地图右下角，可控制其显示与隐藏
-        mAmap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
-
-        //在nextActivity活动中取出数据
-
-
-//        LatLng latLng = new LatLng(37.861469, 112.57373);
-//        doSearchQuery();
-//        ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
-//        /**
-//         * 展示坐标点
-//         */
-//        OrderDetail detail = new OrderDetail();
+//    private void initMap() {
+//            MyLocationStyle myLocationStyle;
+//        // MyLocationStyle myLocationIcon(;//设置定位蓝点的icon图标方法，需要用到BitmapDescriptor类对象作为参数。
+//        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
+//        // myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);//定位一次，且将视角移动到地图中心点。
+//        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
+//        // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
+//        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
+//        myLocationStyle.strokeWidth(1);//设置定位蓝点精度圈的边框宽度的方法
 //
-//        for (double[] coord : coords) {
-//            MarkerOptions markerOption = new MarkerOptions();
-//            latLng = new LatLng(coord[1], coord[0]);
-//            markerOption.position(latLng);
-//            markerOption.anchor(0.5f, 0.5f);
-//            markerOption.title("标记点");
 //
-//            markerOption.snippet("default point");
-//            markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed
-//            ));
-//            markerOptionlst.add(markerOption);
-//            LatLonPoint point = new LatLonPoint(latLng.latitude, latLng.longitude);
-//            //getAddress(point);
-//        }
-//        mAmap.addMarkers(markerOptionlst, true);
-//        final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
-    }
+//        mAmap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
+//        mAmap.getUiSettings().setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
+//        mAmap.getUiSettings().setCompassEnabled(true);   //设置指南针用于向 App 端用户展示地图方向，默认不显示
+//        mAmap.getUiSettings().setScaleControlsEnabled(true);    //设置比例尺控件。位于地图右下角，可控制其显示与隐藏
+//        mAmap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+//
+//        //在nextActivity活动中取出数据
+//
+//
+////        LatLng latLng = new LatLng(37.861469, 112.57373);
+////        doSearchQuery();
+////        ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
+////        /**
+////         * 展示坐标点
+////         */
+////        OrderDetail detail = new OrderDetail();
+////
+////        for (double[] coord : coords) {
+////            MarkerOptions markerOption = new MarkerOptions();
+////            latLng = new LatLng(coord[1], coord[0]);
+////            markerOption.position(latLng);
+////            markerOption.anchor(0.5f, 0.5f);
+////            markerOption.title("标记点");
+////
+////            markerOption.snippet("default point");
+////            markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed
+////            ));
+////            markerOptionlst.add(markerOption);
+////            LatLonPoint point = new LatLonPoint(latLng.latitude, latLng.longitude);
+////            //getAddress(point);
+////        }
+////        mAmap.addMarkers(markerOptionlst, true);
+////        final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
+//    }
 
 //    private double[][] coords = {{111.475466, 36.01835},
 //            {111.477869, 35.995368},
@@ -579,90 +577,90 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 //            {111.467055, 36.022862},
 //    };
 
-    /**
-     * 对当前位置进行定位，获取当前位置的坐标信息
-     */
-    private void initLocation() {
+//    /**
+//     * 对当前位置进行定位，获取当前位置的坐标信息
+//     */
+//    private void initLocation() {
+//
+//        //初始化定位
+//        mLocationClient = new AMapLocationClient(getApplicationContext());
+//        //设置定位回调监听
+//        mLocationClient.setLocationListener(this);
+//        //设置定位参数
+//        mLocationClient.setLocationOption(getDefaultOption());
+//        // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+//        // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+//        // 在定位结束后，在合适的生命周期调用onDestroy()方法
+//        // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+//        //启动定位
+//        mLocationClient.startLocation();
+//    }
 
-        //初始化定位
-        mLocationClient = new AMapLocationClient(getApplicationContext());
-        //设置定位回调监听
-        mLocationClient.setLocationListener(this);
-        //设置定位参数
-        mLocationClient.setLocationOption(getDefaultOption());
-        // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
-        // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
-        // 在定位结束后，在合适的生命周期调用onDestroy()方法
-        // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
-        //启动定位
-        mLocationClient.startLocation();
-    }
+//    /**
+//     * 对输入出发地的地点进行位置查询
+//     */
+//    private void doSearchQuery() {
+//
+//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
+//        query.setPageSize(1);//设置每页最多返回多少条poiitem
+//        query.setPageNum(0);//设置查第一页
+////        query.setCityLimit(true);
+//        PoiSearch poiSearch = new PoiSearch(this, query);
+//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+//            @Override
+//            public void onPoiSearched(PoiResult poiResult, int i) {
+//                List<PoiItem> datas = poiResult.getPois();
+//
+//                for (PoiItem pi : datas) {
+//                    double lat = pi.getLatLonPoint().getLatitude();
+//                    double lon = pi.getLatLonPoint().getLongitude();
+//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+//                }
+//            }
+//
+//            @Override
+//            public void onPoiItemSearched(PoiItem poiItem, int i) {
+//            }
+//        });
+//        if (mCurrentLocation != null) {
+//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 5000, true));//3000米以内
+//        }
+//        poiSearch.searchPOIAsyn();// 异步搜索
+//    }
 
-    /**
-     * 对输入出发地的地点进行位置查询
-     */
-    private void doSearchQuery() {
-
-        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
-        query.setPageSize(1);//设置每页最多返回多少条poiitem
-        query.setPageNum(0);//设置查第一页
-//        query.setCityLimit(true);
-        PoiSearch poiSearch = new PoiSearch(this, query);
-        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
-            @Override
-            public void onPoiSearched(PoiResult poiResult, int i) {
-                List<PoiItem> datas = poiResult.getPois();
-
-                for (PoiItem pi : datas) {
-                    double lat = pi.getLatLonPoint().getLatitude();
-                    double lon = pi.getLatLonPoint().getLongitude();
-                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-                }
-            }
-
-            @Override
-            public void onPoiItemSearched(PoiItem poiItem, int i) {
-            }
-        });
-        if (mCurrentLocation != null) {
-            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-            poiSearch.setBound(new PoiSearch.SearchBound(llp, 5000, true));//3000米以内
-        }
-        poiSearch.searchPOIAsyn();// 异步搜索
-    }
-
-    /**
-     * 对坐标点进行数据请求
-     */
-    private void dadate() {
-
-        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
-        query.setPageSize(1);//设置每页最多返回多少条poiitem
-        query.setPageNum(0);//设置查第一页
-//        query.setCityLimit(true);
-        PoiSearch poiSearch = new PoiSearch(this, query);
-        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
-            @Override
-            public void onPoiSearched(PoiResult poiResult, int i) {
-                List<PoiItem> datas = poiResult.getPois();
-
-                for (PoiItem pi : datas) {
-                    double lat = pi.getLatLonPoint().getLatitude();
-                    double lon = pi.getLatLonPoint().getLongitude();
-                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-                }
-            }
-
-            @Override
-            public void onPoiItemSearched(PoiItem poiItem, int i) {
-            }
-        });
-        if (mCurrentLocation != null) {
-            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-            poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
-        }
-        poiSearch.searchPOIAsyn();// 异步搜索
-    }
+//    /**
+//     * 对坐标点进行数据请求
+//     */
+//    private void dadate() {
+//
+//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
+//        query.setPageSize(1);//设置每页最多返回多少条poiitem
+//        query.setPageNum(0);//设置查第一页
+////        query.setCityLimit(true);
+//        PoiSearch poiSearch = new PoiSearch(this, query);
+//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+//            @Override
+//            public void onPoiSearched(PoiResult poiResult, int i) {
+//                List<PoiItem> datas = poiResult.getPois();
+//
+//                for (PoiItem pi : datas) {
+//                    double lat = pi.getLatLonPoint().getLatitude();
+//                    double lon = pi.getLatLonPoint().getLongitude();
+//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+//                }
+//            }
+//
+//            @Override
+//            public void onPoiItemSearched(PoiItem poiItem, int i) {
+//            }
+//        });
+//        if (mCurrentLocation != null) {
+//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
+//        }
+//        poiSearch.searchPOIAsyn();// 异步搜索
+//    }
 
 
     @Override
@@ -675,10 +673,13 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         mdetailSendByselfquxiaoBtn.setVisibility(View.GONE);
         mdetailPickByselfBtn.setVisibility(View.GONE);
         mdetailPickByselfquxiaoBtn.setVisibility(View.GONE);
+
         mWXApi = WXAPIFactory.createWXAPI(this, Constants.WEIXIN_KEY);
-        mWXApi.registerApp(Constants.WEIXIN_KEY);
+//        mWXApi.registerApp(Constants.WEIXIN_KEY);
         mPayBroadcastReceiver = new PayBroadcastReceiver();
         IntentFilter filter = new IntentFilter(Constants.WX_P_SUCCESS_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mPayBroadcastReceiver, filter);
+
         ZoomMediaLoader.getInstance().init(new ImageLoader());
         /**
          * 选中
@@ -700,7 +701,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         myuecb.setChecked(true);
         mPresenter.getTotalPriceBalance();
         mPresenter.getlistpingjias(mId);
-        ArrayList arrayList = new ArrayList();
+//        ArrayList arrayList = new ArrayList();
         // showToast(mOrderDetail.category);
 
     }
@@ -3094,40 +3095,42 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         if (mPayBroadcastReceiver != null) {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
         }
+        mHandler.removeCallbacksAndMessages(null);
+
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         mMapView.onDestroy();
-        if (mLocationClient != null) {
-            /**
-             * 如果AMapLocationClient是在当前Activity实例化的，
-             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
-             */
-            mLocationClient.onDestroy();
-            mLocationClient = null;
-        }
+//        if (mLocationClient != null) {
+//            /**
+//             * 如果AMapLocationClient是在当前Activity实例化的，
+//             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
+//             */
+//            mLocationClient.onDestroy();
+//            mLocationClient = null;
+//        }
         super.onDestroy();
     }
 
-    /**
-     * 默认的定位参数
-     *
-     * @author hongming.wang
-     * @since 2.8.0
-     */
-    private AMapLocationClientOption getDefaultOption() {
-        AMapLocationClientOption mOption = new AMapLocationClientOption();
-        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
-        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
-        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
-        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
-        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
-        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
-        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
-        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
-        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
-        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
-        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
-        return mOption;
-    }
+//    /**
+//     * 默认的定位参数
+//     *
+//     * @author hongming.wang
+//     * @since 2.8.0
+//     */
+//    private AMapLocationClientOption getDefaultOption() {
+//        AMapLocationClientOption mOption = new AMapLocationClientOption();
+//        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+//        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+//        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+//        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
+//        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
+//        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+//        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
+//        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+//        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+//        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
+//        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
+//        return mOption;
+//    }
 
     public void showRedPacketDialog(RedPacketEntity entity) {
         if (mRedPacketDialogView == null) {
@@ -3182,32 +3185,32 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     }
 
-    @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
-        if (aMapLocation != null) {
-            if (aMapLocation.getErrorCode() == 0) {
-
-                mCurrentLocation = aMapLocation;
-                // LatLng latlng = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
-
-                LatLng latLng = new LatLng(35.95555, 111.356214);
-                final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
-
-                //  mCurrentCity = aMapLocation.getCity();
-
-                //mAmap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, mAmap.getMaxZoomLevel() - 3));
-
-                // doSearchQuery();
-
-                mLocationClient.stopLocation();
-            } else {
-                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                Log.e("AmapError", "location Error, ErrCode:"
-                        + aMapLocation.getErrorCode() + ", errInfo:"
-                        + aMapLocation.getErrorInfo());
-            }
-        }
-    }
+//    @Override
+//    public void onLocationChanged(AMapLocation aMapLocation) {
+//        if (aMapLocation != null) {
+//            if (aMapLocation.getErrorCode() == 0) {
+//
+//                mCurrentLocation = aMapLocation;
+//                // LatLng latlng = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
+//
+//                LatLng latLng = new LatLng(35.95555, 111.356214);
+//                final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
+//
+//                //  mCurrentCity = aMapLocation.getCity();
+//
+//                //mAmap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, mAmap.getMaxZoomLevel() - 3));
+//
+//                // doSearchQuery();
+//
+////                mLocationClient.stopLocation();
+//            } else {
+//                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+//                Log.e("AmapError", "location Error, ErrCode:"
+//                        + aMapLocation.getErrorCode() + ", errInfo:"
+//                        + aMapLocation.getErrorInfo());
+//            }
+//        }
+//    }
 
     /**
      * 这是必须重写的方法
