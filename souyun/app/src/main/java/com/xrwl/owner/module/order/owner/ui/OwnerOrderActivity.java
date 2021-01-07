@@ -131,5 +131,6 @@ public class OwnerOrderActivity extends BaseActivity {
 
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(list.size());
     }
 }
