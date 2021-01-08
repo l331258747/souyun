@@ -228,11 +228,12 @@
                 android:textSize="@dimen/default_font14"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_btn"
+                android:layout_marginEnd="@dimen/dp_20"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_10"
