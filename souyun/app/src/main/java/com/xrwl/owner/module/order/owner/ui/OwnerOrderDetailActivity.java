@@ -4,8 +4,11 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
@@ -13,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -89,6 +93,7 @@ import com.xrwl.owner.module.publish.ui.ChongzhiActivity;
 import com.xrwl.owner.module.publish.ui.PublishSuccessActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AMapUtil;
+import com.xrwl.owner.utils.ActivityCollect;
 import com.xrwl.owner.utils.Constants;
 import com.xrwl.owner.view.PhotoRecyclerView;
 
@@ -134,7 +139,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     private ProgressDialog mPostDialog;
     private OrderDetail mOrderDetail;
     private IWXAPI mWXApi;
-//    private PayBroadcastReceiver mPayBroadcastReceiver;
+    private PayBroadcastReceiver mPayBroadcastReceiver;
     private float xzfjfs = 1;
     private String canshutijiao = "0";
     private String daishoulo = "1";
@@ -676,9 +681,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         mWXApi = WXAPIFactory.createWXAPI(this, Constants.WEIXIN_KEY);
 //        mWXApi.registerApp(Constants.WEIXIN_KEY);
-//        mPayBroadcastReceiver = new PayBroadcastReceiver();
-//        IntentFilter filter = new IntentFilter(Constants.WX_P_SUCCESS_ACTION);
-//        LocalBroadcastManager.getInstance(this).registerReceiver(mPayBroadcastReceiver, filter);
+        mPayBroadcastReceiver = new PayBroadcastReceiver();
+        IntentFilter filter = new IntentFilter(Constants.WX_P_SUCCESS_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mPayBroadcastReceiver, filter);
 
         ZoomMediaLoader.getInstance().init(new ImageLoader());
         /**
@@ -991,8 +996,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(mContext, TabActivity.class);
-                            startActivity(intent);
+                            ActivityCollect.getAppCollect().finishAllNotHome();
                         }
                     }).show();
         } else if (v.getId() == R.id.dianpingbt) {
@@ -2022,8 +2026,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             mWeightTv.setText(dunxianshi);
 
             String dunxianshi2 = "";
-            if (!TextUtils.isEmpty(mOrderDetail.weights)) {
-                dunxianshi2 = "到货重量：" + mOrderDetail.weights + "吨";
+            if (!TextUtils.isEmpty(mOrderDetail.dazongweight)) {
+                dunxianshi2 = "到货重量：" + mOrderDetail.dazongweight + "吨";
             } else {
                 dunxianshi2 = "到货重量：" + "0吨";
             }
@@ -3128,9 +3132,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     @Override
     protected void onDestroy() {
 
-//        if (mPayBroadcastReceiver != null) {
-//            LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
-//        }
+        if (mPayBroadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
+        }
         mHandler.removeCallbacksAndMessages(null);
 
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
@@ -3592,72 +3596,72 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         }
     }
 
-//    private class PayBroadcastReceiver extends BroadcastReceiver {
-//
-//        @Override
-//        public void onReceive(Context arg0, Intent arg1) {
-//            if (arg1.getIntExtra("type", 0) == 0) {
-//                Map<String, String> params = new HashMap<>();
-//                if (daishoutype.equals("4")) {
-//                    params.put("orderid", mId);
-//                    params.put("daishou", "4");
-//
-//                    mPresenter.wxonlinedaishouPay(params);
-//                    showToast("付款成功");
-//                    EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
-//                    startActivity(new Intent(mContext, OwnerOrderActivity.class));
-//                    finish();
-//
-//                } else {
-//
-//                    Float yuanshi = Float.parseFloat(mOrderDetail.overtotal_price);
-//                    Float xianzai = Float.parseFloat(mOrderDetail.Final_payment);
-//                    Float jieguo = xianzai;
-//                    params.put("orderid", mId);
-//                    params.put("Payment_method", "1");
-//                    params.put("wx", "0");
-//                    //通过变量知道是方支付
-//                    if (zhifuren.equals("0")) {
-//                        //发货发支付
-//                        params.put("requestrenminbi", String.valueOf(xzfjfs));
-//                        params.put("zhifuren", "0");
-//                    } else {
-//                        //收货方支付
-//                        params.put("requestrenminbi", String.valueOf(Float.parseFloat(mOrderDetail.freight)));
-//                        params.put("zhifuren", "1");  //这个肯定是全额支付
-//                        //收货方支付完成后，进行原来的第一次回退到既保证金的回退
-//
-//                    }
-//
-//                    params.put("bzj", "1");
-//                    params.put("quankuan", "0");
-//                    params.put("overtotal_price", String.valueOf(jieguo));
-//                    //mPresenter.wxonlinePay(params);
-//                    mPresenter.results(params);
-//
-//                    if ("1".equals(mOrderDetail.isquerenshouhuo)) {
-//                        RedPacketEntity entity = new RedPacketEntity("16飕云", "http://www.16sbj.com/xcx/hongbao.png", "订单完成，红包返现");
-//                        showRedPacketDialog(entity);
-//                        mHomeIntroRv.setFocusableInTouchMode(false);
-//                        mHomeIntroRv.setHasFixedSize(true);
-//                        mHomeIntroRv.setNestedScrollingEnabled(false);
-//                        mHomeServiceRv.setFocusableInTouchMode(false);
-//                        mHomeServiceRv.setHasFixedSize(true);
-//                        mHomeServiceRv.setNestedScrollingEnabled(false);
-//                        mHomeIntroRv.setLayoutManager(new GridLayoutManager(mContext, 4));
-//                        mHomeIntroRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
-//                        mHomeServiceRv.setLayoutManager(new GridLayoutManager(mContext, 4));
-//                        mHomeServiceRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
-//                        // finish();
-//                    }
-//
-//                }
-//            } else {
-//                showToast("付款失败");
-//            }
-//        }
-//
-//    }
+    private class PayBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context arg0, Intent arg1) {
+            if (arg1.getIntExtra("type", 0) == 0) {
+                Map<String, String> params = new HashMap<>();
+                if (daishoutype.equals("4")) {
+                    params.put("orderid", mId);
+                    params.put("daishou", "4");
+
+                    mPresenter.wxonlinedaishouPay(params);
+                    showToast("付款成功");
+                    EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
+                    startActivity(new Intent(mContext, OwnerOrderActivity.class));
+                    finish();
+
+                } else {
+
+                    Float yuanshi = Float.parseFloat(mOrderDetail.overtotal_price);
+                    Float xianzai = Float.parseFloat(mOrderDetail.Final_payment);
+                    Float jieguo = xianzai;
+                    params.put("orderid", mId);
+                    params.put("Payment_method", "1");
+                    params.put("wx", "0");
+                    //通过变量知道是方支付
+                    if (zhifuren.equals("0")) {
+                        //发货发支付
+                        params.put("requestrenminbi", String.valueOf(xzfjfs));
+                        params.put("zhifuren", "0");
+                    } else {
+                        //收货方支付
+                        params.put("requestrenminbi", String.valueOf(Float.parseFloat(mOrderDetail.freight)));
+                        params.put("zhifuren", "1");  //这个肯定是全额支付
+                        //收货方支付完成后，进行原来的第一次回退到既保证金的回退
+
+                    }
+
+                    params.put("bzj", "1");
+                    params.put("quankuan", "0");
+                    params.put("overtotal_price", String.valueOf(jieguo));
+                    //mPresenter.wxonlinePay(params);
+                    mPresenter.results(params);
+
+                    if ("1".equals(mOrderDetail.isquerenshouhuo)) {
+                        RedPacketEntity entity = new RedPacketEntity("16飕云", "http://www.16sbj.com/xcx/hongbao.png", "订单完成，红包返现");
+                        showRedPacketDialog(entity);
+                        mHomeIntroRv.setFocusableInTouchMode(false);
+                        mHomeIntroRv.setHasFixedSize(true);
+                        mHomeIntroRv.setNestedScrollingEnabled(false);
+                        mHomeServiceRv.setFocusableInTouchMode(false);
+                        mHomeServiceRv.setHasFixedSize(true);
+                        mHomeServiceRv.setNestedScrollingEnabled(false);
+                        mHomeIntroRv.setLayoutManager(new GridLayoutManager(mContext, 4));
+                        mHomeIntroRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
+                        mHomeServiceRv.setLayoutManager(new GridLayoutManager(mContext, 4));
+                        mHomeServiceRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
+                        // finish();
+                    }
+
+                }
+            } else {
+                showToast("付款失败");
+            }
+        }
+
+    }
 
 
 }

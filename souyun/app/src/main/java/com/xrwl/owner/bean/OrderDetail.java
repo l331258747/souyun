@@ -46,7 +46,7 @@ public class OrderDetail {
     @SerializedName("total_price")
     public String price;
     public String weight;
-    public String weights;
+    public String dazongweight;
     public String area;
     public String num;
     public String kilo;

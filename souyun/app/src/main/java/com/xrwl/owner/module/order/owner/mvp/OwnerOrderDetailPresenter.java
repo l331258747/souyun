@@ -100,7 +100,7 @@ public class OwnerOrderDetailPresenter extends OwnerOrderContract.ADetailPresent
         Map<String, String> params = new HashMap<>();
         params.put("userid", getAccount().getId());
         params.put("id", id);
-        params.put("weight", weight);
+        params.put("weights", weight);
 
         mModel.updateOrderdundaoda(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
             @Override
