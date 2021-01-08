@@ -102,6 +102,11 @@ public class PayDemoModel implements OwnerOrderContract.IDetailModel {
     }
 
     @Override
+    public Observable<BaseEntity> updateOrderdundaoda(Map<String, String> params) {
+        return null;
+    }
+
+    @Override
     public Observable<BaseEntity> dianping(Map<String, String> params) {
         return null;
     }

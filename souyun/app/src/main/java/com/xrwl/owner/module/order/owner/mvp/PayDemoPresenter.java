@@ -62,6 +62,11 @@ public class PayDemoPresenter extends OwnerOrderContract.ADetailPresenter {
 
     }
 
+    @Override
+    public void updateOrderdundaoda(String id, String weight) {
+
+    }
+
     public Map<String, String> getParams(String id) {
         Map<String, String> params = new HashMap<>();
         params.put("userid", getAccount().getId());

@@ -177,6 +177,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     TextView mPriceTv;
     @BindView(R.id.detailWeightTv)
     TextView mWeightTv;
+    @BindView(R.id.detailWeightTv2)
+    TextView mWeightTv2;
     @BindView(R.id.detailKiloTv)
     TextView mKiloTv;
     @BindView(R.id.detailNumTv)
@@ -303,6 +305,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     private RetrofitManager retrofitManager;
 
     String mWeightValue = "";
+    String mWeightValue2 = "";
 
     @Override
     protected OwnerOrderDetailPresenter initPresenter() {
@@ -1813,15 +1816,19 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         //终点
         mEndPoint = new LatLonPoint(Double.valueOf(mOrderDetail.endLat), Double.valueOf(mOrderDetail.endLon));
 
+        mWeightTv2.setVisibility(View.GONE);
         if ("7".equals(mOrderDetail.category)) {
             mAreaTv.setVisibility(View.INVISIBLE);
             mWeightTv.setVisibility(View.INVISIBLE);
-
             mNumTv.setVisibility(View.INVISIBLE);
+        } else if("6".equals(mOrderDetail.category)){
+            mAreaTv.setVisibility(View.VISIBLE);
+            mWeightTv.setVisibility(View.VISIBLE);
+            mWeightTv2.setVisibility(View.VISIBLE);
+            mNumTv.setVisibility(View.VISIBLE);
         } else {
             mAreaTv.setVisibility(View.VISIBLE);
             mWeightTv.setVisibility(View.VISIBLE);
-
             mNumTv.setVisibility(View.VISIBLE);
         }
 
@@ -2008,11 +2015,20 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         if(mOrderDetail.category.equals("6")){
             String dunxianshi = "";
             if (!TextUtils.isEmpty(mOrderDetail.weight)) {
-                dunxianshi = "吨数：" + mOrderDetail.weight + "吨";
+                dunxianshi = "出发重量：" + mOrderDetail.weight + "吨";
             } else {
-                dunxianshi = "吨数：" + "0吨";
+                dunxianshi = "出发重量：" + "0吨";
             }
             mWeightTv.setText(dunxianshi);
+
+            String dunxianshi2 = "";
+            if (!TextUtils.isEmpty(mOrderDetail.weights)) {
+                dunxianshi2 = "到货重量：" + mOrderDetail.weights + "吨";
+            } else {
+                dunxianshi2 = "到货重量：" + "0吨";
+            }
+            mWeightTv2.setText(dunxianshi2);
+
         }
 
         mPriceTv.setText("价格：" + mOrderDetail.overtotal_price + "元");
@@ -2143,9 +2159,21 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mWeightTv.getPaint().setAntiAlias(true);//抗锯齿
 
                 mWeightTv.setOnClickListener(v -> {
-                    new EditDialog(mContext).setTitle("修改重量").setSubmitListener((dialog, content) -> {
+                    new EditDialog(mContext).setTitle("修改出发重量").setSubmitListener((dialog, content) -> {
                         mPresenter.updateOrderdun(mId,content);
-                        mWeightValue = "重量："+content+"吨";
+                        mWeightValue = "出发重量："+content+"吨";
+                        dialog.dismiss();
+                    }).show();
+                });
+
+                mWeightTv2.setTextColor(getResources().getColor(R.color.colorPrimary));
+                mWeightTv2.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
+                mWeightTv2.getPaint().setAntiAlias(true);//抗锯齿
+
+                mWeightTv2.setOnClickListener(v -> {
+                    new EditDialog(mContext).setTitle("修改到货重量").setSubmitListener((dialog, content) -> {
+                        mPresenter.updateOrderdundaoda(mId,content);
+                        mWeightValue2 = "到货重量："+content+"吨";
                         dialog.dismiss();
                     }).show();
                 });
@@ -3057,6 +3085,17 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     @Override
     public void updateOrderdunError(BaseEntity e) {
+        showToast("修改失败");
+    }
+
+    @Override
+    public void updateOrderdundaodaSuccess(BaseEntity entity) {
+        mWeightTv2.setText(mWeightValue2);
+        showToast("修改成功");
+    }
+
+    @Override
+    public void updateOrderdundaodaError(BaseEntity e) {
         showToast("修改失败");
     }
 

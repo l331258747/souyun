@@ -254,6 +254,16 @@ public class QianDaoActivity extends BaseActivity<OwnerOrderContract.IDetailView
  }
 
  @Override
+ public void updateOrderdundaodaSuccess(BaseEntity entity) {
+
+ }
+
+ @Override
+ public void updateOrderdundaodaError(BaseEntity e) {
+
+ }
+
+ @Override
  public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
 
  }

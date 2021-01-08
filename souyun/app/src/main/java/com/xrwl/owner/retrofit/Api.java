@@ -490,8 +490,12 @@ public interface Api {
  @GET("Car/chelianglistsousuo")
  Observable<BaseEntity<List<CarManageSearchBean>>> searchCar(@QueryMap Map<String, String> params);
 
- /** 大宗总量修改 */
+ /** 大宗实际总量修改 */
  @GET("Order/UpdateOrderdun")
  Observable<BaseEntity> updateOrderdun(@QueryMap Map<String, String> params);
+
+ /** 大宗到货总量修改 */
+ @GET("Order/UpdateOrderdundaoda")
+ Observable<BaseEntity> updateOrderdundaoda(@QueryMap Map<String, String> params);
 
 }

@@ -291,11 +291,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="重量：1吨"
+                        android:text="出发重量：1吨"
                         android:textColor="@color/black"
                         android:textSize="@dimen/default_font14" />
 
                 </FrameLayout>
+
+                <TextView
+                    android:id="@+id/detailWeightTv2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginTop="@dimen/default_dp8"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:text="到达重量：1吨"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_font14" />
 
                 <FrameLayout
                     android:layout_width="match_parent"

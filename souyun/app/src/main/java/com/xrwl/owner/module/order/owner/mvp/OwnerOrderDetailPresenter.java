@@ -95,6 +95,35 @@ public class OwnerOrderDetailPresenter extends OwnerOrderContract.ADetailPresent
         });
     }
 
+    @Override
+    public void updateOrderdundaoda(String id, String weight) {
+        Map<String, String> params = new HashMap<>();
+        params.put("userid", getAccount().getId());
+        params.put("id", id);
+        params.put("weight", weight);
+
+        mModel.updateOrderdundaoda(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            protected void onHandleSuccess(BaseEntity entity) {
+                if (entity.isSuccess()) {
+
+                    mView.updateOrderdundaodaSuccess(entity);
+                } else {
+                    mView.updateOrderdundaodaError(entity);
+                }
+            }
+            @Override
+            protected void onHandleError(Throwable e) {
+                mView.onRefreshError(e);
+            }
+        });
+    }
+
     public Map<String, String> getParams(String id) {
         Map<String, String> params = new HashMap<>();
         params.put("userid", getAccount().getId());

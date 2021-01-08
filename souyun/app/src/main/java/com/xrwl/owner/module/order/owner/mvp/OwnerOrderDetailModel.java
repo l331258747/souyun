@@ -25,6 +25,10 @@ public class OwnerOrderDetailModel implements OwnerOrderContract.IDetailModel {
     public Observable<BaseEntity> updateOrderdun(Map<String, String> params) {
         return RetrofitFactory.getInstance().updateOrderdun(params).compose(RxSchedulers.<BaseEntity>compose());
     }
+    @Override
+    public Observable<BaseEntity> updateOrderdundaoda(Map<String, String> params) {
+        return RetrofitFactory.getInstance().updateOrderdundaoda(params).compose(RxSchedulers.<BaseEntity>compose());
+    }
 
     @Override
     public Observable<BaseEntity<OrderDetail>> cancelOrder(Map<String, String> params) {

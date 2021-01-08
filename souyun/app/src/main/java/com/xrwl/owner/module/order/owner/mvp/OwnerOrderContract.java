@@ -114,6 +114,9 @@ public interface OwnerOrderContract {
         void updateOrderdunSuccess(BaseEntity entity);
         void updateOrderdunError(BaseEntity e);
 
+        void updateOrderdundaodaSuccess(BaseEntity entity);
+        void updateOrderdundaodaError(BaseEntity e);
+
         void onUploadImagesSuccess(BaseEntity<OrderDetail> entity);
         void onUploadImagesError(BaseEntity e);
         void onUploadImagesError(Throwable e);
@@ -132,6 +135,8 @@ public interface OwnerOrderContract {
         public abstract void getOrderDetail(String id);
 
         public abstract void updateOrderdun(String id,String weight);
+
+        public abstract void updateOrderdundaoda(String id,String weight);
 
         public abstract void cancelOrder(String id);
 
@@ -187,6 +192,7 @@ public interface OwnerOrderContract {
         Observable<BaseEntity> yuepay(Map<String, String> params);
         Observable<BaseEntity> yuepayrefund(Map<String, String> params);
         Observable<BaseEntity> updateOrderdun(Map<String, String> params);
+        Observable<BaseEntity> updateOrderdundaoda(Map<String, String> params);
        /**在线点评*/
         Observable<BaseEntity> dianping(Map<String, String> params);
 
