@@ -91,7 +91,6 @@ import com.xrwl.owner.module.publish.bean.PayResult;
 import com.xrwl.owner.module.publish.bean.Photo;
 import com.xrwl.owner.module.publish.ui.ChongzhiActivity;
 import com.xrwl.owner.module.publish.ui.PublishSuccessActivity;
-import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.ActivityCollect;
 import com.xrwl.owner.utils.Constants;
@@ -3131,6 +3130,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
 
         if (mPayBroadcastReceiver != null) {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
@@ -3138,7 +3138,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         mHandler.removeCallbacksAndMessages(null);
 
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
-        mMapView.onDestroy();
+        if(mMapView!= null)
+            mMapView.onDestroy();
 //        if (mLocationClient != null) {
 //            /**
 //             * 如果AMapLocationClient是在当前Activity实例化的，
@@ -3147,7 +3148,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 //            mLocationClient.onDestroy();
 //            mLocationClient = null;
 //        }
-        super.onDestroy();
+
     }
 
 //    /**
