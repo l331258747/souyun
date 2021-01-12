@@ -182,10 +182,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @BindView(R.id.tv_clean)
     TextView tv_clean;
 
-    @BindView(R.id.ll_qita_tv)
-    LinearLayout ll_qita_tv;
-    @BindView(R.id.iv_qita_tv)
-    ImageView iv_qita_tv;
+    @BindView(R.id.ll_qita_title)
+    LinearLayout ll_qita_title;
+    @BindView(R.id.iv_qita_title)
+    ImageView iv_qita_title;
     @BindView(R.id.ll_qita)
     LinearLayout ll_qita;
 
@@ -394,7 +394,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     boolean isQitaShow;
     private void setQitaView(boolean isShow) {
         ll_qita.setVisibility(isShow?View.VISIBLE:View.GONE);
-        iv_qita_tv.setImageResource(isShow?R.drawable.ic_zhankai:R.drawable.ic_shousuo);
+        iv_qita_title.setImageResource(isShow?R.drawable.ic_zhankai:R.drawable.ic_shousuo);
     }
 
     private void setTabView(int type) {
@@ -737,10 +737,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             }
         }
     }
-    @OnClick({R.id.ll_qita_tv})
+    @OnClick({R.id.ll_qita_title})
     public void onQitaClicked(View view) {
         switch (view.getId()) {
-            case R.id.ll_qita_tv:
+            case R.id.ll_qita_title:
                 setQitaView(isQitaShow = !isQitaShow);
                 break;
         }

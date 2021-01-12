@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hdgq.locationlib.LocationOpenApi;
@@ -43,8 +44,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -115,6 +114,14 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
     @BindView(R.id.photo_scrollview)
     PhotoScrollView mPhotoScrollView;
 
+    //其他
+    @BindView(R.id.ll_qita_title)
+    LinearLayout ll_qita_title;
+    @BindView(R.id.iv_qita_title)
+    ImageView iv_qita_title;
+    @BindView(R.id.ll_qita)
+    LinearLayout ll_qita;
+
     protected Account mAccount;
     boolean isCreate;
     private ArrayList<String> mImagePaths;
@@ -172,24 +179,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
         mPublishBean = new PublishBean();
         mPublishBean.category = CategoryDialog.CategoryEnum.TYPE_paotui.getValue();
 
-        String usernamess = "";
-        /**判断数据库都出来吨用户名*/
-        if ("0".equals(mAccount.getName())) {
-            usernamess = "";
-        } else {
-            if (mAccount.getName() == null) {
-                usernamess = "";
-            } else {
-                try {
-                    usernamess = (URLDecoder.decode(mAccount.getName(), "UTF-8"));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
-        mpublishStartPhonepersonEt.setText(usernamess);
+        mpublishStartPhonepersonEt.setText(mAccount.getNameDecode());
         mpublishStartPhoneEt.setText(mAccount.getPhone());
 
         mPhotoScrollView.setOnSelectListener(v -> PictureSelector.create(PaotuiFragment.this).openGallery(PictureMimeType.ofImage())
@@ -200,6 +190,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
                 .compress(true)
                 .circleDimmedLayer(true)
                 .forResult(PictureConfig.CHOOSE_REQUEST));
+
+        setQitaView(isQitaShow);
     }
 
     @Override
@@ -271,6 +263,21 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
                 }
             }
+        }
+    }
+
+    boolean isQitaShow;
+    private void setQitaView(boolean isShow) {
+        ll_qita.setVisibility(isShow?View.VISIBLE:View.GONE);
+        iv_qita_title.setImageResource(isShow?R.drawable.ic_zhankai:R.drawable.ic_shousuo);
+    }
+
+    @OnClick({R.id.ll_qita_title})
+    public void onQitaClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_qita_title:
+                setQitaView(isQitaShow = !isQitaShow);
+                break;
         }
     }
 
