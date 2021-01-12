@@ -209,13 +209,12 @@ public class HomeFragment extends BaseFragment {
         fragment_list.add(twoFragment6);
         CtzcFragment twoFragment5 = new CtzcFragment();
         fragment_list.add(twoFragment5);
-        TczcFragment twoFragment3 = new TczcFragment();
-        fragment_list.add(twoFragment3);
         TcldFragment twoFragment = new TcldFragment();
         fragment_list.add(twoFragment);
+        TczcFragment twoFragment3 = new TczcFragment();
+        fragment_list.add(twoFragment3);
         PaotuiFragment paotuiFragment = new PaotuiFragment();
         fragment_list.add(paotuiFragment);
-
 
     }
 

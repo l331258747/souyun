@@ -80,6 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:fillViewport="true"
             app:tabIndicatorColor="@color/color_ffbb33"
+            android:visibility="gone"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/color_ffbb33"
             app:tabTextAppearance="@style/TabLayoutTextStyle" />

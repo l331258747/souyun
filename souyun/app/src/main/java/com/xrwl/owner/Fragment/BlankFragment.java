@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -51,8 +53,6 @@ import com.ldw.library.utils.AppUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.xrwl.owner.R;
 import com.xrwl.owner.bean.Account;
-import com.xrwl.owner.bean.CompanyFahuoBean;
-import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
@@ -61,13 +61,13 @@ import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
+import com.xrwl.owner.module.home.ui.HomeFragment;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
 import com.xrwl.owner.module.order.owner.ui.ui.route.DriveRouteOverlay;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
-import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.MyTextWatcher;
@@ -96,8 +96,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     public static final int RESULT_POSITION_END = 333;//到货定位
     public static final int RESULT_FRIEND_START = 444;//发货人电话
     public static final int RESULT_FRIEND_END = 555;//收货人电话
-    public static final int RESULT_CONPANY_START = 666;//发货单位
-    public static final int RESULT_CONPANY_END = 777;//收货单位
+//    public static final int RESULT_CONPANY_START = 666;//发货单位
+//    public static final int RESULT_CONPANY_END = 777;//收货单位
 
     private Account mAccount;
     private Disposable mDisposable;
@@ -150,16 +150,16 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     EditText et_shouhuotel;
     @BindView(R.id.bt_shouhuo_xuanze)
     TextView bt_shouhuo_xuanze;
-    //发货单位
-    @BindView(R.id.et_fahuodanwei)
-    EditText et_fahuodanwei;
-    @BindView(R.id.bt_fahuodanwei_xuanze)
-    TextView bt_fahuodanwei_xuanze;
-    //收货单位
-    @BindView(R.id.et_shouhuodanwei)
-    EditText et_shouhuodanwei;
-    @BindView(R.id.bt_shouhuodanwei_xuanze)
-    TextView bt_shouhuodanwei_xuanze;
+//    //发货单位
+//    @BindView(R.id.et_fahuodanwei)
+//    EditText et_fahuodanwei;
+//    @BindView(R.id.bt_fahuodanwei_xuanze)
+//    TextView bt_fahuodanwei_xuanze;
+//    //收货单位
+//    @BindView(R.id.et_shouhuodanwei)
+//    EditText et_shouhuodanwei;
+//    @BindView(R.id.bt_shouhuodanwei_xuanze)
+//    TextView bt_shouhuodanwei_xuanze;
     //货物吨数
     @BindView(R.id.et_huowu_dun)
     EditText et_huowu_dun;
@@ -182,14 +182,47 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @BindView(R.id.tv_clean)
     TextView tv_clean;
 
+    @BindView(R.id.ll_qita_tv)
+    LinearLayout ll_qita_tv;
+    @BindView(R.id.iv_qita_tv)
+    ImageView iv_qita_tv;
+    @BindView(R.id.ll_qita)
+    LinearLayout ll_qita;
+
+    @BindView(R.id.tv_dzys)
+    TextView tv_dzys;
+    @BindView(R.id.tv_ctld)
+    TextView tv_ctld;
+    @BindView(R.id.tv_ctzc)
+    TextView tv_ctzc;
+    @BindView(R.id.tv_tcld)
+    TextView tv_tcld;
+    @BindView(R.id.tv_tczc)
+    TextView tv_tczc;
+    @BindView(R.id.tv_paotui)
+    TextView tv_paotui;
+
+    @BindView(R.id.line_dzys)
+    View line_dzys;
+    @BindView(R.id.line_ctld)
+    View line_ctld;
+    @BindView(R.id.line_ctzc)
+    View line_ctzc;
+    @BindView(R.id.line_tcld)
+    View line_tcld;
+    @BindView(R.id.line_tczc)
+    View line_tczc;
+    @BindView(R.id.line_paotui)
+    View line_paotui;
+
     private SearchLocationAdapter mAdapter;
     private SearchLocationAdapter mAdapter2;
     String city = "";
     boolean locationFirst = true;
     MarkerBean locationBean = new MarkerBean();//出发地
     MarkerBean destinationBean = new MarkerBean();//目的地
-    CompanyFahuoBean fahuodanweiBean = new CompanyFahuoBean();
-    CompanyShouhuoBean shouhuodanweiBean = new CompanyShouhuoBean();
+//    CompanyFahuoBean fahuodanweiBean = new CompanyFahuoBean();
+//    CompanyShouhuoBean shouhuodanweiBean = new CompanyShouhuoBean();
     HomeChexingBean chexingBean = new HomeChexingBean();
     HomeHuowuBean huowuBean = new HomeHuowuBean();
     int chexingType = 0;
@@ -336,22 +369,76 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             }
         });
 
-        et_fahuodanwei.addTextChangedListener(new MyTextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s) {
-                fahuodanweiBean.setName(s.toString());
-                ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
-            }
-        });
-        et_shouhuodanwei.addTextChangedListener(new MyTextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s) {
-                shouhuodanweiBean.setName(s.toString());
-                ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
-            }
-        });
+//        et_fahuodanwei.addTextChangedListener(new MyTextWatcher(){
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                fahuodanweiBean.setName(s.toString());
+//                ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
+//            }
+//        });
+//        et_shouhuodanwei.addTextChangedListener(new MyTextWatcher(){
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                shouhuodanweiBean.setName(s.toString());
+//                ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
+//            }
+//        });
+
+        setTabView(-1);
+        setQitaView(isQitaShow);
 
         quanxian();
+
+    }
+
+    boolean isQitaShow;
+    private void setQitaView(boolean isShow) {
+        ll_qita.setVisibility(isShow?View.VISIBLE:View.GONE);
+        iv_qita_tv.setImageResource(isShow?R.drawable.ic_zhankai:R.drawable.ic_shousuo);
+    }
+
+    private void setTabView(int type) {
+        line_dzys.setVisibility(View.GONE);
+        line_ctld.setVisibility(View.GONE);
+        line_ctzc.setVisibility(View.GONE);
+        line_tcld.setVisibility(View.GONE);
+        line_tczc.setVisibility(View.GONE);
+        line_paotui.setVisibility(View.GONE);
+
+        tv_dzys.setTextColor(getResources().getColor(R.color.window_text_color));
+        tv_ctld.setTextColor(getResources().getColor(R.color.window_text_color));
+        tv_ctzc.setTextColor(getResources().getColor(R.color.window_text_color));
+        tv_tcld.setTextColor(getResources().getColor(R.color.window_text_color));
+        tv_tczc.setTextColor(getResources().getColor(R.color.window_text_color));
+        tv_paotui.setTextColor(getResources().getColor(R.color.window_text_color));
+
+        switch (type){
+            case 0:
+                line_dzys.setVisibility(View.VISIBLE);
+                tv_dzys.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+            case 1:
+                line_ctld.setVisibility(View.VISIBLE);
+                tv_ctld.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+            case 2:
+                line_ctzc.setVisibility(View.VISIBLE);
+                tv_ctzc.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+            case 3:
+                line_tcld.setVisibility(View.VISIBLE);
+                tv_tcld.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+            case 4:
+                line_tczc.setVisibility(View.VISIBLE);
+                tv_tczc.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+            case 5:
+                line_paotui.setVisibility(View.VISIBLE);
+                tv_paotui.setTextColor(getResources().getColor(R.color.color_ffbb33));
+                break;
+        }
+
     }
 
     boolean goPermission;
@@ -650,11 +737,48 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             }
         }
     }
+    @OnClick({R.id.ll_qita_tv})
+    public void onQitaClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_qita_tv:
+                setQitaView(isQitaShow = !isQitaShow);
+                break;
+        }
+    }
+
+    @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc, R.id.tv_tczc, R.id.tv_tcld, R.id.tv_paotui})
+    public void onTabClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_dzys:
+                setTabView(0);
+                ((HomeFragment)getParentFragment()).setTabIndex(1);
+                break;
+            case R.id.tv_ctld:
+                setTabView(1);
+                ((HomeFragment)getParentFragment()).setTabIndex(2);
+                break;
+            case R.id.tv_ctzc:
+                setTabView(2);
+                ((HomeFragment)getParentFragment()).setTabIndex(3);
+                break;
+            case R.id.tv_tcld:
+                setTabView(3);
+                ((HomeFragment)getParentFragment()).setTabIndex(5);
+                break;
+            case R.id.tv_tczc:
+                setTabView(4);
+                ((HomeFragment)getParentFragment()).setTabIndex(4);
+                break;
+            case R.id.tv_paotui:
+                setTabView(5);
+                ((HomeFragment)getParentFragment()).setTabIndex(6);
+                break;
+        }
+    }
 
     @OnClick({R.id.bt_chufadi_sousuo,R.id.bt_mudidi_sousuo,
             R.id.bt_chufadi_xuanze,R.id.bt_mudidi_xuanze,
             R.id.bt_chexing_xuanze,
-            R.id.bt_fahuodanwei_xuanze,R.id.bt_shouhuodanwei_xuanze,
             R.id.bt_fahuo_xuanze,R.id.bt_shouhuo_xuanze,
             R.id.tv_clean})
     public void onViewClicked(View view) {
@@ -798,20 +922,20 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 intent.putExtra("title", chexingType == 0?"同城车型":"长途车型");
                 startActivityForResult(intent, RESULT_TRUCK);
                 break;
-            case R.id.bt_fahuodanwei_xuanze:
-                Intent intentfahuo = new Intent(getContext(), CompanyManageActivity.class);
-                intentfahuo.putExtra("isItemClick", true);
-                /**请选择发货单位*/
-                intentfahuo.putExtra("title", "请选择发货单位");
-                startActivityForResult(intentfahuo, RESULT_CONPANY_START);
-                break;
-            case R.id.bt_shouhuodanwei_xuanze:
-                /**请选择收货单位*/
-                Intent intentshouhuo = new Intent(getContext(), CompanyManageActivity.class);
-                intentshouhuo.putExtra("isItemClick", true);
-                intentshouhuo.putExtra("title", "请选择收货单位");
-                startActivityForResult(intentshouhuo, RESULT_CONPANY_END);
-                break;
+//            case R.id.bt_fahuodanwei_xuanze:
+//                Intent intentfahuo = new Intent(getContext(), CompanyManageActivity.class);
+//                intentfahuo.putExtra("isItemClick", true);
+//                /**请选择发货单位*/
+//                intentfahuo.putExtra("title", "请选择发货单位");
+//                startActivityForResult(intentfahuo, RESULT_CONPANY_START);
+//                break;
+//            case R.id.bt_shouhuodanwei_xuanze:
+//                /**请选择收货单位*/
+//                Intent intentshouhuo = new Intent(getContext(), CompanyManageActivity.class);
+//                intentshouhuo.putExtra("isItemClick", true);
+//                intentshouhuo.putExtra("title", "请选择收货单位");
+//                startActivityForResult(intentshouhuo, RESULT_CONPANY_END);
+//                break;
             case R.id.bt_fahuo_xuanze:
                 Intent intentfahuotel = new Intent(getContext(), FriendActivity.class);
                 startActivityForResult(intentfahuotel, RESULT_FRIEND_START);
@@ -823,8 +947,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             case R.id.tv_clean:
                 locationBean = new MarkerBean();//出发地
                 destinationBean = new MarkerBean();//目的地
-                fahuodanweiBean = new CompanyFahuoBean();
-                shouhuodanweiBean = new CompanyShouhuoBean();
+//                fahuodanweiBean = new CompanyFahuoBean();
+//                shouhuodanweiBean = new CompanyShouhuoBean();
                 chexingBean = new HomeChexingBean();
                 huowuBean = new HomeHuowuBean();
 
@@ -834,8 +958,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 et_mudidi.setText("");
                 et_shouhuoren.setText("");
                 et_shouhuotel.setText("");
-                et_fahuodanwei.setText("");
-                et_shouhuodanwei.setText("");
+//                et_fahuodanwei.setText("");
+//                et_shouhuodanwei.setText("");
                 tv_chexing.setText("");
                 et_huowu_dun.setText("");
                 et_huowu_fang.setText("");
@@ -927,24 +1051,24 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             tv_chexing.setText(truck.getTitle());
 
         }
-        /**发货单位*/
-        else if(requestCode == RESULT_CONPANY_START){
-            String name = data.getStringExtra("name");
-            et_fahuodanwei.setText(name);
-
-            fahuodanweiBean.setName(name);
-
-            ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
-        }
-        /**收货单位*/
-        else if(requestCode == RESULT_CONPANY_END){
-            String name = data.getStringExtra("name");
-            et_shouhuodanwei.setText(name);
-
-            shouhuodanweiBean.setName(name);
-
-            ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
-        }
+//        /**发货单位*/
+//        else if(requestCode == RESULT_CONPANY_START){
+//            String name = data.getStringExtra("name");
+//            et_fahuodanwei.setText(name);
+//
+//            fahuodanweiBean.setName(name);
+//
+//            ((TabActivity)getActivity()).setFahuodanweiBean(fahuodanweiBean);
+//        }
+//        /**收货单位*/
+//        else if(requestCode == RESULT_CONPANY_END){
+//            String name = data.getStringExtra("name");
+//            et_shouhuodanwei.setText(name);
+//
+//            shouhuodanweiBean.setName(name);
+//
+//            ((TabActivity)getActivity()).setShouhuodanweiBean(shouhuodanweiBean);
+//        }
         /**发货电话*/
         else if (requestCode == RESULT_FRIEND_START) {
             Friend friend = (Friend) data.getSerializableExtra("data");

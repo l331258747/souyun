@@ -44,6 +44,7 @@
     <color name="color_c5c5c5">#c5c5c5</color>
     <color name="gray_33">#33aaaaaa</color>
     <color name="light_gray">#a7a7a7</color>
+    <color name="window_text_color">#757575</color>
     <!-- 钢兰色 -->
     <color name="royalblue">#4169e1</color>
     <color name="ripple_color">#40000000</color>
