@@ -152,7 +152,21 @@ public class RouteOverlay {
 			try {
 				LatLngBounds bounds = getLatLngBounds();
 				mAMap.animateCamera(CameraUpdateFactory
-						.newLatLngBounds(bounds, 200));
+						.newLatLngBounds(bounds, 100));
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void zoomToSpan2() {
+		if (startPoint != null) {
+			if (mAMap == null)
+				return;
+			try {
+				LatLngBounds bounds = getLatLngBounds();
+				mAMap.animateCamera(CameraUpdateFactory
+						.newLatLngBounds(bounds, 300));
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}

@@ -1127,7 +1127,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                     walkRouteOverlay.getWalkColor();//轨迹颜色修改
                     walkRouteOverlay.removeFromMap();
                     walkRouteOverlay.addToMap();
-                    walkRouteOverlay.zoomToSpan();
+                    walkRouteOverlay.zoomToSpan2();
                     walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
                     int dis = (int) walkPath.getDistance();
                     int dur = (int) walkPath.getDuration();
