@@ -182,13 +182,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @BindView(R.id.tv_clean)
     TextView tv_clean;
 
-    @BindView(R.id.ll_qita_title)
-    LinearLayout ll_qita_title;
-    @BindView(R.id.iv_qita_title)
-    ImageView iv_qita_title;
-    @BindView(R.id.ll_qita)
-    LinearLayout ll_qita;
-
     @BindView(R.id.tv_dzys)
     TextView tv_dzys;
     @BindView(R.id.tv_ctld)
@@ -385,16 +378,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 //        });
 
         setTabView(-1);
-        setQitaView(isQitaShow);
 
         quanxian();
 
-    }
-
-    boolean isQitaShow;
-    private void setQitaView(boolean isShow) {
-        ll_qita.setVisibility(isShow?View.VISIBLE:View.GONE);
-        iv_qita_title.setImageResource(isShow?R.drawable.ic_zhankai:R.drawable.ic_shousuo);
     }
 
     private void setTabView(int type) {
@@ -735,14 +721,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
                 Log.e("定位AmapErr", errText);
             }
-        }
-    }
-    @OnClick({R.id.ll_qita_title})
-    public void onQitaClicked(View view) {
-        switch (view.getId()) {
-            case R.id.ll_qita_title:
-                setQitaView(isQitaShow = !isQitaShow);
-                break;
         }
     }
 
