@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
 
     public static final int COUNT_DOWN = 59;
 
-    private long firstTime=0;
+    private long firstTime = 0;
 
     @BindView(R.id.loginCb)
     CheckBox mProtocolCb;
@@ -84,9 +84,9 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
     // 1.声明一个statid的IWXAPI 以及APPID
 
     public static IWXAPI wx_api; //全局的微信api对象
-    public  String APP_ID = "wx40197add197dfbf6"; //替换为申请到的app id
-    public  String APP_SECRET = "af3ea0b2a6eac75ca728da05a8767715"; //替换为申请到的app id
-    public String path ="";
+    public String APP_ID = "wx40197add197dfbf6"; //替换为申请到的app id
+    public String APP_SECRET = "af3ea0b2a6eac75ca728da05a8767715"; //替换为申请到的app id
+    public String path = "";
 
     @Override
     protected LoginPresenter initPresenter() {
@@ -103,12 +103,11 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
         // 2.初始化微信SDK
         wx_api = WXAPIFactory.createWXAPI(mContext, APP_ID, true);
         wx_api.registerApp(APP_ID);
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         nickname = getIntent().getStringExtra("nickname");
         openid = getIntent().getStringExtra("openid");
         unionid = getIntent().getStringExtra("unionid");
-        if(!TextUtils.isEmpty(unionid))
-        {
+        if (!TextUtils.isEmpty(unionid)) {
             mDialog = LoadingProgress.showProgress(this, getString(R.string.login_logining));
             // mPresenter.wxtoken(wxCode);
             String result = "";
@@ -118,9 +117,9 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
             } catch (UnsupportedEncodingException e) {
                 android.util.Log.e(TAG, e.getMessage(), e);
             }
-            Log.d("nickname",result);
-            Log.d("openid",openid);
-            Log.d("unionid",unionid);
+            Log.d("nickname", result);
+            Log.d("openid", openid);
+            Log.d("unionid", unionid);
             //执行微信登陆
             Map<String, String> params = new HashMap<>();
             params.put("nickname", result);
@@ -129,67 +128,77 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
             mPresenter.loginwx(params);
 
         }
-   }
+    }
 
-   @OnClick({R.id.loginBtn, R.id.loginRegisterTv, R.id.driverLoginBtn,R.id.loginServiceTv,R.id.loginForgetPwdTv,R.id.loginProtocolTv,R.id.wxLoginBtn})
+    @OnClick(R.id.tv_agreement)
+    public void onAgreementClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_agreement:
+                startActivity(new Intent(this,AgreementActivity.class));
+                break;
+        }
+    }
+
+
+    @OnClick({R.id.loginBtn, R.id.loginRegisterTv, R.id.driverLoginBtn, R.id.loginServiceTv, R.id.loginForgetPwdTv, R.id.loginProtocolTv, R.id.wxLoginBtn})
     public void onClick(View v) {
-       switch (v.getId()) {
+        switch (v.getId()) {
 
-           case R.id.loginBtn:
+            case R.id.loginBtn:
 
-               String phone = mLoginView.getUsername();
-               String code = mLoginView.getPwd();
+                String phone = mLoginView.getUsername();
+                String code = mLoginView.getPwd();
 
-               /**
-                * 项目需求跳过短信验证
-                */
+                /**
+                 * 项目需求跳过短信验证
+                 */
 
-               if (phone.startsWith("188035788")) {
+                if (phone.startsWith("188035788")) {
 
-               } else {
-                   if (TextUtils.isEmpty(phone)) {
-                       showToast("请输入手机号码");
-                       return;
-                   }
-                   if (TextUtils.isEmpty(code)) {
-                       showToast("请输入短信验证码");
-                       return;
-                   }
+                } else {
+                    if (TextUtils.isEmpty(phone)) {
+                        showToast("请输入手机号码");
+                        return;
+                    }
+                    if (TextUtils.isEmpty(code)) {
+                        showToast("请输入短信验证码");
+                        return;
+                    }
 
 
-                   if (!code.equals(mCode)) {
-                       showToast("验证码不正确");
-                       return;
-                   }
-               }
-               mDialog = LoadingProgress.showProgress(this, getString(R.string.login_logining));
-               Map<String, String> params = new HashMap<>();
-               params.put("tel", mLoginView.getUsername());
-               mPresenter.login(params);
-               break;
-           case R.id.loginRegisterTv:
-               startActivity(new Intent(this, RegisterActivity.class));
-               break;
-           case R.id.wxLoginBtn:
-               if (!MyApplication.mWXapi.isWXAppInstalled()) {
-                   Toast.makeText(this, "您还未安装微信客户端", Toast.LENGTH_SHORT).show();
-                   return;
-               }
-               final SendAuth.Req req = new SendAuth.Req();
-               req.scope = "snsapi_userinfo";
-               req.state = "skit_wx_login";//这个字段可以任意更改
-               MyApplication.mWXapi.sendReq(req);
-               break;
-           case R.id.driverLoginBtn:
-               mDialog = LoadingProgress.showProgress(this, getString(R.string.login_logining));
-               Map<String, String> params1 = new HashMap<>();
-               params1.put("username", mLoginView.getUsername());
-               String pwd1 = mLoginView.getPwd();
-               params1.put("password", pwd1);
-               mPresenter.login(params1);
-               break;
-           case R.id.loginServiceTv:
-               callPhone();
+                    if (!code.equals(mCode)) {
+                        showToast("验证码不正确");
+                        return;
+                    }
+                }
+                mDialog = LoadingProgress.showProgress(this, getString(R.string.login_logining));
+                Map<String, String> params = new HashMap<>();
+                params.put("tel", mLoginView.getUsername());
+                mPresenter.login(params);
+                break;
+            case R.id.loginRegisterTv:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
+            case R.id.wxLoginBtn:
+                if (!MyApplication.mWXapi.isWXAppInstalled()) {
+                    Toast.makeText(this, "您还未安装微信客户端", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                final SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                req.state = "skit_wx_login";//这个字段可以任意更改
+                MyApplication.mWXapi.sendReq(req);
+                break;
+            case R.id.driverLoginBtn:
+                mDialog = LoadingProgress.showProgress(this, getString(R.string.login_logining));
+                Map<String, String> params1 = new HashMap<>();
+                params1.put("username", mLoginView.getUsername());
+                String pwd1 = mLoginView.getPwd();
+                params1.put("password", pwd1);
+                mPresenter.login(params1);
+                break;
+            case R.id.loginServiceTv:
+                callPhone();
 //               if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && PermissionUtils.isGranted(Manifest.permission.CALL_PHONE))
 //                       || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 //                   new AlertDialog.Builder(mContext).setMessage("是否拨打电话")
@@ -213,19 +222,19 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
 //                               }
 //                           }).show();
 //               }
-               break;
-           case R.id.loginForgetPwdTv:
-               Intent mpIntent = new Intent(this, ModifyPwdActivity.class);
-               mpIntent.putExtra("type", 1);
-               startActivity(mpIntent);
-               break;
-           case R.id.loginProtocolTv:
-               Intent xie = new Intent();
-               xie.putExtra("title", "用户协议");
-               xie.putExtra("url", Constants.URL_PROTOCAL);
-               xie.setClass(this, WebActivity.class);
-               startActivity(xie);
-               break;
+                break;
+            case R.id.loginForgetPwdTv:
+                Intent mpIntent = new Intent(this, ModifyPwdActivity.class);
+                mpIntent.putExtra("type", 1);
+                startActivity(mpIntent);
+                break;
+            case R.id.loginProtocolTv:
+                Intent xie = new Intent();
+                xie.putExtra("title", "用户协议");
+                xie.putExtra("url", Constants.URL_PROTOCAL);
+                xie.setClass(this, WebActivity.class);
+                startActivity(xie);
+                break;
 //            case R.id.mpCodeBtn:
 //                String phone = mPhoneEt.getText().toString();
 //                if (phone.length() == 0 || !phone.startsWith("1") || phone.length() != 11) {
@@ -235,8 +244,8 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
 //                mGetCodeDialog = LoadingProgress.showProgress(mContext, "正在发送请求...");
 //             //   getCode(phone);
 //                break;
-       }
-   }
+        }
+    }
 
     private void callPhone() {
         Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -244,8 +253,6 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
         intent.setData(data);
         startActivity(intent);
     }
-
-
 
 
     @OnClick(R.id.loginCodeBtn)
@@ -258,7 +265,7 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
         mGetCodeDialog = LoadingProgress.showProgress(mContext, "正在发送请求...");
         mCodeBtn.setEnabled(false);
         mPresenter.getCode(phone);
-        mDisposable =  Flowable.intervalRange(0, COUNT_DOWN, 0, 1, TimeUnit.SECONDS)
+        mDisposable = Flowable.intervalRange(0, COUNT_DOWN, 0, 1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<Long>() {
                     @Override
@@ -280,25 +287,21 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
     @Override
     public void onRefreshSuccess(BaseEntity<Account> entity) {
         mDialog.dismiss();
-        
+
         AccountUtil.saveAccount(this, entity.getData());
 
-        Account accountaa=entity.getData();
-        String weixinphone=accountaa.phone;
-        if(!TextUtils.isEmpty(weixinphone))
-        {
+        Account accountaa = entity.getData();
+        String weixinphone = accountaa.phone;
+        if (!TextUtils.isEmpty(weixinphone)) {
 
             startActivity(new Intent(this, TabActivity.class));
-        }
-
-       else
-        {
+        } else {
 
             Intent intent = new Intent(mContext, OwnerAuthtelActivity.class);
             intent.putExtra("nickname", nickname);
             intent.putExtra("openid", openid);
             intent.putExtra("unionid", unionid);
-            intent.putExtra("userid",mAccount.getId());
+            intent.putExtra("userid", mAccount.getId());
             startActivity(intent);
 
         }
@@ -347,9 +350,9 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
     @Override
     public void onwxGetCodeSuccess(BaseEntity<WxCode> entity) {
 
-       wxcodebean=entity.getData();
-       String openid=wxcodebean.openid;
-       String access_token=wxcodebean.access_token;
+        wxcodebean = entity.getData();
+        String openid = wxcodebean.openid;
+        String access_token = wxcodebean.access_token;
 
     }
 
@@ -375,19 +378,21 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
         }
         super.onDestroy();
     }
+
     /**
-     *下面方法只使用与微信拒绝后无法登陆的时候操作    finish 掉透明界面  但是必须加 android:launchMode="singleInstance"
-     * **/
+     * 下面方法只使用与微信拒绝后无法登陆的时候操作    finish 掉透明界面  但是必须加 android:launchMode="singleInstance"
+     **/
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK){//如果点击了返回键
+        if (keyCode == KeyEvent.KEYCODE_BACK) {//如果点击了返回键
             //声明并初始化弹出对象
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("提示：");
             builder.setMessage("是否退出");
             //设置确认按钮
@@ -398,17 +403,12 @@ public class LoginActivity extends BaseActivity<AccountContract.ILoginView, Logi
                 }
             });
             //设置取消按钮
-            builder.setPositiveButton("取消",null);
+            builder.setPositiveButton("取消", null);
             //显示弹框
             builder.show();
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
-
-
 
 
 }

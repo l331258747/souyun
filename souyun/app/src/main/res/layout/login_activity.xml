@@ -211,11 +211,11 @@
     >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/default_dp80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_above="@+id/wxLoginBtn"
         android:text="———— 使用第三方登陆 ————"
 
         />
@@ -224,15 +224,25 @@
     <ImageButton
         android:id="@+id/wxLoginBtn"
         android:background="@color/white"
-        android:layout_width="570px"
-        android:layout_height="120px"
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/default_dp80"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/default_dp80"
         android:textColor="@color/dark_gray"
         android:src="@drawable/wx"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户隐私协议"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/color_3C92E7"/>
+
 </RelativeLayout>
 
 
