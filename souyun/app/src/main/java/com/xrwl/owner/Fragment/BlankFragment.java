@@ -19,8 +19,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -70,6 +68,7 @@ import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AMapUtil;
+import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.MyTextWatcher;
 
 import java.util.ArrayList;
@@ -195,19 +194,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @BindView(R.id.tv_paotui)
     TextView tv_paotui;
 
-    @BindView(R.id.line_dzys)
-    View line_dzys;
-    @BindView(R.id.line_ctld)
-    View line_ctld;
-    @BindView(R.id.line_ctzc)
-    View line_ctzc;
-    @BindView(R.id.line_tcld)
-    View line_tcld;
-    @BindView(R.id.line_tczc)
-    View line_tczc;
-    @BindView(R.id.line_paotui)
-    View line_paotui;
-
     private SearchLocationAdapter mAdapter;
     private SearchLocationAdapter mAdapter2;
     String city = "";
@@ -288,10 +274,45 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             mParam2 = getArguments().getString(ARG_PARAM2);
 
         }
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+
+        // Inflate the layout for this fragment
+        View inflate = inflater.inflate(R.layout.fragment_blank3, container, false);
+
+        unbinder = ButterKnife.bind(this, inflate);
+
+        mMapView = inflate.findViewById(R.id.nlMapView);
+        mMapView.onCreate(savedInstanceState);
+        //
+        if (aMap == null) {
+            aMap = mMapView.getMap();
+        }
+        aMap.getUiSettings().setZoomControlsEnabled(false);
+
+//        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
+//            @Override
+//            public void onMyLocationChange(Location location) {
+//                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
+//                Log.e("Msg", "location：" + location.getExtras().toString());
+//            }
+//        });
+
+        initView();
+
+        return inflate;
     }
 
     private void initView() {
+        mAccount = AccountUtil.getAccount(getActivity());
+
+        et_fahuoren.setText(mAccount.getNameDecode());
+        et_fahuotel.setText(mAccount.getPhone());
+
         sp_chexing.setAdapter(new ArrayAdapter<>(getContext(),
                 R.layout.my_simple_spinner_dropdown_item, android.R.id.text1,
                 new String[]{ "同城车型","长途车型"}));
@@ -377,53 +398,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 //            }
 //        });
 
-        setTabView(-1);
-
         quanxian();
-
-    }
-
-    private void setTabView(int type) {
-        line_dzys.setVisibility(View.GONE);
-        line_ctld.setVisibility(View.GONE);
-        line_ctzc.setVisibility(View.GONE);
-        line_tcld.setVisibility(View.GONE);
-        line_tczc.setVisibility(View.GONE);
-        line_paotui.setVisibility(View.GONE);
-
-        tv_dzys.setTextColor(getResources().getColor(R.color.window_text_color));
-        tv_ctld.setTextColor(getResources().getColor(R.color.window_text_color));
-        tv_ctzc.setTextColor(getResources().getColor(R.color.window_text_color));
-        tv_tcld.setTextColor(getResources().getColor(R.color.window_text_color));
-        tv_tczc.setTextColor(getResources().getColor(R.color.window_text_color));
-        tv_paotui.setTextColor(getResources().getColor(R.color.window_text_color));
-
-        switch (type){
-            case 0:
-                line_dzys.setVisibility(View.VISIBLE);
-                tv_dzys.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-            case 1:
-                line_ctld.setVisibility(View.VISIBLE);
-                tv_ctld.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-            case 2:
-                line_ctzc.setVisibility(View.VISIBLE);
-                tv_ctzc.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-            case 3:
-                line_tcld.setVisibility(View.VISIBLE);
-                tv_tcld.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-            case 4:
-                line_tczc.setVisibility(View.VISIBLE);
-                tv_tczc.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-            case 5:
-                line_paotui.setVisibility(View.VISIBLE);
-                tv_paotui.setTextColor(getResources().getColor(R.color.color_ffbb33));
-                break;
-        }
 
     }
 
@@ -464,37 +439,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
                     }
                 });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        // Inflate the layout for this fragment
-        View inflate = inflater.inflate(R.layout.fragment_blank3, container, false);
-
-        unbinder = ButterKnife.bind(this, inflate);
-
-        mMapView = inflate.findViewById(R.id.nlMapView);
-        mMapView.onCreate(savedInstanceState);
-        //
-        if (aMap == null) {
-            aMap = mMapView.getMap();
-        }
-        aMap.getUiSettings().setZoomControlsEnabled(false);
-
-//        aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
-//            @Override
-//            public void onMyLocationChange(Location location) {
-//                //从location对象中获取经纬度信息，地址描述信息，建议拿到位置之后调用逆地理编码接口获取
-//                Log.e("Msg", "location：" + location.getExtras().toString());
-//            }
-//        });
-
-        initView();
-
-        return inflate;
     }
 
     private void initMap() {
@@ -728,27 +672,21 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     public void onTabClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_dzys:
-                setTabView(0);
                 ((HomeFragment)getParentFragment()).setTabIndex(1);
                 break;
             case R.id.tv_ctld:
-                setTabView(1);
                 ((HomeFragment)getParentFragment()).setTabIndex(2);
                 break;
             case R.id.tv_ctzc:
-                setTabView(2);
                 ((HomeFragment)getParentFragment()).setTabIndex(3);
                 break;
             case R.id.tv_tcld:
-                setTabView(3);
                 ((HomeFragment)getParentFragment()).setTabIndex(5);
                 break;
             case R.id.tv_tczc:
-                setTabView(4);
                 ((HomeFragment)getParentFragment()).setTabIndex(4);
                 break;
             case R.id.tv_paotui:
-                setTabView(5);
                 ((HomeFragment)getParentFragment()).setTabIndex(6);
                 break;
         }

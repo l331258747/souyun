@@ -3,12 +3,12 @@ package com.xrwl.owner.module.publish.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ldw.library.adapter.recycler.MultiItemTypeAdapter;
 import com.ldw.library.adapter.recycler.wrapper.HeaderAndFooterWrapper;
 import com.ldw.library.bean.BaseEntity;
+import com.ldw.library.view.TitleView;
 import com.ldw.library.view.dialog.LoadingProgress;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
@@ -34,6 +34,10 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
 
     @BindView(R.id.baseRv)
     RecyclerView mRv;
+
+    @BindView(R.id.baseTitleView)
+    TitleView mTitleView;
+
     private Address2Adapter mAdapter;
     private ProgressDialog mPostDialog;
     private List<Address2> mDatas;
@@ -56,24 +60,26 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
     protected void initViews() {
         isItemClick = getIntent().getBooleanExtra("isItemClick",true);
 
-        initBaseRv(mRv);
-
-        mAdapter = new Address2Adapter(this, R.layout.address_recycler_item, new ArrayList<Address2>());
-        mWrapper = new HeaderAndFooterWrapper(mAdapter);
-
-        View footerView = LayoutInflater.from(this).inflate(R.layout.address_add_layout, mRv, false);
-        mWrapper.addFootView(footerView);
-        mRv.setAdapter(mWrapper);
-
-        footerView.setOnClickListener(new View.OnClickListener() {
+        mTitleView.setOnTitleViewListener(new TitleView.TitleViewListener() {
             @Override
-            public void onClick(View v) {
+            public void onRight() {
                 Intent intent = new Intent(mContext, SearchLocationActivity.class);
                 intent.putExtra("title", "请选择位置");
                 intent.putExtra("showName", true);
                 startActivityForResult(intent, RESULT_POSITION);
             }
+
+            @Override
+            public void onBack() {
+                finish();
+            }
         });
+
+        initBaseRv(mRv);
+
+        mAdapter = new Address2Adapter(this, R.layout.address_recycler_item, new ArrayList<Address2>());
+        mWrapper = new HeaderAndFooterWrapper(mAdapter);
+        mRv.setAdapter(mWrapper);
 
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override

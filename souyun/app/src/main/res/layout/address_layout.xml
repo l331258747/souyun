@@ -14,6 +14,7 @@
         android:background="@color/colorPrimary"
         app:titleText="@string/title_address"
         app:backImage="@drawable/ic_back"
+        app:rightText="添加地址"
         app:titleTextColor="@color/white"/>
 
     <android.support.v7.widget.RecyclerView

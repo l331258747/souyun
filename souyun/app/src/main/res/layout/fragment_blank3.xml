@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -21,7 +21,7 @@
             android:id="@+id/nlMapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="220dp"/>
+            android:paddingBottom="220dp" />
 
         <LinearLayout
             android:id="@+id/target_layout"
@@ -33,16 +33,16 @@
                 android:id="@+id/tv_clean"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="清空"
-                android:paddingTop="@dimen/dp_5"
-                android:background="@drawable/btn_gray_r5"
-                android:textColor="@color/white"
-                android:paddingBottom="@dimen/dp_5"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/dp_10"
                 android:layout_marginBottom="@dimen/dp_5"
+                android:background="@drawable/btn_gray_r5"
                 android:paddingStart="@dimen/dp_10"
-                android:paddingEnd="@dimen/dp_10"/>
+                android:paddingTop="@dimen/dp_5"
+                android:paddingEnd="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_5"
+                android:text="清空"
+                android:textColor="@color/white" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -51,723 +51,670 @@
                 android:orientation="vertical">
 
 
-                    <LinearLayout
-                        android:id="@+id/ll_fahuoren"
-                        android:layout_width="0dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/btn_white_r10"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:layout_marginStart="@dimen/dp_5"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="出发地" />
-
-                            <EditText
-                                android:id="@+id/et_chufadi"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/dp_10"
-                                android:background="@null"
-                                android:hint="请输入出发地"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="text"
-                                android:maxLines="1"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <TextView
-                                android:id="@+id/bt_chufadi_sousuo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="搜索"
-                                android:background="@drawable/btn_blue_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                            <TextView
-                                android:id="@+id/bt_chufadi_xuanze"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="选择"
-                                android:background="@drawable/btn_red_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp1"
-                            android:background="@color/divider_color"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="发货人" />
-
-                            <EditText
-                                android:id="@+id/et_fahuoren"
-                                android:layout_width="0dp"
-                                android:layout_weight="0.8"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/dp_10"
-                                android:background="@null"
-                                android:hint="请输入发货人"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="text"
-                                android:maxLength="5"
-                                android:maxLines="1"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <EditText
-                                android:id="@+id/et_fahuotel"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="5dp"
-                                android:background="@null"
-                                android:hint="请输入发货电话"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="number"
-                                android:maxLines="1"
-                                android:maxLength="11"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <TextView
-                                android:id="@+id/bt_fahuo_xuanze"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="选择"
-                                android:background="@drawable/btn_red_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/ll_shouhuoren"
-                        android:layout_width="0dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/btn_white_r10"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_fahuoren"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:layout_marginStart="@dimen/dp_5"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="目的地" />
-
-                            <EditText
-                                android:id="@+id/et_mudidi"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/dp_10"
-                                android:background="@null"
-                                android:hint="请输入目的地"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="text"
-                                android:maxLines="1"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <TextView
-                                android:id="@+id/bt_mudidi_sousuo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="搜索"
-                                android:background="@drawable/btn_blue_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                            <TextView
-                                android:id="@+id/bt_mudidi_xuanze"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="选择"
-                                android:background="@drawable/btn_red_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp1"
-                            android:background="@color/divider_color"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="收货人" />
-
-                            <EditText
-                                android:id="@+id/et_shouhuoren"
-                                android:layout_width="0dp"
-                                android:layout_weight="0.8"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/dp_10"
-                                android:background="@null"
-                                android:hint="请输入收货人"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="text"
-                                android:maxLength="5"
-                                android:maxLines="1"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <EditText
-                                android:id="@+id/et_shouhuotel"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="5dp"
-                                android:background="@null"
-                                android:hint="请输入收货电话"
-                                android:textSize="@dimen/sp_14"
-                                android:inputType="number"
-                                android:maxLines="1"
-                                android:maxLength="11"
-                                android:paddingStart="5dp"
-                                android:paddingEnd="5dp" />
-
-                            <TextView
-                                android:id="@+id/bt_shouhuo_xuanze"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="选择"
-                                android:background="@drawable/btn_red_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_qita"
-                        android:layout_width="0dp"
-                        android:orientation="vertical"
-                        android:background="@drawable/btn_white_r10"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_shouhuoren"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:layout_marginStart="@dimen/dp_5"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="车\u3000型" />
-
-                            <Spinner
-                                android:id="@+id/sp_chexing"
-                                android:layout_width="140dp"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:textSize="10sp"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:id="@+id/tv_chexing"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:hint="请选择车型"
-                                android:layout_marginEnd="@dimen/default_dp10"
-                                android:layout_height="wrap_content"/>
-
-                            <TextView
-                                android:id="@+id/bt_chexing_xuanze"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="选择"
-                                android:background="@drawable/btn_red_r5"
-                                android:textColor="@color/white"
-                                android:paddingTop="5dp"
-                                android:paddingBottom="5dp"
-                                android:paddingStart="@dimen/default_dp10"
-                                android:paddingEnd="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"/>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp1"
-                            android:background="@color/divider_color"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/default_dp40"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="center_vertical"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:text="货物吨数" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/et_huowu_dun"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="match_parent"
-                                    android:background="@null"
-                                    android:gravity="right|center_vertical"
-                                    android:textSize="@dimen/sp_14"
-                                    android:inputType="numberDecimal"
-                                    android:paddingEnd="@dimen/dp_5"
-                                    android:maxLength="4"
-                                    android:lines="1"
-                                    android:hint="请输入"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="吨"/>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/et_huowu_fang"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="match_parent"
-                                    android:background="@null"
-                                    android:gravity="right|center_vertical"
-                                    android:textSize="@dimen/sp_14"
-                                    android:inputType="numberDecimal"
-                                    android:paddingEnd="@dimen/dp_5"
-                                    android:maxLength="4"
-                                    android:lines="1"
-                                    android:hint="请输入"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="方"/>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:layout_marginEnd="@dimen/default_dp10"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/et_huowu_jian"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="match_parent"
-                                    android:background="@null"
-                                    android:gravity="right|center_vertical"
-                                    android:textSize="@dimen/sp_14"
-                                    android:inputType="numberDecimal"
-                                    android:paddingEnd="@dimen/dp_5"
-                                    android:maxLength="4"
-                                    android:lines="1"
-                                    android:hint="请输入"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="件"/>
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/default_dp40"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:visibility="gone"-->
-<!--                        android:orientation="horizontal">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:gravity="center_vertical"-->
-<!--                            android:layout_marginStart="@dimen/default_dp10"-->
-<!--                            android:text="发货单位" />-->
-
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/et_fahuodanwei"-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_marginStart="@dimen/dp_10"-->
-<!--                            android:background="@null"-->
-<!--                            android:hint="请输入发货单位"-->
-<!--                            android:textSize="@dimen/sp_14"-->
-<!--                            android:inputType="text"-->
-<!--                            android:maxLines="1"-->
-<!--                            android:paddingStart="5dp"-->
-<!--                            android:paddingEnd="5dp" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/bt_fahuodanwei_xuanze"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="选择"-->
-<!--                            android:background="@drawable/btn_red_r5"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:paddingTop="5dp"-->
-<!--                            android:paddingBottom="5dp"-->
-<!--                            android:visibility="gone"-->
-<!--                            android:paddingStart="@dimen/default_dp10"-->
-<!--                            android:paddingEnd="@dimen/default_dp10"-->
-<!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
-
-<!--                    </LinearLayout>-->
-
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/default_dp1"-->
-<!--                        android:background="@color/divider_color"-->
-<!--                        android:visibility="gone"/>-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/default_dp40"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:visibility="gone"-->
-<!--                        android:orientation="horizontal">-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:gravity="center_vertical"-->
-<!--                            android:layout_marginStart="@dimen/default_dp10"-->
-<!--                            android:text="收货单位" />-->
-
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/et_shouhuodanwei"-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_marginStart="@dimen/dp_10"-->
-<!--                            android:background="@null"-->
-<!--                            android:hint="请输入收货单位"-->
-<!--                            android:textSize="@dimen/sp_14"-->
-<!--                            android:inputType="text"-->
-<!--                            android:maxLines="1"-->
-<!--                            android:paddingStart="5dp"-->
-<!--                            android:paddingEnd="5dp" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/bt_shouhuodanwei_xuanze"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="选择"-->
-<!--                            android:background="@drawable/btn_red_r5"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:paddingTop="5dp"-->
-<!--                            android:paddingBottom="5dp"-->
-<!--                            android:paddingStart="@dimen/default_dp10"-->
-<!--                            android:visibility="gone"-->
-<!--                            android:paddingEnd="@dimen/default_dp10"-->
-<!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
-
-<!--                    </LinearLayout>-->
-
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/default_dp1"-->
-<!--                        android:background="@color/divider_color"-->
-<!--                        android:visibility="gone"/>-->
-
                 <LinearLayout
-                    android:id="@+id/ll_leixing"
+                    android:id="@+id/ll_fahuoren"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/default_dp40"
-                    android:gravity="center_vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/ll_qita"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:layout_marginEnd="@dimen/dp_5"
                     android:background="@drawable/btn_white_r10"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/default_dp10"
-                        android:text="请选择发货类型" />
-
-                    <HorizontalScrollView
-                        android:id="@+id/scroll_view"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fillViewport="true"
-                        android:overScrollMode="never"
-                        android:scrollbars="none"
-                        android:layout_marginStart="@dimen/dp_5"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_qita"
-                        >
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="出发地" />
 
-                            <TextView
-                                android:id="@+id/tv_dzys"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="大宗运输"
-                                android:textColor="@color/window_text_color"
-                                tools:textColor="@color/color_ffbb33"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
+                        <EditText
+                            android:id="@+id/et_chufadi"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入出发地"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
 
-                            <View
-                                android:id="@+id/line_dzys"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_dzys"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_dzys"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_dzys"
-                                android:visibility="gone"
-                                tools:visibility="visible"
-                                android:background="@color/color_ffbb33"/>
+                        <TextView
+                            android:id="@+id/bt_chufadi_sousuo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_blue_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="搜索"
+                            android:textColor="@color/white" />
 
+                        <TextView
+                            android:id="@+id/bt_chufadi_xuanze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_red_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="选择"
+                            android:textColor="@color/white" />
 
-                            <TextView
-                                android:id="@+id/tv_ctld"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="长途零担"
-                                app:layout_constraintStart_toEndOf="@+id/tv_dzys"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
+                    </LinearLayout>
 
-                            <View
-                                android:id="@+id/line_ctld"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_ctld"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_ctld"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_ctld"
-                                android:background="@color/color_ffbb33"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp1"
+                        android:background="@color/divider_color" />
 
-                            <TextView
-                                android:id="@+id/tv_ctzc"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="长途整车"
-                                app:layout_constraintStart_toEndOf="@+id/tv_ctld"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                            <View
-                                android:id="@+id/line_ctzc"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_ctzc"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_ctzc"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_ctzc"
-                                android:background="@color/color_ffbb33"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="发货人" />
 
-                            <TextView
-                                android:id="@+id/tv_tczc"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="同城专车"
-                                app:layout_constraintStart_toEndOf="@+id/tv_ctzc"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
+                        <EditText
+                            android:id="@+id/et_fahuoren"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:layout_weight="0.8"
+                            android:background="@null"
+                            android:hint="请输入发货人"
+                            android:inputType="text"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
 
-                            <View
-                                android:id="@+id/line_tczc"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_tczc"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_tczc"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_tczc"
-                                android:background="@color/color_ffbb33"/>
+                        <EditText
+                            android:id="@+id/et_fahuotel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入发货电话"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
 
-                            <TextView
-                                android:id="@+id/tv_tcld"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="同城零担"
-                                app:layout_constraintStart_toEndOf="@+id/tv_tczc"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
+                        <TextView
+                            android:id="@+id/bt_fahuo_xuanze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_red_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="选择"
+                            android:textColor="@color/white" />
 
-                            <View
-                                android:id="@+id/line_tcld"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_tcld"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_tcld"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_tcld"
-                                android:background="@color/color_ffbb33"/>
-
-                            <TextView
-                                android:id="@+id/tv_paotui"
-                                android:layout_width="@dimen/default_dp80"
-                                android:layout_height="match_parent"
-                                android:text="跑腿"
-                                app:layout_constraintStart_toEndOf="@+id/tv_tcld"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:gravity="center"/>
-
-                            <View
-                                android:id="@+id/line_paotui"
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/dp_2"
-                                app:layout_constraintStart_toStartOf="@+id/tv_paotui"
-                                app:layout_constraintEnd_toEndOf="@+id/tv_paotui"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_paotui"
-                                android:background="@color/color_ffbb33"/>
-
-
-                        </android.support.constraint.ConstraintLayout>
-
-
-                    </HorizontalScrollView>
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:id="@+id/ll_shouhuoren"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:background="@drawable/btn_white_r10"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_fahuoren">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="目的地" />
+
+                        <EditText
+                            android:id="@+id/et_mudidi"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入目的地"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/bt_mudidi_sousuo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_blue_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="搜索"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/bt_mudidi_xuanze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_red_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="选择"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp1"
+                        android:background="@color/divider_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="收货人" />
+
+                        <EditText
+                            android:id="@+id/et_shouhuoren"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:layout_weight="0.8"
+                            android:background="@null"
+                            android:hint="请输入收货人"
+                            android:inputType="text"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
+
+                        <EditText
+                            android:id="@+id/et_shouhuotel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入收货电话"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:textSize="@dimen/sp_14" />
+
+                        <TextView
+                            android:id="@+id/bt_shouhuo_xuanze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_red_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="选择"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_qita"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:background="@drawable/btn_white_r10"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_shouhuoren">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="车\u3000型" />
+
+                        <Spinner
+                            android:id="@+id/sp_chexing"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_chexing"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:layout_weight="1"
+                            android:hint="请选择车型" />
+
+                        <TextView
+                            android:id="@+id/bt_chexing_xuanze"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:background="@drawable/btn_red_r5"
+                            android:paddingStart="@dimen/default_dp10"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="@dimen/default_dp10"
+                            android:paddingBottom="5dp"
+                            android:text="选择"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp1"
+                        android:background="@color/divider_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:gravity="center_vertical"
+                            android:text="货物吨数" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_huowu_dun"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:gravity="right|center_vertical"
+                                android:hint="请输入"
+                                android:inputType="numberDecimal"
+                                android:lines="1"
+                                android:maxLength="4"
+                                android:paddingEnd="@dimen/dp_5"
+                                android:textSize="@dimen/sp_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="吨" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_huowu_fang"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:gravity="right|center_vertical"
+                                android:hint="请输入"
+                                android:inputType="numberDecimal"
+                                android:lines="1"
+                                android:maxLength="4"
+                                android:paddingEnd="@dimen/dp_5"
+                                android:textSize="@dimen/sp_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="方" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/default_dp10"
+                            android:layout_marginEnd="@dimen/default_dp10"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_huowu_jian"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:gravity="right|center_vertical"
+                                android:hint="请输入"
+                                android:inputType="numberDecimal"
+                                android:lines="1"
+                                android:maxLength="4"
+                                android:paddingEnd="@dimen/dp_5"
+                                android:textSize="@dimen/sp_14" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="件" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="@dimen/default_dp40"-->
+                <!--                        android:gravity="center_vertical"-->
+                <!--                        android:visibility="gone"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            android:gravity="center_vertical"-->
+                <!--                            android:layout_marginStart="@dimen/default_dp10"-->
+                <!--                            android:text="发货单位" />-->
+
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/et_fahuodanwei"-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            android:layout_marginStart="@dimen/dp_10"-->
+                <!--                            android:background="@null"-->
+                <!--                            android:hint="请输入发货单位"-->
+                <!--                            android:textSize="@dimen/sp_14"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:maxLines="1"-->
+                <!--                            android:paddingStart="5dp"-->
+                <!--                            android:paddingEnd="5dp" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/bt_fahuodanwei_xuanze"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="选择"-->
+                <!--                            android:background="@drawable/btn_red_r5"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:paddingTop="5dp"-->
+                <!--                            android:paddingBottom="5dp"-->
+                <!--                            android:visibility="gone"-->
+                <!--                            android:paddingStart="@dimen/default_dp10"-->
+                <!--                            android:paddingEnd="@dimen/default_dp10"-->
+                <!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
+
+                <!--                    </LinearLayout>-->
+
+                <!--                    <View-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="@dimen/default_dp1"-->
+                <!--                        android:background="@color/divider_color"-->
+                <!--                        android:visibility="gone"/>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="@dimen/default_dp40"-->
+                <!--                        android:gravity="center_vertical"-->
+                <!--                        android:visibility="gone"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            android:gravity="center_vertical"-->
+                <!--                            android:layout_marginStart="@dimen/default_dp10"-->
+                <!--                            android:text="收货单位" />-->
+
+
+                <!--                        <EditText-->
+                <!--                            android:id="@+id/et_shouhuodanwei"-->
+                <!--                            android:layout_width="0dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:layout_height="match_parent"-->
+                <!--                            android:layout_marginStart="@dimen/dp_10"-->
+                <!--                            android:background="@null"-->
+                <!--                            android:hint="请输入收货单位"-->
+                <!--                            android:textSize="@dimen/sp_14"-->
+                <!--                            android:inputType="text"-->
+                <!--                            android:maxLines="1"-->
+                <!--                            android:paddingStart="5dp"-->
+                <!--                            android:paddingEnd="5dp" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/bt_shouhuodanwei_xuanze"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="选择"-->
+                <!--                            android:background="@drawable/btn_red_r5"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:paddingTop="5dp"-->
+                <!--                            android:paddingBottom="5dp"-->
+                <!--                            android:paddingStart="@dimen/default_dp10"-->
+                <!--                            android:visibility="gone"-->
+                <!--                            android:paddingEnd="@dimen/default_dp10"-->
+                <!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
+
+                <!--                    </LinearLayout>-->
+
+                <!--                    <View-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="@dimen/default_dp1"-->
+                <!--                        android:background="@color/divider_color"-->
+                <!--                        android:visibility="gone"/>-->
+
+                <LinearLayout
+                    android:id="@+id/ll_leixing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:background="@drawable/btn_white_r10"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_qita">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/default_dp40"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/tv_dzys"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="大宗运输"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_ctld"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+
+                        <TextView
+                            android:id="@+id/tv_ctld"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="长途零担"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_ctzc"
+                            app:layout_constraintStart_toEndOf="@+id/tv_dzys"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_ctzc"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="长途整车"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_ctld"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_tczc"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="同城专车"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_tcld"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_tcld"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="同城零担"
+                            app:layout_constraintStart_toEndOf="@+id/tv_tczc"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_paotui"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+
+                        <TextView
+                            android:id="@+id/tv_paotui"
+                            android:layout_width="@dimen/default_dp80"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="@drawable/btn_red_r5"
+                            android:gravity="center"
+                            android:text="跑腿"
+                            app:layout_constraintStart_toEndOf="@+id/tv_tcld"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/ll_leixing"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:orientation="vertical">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_leixing">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/dp_10"
                         android:gravity="center"
                         android:text="———16飕云———"
                         android:textColor="@color/gray"
-                        android:layout_marginTop="@dimen/dp_10"
                         android:textSize="16dp" />
 
                     <TextView
@@ -779,7 +726,6 @@
                         android:textSize="14dp" />
 
                 </LinearLayout>
-
 
 
                 <!--            <LinearLayout-->
@@ -1031,10 +977,8 @@
                 <!--                        app:moveSpeed="1.8"-->
 
 
-
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
-
 
 
     </com.comp.ns.CompNsViewGroup>
@@ -1050,7 +994,7 @@
         <ListView
             android:id="@+id/slListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
