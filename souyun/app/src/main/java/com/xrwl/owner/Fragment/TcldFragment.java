@@ -209,10 +209,10 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isCreate) {
-            if (TextUtils.isEmpty(mpublishAddressDefaultStartLocationTv.getText().toString())) {
+            //            if (TextUtils.isEmpty(mpublishAddressDefaultStartLocationTv.getText().toString()))
+            {
                 MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
                 if (bean != null) {
-                    mpublishAddressDefaultStartLocationTv.setText(bean.getAddress());
                     if(!TextUtils.isEmpty(bean.getName())){
                         mpublishStartPhonepersonEt.setText(bean.getName());
                     }
@@ -220,31 +220,37 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mpublishStartPhoneEt.setText(bean.getTel());
                     }
 
-                    mStartCity = bean.getCity();
-                    mStartProvince = bean.getProvince();
+                    if(!TextUtils.isEmpty(bean.getAddress())){
+                        mpublishAddressDefaultStartLocationTv.setText(bean.getAddress());
 
-                    mDefaultStartLat = bean.getLat();
-                    mDefaultStartLon = bean.getLon();
+                        mStartCity = bean.getCity();
+                        mStartProvince = bean.getProvince();
 
-                    mPublishBean.startDesc = bean.getAddress();
-                    mPublishBean.startX = bean.getLon() + "";
-                    mPublishBean.startY = bean.getLat() + "";
+                        mDefaultStartLat = bean.getLat();
+                        mDefaultStartLon = bean.getLon();
 
-                    mPublishBean.defaultStartLon = bean.getLon();
-                    mPublishBean.defaultStartLat = bean.getLat();
-                    mPublishBean.defaultStartPosDes = bean.getAddress();
+                        mPublishBean.startDesc = bean.getAddress();
+                        mPublishBean.startX = bean.getLon() + "";
+                        mPublishBean.startY = bean.getLat() + "";
 
-                    mPublishBean.longStartCityDes = mStartCity;
-                    mPublishBean.longStartProvinceDes = mStartProvince;
-                    mPublishBean.longStartAreaDes = bean.getAddress();
+                        mPublishBean.defaultStartLon = bean.getLon();
+                        mPublishBean.defaultStartLat = bean.getLat();
+                        mPublishBean.defaultStartPosDes = bean.getAddress();
 
-                    checkLongLocation();
+                        mPublishBean.longStartCityDes = mStartCity;
+                        mPublishBean.longStartProvinceDes = mStartProvince;
+                        mPublishBean.longStartAreaDes = bean.getAddress();
+
+                        checkLongLocation();
+                    }
+
                 }
             }
-            if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString())) {
+//            if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString()))
+            {
                 MarkerBean bean = ((TabActivity) getActivity()).getDestination();
                 if (bean != null) {
-                    mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
+
                     if(!TextUtils.isEmpty(bean.getName())){
                         mpublishGetPersonEt.setText(bean.getName());
                     }
@@ -252,47 +258,60 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mpublishGetPhoneEt.setText(bean.getTel());
                     }
 
-                    mEndCity = bean.getCity();
-                    mEndProvince = bean.getProvince();
+                    if(!TextUtils.isEmpty(bean.getAddress())){
+                        mpublishAddressDefaultEndLocationTv.setText(bean.getAddress());
 
-                    mDefaultEndLat = bean.getLat();
-                    mDefaultEndLon = bean.getLon();
+                        mEndCity = bean.getCity();
+                        mEndProvince = bean.getProvince();
 
-                    mPublishBean.endDesc = bean.getAddress();
-                    mPublishBean.endX = bean.getLon() + "";
-                    mPublishBean.endY = bean.getLat() + "";
+                        mDefaultEndLat = bean.getLat();
+                        mDefaultEndLon = bean.getLon();
 
-                    mPublishBean.defaultEndLon = bean.getLon();
-                    mPublishBean.defaultEndLat = bean.getLat();
-                    mPublishBean.defaultEndPosDes = bean.getAddress();
+                        mPublishBean.endDesc = bean.getAddress();
+                        mPublishBean.endX = bean.getLon() + "";
+                        mPublishBean.endY = bean.getLat() + "";
 
-                    mPublishBean.longEndCityDes = mEndCity;
-                    mPublishBean.longEndProvinceDes = mEndProvince;
-                    mPublishBean.longEndAreaDes = bean.getAddress();
+                        mPublishBean.defaultEndLon = bean.getLon();
+                        mPublishBean.defaultEndLat = bean.getLat();
+                        mPublishBean.defaultEndPosDes = bean.getAddress();
 
-                    checkDefaultLocation();
+                        mPublishBean.longEndCityDes = mEndCity;
+                        mPublishBean.longEndProvinceDes = mEndProvince;
+                        mPublishBean.longEndAreaDes = bean.getAddress();
+
+                        checkDefaultLocation();
+                    }
 
                 }
             }
             //吨
-            if (TextUtils.isEmpty(mppDefaultWeightEt.getText().toString())) {
+//            if (TextUtils.isEmpty(mppDefaultWeightEt.getText().toString()))
+            {
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
-                    mppDefaultWeightEt.setText(bean.getDun());
+                    if(!TextUtils.isEmpty(bean.getDun())){
+                        mppDefaultWeightEt.setText(bean.getDun());
+                    }
                 }
             }
             //方
-            if (TextUtils.isEmpty(mppDefaultAreaEt.getText().toString())) {
+//            if (TextUtils.isEmpty(mppDefaultAreaEt.getText().toString()))
+            {
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
-                    mppDefaultAreaEt.setText(bean.getFang());
+                    if(!TextUtils.isEmpty(bean.getFang())){
+                        mppDefaultAreaEt.setText(bean.getFang());
+                    }
                 }
             }
             //件
-            if (TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString())) {
+//            if (TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString()))
+            {
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
-                    mjianDefaultWeightEt.setText(bean.getJian());
+                    if(!TextUtils.isEmpty(bean.getJian())){
+                        mjianDefaultWeightEt.setText(bean.getJian());
+                    }
                 }
             }
         }
