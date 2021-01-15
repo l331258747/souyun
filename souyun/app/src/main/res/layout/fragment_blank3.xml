@@ -15,7 +15,7 @@
         app:header_init_top="0"
         app:inn_id="@+id/inner_rv"
         app:target_id="@+id/target_layout"
-        app:target_init_bottom="360">
+        app:target_init_bottom="390">
 
         <com.amap.api.maps.MapView
             android:id="@+id/nlMapView"
