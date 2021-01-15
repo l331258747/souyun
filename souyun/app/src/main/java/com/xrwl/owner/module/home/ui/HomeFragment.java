@@ -196,8 +196,8 @@ public class HomeFragment extends BaseFragment {
         title_list.add("大宗运输");
         title_list.add("长途零担");
         title_list.add("长途整车");
-        title_list.add("同城专车");
         title_list.add("同城零担");
+        title_list.add("同城专车");
         title_list.add("跑腿");
 
 

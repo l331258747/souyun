@@ -328,7 +328,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
 //            if (TextUtils.isEmpty(mpublishTruckTv.getText().toString()))
             {
                 HomeChexingBean bean = ((TabActivity) getActivity()).getChexing();
-                if (bean != null && bean.getChexingType() == 1) {
+                if (bean != null && bean.getChexingType() == 0) {
                     if(!TextUtils.isEmpty(bean.getChexing())){
                         mpublishTruckTv.setText(bean.getChexing());
 

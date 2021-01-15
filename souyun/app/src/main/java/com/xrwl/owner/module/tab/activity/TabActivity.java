@@ -123,12 +123,12 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 
     //isAdd 强行添加数据
     public void setMyLocation(MarkerBean myLocation,boolean isAdd) {
-        if(isAdd){
+//        if(isAdd){
             this.myLocation = myLocation;
-        }else{
-            if(this.myLocation == null)
-                this.myLocation = myLocation;
-        }
+//        }else{
+//            if(this.myLocation == null)
+//                this.myLocation = myLocation;
+//        }
     }
 
     public MarkerBean getDestination() {

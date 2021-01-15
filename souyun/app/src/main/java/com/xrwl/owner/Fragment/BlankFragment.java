@@ -312,6 +312,15 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
         et_fahuoren.setText(mAccount.getNameDecode());
         et_fahuotel.setText(mAccount.getPhone());
+        locationBean.setName(mAccount.getNameDecode());
+        locationBean.setTel(mAccount.getPhone());
+        ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+
+        et_shouhuoren.setText(mAccount.getNameDecode());
+        et_shouhuotel.setText(mAccount.getPhone());
+        destinationBean.setName(mAccount.getNameDecode());
+        destinationBean.setTel(mAccount.getPhone());
+        ((TabActivity)getActivity()).setDestination(destinationBean);
 
         sp_chexing.setAdapter(new ArrayAdapter<>(getContext(),
                 R.layout.my_simple_spinner_dropdown_item, android.R.id.text1,
@@ -644,15 +653,15 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
 
-                locationBean.setCity(aMapLocation.getCity());
-                locationBean.setProvince(aMapLocation.getProvince());
-                locationBean.setAddress(aMapLocation.getAddress());
-                locationBean.setLat(aMapLocation.getLatitude());
-                locationBean.setLon(aMapLocation.getLongitude());
-
-                ((TabActivity)getActivity()).setMyLocation(locationBean);
-
                 if(TextUtils.isEmpty(et_chufadi.getText().toString()) && locationFirst){
+
+                    locationBean.setCity(aMapLocation.getCity());
+                    locationBean.setProvince(aMapLocation.getProvince());
+                    locationBean.setAddress(aMapLocation.getAddress());
+                    locationBean.setLat(aMapLocation.getLatitude());
+                    locationBean.setLon(aMapLocation.getLongitude());
+                    ((TabActivity)getActivity()).setMyLocation(locationBean, true);
+
                     et_chufadi.setText(aMapLocation.getAddress());
                     city = aMapLocation.getCity();
                     locationFirst = false;
@@ -681,10 +690,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 ((HomeFragment)getParentFragment()).setTabIndex(3);
                 break;
             case R.id.tv_tcld:
-                ((HomeFragment)getParentFragment()).setTabIndex(5);
+                ((HomeFragment)getParentFragment()).setTabIndex(4);
                 break;
             case R.id.tv_tczc:
-                ((HomeFragment)getParentFragment()).setTabIndex(4);
+                ((HomeFragment)getParentFragment()).setTabIndex(5);
                 break;
             case R.id.tv_paotui:
                 ((HomeFragment)getParentFragment()).setTabIndex(6);
