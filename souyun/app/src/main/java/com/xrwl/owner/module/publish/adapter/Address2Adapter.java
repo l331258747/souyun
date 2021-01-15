@@ -1,6 +1,7 @@
 package com.xrwl.owner.module.publish.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.RadioButton;
 
 import com.ldw.library.adapter.recycler.CommonAdapter;
@@ -27,6 +28,15 @@ public class Address2Adapter extends CommonAdapter<Address2> {
         holder.setText(R.id.addressDesTv, address2.getShengshixian());
         holder.setText(R.id.addressNameTv, address2.getName());
 
+        holder.setOnClickListener(R.id.tv_cancel, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onClick(position);
+                }
+            }
+        });
+
         RadioButton rb = holder.getView(R.id.addressRb);
         if (mSelectedPos == position) {
             rb.setSelected(true);
@@ -37,5 +47,15 @@ public class Address2Adapter extends CommonAdapter<Address2> {
 
     public void setSelectedPos(int selectedPos) {
         mSelectedPos = selectedPos;
+    }
+
+    OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/base_list_selector"
     android:gravity="center_vertical"
     android:orientation="horizontal">
@@ -12,50 +12,72 @@
         android:id="@+id/addressRb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/addressItemTv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_dp10"
-        app:layout_constraintStart_toEndOf="@+id/addressRb"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/default_dp10"
         android:textColor="@color/black"
         android:textSize="@dimen/default_font16"
-        tools:text="地址" />
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cancel"
+        android:layout_marginEnd="@dimen/dp_10"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址" />
 
     <TextView
         android:id="@+id/addressDesTv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_dp10"
-        app:layout_constraintStart_toEndOf="@+id/addressRb"
-        app:layout_constraintTop_toBottomOf="@+id/addressItemTv"
         android:layout_marginTop="@dimen/default_dp10"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cancel"
+        android:layout_marginEnd="@dimen/dp_10"
         android:textSize="@dimen/default_font14"
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintTop_toBottomOf="@+id/addressItemTv"
         tools:text="省市县" />
 
     <TextView
         android:id="@+id/addressNameTv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_dp10"
-        app:layout_constraintStart_toEndOf="@+id/addressRb"
-        app:layout_constraintTop_toBottomOf="@+id/addressDesTv"
         android:layout_marginTop="@dimen/default_dp10"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cancel"
+        android:layout_marginEnd="@dimen/dp_10"
         android:textSize="@dimen/default_font14"
+        app:layout_constraintStart_toEndOf="@+id/addressRb"
+        app:layout_constraintTop_toBottomOf="@+id/addressDesTv"
         tools:text="姓名电话" />
 
     <View
         android:layout_width="0dp"
         android:layout_height="@dimen/default_dp10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressNameTv"/>
+        app:layout_constraintTop_toBottomOf="@+id/addressNameTv" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:text="删除"
+        android:paddingStart="@dimen/dp_15"
+        android:paddingEnd="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_gray_r5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

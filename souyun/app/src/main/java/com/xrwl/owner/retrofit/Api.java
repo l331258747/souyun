@@ -271,6 +271,11 @@ public interface Api {
  @GET("Order/ListAddress")
  Observable<BaseEntity<List<Address2>>> getAddressList(@QueryMap Map<String, String> params);
 
+ /** 删除地址 */
+ @FormUrlEncoded
+ @POST("Car/deleteaddress")
+ Observable<BaseEntity> CancelAddress(@FieldMap Map<String, String> params);
+
 
  /** 事实新闻 */
  @GET("Order/new")

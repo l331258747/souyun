@@ -81,6 +81,15 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
         mRv.setAdapter(mWrapper);
 
+        mAdapter.setOnItemClickListener(position -> {
+            Address2 item = mDatas.get(position);
+            HashMap<String, String> params = new HashMap<>();
+            params.put("id",item.getId());
+            mPostDialog = LoadingProgress.showProgress(this, "正在删除");
+            mPresenter.CancelAddress(params);
+
+        });
+
         mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -137,7 +146,6 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
 
         HashMap<String, String> params = new HashMap<>();
 
-
         params.put("userName",userName);
         params.put("tel",tel);
         params.put("des",des);
@@ -172,6 +180,21 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
     }
 
     @Override
+    public void onCancelAddressError(BaseEntity entity) {
+        mPostDialog.dismiss();
+        showToast("删除成功");
+        handleError(entity);
+    }
+
+    @Override
+    public void onCancelAddressSuccess(BaseEntity entity) {
+        mPostDialog.dismiss();
+        showToast("删除失败");
+        mPresenter.getData();
+
+    }
+
+    @Override
     public void onRefreshSuccess(BaseEntity<List<Address2>> entity) {
         if (entity.getData() != null && entity.getData().size() > 0) {
             mAdapter.setDatas(entity.getData());
@@ -183,6 +206,8 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
 
     @Override
     public void onRefreshError(Throwable e) {
+        if(mPostDialog != null || mPostDialog.isShowing())
+            mPostDialog.dismiss();
     }
 
     @Override

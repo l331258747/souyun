@@ -7,6 +7,7 @@ import android.text.TextUtils;
  * Created by www.longdw.com on 2018/7/11 下午7:51.
  */
 public class Address2 {
+    public String id;
     public String lat;
     public String lng;
     public String des;
@@ -14,6 +15,10 @@ public class Address2 {
     public String province;
     public String tel;
     public String userName;
+
+    public String getId() {
+        return id;
+    }
 
     public String getName(){
         String str = "";

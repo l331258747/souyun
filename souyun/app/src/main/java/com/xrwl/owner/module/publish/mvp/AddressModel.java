@@ -32,4 +32,8 @@ public class AddressModel implements AddressContract.IModel {
     public Observable<BaseEntity> postData(Map<String, String> params) {
         return RetrofitFactory.getInstance().addAddress(params).compose(RxSchedulers.<BaseEntity>compose());
     }
+    @Override
+    public Observable<BaseEntity> CancelAddress(Map<String, String> params) {
+        return RetrofitFactory.getInstance().CancelAddress(params).compose(RxSchedulers.<BaseEntity>compose());
+    }
 }

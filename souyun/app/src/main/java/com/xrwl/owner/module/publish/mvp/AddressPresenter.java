@@ -82,7 +82,7 @@ public class AddressPresenter extends AddressContract.APresenter {
             }
         }
 
-        mModel.postData(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
+        mModel.postData(sendParams).subscribe(new BaseSimpleObserver<BaseEntity>() {
             @Override
             public void onSubscribe(Disposable d) {
                 addDisposable(d);
@@ -100,6 +100,31 @@ public class AddressPresenter extends AddressContract.APresenter {
             @Override
             protected void onHandleError(Throwable e) {
                 mView.onPostError(e);
+            }
+        });
+    }
+
+    @Override
+    public void CancelAddress(HashMap<String, String> params) {
+        params.put("userid", getAccount().getId());
+        mModel.CancelAddress(params).subscribe(new BaseSimpleObserver<BaseEntity>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            protected void onHandleSuccess(BaseEntity entity) {
+                if (entity.isSuccess()) {
+                    mView.onCancelAddressSuccess(entity);
+                } else {
+                    mView.onCancelAddressError(entity);
+                }
+            }
+
+            @Override
+            protected void onHandleError(Throwable e) {
+                mView.onRefreshError(e);
             }
         });
     }

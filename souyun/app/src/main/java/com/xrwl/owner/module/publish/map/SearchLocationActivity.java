@@ -437,7 +437,7 @@ public class SearchLocationActivity extends BaseActivity implements AMapLocation
             if(!TextUtils.isEmpty(phoneName))
                 str = str + phoneName + " ";
             if(!TextUtils.isEmpty(phone))
-                str = "tel:" + str +  phone;
+                str = str + "tel:" +  phone;
 
             tv_phone.setText(str);
         }

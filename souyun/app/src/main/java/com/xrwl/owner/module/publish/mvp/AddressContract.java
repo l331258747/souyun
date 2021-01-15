@@ -22,6 +22,9 @@ public interface AddressContract {
         void onPostSuccess(BaseEntity entity);
         void onPostError(BaseEntity entity);
         void onPostError(Throwable e);
+
+        void onCancelAddressError(BaseEntity e);
+        void onCancelAddressSuccess(BaseEntity e);
     }
 
     abstract class APresenter extends MyPresenter<IView> {
@@ -34,6 +37,7 @@ public interface AddressContract {
         public abstract void getDatanew();
         public abstract void getDatanewshow(String id);
         public abstract void postData(HashMap<String, String> params);
+        public abstract void CancelAddress(HashMap<String, String> params);
     }
 
     interface IModel {
@@ -42,5 +46,6 @@ public interface AddressContract {
         Observable<BaseEntity<List<New>>> getDatanew(Map<String, String> params);
         Observable<BaseEntity<List<New>>> getDatanewshow(Map<String, String> params);
         Observable<BaseEntity> postData(Map<String, String> params);
+        Observable<BaseEntity> CancelAddress(Map<String, String> params);
     }
 }
