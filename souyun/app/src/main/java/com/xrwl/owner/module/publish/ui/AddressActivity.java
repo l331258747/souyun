@@ -149,7 +149,7 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
         params.put("userName",userName);
         params.put("tel",tel);
         params.put("des",des);
-        params.put("city", des);
+        params.put("city", city);
         params.put("province",province);
         params.put("lat", String.valueOf(lat));
         params.put("lng", String.valueOf(lng));
