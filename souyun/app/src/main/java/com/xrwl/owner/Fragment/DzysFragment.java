@@ -228,7 +228,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isCreate) {
-//            if (TextUtils.isEmpty(mpublishAddressDefaultStartLocationTv.getText().toString()))
+            //发货定位
             {
                 MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
                 if (bean != null) {
@@ -249,23 +249,21 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mDefaultStartLon = bean.getLon();
 
                         mPublishBean.startDesc = bean.getAddress();
-                        mPublishBean.startX = bean.getLon() + "";
-                        mPublishBean.startY = bean.getLat() + "";
+                        mPublishBean.startX = mDefaultStartLon + "";
+                        mPublishBean.startY = mDefaultStartLat + "";
 
-                        mPublishBean.defaultStartLon = bean.getLon();
-                        mPublishBean.defaultStartLat = bean.getLat();
+                        mPublishBean.defaultStartLon =mDefaultStartLon;
+                        mPublishBean.defaultStartLat = mDefaultStartLat;
                         mPublishBean.defaultStartPosDes = bean.getAddress();
 
                         mPublishBean.longStartCityDes = mStartCity;
                         mPublishBean.longStartProvinceDes = mStartProvince;
                         mPublishBean.longStartAreaDes = bean.getAddress();
 
-                        checkLongLocation();
                     }
-
                 }
             }
-//            if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString()))
+            //到货定位
             {
                 MarkerBean bean = ((TabActivity) getActivity()).getDestination();
                 if (bean != null) {
@@ -287,24 +285,20 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mDefaultEndLon = bean.getLon();
 
                         mPublishBean.endDesc = bean.getAddress();
-                        mPublishBean.endX = bean.getLon() + "";
-                        mPublishBean.endY = bean.getLat() + "";
+                        mPublishBean.endX = mDefaultEndLon + "";
+                        mPublishBean.endY = mDefaultEndLat + "";
 
-                        mPublishBean.defaultEndLon = bean.getLon();
-                        mPublishBean.defaultEndLat = bean.getLat();
+                        mPublishBean.defaultEndLon = mDefaultEndLon;
+                        mPublishBean.defaultEndLat = mDefaultEndLat;
                         mPublishBean.defaultEndPosDes = bean.getAddress();
 
                         mPublishBean.longEndCityDes = mEndCity;
                         mPublishBean.longEndProvinceDes = mEndProvince;
                         mPublishBean.longEndAreaDes = bean.getAddress();
-
-                        checkDefaultLocation();
                     }
-
                 }
             }
             //吨
-//            if (TextUtils.isEmpty(mppDefaultWeightEt.getText().toString()))
             {
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
@@ -314,7 +308,6 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 }
             }
             //方
-//            if (TextUtils.isEmpty(mppDefaultAreaEt.getText().toString()))
             {
                 HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
                 if (bean != null) {
@@ -351,6 +344,8 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     }
                 }
             }
+
+            checkDefaultLocation();
         }
     }
 
@@ -536,10 +531,14 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             mStartProvince = data.getStringExtra("pro");
 
             mPublishBean.startDesc = title;
-            requestCityLonLat();
+
 
             mDefaultStartLat = data.getDoubleExtra("lat", 0);
             mDefaultStartLon = data.getDoubleExtra("lon", 0);
+
+//            requestCityLonLat();
+            mPublishBean.startX = mDefaultStartLon + "";
+            mPublishBean.startY = mDefaultStartLat + "";
 
             //设置发货定位
             mPublishBean.defaultStartLon = mDefaultStartLon;
@@ -550,8 +549,8 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             mPublishBean.longStartProvinceDes = mStartProvince;
             mPublishBean.longStartAreaDes = title;
 
-            checkLongLocation();
-
+//            checkLongLocation();
+            checkDefaultLocation();
         }
         /**到货定位*/
         else if (requestCode == RESULT_POSITION_END) {
@@ -570,10 +569,12 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
 
             mPublishBean.endDesc = title;
-            requestCityLonLat();
 
             mDefaultEndLat = data.getDoubleExtra("lat", 0);
             mDefaultEndLon = data.getDoubleExtra("lon", 0);
+            //            requestCityLonLat();
+            mPublishBean.endX = mDefaultEndLon + "";
+            mPublishBean.endY = mDefaultEndLat + "";
 
             mPublishBean.defaultEndLon = mDefaultEndLon;
             mPublishBean.defaultEndLat = mDefaultEndLat;
@@ -621,29 +622,30 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     /**
      * 计算城市的经纬度
      */
-    private void requestCityLonLat() {
-        if (!TextUtils.isEmpty(mStartCity) && !TextUtils.isEmpty(mEndCity)) {
-            mPresenter.requestCityLonLat(mStartCity, mEndCity);
-        }
-    }
+//    private void requestCityLonLat() {
+//
+//        if (!TextUtils.isEmpty(mStartCity) && !TextUtils.isEmpty(mEndCity)) {
+//            mPresenter.requestCityLonLat(mStartCity, mEndCity);
+//        }
+//    }
 
-    /**
-     * 正在请求关键数据
-     */
-    private void checkLongLocation() {
-        if (mStartCity != null && mEndCity != null) {
-            mGetDistanceDialog = LoadingProgress.showProgress(mContext, "正在请求关键数据...");
-            mPresenter.calculateDistanceWithCityName(mStartCity, mEndCity, mStartProvince, mEndProvince);
-        }
-    }
+//    /**
+//     * 正在请求关键数据
+//     */
+//    private void checkLongLocation() {
+//        if (mStartCity != null && mEndCity != null) {
+//            mGetDistanceDialog = LoadingProgress.showProgress(mContext, "正在请求关键数据...");
+//            mPresenter.calculateDistanceWithCityName(mStartCity, mEndCity, mStartProvince, mEndProvince);
+//        }
+//    }
 
     @Override
     public void onRequestCityLatLonSuccess(BaseEntity<Distance> entity) {
-        Distance d = entity.getData();
-        mPublishBean.startX = d.startX;
-        mPublishBean.startY = d.startY;
-        mPublishBean.endX = d.endX;
-        mPublishBean.endY = d.endY;
+//        Distance d = entity.getData();
+//        mPublishBean.startX = d.startX;
+//        mPublishBean.startY = d.startY;
+//        mPublishBean.endX = d.endX;
+//        mPublishBean.endY = d.endY;
     }
 
     @Override

@@ -190,34 +190,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_qita_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_5"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_5"
-                android:background="@drawable/btn_white_r10"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="@dimen/dp_5"
-                    android:text="其他信息录入"/>
-
-                <ImageView
-                    android:id="@+id/iv_qita_title"
-                    android:layout_width="@dimen/dp_20"
-                    android:layout_height="@dimen/dp_20"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:src="@drawable/ic_zhankai"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_qita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_5"
