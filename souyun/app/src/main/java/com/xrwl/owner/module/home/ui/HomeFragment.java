@@ -19,7 +19,6 @@ import com.xrwl.owner.Fragment.BlankFragment;
 import com.xrwl.owner.Fragment.CtldFragment;
 import com.xrwl.owner.Fragment.CtzcFragment;
 import com.xrwl.owner.Fragment.DzysFragment;
-import com.xrwl.owner.Fragment.PaotuiFragment;
 import com.xrwl.owner.Fragment.TcldFragment;
 import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
@@ -50,8 +49,8 @@ import butterknife.OnClick;
 public class HomeFragment extends BaseFragment {
 
 
-    @BindView(R.id.tab_layout)
-    TextView tabLayout;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     @BindView(R.id.tablayout)
     TabLayout tablayout;
     @BindView(R.id.viewpager)
@@ -192,13 +191,13 @@ public class HomeFragment extends BaseFragment {
 
 
     private void loadData() {
-        title_list.add("主页");
+        title_list.add("指尖上的发货平台");
         title_list.add("大宗运输");
         title_list.add("长途零担");
         title_list.add("长途整车");
         title_list.add("同城零担");
         title_list.add("同城专车");
-        title_list.add("跑腿");
+//        title_list.add("跑腿");
 
 
         BlankFragment f = new BlankFragment();
@@ -213,8 +212,8 @@ public class HomeFragment extends BaseFragment {
         fragment_list.add(twoFragment);
         TczcFragment twoFragment3 = new TczcFragment();
         fragment_list.add(twoFragment3);
-        PaotuiFragment paotuiFragment = new PaotuiFragment();
-        fragment_list.add(paotuiFragment);
+//        PaotuiFragment paotuiFragment = new PaotuiFragment();
+//        fragment_list.add(paotuiFragment);
 
     }
 
@@ -243,7 +242,7 @@ public class HomeFragment extends BaseFragment {
         tablayout.setupWithViewPager(viewpager);
         viewpager.setOffscreenPageLimit(fragment_list.size());
 
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -252,6 +251,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 currentPage = position;
+                setTitle(title_list.get(currentPage));
             }
 
             @Override
@@ -265,6 +265,10 @@ public class HomeFragment extends BaseFragment {
     public void setTabIndex(int i) {
         viewpager.setCurrentItem(i);
         currentPage = i;
+    }
+
+    public void setTitle(String title){
+        tvTitle.setText(title);
     }
 
     @Override

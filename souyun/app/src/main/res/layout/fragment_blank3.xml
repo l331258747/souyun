@@ -676,24 +676,24 @@
                             android:gravity="center"
                             android:text="同城零担"
                             app:layout_constraintStart_toEndOf="@+id/tv_tczc"
-                            app:layout_constraintEnd_toStartOf="@+id/tv_paotui"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            android:textColor="@color/white" />
-
-
-                        <TextView
-                            android:id="@+id/tv_paotui"
-                            android:layout_width="@dimen/default_dp80"
-                            android:layout_height="@dimen/dp_25"
-                            android:background="@drawable/btn_red_r5"
-                            android:gravity="center"
-                            android:text="跑腿"
-                            app:layout_constraintStart_toEndOf="@+id/tv_tcld"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:textColor="@color/white" />
+
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_paotui"-->
+<!--                            android:layout_width="@dimen/default_dp80"-->
+<!--                            android:layout_height="@dimen/dp_25"-->
+<!--                            android:background="@drawable/btn_red_r5"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="跑腿"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/tv_tcld"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            android:textColor="@color/white" />-->
 
 
                     </android.support.constraint.ConstraintLayout>

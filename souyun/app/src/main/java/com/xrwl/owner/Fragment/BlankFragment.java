@@ -191,8 +191,8 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView tv_tcld;
     @BindView(R.id.tv_tczc)
     TextView tv_tczc;
-    @BindView(R.id.tv_paotui)
-    TextView tv_paotui;
+//    @BindView(R.id.tv_paotui)
+//    TextView tv_paotui;
 
     private SearchLocationAdapter mAdapter;
     private SearchLocationAdapter mAdapter2;
@@ -232,7 +232,6 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 //    @BindView(R.id.v_mask)
 //    View vMask;
     Unbinder unbinder;
-
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -274,6 +273,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             mParam2 = getArguments().getString(ARG_PARAM2);
 
         }
+
     }
 
     @Override
@@ -677,7 +677,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
-    @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc, R.id.tv_tczc, R.id.tv_tcld, R.id.tv_paotui})
+    @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc, R.id.tv_tczc, R.id.tv_tcld})
     public void onTabClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_dzys:
@@ -695,9 +695,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             case R.id.tv_tczc:
                 ((HomeFragment)getParentFragment()).setTabIndex(5);
                 break;
-            case R.id.tv_paotui:
-                ((HomeFragment)getParentFragment()).setTabIndex(6);
-                break;
+//            case R.id.tv_paotui:
+//                ((HomeFragment)getParentFragment()).setTabIndex(6);
+//                break;
         }
     }
 
