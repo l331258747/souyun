@@ -404,6 +404,14 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
 
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishStartPhonepersonEt.setText(data.getStringExtra("userName"));
+            }
+
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishStartPhoneEt.setText(data.getStringExtra("tel"));
+            }
+
             mPublishBean.startDesc = title;
 
             if (mStartCity != null && mEndCity != null) {

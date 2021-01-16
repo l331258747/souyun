@@ -215,15 +215,15 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mStartCity = bean.getCity();
                         mStartProvince = bean.getProvince();
 
-                        mPublishBean.startX = mDefaultStartLon + "";
-                        mPublishBean.startY = mDefaultStartLat + "";
+                        mDefaultStartLat = bean.getLat();
+                        mDefaultStartLon = bean.getLon();
 
                         mPublishBean.startDesc = bean.getAddress();
-                        mPublishBean.defaultStartLon =mDefaultStartLon;
-                        mPublishBean.defaultStartLat = mDefaultStartLat;
+                        mPublishBean.endX = mDefaultEndLon + "";
+                        mPublishBean.endY = mDefaultEndLat + "";
 
-                        mPublishBean.defaultStartLon = bean.getLon();
-                        mPublishBean.defaultStartLat = bean.getLat();
+                        mPublishBean.defaultStartLon = mDefaultStartLon;
+                        mPublishBean.defaultStartLat = mDefaultStartLat;
                         mPublishBean.defaultStartPosDes = bean.getAddress();
 
                         mPublishBean.longStartCityDes = mStartCity;
@@ -476,6 +476,14 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
+
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishStartPhonepersonEt.setText(data.getStringExtra("userName"));
+            }
+
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishStartPhoneEt.setText(data.getStringExtra("tel"));
+            }
 
             mPublishBean.startDesc = title;
 

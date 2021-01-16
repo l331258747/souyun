@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hdgq.locationlib.LocationOpenApi;
@@ -503,6 +502,14 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
+
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishStartPhonepersonEt.setText(data.getStringExtra("userName"));
+            }
+
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishStartPhoneEt.setText(data.getStringExtra("tel"));
+            }
 
             mPublishBean.startDesc = title;
 

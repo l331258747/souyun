@@ -187,10 +187,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     TextView tv_ctld;
     @BindView(R.id.tv_ctzc)
     TextView tv_ctzc;
-    @BindView(R.id.tv_tcld)
-    TextView tv_tcld;
-    @BindView(R.id.tv_tczc)
-    TextView tv_tczc;
+//    @BindView(R.id.tv_tcld)
+//    TextView tv_tcld;
+//    @BindView(R.id.tv_tczc)
+//    TextView tv_tczc;
 //    @BindView(R.id.tv_paotui)
 //    TextView tv_paotui;
 
@@ -677,24 +677,39 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
-    @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc, R.id.tv_tczc, R.id.tv_tcld})
+    @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc})
     public void onTabClicked(View view) {
+        if(TextUtils.isEmpty(locationBean.getCity())){
+            ToastUtils.showShort("请选择出发地");
+            return;
+        }
+        if(TextUtils.isEmpty(destinationBean.getCity())){
+            ToastUtils.showShort("请选择目的地");
+            return;
+        }
+
         switch (view.getId()) {
             case R.id.tv_dzys:
                 ((HomeFragment)getParentFragment()).setTabIndex(1);
                 break;
             case R.id.tv_ctld:
-                ((HomeFragment)getParentFragment()).setTabIndex(2);
+                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity()))
+                    ((HomeFragment)getParentFragment()).setTabIndex(4);
+                else
+                    ((HomeFragment)getParentFragment()).setTabIndex(2);
                 break;
             case R.id.tv_ctzc:
-                ((HomeFragment)getParentFragment()).setTabIndex(3);
+                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity()))
+                    ((HomeFragment)getParentFragment()).setTabIndex(5);
+                else
+                    ((HomeFragment)getParentFragment()).setTabIndex(3);
                 break;
-            case R.id.tv_tcld:
-                ((HomeFragment)getParentFragment()).setTabIndex(4);
-                break;
-            case R.id.tv_tczc:
-                ((HomeFragment)getParentFragment()).setTabIndex(5);
-                break;
+//            case R.id.tv_tcld:
+//                ((HomeFragment)getParentFragment()).setTabIndex(4);
+//                break;
+//            case R.id.tv_tczc:
+//                ((HomeFragment)getParentFragment()).setTabIndex(5);
+//                break;
 //            case R.id.tv_paotui:
 //                ((HomeFragment)getParentFragment()).setTabIndex(6);
 //                break;

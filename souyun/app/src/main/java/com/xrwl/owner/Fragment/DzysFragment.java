@@ -530,8 +530,15 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
 
-            mPublishBean.startDesc = title;
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishStartPhonepersonEt.setText(data.getStringExtra("userName"));
+            }
 
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishStartPhoneEt.setText(data.getStringExtra("tel"));
+            }
+
+            mPublishBean.startDesc = title;
 
             mDefaultStartLat = data.getDoubleExtra("lat", 0);
             mDefaultStartLon = data.getDoubleExtra("lon", 0);
@@ -572,7 +579,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mDefaultEndLat = data.getDoubleExtra("lat", 0);
             mDefaultEndLon = data.getDoubleExtra("lon", 0);
-            //            requestCityLonLat();
+
             mPublishBean.endX = mDefaultEndLon + "";
             mPublishBean.endY = mDefaultEndLat + "";
 

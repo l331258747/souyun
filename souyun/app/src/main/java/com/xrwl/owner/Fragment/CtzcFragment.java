@@ -228,15 +228,15 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mStartCity = bean.getCity();
                         mStartProvince = bean.getProvince();
 
-                        mPublishBean.startX = mDefaultStartLon + "";
-                        mPublishBean.startY = mDefaultStartLat + "";
+                        mDefaultStartLat = bean.getLat();
+                        mDefaultStartLon = bean.getLon();
 
                         mPublishBean.startDesc = bean.getAddress();
                         mPublishBean.startX = mDefaultStartLon + "";
                         mPublishBean.startY = mDefaultStartLat + "";
 
-                        mPublishBean.defaultStartLon = bean.getLon();
-                        mPublishBean.defaultStartLat = bean.getLat();
+                        mPublishBean.defaultStartLon = mDefaultStartLon;
+                        mPublishBean.defaultStartLat = mDefaultStartLat;
                         mPublishBean.defaultStartPosDes = bean.getAddress();
 
                         mPublishBean.longStartCityDes = mStartCity;
@@ -263,15 +263,15 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
                         mEndCity = bean.getCity();
                         mEndProvince = bean.getProvince();
 
+                        mDefaultEndLat = bean.getLat();
+                        mDefaultEndLon = bean.getLon();
+
+                        mPublishBean.endDesc = bean.getAddress();
                         mPublishBean.endX = mDefaultEndLon + "";
                         mPublishBean.endY = mDefaultEndLat + "";
 
-                        mPublishBean.endDesc = bean.getAddress();
                         mPublishBean.defaultEndLon = mDefaultEndLon;
                         mPublishBean.defaultEndLat = mDefaultEndLat;
-
-                        mPublishBean.defaultEndLon = bean.getLon();
-                        mPublishBean.defaultEndLat = bean.getLat();
                         mPublishBean.defaultEndPosDes = bean.getAddress();
 
                         mPublishBean.longEndCityDes = mEndCity;
@@ -502,6 +502,14 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
 
             mStartCity = data.getStringExtra("city");
             mStartProvince = data.getStringExtra("pro");
+
+            if(!TextUtils.isEmpty(data.getStringExtra("userName"))){
+                mpublishStartPhonepersonEt.setText(data.getStringExtra("userName"));
+            }
+
+            if(!TextUtils.isEmpty(data.getStringExtra("tel"))){
+                mpublishStartPhoneEt.setText(data.getStringExtra("tel"));
+            }
 
             mPublishBean.startDesc = title;
 
