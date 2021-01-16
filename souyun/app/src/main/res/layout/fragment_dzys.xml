@@ -49,16 +49,14 @@
 
                     <ImageView
                         android:id="@+id/publishAddressDefaultStartLocationIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
                 <include layout="@layout/base_lineview_include" />
 
                 <LinearLayout style="@style/PublishLayoutStyle">
-
 
                     <TextView
                         style="@style/PublishIconStyle"
@@ -67,7 +65,6 @@
 
                     <EditText
                         android:id="@+id/publishStartPhonepersonEt"
-
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_10"
@@ -81,9 +78,7 @@
 
                     <EditText
                         android:id="@+id/publishStartPhoneEt"
-
                         android:layout_width="0dp"
-
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_10"
                         android:layout_weight="1"
@@ -98,10 +93,40 @@
 
                     <ImageView
                         android:id="@+id/publishStartPhonepersonIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
+                </LinearLayout>
+
+                <include layout="@layout/base_lineview_include" />
+
+                <LinearLayout
+                    style="@style/PublishLayoutStyle">
+
+                    <TextView
+                        style="@style/PublishIconStyle"
+                        android:drawableStart="@drawable/publish_ic_hw"
+                        android:text="发货单位         " />
+
+
+                    <EditText
+                        android:id="@+id/publishCompanyTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp15"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入"
+                        android:inputType="text"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/default_font14" />
+
+                    <ImageView
+                        android:id="@+id/publishCompanyIv"
+                        android:layout_width="@dimen/default_dp30"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -133,9 +158,8 @@
 
                     <ImageView
                         android:id="@+id/publishAddressDefaultEndLocationIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -181,13 +205,88 @@
 
                     <ImageView
                         android:id="@+id/publishGetPersonIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
+                <include layout="@layout/base_lineview_include" />
+
+                <LinearLayout
+                    style="@style/PublishLayoutStyle">
+
+                    <TextView
+                        style="@style/PublishIconStyle"
+                        android:drawableStart="@drawable/publish_ic_hw"
+                        android:text="收货单位         " />
+
+                    <EditText
+                        android:id="@+id/publishCompanyshouhuoTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp15"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入"
+                        android:inputType="text"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/default_font14" />
+
+                    <ImageView
+                        android:id="@+id/publishCompanyshouhuoIv"
+                        android:layout_width="@dimen/default_dp30"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+
+                </LinearLayout>
+
             </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:background="@drawable/btn_white_r10"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/publish_product_default_layout" />
+
+                <include layout="@layout/publish_product_longtotal_layout" />
+            </FrameLayout>
+
+            <include
+                android:id="@+id/yincangxian"
+                layout="@layout/base_lineview_include" />
+
+            <LinearLayout style="@style/PublishLayoutStyle">
+
+                <TextView
+                    style="@style/PublishIconStyle"
+                    android:drawableStart="@drawable/publish_ic_hw"
+                    android:text="货物名称         " />
+
+                <TextView
+                    android:id="@+id/publishProductTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_dp15"
+                    android:layout_weight="1"
+                    android:hint="点击选择"
+                    android:inputType="text" />
+
+                <ImageView
+                    android:layout_width="@dimen/default_dp30"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_green_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_qita_title"
@@ -227,113 +326,6 @@
                 tools:visibility="visible"
                 android:background="@drawable/btn_white_r10"
                 android:orientation="vertical">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <include layout="@layout/publish_product_default_layout" />
-
-                    <include layout="@layout/publish_product_longtotal_layout" />
-                </FrameLayout>
-
-                <include
-                    android:id="@+id/yincangxian"
-                    layout="@layout/base_lineview_include" />
-
-                <LinearLayout style="@style/PublishLayoutStyle">
-
-                    <TextView
-                        style="@style/PublishIconStyle"
-                        android:drawableStart="@drawable/publish_ic_hw"
-                        android:text="货物名称         " />
-
-                    <TextView
-                        android:id="@+id/publishProductTv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_dp15"
-                        android:layout_weight="1"
-                        android:hint="点击选择"
-                        android:inputType="text" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:src="@drawable/ic_green_arrow" />
-                </LinearLayout>
-
-                <include layout="@layout/base_lineview_include" />
-
-                <LinearLayout
-                    android:id="@+id/changjia"
-                    style="@style/PublishLayoutStyle">
-
-                    <TextView
-                        style="@style/PublishIconStyle"
-                        android:drawableStart="@drawable/publish_ic_hw"
-                        android:text="发货单位         " />
-
-
-                    <EditText
-                        android:id="@+id/publishCompanyTv"
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_dp15"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="点击选择"
-                        android:inputType="text"
-                        android:textColor="@color/dark_gray"
-                        android:textSize="@dimen/default_font14" />
-
-                    <ImageView
-                        android:id="@+id/publishCompanyIv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:src="@drawable/ic_green_arrow" />
-
-                </LinearLayout>
-
-                <include layout="@layout/base_lineview_include" />
-
-                <LinearLayout
-                    android:id="@+id/shouhuodanwei"
-                    style="@style/PublishLayoutStyle">
-
-                    <TextView
-                        style="@style/PublishIconStyle"
-                        android:drawableStart="@drawable/publish_ic_hw"
-                        android:text="收货单位         " />
-
-
-                    <EditText
-                        android:id="@+id/publishCompanyshouhuoTv"
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_dp15"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="点击选择"
-                        android:inputType="text"
-                        android:textColor="@color/dark_gray"
-                        android:textSize="@dimen/default_font14" />
-
-                    <ImageView
-                        android:id="@+id/publishCompanyshouhuoIv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
-                        android:src="@drawable/ic_green_arrow" />
-
-
-                </LinearLayout>
-
-                <include layout="@layout/base_lineview_include" />
 
                 <!--货物这损率-->
                 <LinearLayout

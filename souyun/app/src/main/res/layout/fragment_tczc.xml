@@ -49,9 +49,8 @@
 
                     <ImageView
                         android:id="@+id/publishAddressDefaultStartLocationIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -97,9 +96,8 @@
 
                     <ImageView
                         android:id="@+id/publishStartPhonepersonIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -133,9 +131,8 @@
 
                     <ImageView
                         android:id="@+id/publishAddressDefaultEndLocationIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -181,9 +178,8 @@
 
                     <ImageView
                         android:id="@+id/publishGetPersonIv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -219,9 +215,8 @@
                         android:inputType="text" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
@@ -261,9 +256,8 @@
                         android:inputType="text" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:src="@drawable/ic_green_arrow" />
                 </LinearLayout>
 
