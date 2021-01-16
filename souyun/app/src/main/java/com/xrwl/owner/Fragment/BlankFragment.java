@@ -680,11 +680,13 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
     @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc})
     public void onTabClicked(View view) {
         if(TextUtils.isEmpty(locationBean.getCity())){
-            ToastUtils.showShort("请选择出发地");
+            new AlertDialog.Builder(getActivity()).setMessage("请选择出发地")
+                    .setPositiveButton("确定", null).show();
             return;
         }
         if(TextUtils.isEmpty(destinationBean.getCity())){
-            ToastUtils.showShort("请选择目的地");
+            new AlertDialog.Builder(getActivity()).setMessage("请选择目的地")
+                    .setPositiveButton("确定", null).show();
             return;
         }
 

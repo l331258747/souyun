@@ -192,34 +192,6 @@
                 android:background="@drawable/btn_white_r10"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/publishTruckLayout"
-                    style="@style/PublishLayoutStyle">
-
-                    <TextView
-                        style="@style/PublishIconStyle"
-                        android:drawableStart="@drawable/publish_ic_yxcx"
-                        android:text="已选车型        " />
-
-                    <TextView
-                        android:id="@+id/publishTruckTv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_dp15"
-                        android:layout_weight="1"
-                        android:hint="点击选择"
-                        android:inputType="text" />
-
-                    <ImageView
-                        android:layout_width="@dimen/default_dp30"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_green_arrow" />
-                </LinearLayout>
-
-                <include
-                    android:id="@+id/truckLine"
-                    layout="@layout/base_lineview_include" />
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -622,6 +594,34 @@
                 <include
                     layout="@layout/base_lineview_include"
                     android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/publishTruckLayout"
+                    style="@style/PublishLayoutStyle">
+
+                    <TextView
+                        style="@style/PublishIconStyle"
+                        android:drawableStart="@drawable/publish_ic_yxcx"
+                        android:text="已选车型        " />
+
+                    <TextView
+                        android:id="@+id/publishTruckTv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_dp15"
+                        android:layout_weight="1"
+                        android:hint="点击选择"
+                        android:inputType="text" />
+
+                    <ImageView
+                        android:layout_width="@dimen/default_dp30"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_green_arrow" />
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/truckLine"
+                    layout="@layout/base_lineview_include" />
 
             </FrameLayout>
 

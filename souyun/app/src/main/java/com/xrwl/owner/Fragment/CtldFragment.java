@@ -23,14 +23,12 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventFragment;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Distance;
-import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.event.PublishClearCacheEvent;
 import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
-import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
@@ -77,9 +75,9 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
     private String mParam1;
     private String mParam2;
 
-    //已选车型
-    @BindView(R.id.publishTruckTv)
-    TextView mpublishTruckTv;
+//    //已选车型
+//    @BindView(R.id.publishTruckTv)
+//    TextView mpublishTruckTv;
 
     //发货定位
     @BindView(R.id.publishAddressDefaultStartLocationTv)
@@ -143,8 +141,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
     private String mStartProvince;
     private double mDefaultStartLat, mDefaultStartLon;
     private double mDefaultEndLat, mDefaultEndLon;
-    private String chexingid;
-    private Truck truck;
 
     private ProgressDialog mGetDistanceDialog;
 
@@ -305,20 +301,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
                     }
                 }
             }
-            //车型
-            {
-                HomeChexingBean bean = ((TabActivity) getActivity()).getChexing();
-                if (bean != null && bean.getChexingType() == 1) {
-                    if(!TextUtils.isEmpty(bean.getChexing())){
-                        mpublishTruckTv.setText(bean.getChexing());
-
-                        Truck truck = bean.getTruck();
-                        chexingid = truck.getId();
-                        this.truck = truck;
-                    }
-
-                }
-            }
             checkDefaultLocation();
         }
     }
@@ -401,7 +383,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
         params.put("type", "4");
         params.put("time", mPublishBean.duration);
         params.put("distance", mPublishBean.distance);
-        params.put("car_type", chexingid);
         if (TextUtils.isEmpty(mppDefaultWeightEt.getText().toString())) {
             params.put("ton", "0");
         } else {
@@ -425,7 +406,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
         mPublishBean.defaultArea = mppDefaultAreaEt.getText().toString();
         mPublishBean.remark = madd_content.getText().toString();
         mPublishBean.productName = mpublishProductTv.getText().toString();
-        if(this.truck != null) mPublishBean.truck = this.truck;
 
         if (mPublishBean.check()) {
 
@@ -487,13 +467,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             mPhotoScrollView.setActivity(getActivity());
             mPhotoScrollView.setDatas(mImagePaths, selectList);
-        }
-        /**已选车型*/
-        else if (requestCode == RESULT_TRUCK) {
-            Truck truck = (Truck) data.getSerializableExtra("data");
-            chexingid = truck.getId();
-            mpublishTruckTv.setText(truck.getTitle());
-            this.truck = truck;
         }
         /**发货定位*/
         else if (requestCode == RESULT_POSITION_START) {
@@ -661,7 +634,6 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
         mDefaultEndLat = 0;
         mDefaultEndLon = 0;
 
-        mpublishTruckTv.setText("");
         mpublishAddressDefaultStartLocationTv.setText("");
         mppDefaultWeightEt.setText("");
         mppDefaultAreaEt.setText("");
