@@ -932,7 +932,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     //
     @OnClick(R.id.pcOkBtn)
-
     public void postOrder() {
 
         if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_paotui.getValue()) {
@@ -1244,6 +1243,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @Override
     public void onRequestSuccessa(BaseEntity<Integer> entity) {
+        if(entity.getData() == null)
+            entity.setData(0);
         d = entity.getData();
         mPublishBean.nidaye = d.toString();
         price = d;
@@ -1263,7 +1264,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mRecommendPriceTv.setVisibility(View.VISIBLE);
             mzidongjieshouTv.setVisibility(View.GONE);
             mpcsimiCb.setVisibility(View.GONE);
-            mTruckTv.setText("车型：无车型需求");
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+            else
+                mTruckTv.setText("车型：无车型需求");
+
             mRecommendView.setVisibility(View.VISIBLE);
             // mFreightPrice = (int) mPublishBean.getNidaye();
             mFreightPrice = price;
@@ -1309,7 +1315,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mWeightTv.setVisibility(View.VISIBLE);
             mNumTv.setVisibility(View.VISIBLE);
             mBySelfLayout.setVisibility(View.GONE);
-            mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+            else
+                mTruckTv.setText("车型：无车型需求");
+
             mRecommendView.setVisibility(View.VISIBLE);
             mFreightPrice = price;
             mFreightEt.setText(String.valueOf(price));
@@ -1356,7 +1367,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mNumTv.setVisibility(View.VISIBLE);
             mFreightPrice = price;
             mFreightEt.setText(String.valueOf(price));
-            mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+            else
+                mTruckTv.setText("车型：无车型需求");
+
             String yan = "";
             yan = String.valueOf(price);
             mTotalPriceTv.setText(yan);
@@ -1407,7 +1423,12 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mFreightEt.setText(String.valueOf(price));
             mBySelfLayout.setVisibility(View.VISIBLE);
             //mBySelfLayout.setVisibility(View.GONE);
-            mTruckTv.setText("车型：无车型需求");
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+            else
+                mTruckTv.setText("车型：无车型需求");
+
             String yan = "";
             yan = String.valueOf(price);
             mTotalPriceTv.setText(yan);

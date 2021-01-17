@@ -618,6 +618,8 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
 
     @Override
     public void onRequestSuccessa(BaseEntity<Integer> entity) {
+        if(entity.getData() == null)
+            entity.setData(0);
         Integer d =entity.getData();
         mPublishBean.nidaye  =d.toString();
     }

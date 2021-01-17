@@ -1495,6 +1495,8 @@ public class PublishFragment extends BaseEventFragment<PublishContract.IView, Pu
 
     @Override
     public void onRequestSuccessa(BaseEntity<Integer> entity) {
+        if(entity.getData() == null)
+            entity.setData(0);
         Integer d = entity.getData();
         mPublishBean.nidaye = d.toString();
 //        Intent intent = new Intent(mContext, PublishConfirmActivity.class);

@@ -537,6 +537,8 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
 
     @Override
     public void onRequestSuccessa(BaseEntity<Integer> entity) {
+        if(entity.getData() == null)
+            entity.setData(0);
         Integer d =entity.getData();
         mPublishBean.nidaye  =d.toString();
     }
