@@ -1,6 +1,8 @@
 package com.xrwl.owner.bean;
 
-public class HomeHuowuBean {
+import java.io.Serializable;
+
+public class HomeHuowuBean implements Serializable {
     String dun;
     String fang;
     String jian;

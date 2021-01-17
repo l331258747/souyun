@@ -2,7 +2,9 @@ package com.xrwl.owner.bean;
 
 import com.xrwl.owner.module.publish.bean.Truck;
 
-public class HomeChexingBean {
+import java.io.Serializable;
+
+public class HomeChexingBean implements Serializable {
     String chexing;
     Truck truck;
     int chexingType;

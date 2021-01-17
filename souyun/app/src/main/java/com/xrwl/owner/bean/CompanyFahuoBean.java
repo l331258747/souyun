@@ -1,6 +1,8 @@
 package com.xrwl.owner.bean;
 
-public class CompanyFahuoBean {
+import java.io.Serializable;
+
+public class CompanyFahuoBean implements Serializable {
     String name;
 
     public String getName() {

@@ -1,6 +1,8 @@
 package com.xrwl.owner.bean;
 
-public class MarkerBean {
+import java.io.Serializable;
+
+public class MarkerBean implements Serializable {
     String city;
     String province;
     String address;

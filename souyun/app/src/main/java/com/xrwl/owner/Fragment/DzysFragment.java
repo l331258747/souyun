@@ -26,6 +26,7 @@ import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.CompanyFahuoBean;
 import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.Distance;
+import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
 import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.event.PublishClearCacheEvent;
@@ -171,6 +172,13 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     public String shijianlo;
     public String julilo;
 
+//    public MarkerBean myLocation;//出发地
+//    public MarkerBean destination;//目的地
+//    public CompanyFahuoBean fahuodanweiBean;
+//    public CompanyShouhuoBean shouhuodanweiBean;
+//    public HomeChexingBean chexing;
+//    public HomeHuowuBean huowu;
+
     public DzysFragment() {
         // Required empty public constructor
     }
@@ -183,6 +191,22 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
         fragment.setArguments(args);
         return fragment;
     }
+
+
+//    public static DzysFragment newInstance(MarkerBean myLocation,MarkerBean destination,CompanyFahuoBean fahuodanweiBean,
+//                                           CompanyShouhuoBean shouhuodanweiBean,HomeChexingBean chexing,HomeHuowuBean huowu) {
+//        DzysFragment fragment = new DzysFragment();
+//        Bundle args = new Bundle();
+//        args.putSerializable("myLocation",myLocation);
+//        args.putSerializable("destination",destination);
+//        args.putSerializable("fahuodanweiBean",fahuodanweiBean);
+//        args.putSerializable("shouhuodanweiBean",shouhuodanweiBean);
+//        args.putSerializable("chexing",chexing);
+//        args.putSerializable("huowu",huowu);
+//
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
