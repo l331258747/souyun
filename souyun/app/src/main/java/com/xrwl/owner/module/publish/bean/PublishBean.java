@@ -359,6 +359,8 @@ import java.util.Map;
     }
     public String getTruckIds()
     {
+        if(truck == null)
+            return "";
         return  truck.getId();
     }
 //    public String getStartarea() {
