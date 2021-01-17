@@ -139,7 +139,6 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
             @Override
             public void onCancel() {
 
-
             }
         });
     }

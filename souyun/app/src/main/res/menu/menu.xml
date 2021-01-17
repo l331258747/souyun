@@ -34,8 +34,8 @@
 
 <!--    <item-->
 <!--        android:id="@+id/dzdzgl"-->
-<!--        android:icon="@drawable/ic_green_arrow"-->
-<!--        android:title="    大宗地址管理"/>-->
+<!--        android:icon="@drawable/ic_home_company"-->
+<!--        android:title="大宗地址管理"/>-->
 
 <!--    <item-->
 <!--        android:id="@+id/dzmcgl"-->

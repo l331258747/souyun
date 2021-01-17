@@ -2,6 +2,9 @@ package com.xrwl.owner.module.publish.bean;
 
 import android.text.TextUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 public class CompanyManageBean {
 
 
@@ -42,7 +45,11 @@ public class CompanyManageBean {
     }
 
     public String getDanweidezhi() {
-        return danweidezhi;
+        try {
+            return  (URLDecoder.decode(danweidezhi, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public void setDanweidezhi(String danweidezhi) {
@@ -50,7 +57,11 @@ public class CompanyManageBean {
     }
 
     public String getSheng() {
-        return sheng;
+        try {
+            return  (URLDecoder.decode(sheng, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public void setSheng(String sheng) {
@@ -58,17 +69,21 @@ public class CompanyManageBean {
     }
 
     public String getShi() {
-        return shi;
+        try {
+            return  (URLDecoder.decode(shi, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public String getShengshixina(){
         String str = "";
-        if(!TextUtils.isEmpty(sheng))
-            str = str + sheng;
-        if(!TextUtils.isEmpty(shi))
-            str = str + sheng;
-        if(!TextUtils.isEmpty(xian))
-            str = str + sheng;
+        if(!TextUtils.isEmpty(getSheng()))
+            str = str + getSheng();
+        if(!TextUtils.isEmpty(getShi()))
+            str = str + getShi();
+        if(!TextUtils.isEmpty(getXian()))
+            str = str + getXian();
         return str;
     }
 
@@ -77,7 +92,11 @@ public class CompanyManageBean {
     }
 
     public String getXian() {
-        return xian;
+        try {
+            return  (URLDecoder.decode(xian, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public void setXian(String xian) {
@@ -85,7 +104,11 @@ public class CompanyManageBean {
     }
 
     public String getXiangxidezhi() {
-        return xiangxidezhi;
+        try {
+            return  (URLDecoder.decode(xiangxidezhi, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return "";
+        }
     }
 
     public void setXiangxidezhi(String xiangxidezhi) {

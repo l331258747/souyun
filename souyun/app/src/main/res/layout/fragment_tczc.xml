@@ -213,6 +213,7 @@
                         android:inputType="text" />
 
                     <ImageView
+                        android:id="@+id/publishTruckIv"
                         android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_green_arrow" />
@@ -254,6 +255,7 @@
                         android:inputType="text" />
 
                     <ImageView
+                        android:id="@+id/publishProductIv"
                         android:layout_width="@dimen/default_dp30"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_green_arrow" />

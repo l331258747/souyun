@@ -357,7 +357,7 @@ public class CtldFragment extends BaseEventFragment<PublishContract.IView, Publi
     }
 
     @OnClick({
-            R.id.publishProductTv
+            R.id.publishProductTv,R.id.publishProductIv
     })
     public void onProductClick(View v) {
         /**货物名称*/

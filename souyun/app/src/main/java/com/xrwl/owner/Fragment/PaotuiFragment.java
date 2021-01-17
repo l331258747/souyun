@@ -305,7 +305,7 @@ public class PaotuiFragment extends BaseEventFragment<PublishContract.IView, Pub
     }
 
     @OnClick({
-            R.id.publishProductTv
+            R.id.publishProductTv,R.id.publishProductIv
     })
     public void onProductClick(View v) {
         /**货物名称*/

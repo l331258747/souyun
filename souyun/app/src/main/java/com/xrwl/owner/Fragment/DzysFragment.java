@@ -39,6 +39,7 @@ import com.xrwl.owner.module.publish.mvp.PublishContract;
 import com.xrwl.owner.module.publish.mvp.PublishPresenter;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.PublishConfirmActivity;
+import com.xrwl.owner.module.publish.view.CompanyManageActivity;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.view.PhotoScrollView;
@@ -349,23 +350,23 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
         }
     }
 
-//    @OnClick({
-//            R.id.publishCompanyshouhuoIv, R.id.publishCompanyIv
-//    })
-//    public void CompanyClick(View v) {
-//        Intent intent = new Intent(getContext(), CompanyManageActivity.class);
-//        intent.putExtra("isItemClick", true);
-//        /**请选择发货单位*/
-//        if (v.getId() == R.id.publishCompanyshouhuoIv) {
-//            intent.putExtra("title", "请选择发货单位");
-//            startActivityForResult(intent, RESULT_CONPANY_START);
-//        }
-//        /**请选择收货单位*/
-//        if (v.getId() == R.id.publishCompanyIv) {
-//            intent.putExtra("title", "请选择收货单位");
-//            startActivityForResult(intent, RESULT_CONPANY_END);
-//        }
-//    }
+    @OnClick({
+            R.id.publishCompanyshouhuoIv, R.id.publishCompanyIv
+    })
+    public void CompanyClick(View v) {
+        Intent intent = new Intent(getContext(), CompanyManageActivity.class);
+        intent.putExtra("isItemClick", true);
+        /**请选择发货单位*/
+        if (v.getId() == R.id.publishCompanyIv) {
+            intent.putExtra("title", "请选择发货单位");
+            startActivityForResult(intent, RESULT_CONPANY_START);
+        }
+        /**请选择收货单位*/
+        if (v.getId() == R.id.publishCompanyshouhuoIv) {
+            intent.putExtra("title", "请选择收货单位");
+            startActivityForResult(intent, RESULT_CONPANY_END);
+        }
+    }
 
     boolean isQitaShow;
     private void setQitaView(boolean isShow) {
@@ -426,7 +427,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     }
 
     @OnClick({
-            R.id.publishProductTv
+            R.id.publishProductTv,R.id.publishProductIv
     })
     public void onProductClick(View v) {
         /**货物名称*/
