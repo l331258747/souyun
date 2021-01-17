@@ -52,7 +52,8 @@ public class GoodsActivity extends BaseActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.friendContainerLayout, DzysFragment
-                                .newInstance(myLocation,destination,fahuodanweiBean,shouhuodanweiBean,chexing,huowu))
+//                                .newInstance(myLocation,destination,fahuodanweiBean,shouhuodanweiBean,chexing,huowu))
+                                .newInstance("好友",""))
                         .commit();
                 break;
             case 1:
