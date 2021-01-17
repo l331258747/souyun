@@ -432,7 +432,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             params.put("piece", mjianDefaultWeightEt.getText().toString());
         }
 
-        mPresenter.calculateDistancecount(params);
+//        mPresenter.calculateDistancecount(params);
 
         mPublishBean.imagePaths = mImagePaths;
         mPublishBean.defaultNum = mjianDefaultWeightEt.getText().toString();

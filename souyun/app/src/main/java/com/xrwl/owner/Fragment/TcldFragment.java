@@ -398,7 +398,7 @@ public class TcldFragment extends BaseEventFragment<PublishContract.IView, Publi
         } else {
             params.put("piece", mjianDefaultWeightEt.getText().toString());
         }
-        mPresenter.calculateDistancecount(params);
+//        mPresenter.calculateDistancecount(params);
 
         mPublishBean.imagePaths = mImagePaths;
         mPublishBean.defaultNum = mjianDefaultWeightEt.getText().toString();
