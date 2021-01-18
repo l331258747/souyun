@@ -39,7 +39,6 @@ import com.xrwl.owner.module.publish.mvp.PublishPresenter;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.PublishConfirmActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
-import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.view.PhotoScrollView;
 
@@ -71,11 +70,11 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
     public static final int RESULT_FRIEND_START = 444;//发货电话
     public static final int RESULT_FRIEND_END = 555;//收货人
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
+//
+//    private String mParam1;
+//    private String mParam2;
 
     //已选车型
     @BindView(R.id.publishTruckTv)
@@ -152,15 +151,42 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
     public String shijianlo;
     public String julilo;
 
+    public MarkerBean myLocation;//出发地
+    public MarkerBean destination;//目的地
+    public HomeChexingBean chexing;
+    public HomeHuowuBean huowu;
+
     public TczcFragment() {
         // Required empty public constructor
     }
 
-    public static TczcFragment newInstance(String param1, String param2) {
+//    public static TczcFragment newInstance(String param1, String param2) {
+//        TczcFragment fragment = new TczcFragment();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+//        isCreate = true;
+//    }
+
+    public static TczcFragment newInstance(MarkerBean myLocation, MarkerBean destination, HomeChexingBean chexing, HomeHuowuBean huowu) {
         TczcFragment fragment = new TczcFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("myLocation",myLocation);
+        args.putSerializable("destination",destination);
+        args.putSerializable("chexing",chexing);
+        args.putSerializable("huowu",huowu);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -169,8 +195,10 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            myLocation = (MarkerBean) getArguments().getSerializable("myLocation");
+            destination = (MarkerBean) getArguments().getSerializable("destination");
+            chexing = (HomeChexingBean) getArguments().getSerializable("chexing");
+            huowu = (HomeHuowuBean) getArguments().getSerializable("huowu");
         }
         isCreate = true;
     }
@@ -202,15 +230,14 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
                 .compress(true)
                 .circleDimmedLayer(true)
                 .forResult(PictureConfig.CHOOSE_REQUEST));
+
+        setDefaultData();
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isCreate) {
+    public void setDefaultData() {
             //发货定位
             {
-                MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
+                MarkerBean bean = myLocation;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getName())){
                         mpublishStartPhonepersonEt.setText(bean.getName());
@@ -245,7 +272,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
 //            if (TextUtils.isEmpty(mpublishAddressDefaultEndLocationTv.getText().toString()))
             {
-                MarkerBean bean = ((TabActivity) getActivity()).getDestination();
+                MarkerBean bean = destination;
                 if (bean != null) {
 
                     if(!TextUtils.isEmpty(bean.getName())){
@@ -281,7 +308,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //吨
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getDun())){
                         mppDefaultWeightEt.setText(bean.getDun());
@@ -290,7 +317,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //方
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getFang())){
                         mppDefaultAreaEt.setText(bean.getFang());
@@ -299,7 +326,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //件
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getJian())){
                         mjianDefaultWeightEt.setText(bean.getJian());
@@ -308,7 +335,7 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //车型
             {
-                HomeChexingBean bean = ((TabActivity) getActivity()).getChexing();
+                HomeChexingBean bean = chexing;
                 if (bean != null && bean.getChexingType() == 0) {
                     if(!TextUtils.isEmpty(bean.getChexing())){
                         mpublishTruckTv.setText(bean.getChexing());
@@ -322,7 +349,6 @@ public class TczcFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             checkDefaultLocation();
         }
-    }
 
     @OnClick(R.id.publishTruckLayout)
     public void truckClick() {

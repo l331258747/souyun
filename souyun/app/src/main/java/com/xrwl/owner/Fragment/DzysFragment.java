@@ -23,8 +23,6 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventFragment;
 import com.xrwl.owner.bean.Account;
-import com.xrwl.owner.bean.CompanyFahuoBean;
-import com.xrwl.owner.bean.CompanyShouhuoBean;
 import com.xrwl.owner.bean.Distance;
 import com.xrwl.owner.bean.HomeChexingBean;
 import com.xrwl.owner.bean.HomeHuowuBean;
@@ -41,7 +39,6 @@ import com.xrwl.owner.module.publish.mvp.PublishPresenter;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.PublishConfirmActivity;
 import com.xrwl.owner.module.publish.view.CompanyManageActivity;
-import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.view.PhotoScrollView;
 
@@ -73,11 +70,11 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     public static final int RESULT_CONPANY_END = 777;//收货单位
 
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
+//
+//    private String mParam1;
+//    private String mParam2;
 
     //发货定位
     @BindView(R.id.publishAddressDefaultStartLocationTv)
@@ -172,48 +169,55 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     public String shijianlo;
     public String julilo;
 
-//    public MarkerBean myLocation;//出发地
-//    public MarkerBean destination;//目的地
-//    public CompanyFahuoBean fahuodanweiBean;
-//    public CompanyShouhuoBean shouhuodanweiBean;
-//    public HomeChexingBean chexing;
-//    public HomeHuowuBean huowu;
+    public MarkerBean myLocation;//出发地
+    public MarkerBean destination;//目的地
+    public HomeChexingBean chexing;
+    public HomeHuowuBean huowu;
 
     public DzysFragment() {
         // Required empty public constructor
     }
 
-    public static DzysFragment newInstance(String param1, String param2) {
+//    public static DzysFragment newInstance(String param1, String param2) {
+//        DzysFragment fragment = new DzysFragment();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
+
+    public static DzysFragment newInstance(MarkerBean myLocation,MarkerBean destination,HomeChexingBean chexing,HomeHuowuBean huowu) {
         DzysFragment fragment = new DzysFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("myLocation",myLocation);
+        args.putSerializable("destination",destination);
+        args.putSerializable("chexing",chexing);
+        args.putSerializable("huowu",huowu);
+
         fragment.setArguments(args);
         return fragment;
     }
 
-
-//    public static DzysFragment newInstance(MarkerBean myLocation,MarkerBean destination,CompanyFahuoBean fahuodanweiBean,
-//                                           CompanyShouhuoBean shouhuodanweiBean,HomeChexingBean chexing,HomeHuowuBean huowu) {
-//        DzysFragment fragment = new DzysFragment();
-//        Bundle args = new Bundle();
-//        args.putSerializable("myLocation",myLocation);
-//        args.putSerializable("destination",destination);
-//        args.putSerializable("fahuodanweiBean",fahuodanweiBean);
-//        args.putSerializable("shouhuodanweiBean",shouhuodanweiBean);
-//        args.putSerializable("chexing",chexing);
-//        args.putSerializable("huowu",huowu);
-//
-//        fragment.setArguments(args);
-//        return fragment;
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+//        isCreate = true;
 //    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            myLocation = (MarkerBean) getArguments().getSerializable("myLocation");
+            destination = (MarkerBean) getArguments().getSerializable("destination");
+            chexing = (HomeChexingBean) getArguments().getSerializable("chexing");
+            huowu = (HomeHuowuBean) getArguments().getSerializable("huowu");
         }
         isCreate = true;
     }
@@ -247,15 +251,14 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 .forResult(PictureConfig.CHOOSE_REQUEST));
 
         setQitaView(isQitaShow);
+
+        setDefaultData();
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isCreate) {
+    public void setDefaultData() {
             //发货定位
             {
-                MarkerBean bean = ((TabActivity) getActivity()).getMyLocation();
+                MarkerBean bean = myLocation;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getName())){
                         mpublishStartPhonepersonEt.setText(bean.getName());
@@ -290,7 +293,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //到货定位
             {
-                MarkerBean bean = ((TabActivity) getActivity()).getDestination();
+                MarkerBean bean = destination;
                 if (bean != null) {
 
                     if(!TextUtils.isEmpty(bean.getName())){
@@ -325,7 +328,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //吨
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getDun())){
                         mppDefaultWeightEt.setText(bean.getDun());
@@ -334,7 +337,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
             }
             //方
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getFang())){
                         mppDefaultAreaEt.setText(bean.getFang());
@@ -342,37 +345,16 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                 }
             }
             //件
-//            if (TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString()))
             {
-                HomeHuowuBean bean = ((TabActivity) getActivity()).getHuowu();
+                HomeHuowuBean bean = huowu;
                 if (bean != null) {
                     if(!TextUtils.isEmpty(bean.getJian())){
                         mjianDefaultWeightEt.setText(bean.getJian());
                     }
                 }
             }
-            //发货单位
-            if (TextUtils.isEmpty(mpublishCompanyTv.getText().toString())) {
-                CompanyFahuoBean bean = ((TabActivity) getActivity()).getFahuodanweiBean();
-                if (bean != null) {
-                    if(!TextUtils.isEmpty(bean.getName())){
-                        mpublishCompanyTv.setText(bean.getName());
-                    }
-                }
-            }
-            //收货单位
-            if (TextUtils.isEmpty(mpublishCompanyshouhuoTv.getText().toString())) {
-                CompanyShouhuoBean bean = ((TabActivity) getActivity()).getShouhuodanweiBean();
-                if (bean != null) {
-                    if(!TextUtils.isEmpty(bean.getName())){
-                        mpublishCompanyshouhuoTv.setText(bean.getName());
-                    }
-                }
-            }
-
             checkDefaultLocation();
         }
-    }
 
     @OnClick({
             R.id.publishCompanyshouhuoIv, R.id.publishCompanyIv

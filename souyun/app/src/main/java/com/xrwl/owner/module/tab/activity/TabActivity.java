@@ -28,11 +28,6 @@ import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseEventActivity;
 import com.xrwl.owner.bean.Account;
 import com.xrwl.owner.bean.Cljbxx;
-import com.xrwl.owner.bean.CompanyFahuoBean;
-import com.xrwl.owner.bean.CompanyShouhuoBean;
-import com.xrwl.owner.bean.HomeChexingBean;
-import com.xrwl.owner.bean.HomeHuowuBean;
-import com.xrwl.owner.bean.MarkerBean;
 import com.xrwl.owner.bean.Tab;
 import com.xrwl.owner.event.BusinessTabCountEvent;
 import com.xrwl.owner.event.TabCheckEvent;
@@ -73,71 +68,6 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
     private AMapLocationClient mLocationClient;
     private Object shippingNoteInfos;
     private RetrofitManager1 retrofitManager;
-
-    public MarkerBean myLocation;//出发地
-    public MarkerBean destination;//目的地
-    public CompanyFahuoBean fahuodanweiBean;
-    public CompanyShouhuoBean shouhuodanweiBean;
-    public HomeChexingBean chexing;
-    public HomeHuowuBean huowu;
-
-    public CompanyFahuoBean getFahuodanweiBean() {
-        return fahuodanweiBean;
-    }
-
-    public void setFahuodanweiBean(CompanyFahuoBean fahuodanweiBean) {
-        this.fahuodanweiBean = fahuodanweiBean;
-    }
-
-    public CompanyShouhuoBean getShouhuodanweiBean() {
-        return shouhuodanweiBean;
-    }
-
-    public void setShouhuodanweiBean(CompanyShouhuoBean shouhuodanweiBean) {
-        this.shouhuodanweiBean = shouhuodanweiBean;
-    }
-
-    public HomeChexingBean getChexing() {
-        return chexing;
-    }
-
-    public void setChexing(HomeChexingBean chexing) {
-        this.chexing = chexing;
-    }
-
-    public HomeHuowuBean getHuowu() {
-        return huowu;
-    }
-
-    public void setHuowu(HomeHuowuBean huowu) {
-        this.huowu = huowu;
-    }
-
-    public MarkerBean getMyLocation() {
-        return myLocation;
-    }
-
-    public void setMyLocation(MarkerBean myLocation) {
-        setMyLocation(myLocation,false);
-    }
-
-    //isAdd 强行添加数据
-    public void setMyLocation(MarkerBean myLocation,boolean isAdd) {
-//        if(isAdd){
-            this.myLocation = myLocation;
-//        }else{
-//            if(this.myLocation == null)
-//                this.myLocation = myLocation;
-//        }
-    }
-
-    public MarkerBean getDestination() {
-        return destination;
-    }
-
-    public void setDestination(MarkerBean destination) {
-        this.destination = destination;
-    }
 
     @Override
     protected TabPresenter initPresenter() {

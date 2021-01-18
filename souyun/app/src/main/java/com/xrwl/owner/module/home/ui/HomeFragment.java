@@ -16,11 +16,6 @@ import android.widget.TextView;
 
 import com.ldw.library.mvp.BaseMVP;
 import com.xrwl.owner.Fragment.BlankFragment;
-import com.xrwl.owner.Fragment.CtldFragment;
-import com.xrwl.owner.Fragment.CtzcFragment;
-import com.xrwl.owner.Fragment.DzysFragment;
-import com.xrwl.owner.Fragment.TcldFragment;
-import com.xrwl.owner.Fragment.TczcFragment;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseFragment;
 import com.xrwl.owner.module.me.dialog.ExitDialog;
@@ -192,26 +187,26 @@ public class HomeFragment extends BaseFragment {
 
     private void loadData() {
         title_list.add("指尖上的发货平台");
-        title_list.add("大宗运输");
-        title_list.add("长途零担");
-        title_list.add("长途整车");
-        title_list.add("同城零担");
-        title_list.add("同城专车");
+//        title_list.add("大宗运输");
+//        title_list.add("长途零担");
+//        title_list.add("长途整车");
+//        title_list.add("同城零担");
+//        title_list.add("同城专车");
 //        title_list.add("跑腿");
 
 
         BlankFragment f = new BlankFragment();
         fragment_list.add(f);
-        DzysFragment twoFragment4 = new DzysFragment();
-        fragment_list.add(twoFragment4);
-        CtldFragment twoFragment6 = new CtldFragment();
-        fragment_list.add(twoFragment6);
-        CtzcFragment twoFragment5 = new CtzcFragment();
-        fragment_list.add(twoFragment5);
-        TcldFragment twoFragment = new TcldFragment();
-        fragment_list.add(twoFragment);
-        TczcFragment twoFragment3 = new TczcFragment();
-        fragment_list.add(twoFragment3);
+//        DzysFragment twoFragment4 = new DzysFragment();
+//        fragment_list.add(twoFragment4);
+//        CtldFragment twoFragment6 = new CtldFragment();
+//        fragment_list.add(twoFragment6);
+//        CtzcFragment twoFragment5 = new CtzcFragment();
+//        fragment_list.add(twoFragment5);
+//        TcldFragment twoFragment = new TcldFragment();
+//        fragment_list.add(twoFragment);
+//        TczcFragment twoFragment3 = new TczcFragment();
+//        fragment_list.add(twoFragment3);
 //        PaotuiFragment paotuiFragment = new PaotuiFragment();
 //        fragment_list.add(paotuiFragment);
 
@@ -309,10 +304,6 @@ public class HomeFragment extends BaseFragment {
     public boolean onBackPressed(){
         if(nidaye.isDrawerOpen(nav)){
             nidaye.closeDrawer(nav);
-            return true;
-        }
-        if(currentPage != 0){
-            setTabIndex(0);
             return true;
         }
         return false;

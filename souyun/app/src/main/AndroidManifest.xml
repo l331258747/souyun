@@ -130,6 +130,9 @@
             android:name=".module.business.ui.BusinessFragmentActivty"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Fragment.GoodsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".module.account.activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -59,14 +59,12 @@ import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.home.adapter.HomeAdAdapter;
 import com.xrwl.owner.module.home.adapter.HomesAdAdapter;
 import com.xrwl.owner.module.home.ui.CustomDialog;
-import com.xrwl.owner.module.home.ui.HomeFragment;
 import com.xrwl.owner.module.home.ui.RedPacketViewHolder;
 import com.xrwl.owner.module.order.owner.ui.ui.route.DriveRouteOverlay;
 import com.xrwl.owner.module.publish.adapter.SearchLocationAdapter;
 import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
-import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.MyTextWatcher;
@@ -314,13 +312,13 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         et_fahuotel.setText(mAccount.getPhone());
         locationBean.setName(mAccount.getNameDecode());
         locationBean.setTel(mAccount.getPhone());
-        ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//        ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
         et_shouhuoren.setText(mAccount.getNameDecode());
         et_shouhuotel.setText(mAccount.getPhone());
         destinationBean.setName(mAccount.getNameDecode());
         destinationBean.setTel(mAccount.getPhone());
-        ((TabActivity)getActivity()).setDestination(destinationBean);
+//        ((TabActivity)getActivity()).setDestination(destinationBean);
 
         sp_chexing.setAdapter(new ArrayAdapter<>(getContext(),
                 R.layout.my_simple_spinner_dropdown_item, android.R.id.text1,
@@ -341,7 +339,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             public void afterTextChanged(Editable s) {
                 if(!TextUtils.isEmpty(s.toString())){
                     huowuBean.setDun(s.toString());
-                    ((TabActivity)getActivity()).setHuowu(huowuBean);
+//                    ((TabActivity)getActivity()).setHuowu(huowuBean);
                 }
             }
         });
@@ -350,7 +348,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void afterTextChanged(Editable s) {
                 huowuBean.setFang(s.toString());
-                ((TabActivity)getActivity()).setHuowu(huowuBean);
+//                ((TabActivity)getActivity()).setHuowu(huowuBean);
             }
         });
 
@@ -358,7 +356,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void afterTextChanged(Editable s) {
                 huowuBean.setJian(s.toString());
-                ((TabActivity)getActivity()).setHuowu(huowuBean);
+//                ((TabActivity)getActivity()).setHuowu(huowuBean);
             }
         });
 
@@ -366,14 +364,14 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void afterTextChanged(Editable s) {
                 locationBean.setName(s.toString());
-                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
             }
         });
         et_fahuotel.addTextChangedListener(new MyTextWatcher(){
             @Override
             public void afterTextChanged(Editable s) {
                 locationBean.setTel(s.toString());
-                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
             }
         });
 
@@ -381,14 +379,14 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void afterTextChanged(Editable s) {
                 destinationBean.setName(s.toString());
-                ((TabActivity)getActivity()).setDestination(destinationBean);
+//                ((TabActivity)getActivity()).setDestination(destinationBean);
             }
         });
         et_shouhuotel.addTextChangedListener(new MyTextWatcher(){
             @Override
             public void afterTextChanged(Editable s) {
                 destinationBean.setTel(s.toString());
-                ((TabActivity)getActivity()).setDestination(destinationBean);
+//                ((TabActivity)getActivity()).setDestination(destinationBean);
             }
         });
 
@@ -660,7 +658,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                     locationBean.setAddress(aMapLocation.getAddress());
                     locationBean.setLat(aMapLocation.getLatitude());
                     locationBean.setLon(aMapLocation.getLongitude());
-                    ((TabActivity)getActivity()).setMyLocation(locationBean, true);
+//                    ((TabActivity)getActivity()).setMyLocation(locationBean, true);
 
                     et_chufadi.setText(aMapLocation.getAddress());
                     city = aMapLocation.getCity();
@@ -690,21 +688,40 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             return;
         }
 
+        Intent intent = new Intent(getActivity(),GoodsActivity.class);
+        intent.putExtra("myLocation",locationBean);
+        intent.putExtra("destination",destinationBean);
+        intent.putExtra("chexing",chexingBean);
+        intent.putExtra("huowu",huowuBean);
         switch (view.getId()) {
             case R.id.tv_dzys:
-                ((HomeFragment)getParentFragment()).setTabIndex(1);
+                intent.putExtra("type",0);
+                startActivity(intent);
+//                ((HomeFragment)getParentFragment()).setTabIndex(1);
                 break;
             case R.id.tv_ctld:
-                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity()))
-                    ((HomeFragment)getParentFragment()).setTabIndex(4);
-                else
-                    ((HomeFragment)getParentFragment()).setTabIndex(2);
+                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
+                    intent.putExtra("type",3);
+                    startActivity(intent);
+                }
+//                    ((HomeFragment)getParentFragment()).setTabIndex(4);
+                else{
+                    intent.putExtra("type",1);
+                    startActivity(intent);
+                }
+//                    ((HomeFragment)getParentFragment()).setTabIndex(2);
                 break;
             case R.id.tv_ctzc:
-                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity()))
-                    ((HomeFragment)getParentFragment()).setTabIndex(5);
-                else
-                    ((HomeFragment)getParentFragment()).setTabIndex(3);
+                if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
+                    intent.putExtra("type",4);
+                    startActivity(intent);
+                }
+//                    ((HomeFragment)getParentFragment()).setTabIndex(5);
+                else{
+                    intent.putExtra("type",2);
+                    startActivity(intent);
+                }
+//                    ((HomeFragment)getParentFragment()).setTabIndex(3);
                 break;
 //            case R.id.tv_tcld:
 //                ((HomeFragment)getParentFragment()).setTabIndex(4);
@@ -756,7 +773,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 mStartPoint  = pi.getLatLonPoint();
                                 searchRouteResult();
 
-                                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//                                ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
                                 et_chufadi.setText(pi.getTitle());
 
@@ -818,7 +835,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                                 mEndPoint  = pi.getLatLonPoint();
                                 searchRouteResult();
 
-                                ((TabActivity)getActivity()).setDestination(destinationBean);
+//                                ((TabActivity)getActivity()).setDestination(destinationBean);
 
                                 et_mudidi.setText(pi.getTitle());
 
@@ -936,7 +953,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             mStartPoint  = new LatLonPoint(lat,lon);
             searchRouteResult();
 
-            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
             et_chufadi.setText(title);
             if(!TextUtils.isEmpty(userName)){
@@ -967,7 +984,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             mEndPoint  = new LatLonPoint(lat,lon);
             searchRouteResult();
 
-            ((TabActivity)getActivity()).setDestination(destinationBean);
+//            ((TabActivity)getActivity()).setDestination(destinationBean);
 
             et_mudidi.setText(title);
             if(!TextUtils.isEmpty(userName)){
@@ -988,7 +1005,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             chexingBean.setTruck(truck);
             chexingBean.setChexingType(chexingType);
 
-            ((TabActivity)getActivity()).setChexing(chexingBean);
+//            ((TabActivity)getActivity()).setChexing(chexingBean);
 
             tv_chexing.setText(truck.getTitle());
 
@@ -1024,7 +1041,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             locationBean.setName(name);
             locationBean.setTel(tel);
 
-            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
+//            ((TabActivity)getActivity()).setMyLocation(locationBean,true);
 
         }
         /**收货人*/
@@ -1039,7 +1056,7 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             destinationBean.setName(name);
             destinationBean.setTel(tel);
 
-            ((TabActivity)getActivity()).setDestination(destinationBean);
+//            ((TabActivity)getActivity()).setDestination(destinationBean);
 
         }
     }
