@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <com.ldw.library.view.TitleView
-        android:id="@+id/baseTitleView1"
+        android:id="@+id/baseTitleView"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -21,7 +23,6 @@
         android:fillViewport="true"
         android:overScrollMode="never"
         android:scrollbars="none"
-        android:background="@color/white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -40,7 +41,7 @@
 
                 <com.ldw.library.view.TitleView
 
-                    android:id="@+id/baseTitleView"
+                    android:id="@+id/baseTitleView1"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
                     android:background="@color/colorPrimary"
@@ -509,7 +510,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:layout_height="wrap_content"
-                            android:text="10.810.810.810.810.8元"
+                            tools:text="10.810.810.810.810.8元"
                             android:textColor="@color/light_black"
                             android:textSize="@dimen/default_font12" />
                     </LinearLayout>
@@ -766,17 +767,7 @@
                         android:text="返回首页"
                         android:visibility="gone" />
 
-                    <Button
-                        android:id="@+id/querenzhifu"
-                        style="@style/BaseBtnTheme"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/default_dp20"
-                        android:layout_marginRight="@dimen/default_dp20"
-                        android:text="确         认" />
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -810,9 +801,21 @@
                 android:visibility="gone" />
 
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_60"/>
+
         </LinearLayout>
 
     </ScrollView>
 
+    <Button
+        android:id="@+id/querenzhifu"
+        style="@style/BaseBtnTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dp_20"
+        android:text="确         认" />
 
 </LinearLayout>

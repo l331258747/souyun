@@ -1,23 +1,12 @@
 package com.xrwl.owner.module.friend.ui;
 
 import android.Manifest;
-import android.app.Notification;
-import android.app.NotificationManager;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -37,8 +26,6 @@ import com.xrwl.owner.module.friend.mvp.FriendAddPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,15 +70,9 @@ public class FriendAddActivity extends BaseActivity<FriendAddContract.IAddView, 
                         this,new String[]{Manifest.permission.READ_CONTACTS},1);
             }
 
-
-
-
-
-
-
-
          if (!PermissionUtils.isGranted(Manifest.permission.GET_ACCOUNTS)) {
 
+            @SuppressLint("WrongConstant")
             PermissionUtils utils = PermissionUtils.permission(Manifest.permission.GET_ACCOUNTS);
 
             utils.request();
@@ -139,11 +120,6 @@ public class FriendAddActivity extends BaseActivity<FriendAddContract.IAddView, 
             }
         });
     }
-
-
-
-
-
 
 
     //回调方法，无论哪种结果，最终都会回调该方法，之后在判断用户是否授权，

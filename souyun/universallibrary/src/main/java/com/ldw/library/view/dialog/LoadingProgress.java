@@ -1,5 +1,6 @@
 package com.ldw.library.view.dialog;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,11 +13,11 @@ import com.ldw.library.R;
  */
 public class LoadingProgress {
 
-    public static android.app.ProgressDialog showProgress(Context context, String msg) {
+    public static ProgressDialog showProgress(Context context, String msg) {
         return showProgress(context, msg, false);
     }
     public static android.app.ProgressDialog showProgress(Context context, String msg, boolean cancelable) {
-        android.app.ProgressDialog pd = new android.app.ProgressDialog(context, R.style.CustomDialogStyle);
+        ProgressDialog pd = new ProgressDialog(context, R.style.CustomDialogStyle);
         pd.show();
 
         View view = View.inflate(context, R.layout.ul_loading_dialog_layout, null);

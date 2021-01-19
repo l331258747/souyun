@@ -60,13 +60,10 @@ public class OwnerOrderActivity extends BaseActivity {
     @Override
     protected void initViews() {
 
-        bt = (ImageView) findViewById(R.id.fanhuijian);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(mContext, TabActivity.class);
-                startActivity(intent);
-            }
+        bt = findViewById(R.id.fanhuijian);
+        bt.setOnClickListener(view -> {
+            Intent intent=new Intent(mContext, TabActivity.class);
+            startActivity(intent);
         });
 
         final List<BaseMenu> datas = new ArrayList<>();

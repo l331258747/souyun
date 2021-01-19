@@ -24,33 +24,23 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amap.api.services.core.LatLonPoint;
 import com.blankj.utilcode.util.AppUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.ldw.library.bean.BaseEntity;
 import com.ldw.library.utils.Utils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.xrwl.owner.Frame.auxiliary.DataCleanManager;
-import com.xrwl.owner.Frame.auxiliary.DataCleanManager2;
-import com.xrwl.owner.Frame.auxiliary.DataCleanManagerUtils;
 import com.xrwl.owner.Frame.auxiliary.RetrofitManager;
-import com.xrwl.owner.Frame.retrofitapi.NetService;
-import com.xrwl.owner.Main3Activity;
 import com.xrwl.owner.MyApplication;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
 import com.xrwl.owner.base.PermissionDialog;
 import com.xrwl.owner.bean.Account;
-import com.xrwl.owner.bean.DriverpositioningBeen;
 import com.xrwl.owner.bean.Update;
-import com.xrwl.owner.bean.updateBeen;
 import com.xrwl.owner.module.account.activity.LoginActivity;
 import com.xrwl.owner.module.loading.mvp.LoadingContract;
 import com.xrwl.owner.module.loading.mvp.LoadingPresenter;
@@ -59,11 +49,6 @@ import com.xrwl.owner.retrofit.file.JsDownloadListener;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.FileUtil;
 
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,9 +56,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -161,7 +144,9 @@ public class LoadingActivity extends BaseActivity<LoadingContract.IView, Loading
         //更改状态栏
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.whiteColorPrimary));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(this.getResources().getColor(R.color.whiteColorPrimary));
+        }
         //解决appb不亮  粗暴  设置亮度最大化
         window = getWindow();
         WindowManager.LayoutParams windowLayoutParams = window.getAttributes();

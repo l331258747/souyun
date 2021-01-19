@@ -17,6 +17,7 @@ import com.xrwl.owner.event.OwnerOrderListRrefreshEvent;
 import com.xrwl.owner.module.order.owner.adapter.OwnerOrderAdapter;
 import com.xrwl.owner.module.order.owner.mvp.OwnerOrderContract;
 import com.xrwl.owner.module.order.owner.mvp.OwnerOrderPresenter;
+import com.xrwl.owner.utils.MyUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -101,6 +102,8 @@ public class OwnerOrderFragment extends BaseEventFragment<OwnerOrderContract.IVi
             mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                    if(!MyUtils.isFastClick())
+                        return;
                     Intent intent = new Intent(mContext, OwnerOrderDetailActivity.class);
                     intent.putExtra("id", mAdapter.getDatas().get(position).id);
                     intent.putExtra("driverid", mAdapter.getDatas().get(position).getDriverId());

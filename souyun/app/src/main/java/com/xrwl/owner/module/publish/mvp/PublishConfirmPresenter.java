@@ -45,12 +45,12 @@ public class PublishConfirmPresenter extends PublishConfirmContract.APresenter {
     @Override
     public void postOrder(List<String> imagePaths, Map<String, String> params) {
 
-        Map<String, RequestBody> images = new HashMap<>();
+        Map<String, RequestBody> sendParams = new HashMap<>();
         if (imagePaths != null) {
             for (String path : imagePaths) {
                 File file = new File(path);
                 RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
-                images.put("images\"; filename=\"" + file.getName(), requestBody);
+                sendParams.put("images\"; filename=\"" + file.getName(), requestBody);
             }
         }
 
@@ -61,14 +61,14 @@ public class PublishConfirmPresenter extends PublishConfirmContract.APresenter {
                 String value = params.get(key);
                 if (!TextUtils.isEmpty(value)) {
                     String encodedParam = URLEncoder.encode(value, "UTF-8");
-                    images.put(key, RequestBody.create(MediaType.parse("text/plain"), encodedParam));
+                    sendParams.put(key, RequestBody.create(MediaType.parse("text/plain"), encodedParam));
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
 
-        mModel.postOrder(images).subscribe(new BaseObserver<PostOrder>() {
+        mModel.postOrder(sendParams).subscribe(new BaseObserver<PostOrder>() {
             @Override
             public void onSubscribe(Disposable d) {
                 addDisposable(d);
@@ -77,10 +77,7 @@ public class PublishConfirmPresenter extends PublishConfirmContract.APresenter {
             @Override
             protected void onHandleSuccess(BaseEntity<PostOrder> entity) {
                 if (entity.isSuccess()) {
-                    String orderId = entity.getData().getOrderId();
-
                     mView.onRefreshSuccess(entity);
-
                 } else {
                     mView.onError(entity);
                 }
@@ -95,12 +92,12 @@ public class PublishConfirmPresenter extends PublishConfirmContract.APresenter {
 
     @Override
     public void postOrder1(List<String> imagePaths, Map<String, String> params) {
-        Map<String, RequestBody> images = new HashMap<>();
+        Map<String, RequestBody> sendParams = new HashMap<>();
         if (imagePaths != null) {
             for (String path : imagePaths) {
                 File file = new File(path);
                 RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
-                images.put("images\"; filename=\"" + file.getName(), requestBody);
+                sendParams.put("images\"; filename=\"" + file.getName(), requestBody);
             }
         }
 
@@ -111,14 +108,14 @@ public class PublishConfirmPresenter extends PublishConfirmContract.APresenter {
                 String value = params.get(key);
                 if (!TextUtils.isEmpty(value)) {
                     String encodedParam = URLEncoder.encode(value, "UTF-8");
-                    images.put(key, RequestBody.create(MediaType.parse("text/plain"), encodedParam));
+                    sendParams.put(key, RequestBody.create(MediaType.parse("text/plain"), encodedParam));
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
 
-        mModel.postOrder(images).subscribe(new BaseObserver<PostOrder>() {
+        mModel.postOrder(sendParams).subscribe(new BaseObserver<PostOrder>() {
             @Override
             public void onSubscribe(Disposable d) {
                 addDisposable(d);

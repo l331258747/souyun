@@ -11,12 +11,11 @@
     android:paddingRight="@dimen/loading_padding_leftright"
     android:background="@drawable/ul_loading_bg">
 
-    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+    <ProgressBar
+        android:id="@+id/loading_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialProgressBar.ProgressBar"
-        android:tint="@color/white"
-        android:indeterminate="true"/>
+        android:indeterminate="false" />
 
     <TextView
         android:id="@+id/custom_progress_tv"

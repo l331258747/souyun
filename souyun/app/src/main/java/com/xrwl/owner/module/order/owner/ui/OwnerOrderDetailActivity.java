@@ -94,6 +94,7 @@ import com.xrwl.owner.module.publish.ui.PublishSuccessActivity;
 import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.ActivityCollect;
 import com.xrwl.owner.utils.Constants;
+import com.xrwl.owner.utils.MyUtils;
 import com.xrwl.owner.view.PhotoRecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -297,7 +298,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     private String mCurrentCity;
     private AMapLocation mCurrentLocation;
 
-    @BindView(R.id.nlMapView)
     MapView mMapView;
     private AMap mAmap;
     public Double nidayex;
@@ -765,6 +765,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             R.id.detailSendByselfBtn, R.id.detailSendByselfquxiaoBtn, R.id.detailPickByselfBtn, R.id.detailPickByselfquxiaoBtn,
             R.id.dianpingbt, R.id.detailDianPingBtn, R.id.detailSelectBtn,R.id.detailUploadBtn})
     public void onClick(View v) {
+        if(!MyUtils.isFastClick())
+            return;
         int id = v.getId();
         /**是否确定取消订单*/
         if (id == R.id.detailCancelBtn) {

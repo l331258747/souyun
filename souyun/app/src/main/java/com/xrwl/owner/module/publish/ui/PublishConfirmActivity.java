@@ -52,6 +52,7 @@ import com.xrwl.owner.module.publish.dialog.RemarkDialog;
 import com.xrwl.owner.module.publish.mvp.PublishConfirmContract;
 import com.xrwl.owner.module.publish.mvp.PublishConfirmPresenter;
 import com.xrwl.owner.utils.Constants;
+import com.xrwl.owner.utils.MyUtils;
 import com.xrwl.owner.view.RegionNumberEditText;
 
 import org.greenrobot.eventbus.EventBus;
@@ -468,17 +469,14 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     @Override
     protected void handleEvents() {
         mFreightEt.setRegion(mMaxPrice, mMinPrice);
-        mFreightEt.setTextWatcher(new RegionNumberEditText.OnInputListener() {
-            @Override
-            public void onInput(int value) {
-                mFreightPrice = value;
-                if (mFreightPrice < mFull) {
-                    mFull = 0;
-                    mReduce = 0;
-                    mCouponTv.setText("");
-                }
-
+        mFreightEt.setTextWatcher(value -> {
+            mFreightPrice = value;
+            if (mFreightPrice < mFull) {
+                mFull = 0;
+                mReduce = 0;
+                mCouponTv.setText("");
             }
+
         });
     }
 
@@ -488,13 +486,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     /**
      * 延迟线程，看是否还有下一个字符输入
      */
-    private Runnable delayRun = new Runnable() {
-
-        @Override
-        public void run() {
-            //在这里调用服务器的接口，获取数据
-            //  getSearchResult(editString, "all", 1, "true");
-        }
+    private Runnable delayRun = () -> {
+        //在这里调用服务器的接口，获取数据
+        //  getSearchResult(editString, "all", 1, "true");
     };
 
 
@@ -628,6 +622,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             R.id.pcHelpPayLayout, R.id.pcRemarkTv, R.id.pcSendBySelfCb, R.id.pcPickBySelfCb, R.id.xezsdTV, R.id.xeztdTV, R.id.jiahao, R.id.jianhao, R.id.yueCB, R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB
     })
     public void onClick(View v) {
+        if(!MyUtils.isFastClick())
+            return;
+
         /**合计外围的FrameLayout*/
         if (v.getId() == R.id.pcPriceDetailLayout) {
             if (mPopView.isShown()) {
@@ -933,6 +930,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     //
     @OnClick(R.id.pcOkBtn)
     public void postOrder() {
+        if(!MyUtils.isFastClick())
+            return;
 
         if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_paotui.getValue()) {
 

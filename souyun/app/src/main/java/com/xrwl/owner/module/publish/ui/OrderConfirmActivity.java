@@ -46,6 +46,7 @@ import com.xrwl.owner.module.publish.mvp.OrderConfirmContract;
 import com.xrwl.owner.module.publish.mvp.OrderConfirmPresenter;
 import com.xrwl.owner.module.tab.activity.TabActivity;
 import com.xrwl.owner.utils.Constants;
+import com.xrwl.owner.utils.MyUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -294,10 +295,14 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
 
     @OnClick({
             R.id.ocWeixinPayLayout, R.id.ocAliPayLayout, R.id.ocOnlinePayCb,
-            R.id.ocOfflinePayCb, R.id.ocConfirmBtn, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.xuanzeonline, R.id.xuanzeonlinexianxia
+            R.id.ocOfflinePayCb, R.id.ocConfirmBtn, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB,
+            R.id.weixinCB, R.id.zhifubaoCB, R.id.yinhangkaCB, R.id.xuanzeonline, R.id.xuanzeonlinexianxia
     })
 
     public void onClick(View v) {
+        if(!MyUtils.isFastClick())
+            return;
+
         /**线上支付*/
         if (v.getId() == R.id.xuanzeonline) {
             if (mxuanzeonline.isChecked()) {

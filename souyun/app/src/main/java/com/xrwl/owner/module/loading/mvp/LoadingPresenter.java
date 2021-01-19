@@ -1,8 +1,6 @@
 package com.xrwl.owner.module.loading.mvp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.provider.Settings;
 import android.util.Log;
 
 import com.ldw.library.bean.BaseEntity;
@@ -11,7 +9,6 @@ import com.xrwl.owner.retrofit.BaseObserver;
 import com.xrwl.owner.retrofit.BaseSimpleObserver;
 import com.xrwl.owner.retrofit.RxSchedulers;
 import com.xrwl.owner.retrofit.file.JsDownloadListener;
-import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.FileUtil;
 
 import java.io.File;
@@ -43,6 +40,7 @@ public class LoadingPresenter extends LoadingContract.APresenter {
 
     @Override
     public void copyDB() {
+
         Observable.create(new ObservableOnSubscribe<Object>() {
             @Override
             public void subscribe(ObservableEmitter<Object> e) throws Exception {
