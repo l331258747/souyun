@@ -296,9 +296,10 @@ public class HomeFragment extends BaseFragment {
                 }
                 break;
             case R.id.sys:
-                Intent intent = new Intent(getContext(), NearLocationActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getContext(), NearLocationActivity.class);
+//                startActivity(intent);
 
+                startActivity(new Intent(mContext, saoyisaoActivity.class));
 
                 break;
         }
