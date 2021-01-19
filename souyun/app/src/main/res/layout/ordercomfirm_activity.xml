@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <com.ldw.library.view.TitleView
-
         android:id="@+id/baseTitleView1"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -466,6 +465,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:layout_weight="1">
 
                         <ImageView
@@ -505,10 +505,11 @@
 
                         <TextView
                             android:id="@+id/yumoney"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="160dp"
-                            android:text="10.8元"
+                            android:text="10.810.810.810.810.8元"
                             android:textColor="@color/light_black"
                             android:textSize="@dimen/default_font12" />
                     </LinearLayout>
