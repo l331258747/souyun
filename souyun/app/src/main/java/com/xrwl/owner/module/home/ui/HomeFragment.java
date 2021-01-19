@@ -100,6 +100,9 @@ public class HomeFragment extends BaseFragment {
 
         initNav();
 
+//        Typeface mtypeface=Typeface.createFromAsset(mContext.getAssets(),"fonts/hwxk.ttf");
+//        tvTitle.setTypeface(mtypeface);
+
     }
 
     private void initNav() {
