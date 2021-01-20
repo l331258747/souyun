@@ -4,15 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <View
+        android:id="@+id/view_img"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        app:layout_constraintStart_toStartOf="@+id/iv_img"
+        app:layout_constraintEnd_toEndOf="@+id/iv_img"
+        app:layout_constraintTop_toTopOf="@+id/iv_img"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_img"
+        android:background="@drawable/btn_gray_r5"/>
+
     <ImageView
         android:id="@+id/iv_img"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="@dimen/dp_45"
+        android:layout_height="@dimen/dp_45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/default_dp20"
-        android:src="@drawable/zbbw" />
+        android:src="@drawable/owner" />
 
     <View
         android:id="@+id/view_yhj"
@@ -22,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_yhj"
         app:layout_constraintEnd_toStartOf="@+id/view_yhk"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_img" />
+        app:layout_constraintTop_toBottomOf="@+id/view_img" />
 
     <ImageView
         android:id="@+id/iv_yhj"
@@ -52,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/view_yhj"
         app:layout_constraintEnd_toStartOf="@+id/view_ye"
         app:layout_constraintStart_toEndOf="@+id/view_yhj"
-        app:layout_constraintTop_toBottomOf="@+id/iv_img"/>
+        app:layout_constraintTop_toBottomOf="@+id/view_img"/>
 
     <ImageView
         android:id="@+id/iv_yhk"
@@ -82,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintStart_toEndOf="@+id/view_yhk"
-        app:layout_constraintTop_toBottomOf="@+id/iv_img" />
+        app:layout_constraintTop_toBottomOf="@+id/view_img" />
 
     <ImageView
         android:id="@+id/iv_ye"
