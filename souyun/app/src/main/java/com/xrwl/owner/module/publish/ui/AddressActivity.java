@@ -106,7 +106,7 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
                 intent.putExtra("city", item.city);
                 intent.putExtra("pro", item.province);
                 intent.putExtra("tel", item.tel);
-                intent.putExtra("userName", item.userName);
+                intent.putExtra("userName", item.username);
                 setResult(RESULT_OK, intent);
                 finish();
             }

@@ -14,7 +14,7 @@ public class Address2 {
     public String city;
     public String province;
     public String tel;
-    public String userName;
+    public String username;
 
     public String getId() {
         return id;
@@ -22,10 +22,10 @@ public class Address2 {
 
     public String getName(){
         String str = "";
-        if(!TextUtils.isEmpty(userName))
-            str = str + userName + " ";
+        if(!TextUtils.isEmpty(username))
+            str = str + username + " ";
         if(!TextUtils.isEmpty(tel))
-            str = "tel:" + str + tel;
+            str = str + "tel:" +  tel;
         return str;
     }
 
@@ -34,7 +34,7 @@ public class Address2 {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public String getShengshixian(){
