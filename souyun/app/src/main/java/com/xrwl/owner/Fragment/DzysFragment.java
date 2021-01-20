@@ -32,6 +32,7 @@ import com.xrwl.owner.event.PublishClearCacheEvent;
 import com.xrwl.owner.module.friend.bean.Friend;
 import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
+import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
 import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
@@ -163,6 +164,8 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
     private String mStartProvince;
     private double mDefaultStartLat, mDefaultStartLon;
     private double mDefaultEndLat, mDefaultEndLon;
+    private String chexingid;
+    private Truck truck;
 
     private ProgressDialog mGetDistanceDialog;
 
@@ -354,6 +357,17 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
                     }
                 }
             }
+            //车型
+            {
+                HomeChexingBean bean = chexing;
+                if (bean != null) {
+                    if(!TextUtils.isEmpty(bean.getChexing())){
+                        Truck truck = bean.getTruck();
+                        chexingid = truck.getId();
+                        this.truck = truck;
+                    }
+                }
+            }
             checkDefaultLocation();
         }
 
@@ -485,6 +499,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
         mPublishBean.defaultArea = mppDefaultAreaEt.getText().toString();
         mPublishBean.remark = madd_content.getText().toString();
         mPublishBean.productName = mpublishProductTv.getText().toString();
+        if(this.truck != null) mPublishBean.truck = this.truck;
 
         if (mPublishBean.check()) {
 

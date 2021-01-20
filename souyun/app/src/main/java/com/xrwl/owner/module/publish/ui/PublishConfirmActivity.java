@@ -521,6 +521,10 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
         /**矿产运输*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.Type_Mineral.getValue()) {
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
+
             myunfeijiagetv.setText("运费单价");
             mtuijianyunfeijiagetv.setText("运费总价");
             mkcys.setVisibility(View.GONE);

@@ -68,6 +68,7 @@ import com.xrwl.owner.module.publish.ui.TruckActivity;
 import com.xrwl.owner.utils.AMapUtil;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.MyTextWatcher;
+import com.xrwl.owner.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -327,6 +328,10 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 chexingType = position;
+                tv_chexing.setText("");
+                chexingBean.setChexing("");
+                chexingBean.setTruck(null);
+                chexingBean.setChexingType(chexingType);
             }
 
             @Override
@@ -677,6 +682,9 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
 
     @OnClick({R.id.tv_dzys,R.id.tv_ctld, R.id.tv_ctzc})
     public void onTabClicked(View view) {
+        if(!MyUtils.isFastClick())
+            return;
+
         if(TextUtils.isEmpty(locationBean.getCity())){
             new AlertDialog.Builder(getActivity()).setMessage("请选择出发地")
                     .setPositiveButton("确定", null).show();
@@ -693,35 +701,49 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
         intent.putExtra("destination",destinationBean);
         intent.putExtra("chexing",chexingBean);
         intent.putExtra("huowu",huowuBean);
+
         switch (view.getId()) {
             case R.id.tv_dzys:
+                if(TextUtils.isEmpty(chexingBean.getChexing())){
+                    new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
+
                 intent.putExtra("type",0);
                 startActivity(intent);
-//                ((HomeFragment)getParentFragment()).setTabIndex(1);
                 break;
             case R.id.tv_ctld:
                 if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
-                    intent.putExtra("type",3);
+                    intent.putExtra("type",3);//长途零担
                     startActivity(intent);
                 }
-//                    ((HomeFragment)getParentFragment()).setTabIndex(4);
                 else{
-                    intent.putExtra("type",1);
+                    if(TextUtils.isEmpty(chexingBean.getChexing())){
+                        new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
+                                .setPositiveButton("确定", null).show();
+                        return;
+                    }
+
+                    intent.putExtra("type",1);//长途整车
                     startActivity(intent);
                 }
-//                    ((HomeFragment)getParentFragment()).setTabIndex(2);
                 break;
             case R.id.tv_ctzc:
                 if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
-                    intent.putExtra("type",4);
+                    intent.putExtra("type",4);//同城零担
                     startActivity(intent);
                 }
-//                    ((HomeFragment)getParentFragment()).setTabIndex(5);
                 else{
-                    intent.putExtra("type",2);
+                    if(TextUtils.isEmpty(chexingBean.getChexing())){
+                        new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
+                                .setPositiveButton("确定", null).show();
+                        return;
+                    }
+
+                    intent.putExtra("type",2);//同城整车
                     startActivity(intent);
                 }
-//                    ((HomeFragment)getParentFragment()).setTabIndex(3);
                 break;
 //            case R.id.tv_tcld:
 //                ((HomeFragment)getParentFragment()).setTabIndex(4);
