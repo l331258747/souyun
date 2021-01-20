@@ -1,5 +1,6 @@
 package com.xrwl.owner.Fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -415,6 +416,19 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
         }
     }
 
+    public boolean dfjCheck(){
+        if (!TextUtils.isEmpty(mppDefaultWeightEt.getText().toString()) && !mppDefaultWeightEt.getText().toString().equals("0")) {
+            return true;
+        }
+        if (!TextUtils.isEmpty(mppDefaultAreaEt.getText().toString()) && !mppDefaultAreaEt.getText().toString().equals("0")) {
+            return true;
+        }
+        if (!TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString()) && !mjianDefaultWeightEt.getText().toString().equals("0")) {
+            return true;
+        }
+        return false;
+    }
+
     @OnClick(R.id.publishNextBtn)
     public void next() {
         mPublishBean.consignorName = mpublishStartPhonepersonEt.getText().toString();
@@ -422,6 +436,18 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
         mPublishBean.consigneeName = mpublishGetPersonEt.getText().toString();
         mPublishBean.consigneePhone = mpublishGetPhoneEt.getText().toString().replace("-", "").replace("+", "").replace(" ", "");
         mPublishBean.defaultNo = "0";
+
+        if(!dfjCheck()){
+            new AlertDialog.Builder(getActivity()).setMessage("请输入货物吨方件至少一项")
+                    .setPositiveButton("确定", null).show();
+            return;
+        }
+
+        if(truck == null){
+            new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
+                    .setPositiveButton("确定", null).show();
+            return;
+        }
 
         Map<String, String> params = new HashMap<>();
         params.put("token", "acd890f765efd007cbb5701fd1ac7ae0");
@@ -489,8 +515,8 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
             intent.putExtras(bundle);
             startActivity(intent);
         } else {
-
-            showToast("有选项没有填写");
+            new AlertDialog.Builder(getActivity()).setMessage("有选项没有填写")
+                    .setPositiveButton("确定", null).show();
         }
     }
 

@@ -192,66 +192,76 @@ import java.util.Map;
             return false;
         }
 
+        if (defaultStartLat == 0 || defaultStartLon == 0) {
+            return false;
+        }
+        if (defaultEndLat == 0 || defaultEndLon == 0) {
+            return false;
+        }
+
+        return true;
+
 //        if (TextUtils.isEmpty(time)) {
 //            return false;
 //        }
-
-        if (category == 0) {
-            if (defaultStartLat == 0 || defaultStartLon == 0) {
-                return false;
-            }
-            if (defaultEndLat == 0 || defaultEndLon == 0) {
-                return false;
-            }
-
-            return true;
-        }
-       else if (category == 6) {
-            if (defaultStartLat == 0 || defaultStartLon == 0) {
-                return false;
-            }
-            if (defaultEndLat == 0 || defaultEndLon == 0) {
-                return false;
-            }
-
-            return true;
-        }
-        else if(category==5)
-        {
-            if (defaultStartLat == 0 || defaultStartLon == 0) {
-                return false;
-            }
-            if (defaultEndLat == 0 || defaultEndLon == 0) {
-                return false;
-            }
-            return true;
-        }
-        else {
-            if (longStartProvinceDes == null || longStartCityDes == null || longStartAreaDes == null) {
-                return false;
-            }
-            if (longEndProvinceDes == null || longEndCityDes == null || longEndAreaDes == null) {
-                return false;
-            }
-            return true;
-        }
+//        if (category == 0) {
+//            if (defaultStartLat == 0 || defaultStartLon == 0) {
+//                return false;
+//            }
+//            if (defaultEndLat == 0 || defaultEndLon == 0) {
+//                return false;
+//            }
+//
+//            return true;
+//        }
+//       else if (category == 6) {
+//            if (defaultStartLat == 0 || defaultStartLon == 0) {
+//                return false;
+//            }
+//            if (defaultEndLat == 0 || defaultEndLon == 0) {
+//                return false;
+//            }
+//
+//            return true;
+//        }
+//        else if(category==5)
+//        {
+//            if (defaultStartLat == 0 || defaultStartLon == 0) {
+//                return false;
+//            }
+//            if (defaultEndLat == 0 || defaultEndLon == 0) {
+//                return false;
+//            }
+//            return true;
+//        }
+//        else {
+//            if (longStartProvinceDes == null || longStartCityDes == null || longStartAreaDes == null) {
+//                return false;
+//            }
+//            if (longEndProvinceDes == null || longEndCityDes == null || longEndAreaDes == null) {
+//                return false;
+//            }
+//            return true;
+//        }
     }
 
     public String getStartPos() {
-        if (category == 0) {
-            return defaultStartPosDes;
-        }
-        else if(category==5)
-        {
-            return defaultStartPosDes;
-        }
-        else if(category==6)
-        {
-            return defaultStartPosDes;
-        }
-        else {
-            return longStartProvinceDes + longStartCityDes + longStartAreaDes;
-        }
+        return defaultStartPosDes;
+
+//        if (category == 0) {
+//            return defaultStartPosDes;
+//        }
+//        else if(category==5)
+//        {
+//            return defaultStartPosDes;
+//        }
+//        else if(category==6)
+//        {
+//            return defaultStartPosDes;
+//        }
+//        else {
+//            return longStartProvinceDes + longStartCityDes + longStartAreaDes;
+//        }
     }
 
 
@@ -274,20 +284,21 @@ import java.util.Map;
         return  datapay;
     }
     public String getEndPos() {
-        if (category == 0) {
-            return defaultEndPosDes;
-        }
-        else if(category==5)
-        {
-            return  defaultEndPosDes;
-        }
-        else if(category==6)
-        {
-            return  defaultEndPosDes;
-        }
-        else {
-            return longEndProvinceDes + longEndCityDes + longEndAreaDes;
-        }
+        return defaultEndPosDes;
+//        if (category == 0) {
+//            return defaultEndPosDes;
+//        }
+//        else if(category==5)
+//        {
+//            return  defaultEndPosDes;
+//        }
+//        else if(category==6)
+//        {
+//            return  defaultEndPosDes;
+//        }
+//        else {
+//            return longEndProvinceDes + longEndCityDes + longEndAreaDes;
+//        }
     }
 
 

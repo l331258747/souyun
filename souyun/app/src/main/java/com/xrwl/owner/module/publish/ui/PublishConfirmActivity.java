@@ -281,6 +281,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
         mPublishBean = (PublishBean) getIntent().getSerializableExtra("data");
 
+
+
+
         /**跑腿
          * 重写点击事件点击事件
          */
@@ -307,6 +310,20 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 //                //  startActivity(new Intent(PublishConfirmActivity.this, OrderConfirmActivity.class));
 //            }
 //        });
+
+
+        //公共
+        mAreaTv.setText("体积：" + mPublishBean.getArea() + "方");
+        mWeightTv.setText("重量：" + mPublishBean.getWeight() + "吨");
+        mNumTv.setText("数量：" + mPublishBean.getNum() + "件");
+
+        mTruckTv.setText("车型：无车型需求");
+
+        mProductNameTv.setText("货物：" + mPublishBean.productName);
+        mStartPosTv.setText(mPublishBean.getStartPos());
+        mEndPosTv.setText(mPublishBean.getEndPos());
+        mDistanceTv.setText("公里：" + mPublishBean.getDistance() + "公里");
+
 
         /**
          * 2公里以内5公斤以下 8元
@@ -350,9 +367,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             BigDecimal bb = new BigDecimal(youhuipaotui).setScale(0, BigDecimal.ROUND_HALF_UP);
             paotuijiage = Integer.parseInt(String.valueOf(bb));
             mFreightEt.setFocusable(false);//不可编辑
-            mAreaTv.setVisibility(View.INVISIBLE);
-            mWeightTv.setVisibility(View.INVISIBLE);
-            mNumTv.setVisibility(View.INVISIBLE);
+            mAreaTv.setVisibility(View.VISIBLE);
+            mWeightTv.setVisibility(View.VISIBLE);
+            mNumTv.setVisibility(View.VISIBLE);
 
             mBySelfLayout.setVisibility(View.GONE);
             mTruckTv.setText("车型：跑腿");
@@ -501,9 +518,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         }
 
         myouhuijuan.setVisibility(View.GONE);
-        mProductNameTv.setText("货物：" + mPublishBean.productName);
-        mStartPosTv.setText(mPublishBean.getStartPos());
-        mEndPosTv.setText(mPublishBean.getEndPos());
 
         /**矿产运输*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.Type_Mineral.getValue()) {
@@ -557,6 +571,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             });
 
             mFreightPrice = Integer.parseInt(mzidongjieshouTv.getText().toString());
+
         }else{
             mFreightEt.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -612,7 +627,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             myunfeijiagetv.setText("运费价格");
             mtuijianyunfeijiagetv.setText("推荐运费价格");
         }
-        mDistanceTv.setText("公里：" + mPublishBean.getDistance() + "公里");
+
         mHelpCollectTv.setText(mPublishBean.consigneeName);
     }
 
@@ -1264,11 +1279,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mzidongjieshouTv.setVisibility(View.GONE);
             mpcsimiCb.setVisibility(View.GONE);
 
-            if(mPublishBean.truck != null)
-                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
-            else
-                mTruckTv.setText("车型：无车型需求");
-
             mRecommendView.setVisibility(View.VISIBLE);
             // mFreightPrice = (int) mPublishBean.getNidaye();
             mFreightPrice = price;
@@ -1302,9 +1312,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mMaxPrice = (int) (price * 1.2);
                 mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
             }
-            mAreaTv.setText("体积：" + mPublishBean.getArea() + "方");
-            mWeightTv.setText("重量：" + mPublishBean.getWeight() + "吨");
-            mNumTv.setText("数量：" + mPublishBean.getNum() + "件");
         }
         mFreightEt.setFocusable(true);
         /**同城整车*/
@@ -1317,8 +1324,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
             if(mPublishBean.truck != null)
                 mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
-            else
-                mTruckTv.setText("车型：无车型需求");
 
             mRecommendView.setVisibility(View.VISIBLE);
             mFreightPrice = price;
@@ -1354,9 +1359,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mMaxPrice = (int) (price * 1.2);
                 mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
             }
-            mAreaTv.setText("体积：" + "整车");
-            mWeightTv.setText("重量：" + "整车");
-            mNumTv.setText("数量：" + "整车");
+
         }
         /**长途零担*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL.getValue()) {
@@ -1366,11 +1369,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mNumTv.setVisibility(View.VISIBLE);
             mFreightPrice = price;
             mFreightEt.setText(String.valueOf(price));
-
-            if(mPublishBean.truck != null)
-                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
-            else
-                mTruckTv.setText("车型：无车型需求");
 
             String yan = "";
             yan = String.valueOf(price);
@@ -1391,14 +1389,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mMinPrice = (int) (price * 0.8);
             mMaxPrice = (int) (price * 1.2);
             mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
-//            mAreaTv.setText("体积：" + mPublishBean.getArea() + "方");
-//            mWeightTv.setText("重量：" + mPublishBean.getWeight() + "吨");
-//            mNumTv.setText("数量：" + mPublishBean.getNum() + "件");
-            mAreaTv.setText("体积：" + "整车");
-            mWeightTv.setText("重量：" + "整车");
-            mNumTv.setText("数量：" + "整车");
         }
-
 
     }
 
@@ -1425,8 +1416,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
             if(mPublishBean.truck != null)
                 mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
-            else
-                mTruckTv.setText("车型：无车型需求");
 
             String yan = "";
             yan = String.valueOf(price);
@@ -1451,10 +1440,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mMinPrice = (int) (price * 0.8);
             mMaxPrice = (int) (price * 1.2);
 
-            mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
-            mAreaTv.setText("体积：" + mPublishBean.getArea() + "方");
-            mWeightTv.setText("重量：" + mPublishBean.getWeight() + "吨");
-            mNumTv.setText("数量：" + mPublishBean.getNum() + "件");
         }
     }
 
