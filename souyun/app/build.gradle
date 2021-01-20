@@ -20,7 +20,7 @@ android {
         applicationId appConfig.applicationId
         minSdkVersion appConfig.minSdkVersion
         targetSdkVersion appConfig.targetSdkVersion
-        versionName '4.0.1.91'
+        versionName '4.0.1.92'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -29,7 +29,7 @@ android {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
-        versionCode = 20210119
+        versionCode = 20210120
     }
 
     buildTypes {
