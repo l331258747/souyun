@@ -58,5 +58,9 @@
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_35">35dp</dimen>
     <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_110">110dp</dimen>
 
 </resources>
