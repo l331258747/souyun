@@ -443,9 +443,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             params.put("type", "1");
             params.put("time", mPublishBean.duration);
             params.put("distance", mPublishBean.distance);
-            params.put("ton", mPublishBean.defaultWeight);
-            params.put("square", mPublishBean.defaultArea);
-            params.put("piece", mPublishBean.defaultNum);
+            params.put("ton", mPublishBean.getWeight1());
+            params.put("square", mPublishBean.getArea1());
+            params.put("piece", mPublishBean.getNum1());
             mPresenter.calculateDistancecount(params);
         }
         /**长途零担*/
@@ -455,9 +455,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             params.put("type", "2");
             params.put("time", mPublishBean.duration);
             params.put("distance", mPublishBean.distance);
-            params.put("ton", mPublishBean.defaultWeight);
-            params.put("square", mPublishBean.defaultArea);
-            params.put("piece", mPublishBean.defaultNum);
+            params.put("ton", mPublishBean.getWeight1());
+            params.put("square", mPublishBean.getArea1());
+            params.put("piece", mPublishBean.getNum1());
             mPresenter.calculateDistancecountlingdan(params);
         }
         /**矿产运输*/

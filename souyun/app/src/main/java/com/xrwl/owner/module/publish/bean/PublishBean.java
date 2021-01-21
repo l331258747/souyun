@@ -13,8 +13,7 @@ import java.util.Map;
  * 发布货源 所有字段
  * Created by www.longdw.com on 2018/4/16 下午9:31.
  */
- public class PublishBean implements Serializable
-{
+public class PublishBean implements Serializable {
 
 
 //    //新街口返回人民币的接口
@@ -37,9 +36,8 @@ import java.util.Map;
 //    public int xrpay;
 
 
-
     public String qinyanwei;
-     public int category = -1;//配送类型
+    public int category = -1;//配送类型
     //    public String truckDes;//车型描述
 //    public String truckId;//已选车型
     public Truck truck;
@@ -265,24 +263,23 @@ import java.util.Map;
     }
 
 
-
     public String getStartPosshengshi() {
 
-            return longStartProvinceDes + longStartCityDes;
+        return longStartProvinceDes + longStartCityDes;
 
     }
 
     public String getStartPosdezhi() {
 
-            return longStartAreaDes;
+        return longStartAreaDes;
 
     }
 
 
-    public String getDatapay()
-    {
-        return  datapay;
+    public String getDatapay() {
+        return datapay;
     }
+
     public String getEndPos() {
         return defaultEndPosDes;
 //        if (category == 0) {
@@ -304,44 +301,54 @@ import java.util.Map;
 
     public String getEndPosshengshi() {
 
-            return longEndProvinceDes + longEndCityDes;
+        return longEndProvinceDes + longEndCityDes;
 
     }
 
     public String getEndPosdezhi() {
 
-            return longEndAreaDes;
+        return longEndAreaDes;
 
     }
+
     public String getWeight() {
-       if(TextUtils.isEmpty(defaultWeight))
-       {
-           return "0";
-       }
-       else
-       {
-           return defaultWeight;
-       }
+        if (TextUtils.isEmpty(defaultWeight)) {
+            return "0";
+        } else {
+            return defaultWeight;
+        }
+    }
+
+    public String getWeight1() {
+        if (TextUtils.isEmpty(defaultWeight)) {
+            return "1";
+        } else {
+            return defaultWeight;
+        }
 
     }
+
     public String getGet_person() {
-        if(TextUtils.isEmpty(consigneeName))
-        {
+        if (TextUtils.isEmpty(consigneeName)) {
             return "0";
-        }
-        else
-        {
+        } else {
             return consigneeName;
         }
 
     }
+
     public String getArea() {
-        if(TextUtils.isEmpty(defaultArea))
-        {
+        if (TextUtils.isEmpty(defaultArea)) {
             return "0";
+        } else {
+            return defaultArea;
         }
-        else
-        {
+    }
+
+    public String getArea1() {
+        if (TextUtils.isEmpty(defaultArea)) {
+            return "1";
+        } else {
             return defaultArea;
         }
     }
@@ -357,6 +364,7 @@ import java.util.Map;
 //        }
         return distance;
     }
+
     public String getDuration() {
 //        if (category == 0) {
 //            LatLng ll1 = new LatLng(defaultStartLat, defaultStartLon);
@@ -368,13 +376,14 @@ import java.util.Map;
 //        }
         return duration;
     }
-    public String getTruckIds()
-    {
-        if(truck == null)
+
+    public String getTruckIds() {
+        if (truck == null)
             return "";
-        return  truck.getId();
+        return truck.getId();
     }
-//    public String getStartarea() {
+
+    //    public String getStartarea() {
 //        return startarea;
 //    }
 //    public String getEndarea() {
@@ -391,6 +400,7 @@ import java.util.Map;
 //        }
         return start;
     }
+
     public String getEnd() {
 //        if (category == 0) {
 //            LatLng ll1 = new LatLng(defaultStartLat, defaultStartLon);
@@ -402,62 +412,63 @@ import java.util.Map;
 //        }
         return end;
     }
+
     private float getDistanceFloat() {
         if (TextUtils.isEmpty(distance)) {
             distance = "0";
         }
         return Float.parseFloat(distance);
     }
+
     private float getDurationFloat() {
         if (TextUtils.isEmpty(duration)) {
             duration = "0";
         }
-        return Float.parseFloat(duration.replace("小时",""));
+        return Float.parseFloat(duration.replace("小时", ""));
     }
+
     private float getStartFloat() {
         if (TextUtils.isEmpty(start)) {
             start = "0";
         }
         return Float.parseFloat(start);
     }
+
     private float getEndFloat() {
         if (TextUtils.isEmpty(end)) {
             end = "0";
         }
         return Float.parseFloat(end);
     }
-    public String getNum() {
 
-        if(TextUtils.isEmpty(defaultNum))
-        {
-            return  "0";
-        }
-        else
-        {
+    public String getNum() {
+        if (TextUtils.isEmpty(defaultNum)) {
+            return "0";
+        } else {
             return defaultNum;
         }
-//        if (category == 0) {
-//            return defaultNum;
-//        } else {
-//            return longNum;
-//        }
-       // return defaultNum.replace("——","");
+    }
+
+    public String getNum1() {
+        if (TextUtils.isEmpty(defaultNum)) {
+            return "1";
+        } else {
+            return defaultNum;
+        }
     }
 
     public int getNidaye() {
 
 
-
-            if (TextUtils.isEmpty(nidaye)) {
-                return 0;
-            } else
-                return Integer.valueOf(nidaye);
-
+        if (TextUtils.isEmpty(nidaye)) {
+            return 0;
+        } else
+            return Integer.valueOf(nidaye);
 
 
+    }
 
-     }
-      public Map<String, String> getParams() {
+    public Map<String, String> getParams() {
         Map<String, String> params = new HashMap<>();
         params.put("category", category + "");//配送类型
         params.put("start_lon", defaultStartLon + "");//发货起点经度
@@ -473,28 +484,22 @@ import java.util.Map;
             params.put("end_province", longEndProvinceDes);
 //            params.put("start_area", getStartarea());
 //            params.put("end_area", getEndarea());
-        }
-        else if(category==5)
-        {
+        } else if (category == 5) {
             params.put("truckid", truck.getId());//已选车型
             params.put("start_city", longStartCityDes);
             params.put("end_city", longEndCityDes);
-            params.put("shijian",getDuration());//路程用时
+            params.put("shijian", getDuration());//路程用时
             params.put("start_province", longStartProvinceDes);
             params.put("end_province", longEndProvinceDes);
 
-        }
-        else if(category==6)
-        {
+        } else if (category == 6) {
             params.put("truckid", "43");//已选车型
             params.put("start_city", longStartCityDes);
             params.put("end_city", longEndCityDes);
-            params.put("shijian",getDuration());//路程用时
+            params.put("shijian", getDuration());//路程用时
             params.put("start_province", longStartProvinceDes);
             params.put("end_province", longEndProvinceDes);
-        }
-        else if(category==2)
-        {
+        } else if (category == 2) {
 
             params.put("truckid", "0");//已选车型
             params.put("start_province", longStartProvinceDes);
@@ -507,8 +512,7 @@ import java.util.Map;
             params.put("sendend_lat", sendend_lat);
             params.put("pickstart_lon", pickstart_lon);
             params.put("pickstart_lat", pickstart_lat);
-        }
-        else {
+        } else {
 
             params.put("truckid", "8808");//已选车型 8808代表是跑腿车型
             params.put("start_province", longStartProvinceDes);
@@ -517,7 +521,7 @@ import java.util.Map;
             params.put("end_city", longEndCityDes);
         }
 
-        params.put("company",company);//厂家名称
+        params.put("company", company);//厂家名称
         params.put("shouhuodanweiname", shouhuodanweiname);
         params.put("zhesunlv", zhesunlv);//这损率
         params.put("danjia", danjia);//单价
@@ -526,17 +530,13 @@ import java.util.Map;
         params.put("end_area", getEnd());//同城终点的县或者区
 
 
+        params.put("weight", defaultWeight.replace("——", ""));//同城吨
+        params.put("area", defaultArea.replace("——", ""));//同城方
+        params.put("num", defaultNum.replace("——", ""));//同城件
 
-        params.put("weight", defaultWeight.replace("——",""));//同城吨
-        params.put("area", defaultArea.replace("——",""));//同城方
-         params.put("num", defaultNum.replace("——",""));//同城件
-
-        if(TextUtils.isEmpty(productName))
-        {
+        if (TextUtils.isEmpty(productName)) {
             params.put("product_name", "未填写");//货物名称
-        }
-        else
-        {
+        } else {
             params.put("product_name", productName);//货物名称
         }
         params.put("publish_phone", consignorPhone);//发货电话
@@ -578,9 +578,9 @@ import java.util.Map;
 
         params.put("capacity", capacity);
 
-        params.put("display",display);
+        params.put("display", display);
         return params;
-  }
+    }
 
 
 }
