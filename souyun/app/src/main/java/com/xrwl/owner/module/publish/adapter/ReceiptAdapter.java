@@ -24,6 +24,7 @@ public class ReceiptAdapter extends CommonAdapter<Receipt> {
     @Override
     protected void convert(ViewHolder holder, Receipt receipt, int position) {
         holder.setText(R.id.addressItemTv, receipt.number);
+        holder.setText(R.id.addressNameTv, receipt.company);
 
         RadioButton rb = holder.getView(R.id.addressRb);
         if (mSelectedPos == position) {
