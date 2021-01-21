@@ -465,12 +465,6 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
         if (!TextUtils.isEmpty(mppDefaultWeightEt.getText().toString()) && !mppDefaultWeightEt.getText().toString().equals("0")) {
             return true;
         }
-        if (!TextUtils.isEmpty(mppDefaultAreaEt.getText().toString()) && !mppDefaultAreaEt.getText().toString().equals("0")) {
-            return true;
-        }
-        if (!TextUtils.isEmpty(mjianDefaultWeightEt.getText().toString()) && !mjianDefaultWeightEt.getText().toString().equals("0")) {
-            return true;
-        }
         return false;
     }
 
@@ -483,7 +477,7 @@ public class DzysFragment extends BaseEventFragment<PublishContract.IView, Publi
         mPublishBean.defaultNo = "0";
 
         if(!dfjCheck()){
-            new AlertDialog.Builder(getActivity()).setMessage("请输入货物吨方件至少一项")
+            new AlertDialog.Builder(getActivity()).setMessage("请输入货物吨数")
                     .setPositiveButton("确定", null).show();
             return;
         }
