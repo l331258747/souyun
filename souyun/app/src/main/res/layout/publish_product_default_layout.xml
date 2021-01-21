@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/publishProductDefaultLayout"
+<LinearLayout android:id="@+id/publishProductDefaultLayout"
     style="@style/PublishLayoutStyle"
     xmlns:android="http://schemas.android.com/apk/res/android"
 
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <ImageView
@@ -41,7 +40,8 @@
         android:paddingEnd="@dimen/dp_5"
         android:hint="请输入"
         android:inputType="numberDecimal"
-        android:maxLength="4"
+        android:maxLength="8"
+        tools:text="11111111"
         android:lines="1"
         android:textCursorDrawable="@drawable/color_cursor"
         />
@@ -62,7 +62,8 @@
         android:layout_weight="1"
         android:paddingEnd="@dimen/dp_5"
         android:gravity="right|center_vertical"
-        android:maxLength="4"
+        android:maxLength="8"
+        tools:text="11111111"
         android:inputType="numberDecimal"
         android:lines="1"
         android:textCursorDrawable="@drawable/color_cursor"/>
@@ -84,7 +85,8 @@
         android:paddingEnd="@dimen/dp_5"
         android:gravity="right|center_vertical"
         android:hint="请输入"
-        android:maxLength="4"
+        android:maxLength="8"
+        tools:text="11111111"
         android:inputType="numberDecimal"
         android:lines="1"
         android:textCursorDrawable="@drawable/color_cursor"

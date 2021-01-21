@@ -410,7 +410,8 @@
                                 android:hint="请输入"
                                 android:inputType="numberDecimal"
                                 android:lines="1"
-                                android:maxLength="4"
+                                android:maxLength="8"
+                                tools:text="11111111"
                                 android:paddingEnd="@dimen/dp_5"
                                 android:textSize="@dimen/sp_14" />
 
@@ -439,7 +440,8 @@
                                 android:hint="请输入"
                                 android:inputType="numberDecimal"
                                 android:lines="1"
-                                android:maxLength="4"
+                                android:maxLength="8"
+                                tools:text="11111111"
                                 android:paddingEnd="@dimen/dp_5"
                                 android:textSize="@dimen/sp_14" />
 
@@ -469,7 +471,8 @@
                                 android:hint="请输入"
                                 android:inputType="numberDecimal"
                                 android:lines="1"
-                                android:maxLength="4"
+                                android:maxLength="8"
+                                tools:text="11111111"
                                 android:paddingEnd="@dimen/dp_5"
                                 android:textSize="@dimen/sp_14" />
 
