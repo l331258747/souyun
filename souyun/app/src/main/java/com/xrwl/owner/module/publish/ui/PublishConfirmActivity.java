@@ -571,6 +571,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
                     mzidongjieshouTv.setText(abcd);
                     mTotalPriceTv.setText(abcd);
+
+                    calculateTotalPrice();
                 }
             });
 
