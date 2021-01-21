@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.ldw.library.bean.BaseEntity;
-import com.lljjcoder.citypickerview.widget.CityPicker;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
 import com.xrwl.owner.module.publish.bean.CompanyManageBean;
@@ -42,8 +41,6 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
     EditText et_name;
     @BindView(R.id.et_phone)
     EditText et_phone;
-    @BindView(R.id.sel_address)
-    TextView sel_address;
     @BindView(R.id.et_address_des)
     EditText et_address_des;
     @BindView(R.id.btn_send)
@@ -51,13 +48,9 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    private CityPicker mCP;
-
     private CompanyManageAdapter mAdapter;
 
     boolean isAdd;
-
-    String province,city , district;
 
     List<CompanyManageBean> list;
 
@@ -79,70 +72,14 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
         tv_add.setOnClickListener(this);
         btn_send.setOnClickListener(this);
-        sel_address.setOnClickListener(this);
 
         cl_add.setVisibility(View.GONE);
         cl_list.setVisibility(View.VISIBLE);
 
-        initCityPicher();
         initRecycler();
 
         mPresenter.getData();
     }
-
-    private void initCityPicher() {
-        mCP = new CityPicker.Builder(mContext)
-                .textSize(20)
-                //地址选择
-                .title("地址选择")
-                .backgroundPop(0xa0000000)
-                //文字的颜色
-                .titleBackgroundColor("#0CB6CA")
-                .titleTextColor("#000000")
-                .backgroundPop(0xa0000000)
-                .confirTextColor("#000000")
-                .cancelTextColor("#000000")
-                .province("xx省")
-                .city("xx市")
-                .district("xx区")
-                //滑轮文字的颜色
-                .textColor(R.color.colorPrimary)
-                //省滑轮是否循环显示
-                .provinceCyclic(true)
-                //市滑轮是否循环显示
-                .cityCyclic(false)
-                //地区（县）滑轮是否循环显示
-                .districtCyclic(false)
-                //滑轮显示的item个数
-                .visibleItemsCount(7)
-                //滑轮item间距
-                .itemPadding(10)
-                .onlyShowProvinceAndCity(false)
-                .build();
-
-        //监听
-        mCP.setOnCityItemClickListener(new CityPicker.OnCityItemClickListener() {
-            @Override
-            public void onSelected(String... citySelected) {
-                //省
-                province = citySelected[0];
-                //市
-                city = citySelected[1];
-                //区。县。（两级联动，必须返回空）
-                district = citySelected[2];
-                //邮证编码
-                String code = citySelected[3];
-                if(sel_address != null)
-                    sel_address.setText(province + city + district);
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-        });
-    }
-
 
 
     //初始化recyclerview
@@ -180,16 +117,10 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("danweidezhi",et_name.getText().toString());
-                params.put("sheng",province);
-                params.put("shi",city);
-                params.put("xian",district);
                 params.put("xiangxidezhi",et_address_des.getText().toString());
                 params.put("lianxidianhua",et_phone.getText().toString());
 
                 mPresenter.addData(params);
-                break;
-            case R.id.sel_address:
-                mCP.show();
                 break;
         }
     }
@@ -224,7 +155,6 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
         et_name.setText("");
         et_address_des.setText("");
-        sel_address.setText("");
         et_phone.setText("");
     }
 
@@ -271,7 +201,6 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
 
             holder.tv_name.setText(data.getDanweidezhi());
             holder.tv_phone.setText(data.getLianxidianhua());
-            holder.tv_address.setText(data.getShengshixina());
             holder.tv_address_des.setText(data.getXiangxidezhi());
 
             if (mOnItemClickListener != null) {
@@ -291,12 +220,11 @@ public class CompanyManageActivity extends BaseActivity<CompanyContract.IView, C
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tv_name,tv_phone,tv_address,tv_address_des;
+            TextView tv_name,tv_phone,tv_address_des;
             public ViewHolder(View itemView) {
                 super(itemView);
                 tv_name = itemView.findViewById(R.id.tv_name);
                 tv_phone = itemView.findViewById(R.id.tv_phone);
-                tv_address = itemView.findViewById(R.id.tv_address);
                 tv_address_des = itemView.findViewById(R.id.tv_address_des);
 
             }
