@@ -4,69 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/hongbao"
-    tools:context=".module.home.ui.HongbaolistActivity">
-
-
+    android:orientation="vertical">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:orientation="horizontal"
         android:id="@+id/fanhuizhuyejian"
-        >
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/fanhuijian"
             android:layout_width="18dp"
-            android:layout_marginStart="@dimen/default_dp10"
             android:layout_height="18dp"
             android:layout_gravity="center"
+            android:layout_marginStart="@dimen/default_dp10"
             android:src="@drawable/ic_back" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:layout_gravity="center"
             android:layout_marginStart="@dimen/default_dp10"
             android:text="系统红包"
-            android:textSize="@dimen/default_font14"
-            android:layout_gravity="center"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_font14" />
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="100dp"
-        >
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fanhuizhuyejian">
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/colorgold"
             android:padding="8dp"
-            android:textSize="@dimen/default_font20"
             android:text="系统红包"
+            android:textColor="@color/colorgold"
+            android:textSize="@dimen/default_font20" />
 
-            />
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
-            android:textColor="@color/colorgold"
             android:text="订单完成，红包返现"
-
-            />
+            android:textColor="@color/colorgold"/>
 
         <TextView
             android:id="@+id/money"
@@ -76,8 +72,7 @@
             android:padding="8dp"
             android:text="1.6元"
             android:textColor="@color/colorgold"
-            android:textSize="50dp"
-            />
+            android:textSize="50dp" />
 
 
         <TextView
@@ -87,9 +82,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="存入零钱，前往查看"
-            android:textColor="@color/white"
-
-            />
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 
