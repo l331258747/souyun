@@ -1366,7 +1366,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             }
 
         }
-        /**长途零担*/
+        /**长途整车*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_LONG_TOTAL.getValue()) {
             mFreightEt.setFocusable(true);
             mAreaTv.setVisibility(View.VISIBLE);
@@ -1374,6 +1374,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mNumTv.setVisibility(View.VISIBLE);
             mFreightPrice = price;
             mFreightEt.setText(String.valueOf(price));
+
+            if(mPublishBean.truck != null)
+                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
 
             String yan = "";
             yan = String.valueOf(price);
@@ -1408,7 +1411,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
         mPublishBean.nidaye = String.valueOf(dd.price);
         price = dd.price;
         jiajianprice = String.valueOf(dd.price);
-        /**长途整车mTotalPriceTv*/
+        /**长途零担mTotalPriceTv*/
         if (mPublishBean.category == CategoryDialog.CategoryEnum.TYPE_LONG_ZERO.getValue()) {
             mFreightEt.setFocusable(true);
             mAreaTv.setVisibility(View.VISIBLE);
@@ -1418,9 +1421,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mFreightEt.setText(String.valueOf(price));
             mBySelfLayout.setVisibility(View.VISIBLE);
             //mBySelfLayout.setVisibility(View.GONE);
-
-            if(mPublishBean.truck != null)
-                mTruckTv.setText("车型：" + mPublishBean.truck.getTitle());
 
             String yan = "";
             yan = String.valueOf(price);
