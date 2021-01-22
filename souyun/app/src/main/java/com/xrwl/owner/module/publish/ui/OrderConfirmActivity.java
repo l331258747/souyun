@@ -45,6 +45,7 @@ import com.xrwl.owner.module.publish.bean.PublishBean;
 import com.xrwl.owner.module.publish.mvp.OrderConfirmContract;
 import com.xrwl.owner.module.publish.mvp.OrderConfirmPresenter;
 import com.xrwl.owner.module.tab.activity.TabActivity;
+import com.xrwl.owner.utils.ActivityCollect;
 import com.xrwl.owner.utils.Constants;
 import com.xrwl.owner.utils.MyUtils;
 
@@ -223,8 +224,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
         zbbb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String w = String.valueOf(Double.valueOf(String.valueOf(mPublishBean.freight)) * 10 / 100);
+                String w = String.valueOf(getzbbb300());
                 fkje.setText(w);
             }
         });
@@ -234,7 +234,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
          */
         final TextView fkje = findViewById(R.id.fkje);
         View viewById = findViewById(R.id.rb_driver);
-        fkje.setText(mPublishBean.freight);
+        fkje.setText(String.valueOf(getzbbb300()));
 
          if ((mPublishBean.category) == 7) {
             mpaotuidispaly.setVisibility(View.GONE);
@@ -289,8 +289,14 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
         IntentFilter filter = new IntentFilter(Constants.WX_P_SUCCESS_ACTION);
         LocalBroadcastManager.getInstance(this).registerReceiver(mPayBroadcastReceiver, filter);
         mPresenter.getTotalPriceBalance();
+    }
 
-
+    public double getzbbb300(){
+        double zbbb300 = Double.valueOf(String.valueOf(mPublishBean.freight)) * 10 / 100;
+        if(zbbb300 > 300){
+            zbbb300 = 300d;
+        }
+        return zbbb300;
     }
 
     @OnClick({
@@ -337,8 +343,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
         else if (v.getId() == R.id.querenzhifu) {
             /**线下支付被选中*/
             if (mxuanzeonlinexianxia.isChecked()) {
-                Intent intent = new Intent(mContext, TabActivity.class);
-                startActivity(intent);
+                ActivityCollect.getAppCollect().finishAllNotHome();
             }
             /**微信支付被选中*/
             if (mweixincb.isChecked()) {

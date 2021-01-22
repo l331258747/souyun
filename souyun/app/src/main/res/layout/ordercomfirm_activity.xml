@@ -397,19 +397,18 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/zbb"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="全额支付" />
-
-                            <RadioButton
-
                                 android:id="@+id/zbbb"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/default_dp30"
+                                android:checked="true"
                                 android:text="保证金" />
+
+                            <RadioButton
+                                android:id="@+id/zbb"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/default_dp30"
+                                android:text="全额支付" />
 
                         </RadioGroup>
 
