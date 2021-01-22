@@ -1450,7 +1450,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @Override
     public void onRefreshSuccess(BaseEntity<PostOrder> entity) {
-
+        if(mPostDialog !=null && mPostDialog.isShowing())
+            mPostDialog.dismiss();
         Intent intent = new Intent(this, OrderConfirmActivity.class);
         intent.putExtra("publishBean", mPublishBean);
         intent.putExtra("paytype", paytype);
@@ -1473,6 +1474,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     @Override
     public void onRefreshError(Throwable e) {
         this.e = e;
+        if (mPostDialog != null && mPostDialog.isShowing()) {
+            mPayDialog.dismiss();
+        }
         if (mPayDialog != null) {
             mPayDialog.dismiss();
         }
@@ -1487,6 +1491,9 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @Override
     public void onError(BaseEntity entity) {
+        if (mPostDialog != null && mPostDialog.isShowing()) {
+            mPayDialog.dismiss();
+        }
         if (mPayDialog != null) {
             mPayDialog.dismiss();
         }
