@@ -21,7 +21,7 @@
             android:id="@+id/nlMapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="220dp" />
+            android:paddingBottom="250dp" />
 
         <LinearLayout
             android:id="@+id/target_layout"
