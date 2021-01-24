@@ -155,13 +155,13 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
     @BindView(R.id.rg_tab_group)
     RadioGroup rgTabGroup;
     @BindView(R.id.yueCB)
-    CheckBox myuecb;
+    ImageView myuecb;
     @BindView(R.id.weixinCB)
-    CheckBox mweixincb;
+    ImageView mweixincb;
     @BindView(R.id.zhifubaoCB)
-    CheckBox mzhifubaocb;
+    ImageView mzhifubaocb;
     @BindView(R.id.yinhangkaCB)
-    CheckBox myinhangkacb;
+    ImageView myinhangkacb;
     @BindView(R.id.money)
     Spinner mmoney;
     @BindView(R.id.xuanzeonline)
@@ -283,12 +283,31 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
         mocEndLocationTvs.setText(mPublishBean.getEndPosdezhi());
 
         mDateTv.setText(mPublishBean.date);
-        myuecb.setChecked(true);
+        setCheck(0);
+
         mWXApi = WXAPIFactory.createWXAPI(this, Constants.WEIXIN_KEY);
         mPayBroadcastReceiver = new PayBroadcastReceiver();
         IntentFilter filter = new IntentFilter(Constants.WX_P_SUCCESS_ACTION);
         LocalBroadcastManager.getInstance(this).registerReceiver(mPayBroadcastReceiver, filter);
         mPresenter.getTotalPriceBalance();
+    }
+
+    int isCheck = 0;
+    public void setCheck(int type){
+        myuecb.setImageResource(R.drawable.ic_radio_un);
+        mweixincb.setImageResource(R.drawable.ic_radio_un);
+        mzhifubaocb.setImageResource(R.drawable.ic_radio_un);
+        myinhangkacb.setImageResource(R.drawable.ic_radio_un);
+        isCheck = type;
+        if(type == 0){
+            myuecb.setImageResource(R.drawable.ic_radio_yes);
+        }else if(type == 1){
+            mweixincb.setImageResource(R.drawable.ic_radio_yes);
+        }else if(type == 2){
+            mzhifubaocb.setImageResource(R.drawable.ic_radio_yes);
+        }else if(type == 3){
+            myinhangkacb.setImageResource(R.drawable.ic_radio_yes);
+        }
     }
 
     public double getzbbb300(){
@@ -312,11 +331,11 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
         /**线上支付*/
         if (v.getId() == R.id.xuanzeonline) {
             if (mxuanzeonline.isChecked()) {
-                mweixincb.setChecked(true);
+                setCheck(1);
                 mxuanzeonline.setChecked(true);
                 mxuanzeonlinexianxia.setChecked(false);
             } else {
-                mweixincb.setChecked(false);
+                setCheck(-1);
                 mxuanzeonlinexianxia.setChecked(true);
                 mxuanzeonline.setChecked(false);
             }
@@ -326,15 +345,9 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
             if (mxuanzeonlinexianxia.isChecked()) {
                 mxuanzeonline.setChecked(false);
                 mxuanzeonlinexianxia.setChecked(true);
-                mweixincb.setChecked(false);
-                myinhangkacb.setChecked(false);
-                mzhifubaocb.setChecked(false);
-                myuecb.setChecked(false);
+                setCheck(-1);
             } else {
-                mweixincb.setChecked(false);
-                myinhangkacb.setChecked(false);
-                mzhifubaocb.setChecked(false);
-                myuecb.setChecked(true);
+                setCheck(0);
                 mxuanzeonlinexianxia.setChecked(false);
                 mxuanzeonline.setChecked(true);
             }
@@ -346,7 +359,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
                 ActivityCollect.getAppCollect().finishAllNotHome();
             }
             /**微信支付被选中*/
-            if (mweixincb.isChecked()) {
+            if (isCheck == 1) {
                 mPublishBean.freight = fkje.getText().toString();
                 new AlertDialog.Builder(this).setMessage("全额支付：支付全款后形成发货订单,有利于司机更好的为您接单\n保  证  金：预先支付10%的运费后,形成发货订单,确认收货后支付剩余尾款")
                         .setNegativeButton("取消", null)
@@ -393,7 +406,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
                         }).show();
             }
             /**余额支付被选中*/
-            else if (myuecb.isChecked()) {
+            else if (isCheck == 0) {
                 mPublishBean.freight = fkje.getText().toString();
                 Map<String, String> params = new HashMap<>();
                 params.put("Payment_method", "3");
@@ -446,7 +459,7 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
                 }
             }
             /**支付宝支付被选中*/
-            else if (mzhifubaocb.isChecked()) {
+            else if (isCheck == 2) {
                 mPublishBean.freight = fkje.getText().toString();
                 new AlertDialog.Builder(this).setMessage("全额支付：支付全款后形成发货订单,有利于司机更好的为您接单\n保  证  金：预先支付10%的运费后,形成发货订单,确认收货后支付剩余尾款")
                         .setNegativeButton("取消", null)
@@ -504,50 +517,28 @@ public class OrderConfirmActivity extends BaseActivity<OrderConfirmContract.IVie
                         }).show();
             }
             /**银行卡选中*/
-            else if (myinhangkacb.isChecked()) {
+            else if (isCheck == 3) {
                 showToast("暂未开放，敬请期待");
                 return;
+            }else{
+                showToast("请选择支付方式");
             }
         }
         /**余额支付*/
         else if (v.getId() == R.id.yueCB) {
-            if (myuecb.isChecked()) {
-                mweixincb.setChecked(false);
-                mzhifubaocb.setChecked(false);
-                myinhangkacb.setChecked(false);
-            } else {
-                myuecb.setChecked(false);
-            }
+            setCheck(0);
         }
         /**微信支付*/
         else if (v.getId() == R.id.weixinCB) {
-            if (mweixincb.isChecked()) {
-                myuecb.setChecked(false);
-                mzhifubaocb.setChecked(false);
-                myinhangkacb.setChecked(false);
-            } else {
-                mweixincb.setChecked(false);
-            }
+            setCheck(1);
         }
         /**支付宝支付*/
         else if (v.getId() == R.id.zhifubaoCB) {
-            if (mzhifubaocb.isChecked()) {
-                myuecb.setChecked(false);
-                mweixincb.setChecked(false);
-                myinhangkacb.setChecked(false);
-            } else {
-                mzhifubaocb.setChecked(false);
-            }
+            setCheck(2);
         }
         /**银行卡支付*/
         else if (v.getId() == R.id.yinhangkaCB) {
-            if (myinhangkacb.isChecked()) {
-                myuecb.setChecked(false);
-                mweixincb.setChecked(false);
-                mzhifubaocb.setChecked(false);
-            } else {
-                myinhangkacb.setChecked(false);
-            }
+            setCheck(3);
         }
         /**线上支付*/
         else if (v.getId() == R.id.ocOnlinePayCb) {
