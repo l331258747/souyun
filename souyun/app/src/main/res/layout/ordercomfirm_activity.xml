@@ -345,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="ww"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/default_dp60" />
 
                     <TextView
