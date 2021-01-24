@@ -146,7 +146,7 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
 
         HashMap<String, String> params = new HashMap<>();
 
-        params.put("userName",userName);
+        params.put("username",userName);
         params.put("tel",tel);
         params.put("des",des);
         params.put("city", city);
@@ -180,18 +180,17 @@ public class AddressActivity extends BaseActivity<AddressContract.IView, Address
     }
 
     @Override
-    public void onCancelAddressError(BaseEntity entity) {
+    public void onCancelAddressSuccess(BaseEntity entity) {
         mPostDialog.dismiss();
         showToast("删除成功");
-        handleError(entity);
+        mPresenter.getData();
     }
 
     @Override
-    public void onCancelAddressSuccess(BaseEntity entity) {
+    public void onCancelAddressError(BaseEntity entity) {
         mPostDialog.dismiss();
         showToast("删除失败");
-        mPresenter.getData();
-
+        handleError(entity);
     }
 
     @Override
