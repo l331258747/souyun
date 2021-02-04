@@ -345,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="ww"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/default_dp60" />
 
                     <TextView
@@ -515,14 +515,13 @@
                     </LinearLayout>
 
 
-                    <CheckBox
+                    <ImageView
                         android:id="@+id/yueCB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
                         android:layout_marginRight="@dimen/default_dp10"
-                        android:text=""
-                        android:textColor="@color/gray" />
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@drawable/ic_radio_un" />
 
                 </LinearLayout>
 
@@ -580,14 +579,13 @@
 
                     </LinearLayout>
 
-                    <CheckBox
+                    <ImageView
                         android:id="@+id/weixinCB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
                         android:layout_marginRight="@dimen/default_dp10"
-                        android:text=""
-                        android:textColor="@color/gray"
-
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@drawable/ic_radio_un"
                         />
 
                 </LinearLayout>
@@ -649,13 +647,13 @@
 
                     </LinearLayout>
 
-                    <CheckBox
+                    <ImageView
                         android:id="@+id/zhifubaoCB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
                         android:layout_marginRight="@dimen/default_dp10"
-                        android:text=""
-                        android:textColor="@color/gray" />
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@drawable/ic_radio_un" />
 
                 </LinearLayout>
 
@@ -675,6 +673,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -699,29 +698,18 @@
                                 android:textColor="@color/light_black"
                                 android:textSize="@dimen/default_font12" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/aliPayTvs"
-                                android:layout_alignStart="@id/aliPayTvs"
-                                android:layout_marginStart="@dimen/default_dp10"
-                                android:background="@drawable/pay_recommend_bg"
-                                android:padding="1dp"
-                                android:text="推荐"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/default_font10" />
                         </LinearLayout>
 
 
                     </LinearLayout>
 
-                    <CheckBox
+                    <ImageView
                         android:id="@+id/yinhangkaCB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
                         android:layout_marginRight="@dimen/default_dp10"
-                        android:text=""
-                        android:textColor="@color/gray" />
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@drawable/ic_radio_un" />
 
 
                 </LinearLayout>

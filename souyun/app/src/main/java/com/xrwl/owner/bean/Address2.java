@@ -2,6 +2,8 @@ package com.xrwl.owner.bean;
 
 import android.text.TextUtils;
 
+import com.xrwl.owner.utils.AccountUtil;
+
 /**
  * 收发货地址 没办法 跟Address类重名了
  * Created by www.longdw.com on 2018/7/11 下午7:51.
@@ -22,10 +24,23 @@ public class Address2 {
 
     public String getName(){
         String str = "";
-        if(!TextUtils.isEmpty(username))
+
+        if(!TextUtils.isEmpty(username) && !TextUtils.equals(username,"null"))
             str = str + username + " ";
-        if(!TextUtils.isEmpty(tel))
+        if(!TextUtils.isEmpty(tel) && !TextUtils.equals(tel,"null"))
             str = str + "tel:" +  tel;
+
+        return str;
+    }
+
+    public String getAccountName(String name,String tel){
+        String str = "";
+
+        if(!TextUtils.isEmpty(name) && !TextUtils.equals(name,"null"))
+            str = str + name + " ";
+        if(!TextUtils.isEmpty(tel) && !TextUtils.equals(tel,"null"))
+            str = str + "tel:" +  tel;
+
         return str;
     }
 

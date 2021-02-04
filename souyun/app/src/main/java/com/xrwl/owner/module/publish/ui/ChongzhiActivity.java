@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -120,7 +121,7 @@ public class ChongzhiActivity extends BaseActivity<OrderConfirmContract.IView, O
 
     @BindView(R.id.chongzhijine)
     TextView mchongzhijine;
-    private Double name;
+    private Double name = 0d;
     private String s;
     private RetrofitManager1 retrofitManager;
 
@@ -147,7 +148,8 @@ public class ChongzhiActivity extends BaseActivity<OrderConfirmContract.IView, O
         Intent intent = getIntent();
 
         s = intent.getStringExtra("order_number");
-        name = Double.valueOf(String.valueOf(floor(Double.parseDouble(intent.getStringExtra("num").replace("¥","")))));
+        if(!TextUtils.isEmpty(s))
+            name = Double.valueOf(String.valueOf(floor(Double.parseDouble(intent.getStringExtra("num").replace("¥","")))));
 //       String name1 = name + ".";
 //        String[] split = name1.split(".");
 //
