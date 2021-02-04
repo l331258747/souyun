@@ -225,6 +225,7 @@
                         android:gravity="center"
                         android:hint="请输入运费价格"
                         android:inputType="numberDecimal"
+                        android:maxLength="9"
                         android:lines="1"
                         android:textCursorDrawable="@drawable/color_cursor"
                         android:textSize="@dimen/default_font14" />
@@ -233,7 +234,6 @@
 
                     <ImageView
                         android:id="@+id/jiahao"
-
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="@dimen/default_dp20"

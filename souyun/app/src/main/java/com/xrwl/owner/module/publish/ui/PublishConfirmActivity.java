@@ -178,7 +178,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
     private ProgressDialog mOnlinePayDialog;
     private ProgressDialog mXrwlwxpayDialog;
     private int mMinPrice = 0;
-    private int mMaxPrice = 1000000000;
     private int mInsurancePrice;//保险价格
     private float mfuwufei;//服务费
     private int mFull, mReduce;//满 减
@@ -396,8 +395,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mRecommendPriceTv.setText(String.valueOf(pricepaotui));
             mFreightEt.setText(String.valueOf(pricepaotui));
             mMinPrice = (int) (pricepaotui * 0.8);
-            mMaxPrice = (int) (pricepaotui * 1.2);
-            mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+            mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
 
             //把输入框的值赋值到这个总价上面来pcFreightEt
             mTotalPriceTv.setText(String.valueOf(mFreightPrice));
@@ -485,7 +483,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
     @Override
     protected void handleEvents() {
-        mFreightEt.setRegion(mMaxPrice, mMinPrice);
+        mFreightEt.setRegion(999999999, mMinPrice);
         mFreightEt.setTextWatcher(value -> {
             mFreightPrice = value;
             if (mFreightPrice < mFull) {
@@ -541,8 +539,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mPriceTv.setText(simpleDateFormat.format(date));
             mRecommendPriceTv.setText(String.valueOf(price));
             mMinPrice = (int) (1);
-            mMaxPrice = (int) (10000000);
-            mPriceHintTv.setText("请在" + 1 + "-" + 10000000 + "之间选择输入");
+            mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
             mFreightEt.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -599,16 +596,11 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     String[] s1 = mFreightEt.getText().toString().split("\\.");
                     if (s1[0] != null && !"".equals(s1[0])) {
                         String[] s2 = String.valueOf(price * 0.8).split("\\.");
-                        String[] s3 = String.valueOf(price * 1.2).split("\\.");
                         if (Integer.parseInt(s1[0]) < Integer.parseInt(s2[0])) {
                             xianshijiage = String.valueOf(s2[0]);
                             //showToast("您输入的价格超出了最低价格，按照最低价格算");
                             //mFreightEt.setText(xianshijiage);
-                        } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s3[0])) {
-                            xianshijiage = String.valueOf(s3[0]);
-                            // showToast("您输入的价格超出了最高价格，按照最低高格算");
-                            //mFreightEt.setText(xianshijiage);
-                        } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s2[0]) && Integer.parseInt(s1[0]) < Integer.parseInt(s3[0])) {
+                        } else if (Integer.parseInt(s1[0]) > Integer.parseInt(s2[0])) {
                             xianshijiage = s.toString();
                         }
                     } else {
@@ -760,8 +752,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     // mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 } else {
                     int xiaokuangkuang = price;
                     int jianshao = xiaokuangkuang * 10 / 100;
@@ -770,8 +761,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     //mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 }
             } else {
                 if (mPickBySelfCb.isChecked()) {
@@ -782,16 +772,14 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     //mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 } else {
                     int xiaokuangkuang = price;
                     String adbd = String.valueOf(xiaokuangkuang);
                     mTotalPriceTv.setText(adbd);
                     // mFreightEt.setText(adbd);
                     mMinPrice = (int) (xiaokuangkuang * 0.8);
-                    mMaxPrice = (int) (xiaokuangkuang * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 }
             }
 
@@ -809,8 +797,8 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     // mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
+
                 } else {
                     int xiaokuangkuang = price;
                     int jianshao = xiaokuangkuang * 10 / 100;
@@ -819,8 +807,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     //mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 }
 
             } else {
@@ -832,16 +819,14 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(adbd);
                     //mFreightEt.setText(adbd);
                     mMinPrice = (int) (zongshu * 0.8);
-                    mMaxPrice = (int) (zongshu * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 } else {
                     int xiaokuangkuang = price;
                     String adbd = String.valueOf(xiaokuangkuang);
                     mTotalPriceTv.setText(adbd);
                     //mFreightEt.setText(adbd);
                     mMinPrice = (int) (xiaokuangkuang * 0.8);
-                    mMaxPrice = (int) (xiaokuangkuang * 1.2);
-                    mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                    mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
                 }
             }
 
@@ -1301,8 +1286,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mRecommendPriceTv.setText(String.valueOf(price));
                 mFreightEt.setText(String.valueOf(price));
                 mMinPrice = (int) (price * 0.8);
-                mMaxPrice = (int) (price * 1.2);
-                mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
             } else {
                 //  price = (int) mPublishBean.getNidaye();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");// HH:mm:ss
@@ -1314,8 +1298,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                     mTotalPriceTv.setText(String.valueOf(price));
                 }
                 mMinPrice = (int) (price * 0.8);
-                mMaxPrice = (int) (price * 1.2);
-                mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
             }
         }
         mFreightEt.setFocusable(true);
@@ -1348,8 +1331,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mPriceTv.setText(simpleDateFormat.format(date));
                 mRecommendPriceTv.setText(String.valueOf(price));
                 mMinPrice = (int) (price * 0.8);
-                mMaxPrice = (int) (price * 1.2);
-                mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
             } else {
                 // price = (int) mPublishBean.getNidaye();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");// HH:mm:ss
@@ -1361,8 +1343,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
                 mRecommendPriceTv.setText(String.valueOf(price));
                 mFreightEt.setText(String.valueOf(price));
                 mMinPrice = (int) (price * 0.8);
-                mMaxPrice = (int) (price * 1.2);
-                mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+                mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
             }
 
         }
@@ -1395,8 +1376,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
             mRecommendPriceTv.setText(String.valueOf(price));
             mFreightEt.setText(String.valueOf(price));
             mMinPrice = (int) (price * 0.8);
-            mMaxPrice = (int) (price * 1.2);
-            mPriceHintTv.setText("请在" + mMinPrice + "-" + mMaxPrice + "之间选择输入");
+            mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
         }
 
     }
@@ -1443,7 +1423,6 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
 
             mMinPrice = (int) (price * 0.8);
-            mMaxPrice = (int) (price * 1.2);
 
         }
     }
