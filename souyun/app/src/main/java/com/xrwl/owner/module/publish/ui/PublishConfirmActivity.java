@@ -1423,7 +1423,7 @@ public class PublishConfirmActivity extends BaseActivity<PublishConfirmContract.
 
 
             mMinPrice = (int) (price * 0.8);
-
+            mPriceHintTv.setText("您可输入大于等于最小额"+mMinPrice+"元");
         }
     }
 

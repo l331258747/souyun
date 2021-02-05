@@ -713,35 +713,29 @@ public class BlankFragment extends Fragment implements LocationSource, AMapLocat
                 intent.putExtra("type",0);
                 startActivity(intent);
                 break;
-            case R.id.tv_ctld:
+            case R.id.tv_ctld://零担
                 if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
-                    intent.putExtra("type",3);//长途零担
+                    intent.putExtra("type",3);//同城零担
                     startActivity(intent);
                 }
                 else{
-                    if(TextUtils.isEmpty(chexingBean.getChexing())){
-                        new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
-                                .setPositiveButton("确定", null).show();
-                        return;
-                    }
-
-                    intent.putExtra("type",1);//长途整车
+                    intent.putExtra("type",1);//长途零担
                     startActivity(intent);
                 }
                 break;
-            case R.id.tv_ctzc:
+            case R.id.tv_ctzc://整车
+                if(TextUtils.isEmpty(chexingBean.getChexing())){
+                    new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
+
                 if(TextUtils.equals(destinationBean.getCity(),locationBean.getCity())){
-                    intent.putExtra("type",4);//同城零担
+                    intent.putExtra("type",4);//同城整车
                     startActivity(intent);
                 }
                 else{
-                    if(TextUtils.isEmpty(chexingBean.getChexing())){
-                        new AlertDialog.Builder(getActivity()).setMessage("请选择车型")
-                                .setPositiveButton("确定", null).show();
-                        return;
-                    }
-
-                    intent.putExtra("type",2);//同城整车
+                    intent.putExtra("type",2);//长途整车
                     startActivity(intent);
                 }
                 break;
