@@ -24,6 +24,7 @@ import com.xrwl.owner.module.me.bean.Bank;
 import com.xrwl.owner.module.me.bean.Tixianlist;
 import com.xrwl.owner.module.publish.bean.CarManageBean;
 import com.xrwl.owner.module.publish.bean.CarManageSearchBean;
+import com.xrwl.owner.module.publish.bean.CargoBean;
 import com.xrwl.owner.module.publish.bean.Changtulingdan;
 import com.xrwl.owner.module.publish.bean.CompanyManageBean;
 import com.xrwl.owner.module.publish.bean.DzNameManageBean;
@@ -502,5 +503,15 @@ public interface Api {
  /** 大宗到货总量修改 */
  @GET("Order/UpdateOrderdundaoda")
  Observable<BaseEntity> updateOrderdundaoda(@QueryMap Map<String, String> params);
+
+
+
+ /** 发布货物名称一级分类 */
+ @GET("onetypeall")
+ Observable<BaseEntity<List<CargoBean>>> onetypeall(@QueryMap Map<String, String> params);
+
+ /** 大宗到货总量修改 */
+ @GET("twotypeall")
+ Observable<BaseEntity<List<CargoBean>>> twotypeall(@QueryMap Map<String, String> params);
 
 }

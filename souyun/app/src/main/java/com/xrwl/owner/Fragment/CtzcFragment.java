@@ -33,11 +33,11 @@ import com.xrwl.owner.module.friend.ui.FriendActivity;
 import com.xrwl.owner.module.publish.bean.PublishBean;
 import com.xrwl.owner.module.publish.bean.Truck;
 import com.xrwl.owner.module.publish.dialog.CategoryDialog;
-import com.xrwl.owner.module.publish.dialog.ProductDialog2;
 import com.xrwl.owner.module.publish.map.SearchLocationActivity;
 import com.xrwl.owner.module.publish.mvp.PublishContract;
 import com.xrwl.owner.module.publish.mvp.PublishPresenter;
 import com.xrwl.owner.module.publish.ui.AddressActivity;
+import com.xrwl.owner.module.publish.ui.CargoActivity;
 import com.xrwl.owner.module.publish.ui.PublishConfirmActivity;
 import com.xrwl.owner.module.publish.ui.TruckActivity;
 import com.xrwl.owner.utils.AccountUtil;
@@ -51,7 +51,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,6 +69,7 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
     public static final int RESULT_POSITION_END = 333;//到货定位
     public static final int RESULT_FRIEND_START = 444;//发货电话
     public static final int RESULT_FRIEND_END = 555;//收货人
+    public static final int RESULT_CARGO = 888;//货物名称
 
 //    private static final String ARG_PARAM1 = "param1";
 //    private static final String ARG_PARAM2 = "param2";
@@ -408,11 +408,8 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
     public void onProductClick(View v) {
         /**货物名称*/
         if (v.getId() == R.id.publishProductTv) {
-            ProductDialog2 dialog = new ProductDialog2();
-            dialog.setOnProductSelectListener(name -> {
-                mpublishProductTv.setText(name);
-            });
-            dialog.show(Objects.requireNonNull(getFragmentManager()), "product");
+            Intent intent = new Intent(getContext(), CargoActivity.class);
+            startActivityForResult(intent, RESULT_CARGO);
         }
     }
 
@@ -628,6 +625,11 @@ public class CtzcFragment extends BaseEventFragment<PublishContract.IView, Publi
             Friend friend = (Friend) data.getSerializableExtra("data");
             mpublishGetPersonEt.setText(friend.getName());
             mpublishGetPhoneEt.setText(friend.getPhone().replace("-", "").replace("+", "").replace(" ", ""));
+        }
+        /**货物名称*/
+        else if(requestCode == RESULT_CARGO){
+            String name = data.getStringExtra("name");
+            mpublishProductTv.setText(name);
         }
     }
 
