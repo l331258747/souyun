@@ -49,27 +49,4 @@ public class CargoPresenter extends CargoContract.APresenter {
         });
     }
 
-    @Override
-    public void getList2(Map<String, String> params) {
-        mModel.getList2(params).subscribe(new BaseObserver<List<CargoBean>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                addDisposable(d);
-            }
-
-            @Override
-            protected void onHandleSuccess(BaseEntity<List<CargoBean>> entity) {
-                if (entity.isSuccess()) {
-                    mView.getListSuccessa2(entity);
-                } else {
-                    mView.getListError2(entity);
-                }
-            }
-
-            @Override
-            protected void onHandleError(Throwable e) {
-                mView.getListException2(e);
-            }
-        });
-    }
 }

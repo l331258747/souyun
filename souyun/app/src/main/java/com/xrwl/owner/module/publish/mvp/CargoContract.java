@@ -20,9 +20,6 @@ public interface CargoContract {
         void getListError(BaseEntity entity);
         void getListException(Throwable e);
 
-        void getListSuccessa2(BaseEntity<List<CargoBean>> entity);
-        void getListError2(BaseEntity entity);
-        void getListException2(Throwable e);
     }
 
     abstract class APresenter extends MyPresenter<CargoContract.IView> {
@@ -33,11 +30,9 @@ public interface CargoContract {
 
         public abstract void getList(Map<String, String> params);
 
-        public abstract void getList2(Map<String, String> params);
     }
 
     interface IModel {
         Observable<BaseEntity<List<CargoBean>>> getList(Map<String, String> params);
-        Observable<BaseEntity<List<CargoBean>>> getList2(Map<String, String> params);
     }
 }

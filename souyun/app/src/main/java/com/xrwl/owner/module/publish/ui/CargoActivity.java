@@ -1,12 +1,10 @@
 package com.xrwl.owner.module.publish.ui;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ldw.library.bean.BaseEntity;
-import com.ldw.library.view.dialog.LoadingProgress;
 import com.xrwl.owner.R;
 import com.xrwl.owner.base.BaseActivity;
 import com.xrwl.owner.bean.PostOrder;
@@ -14,7 +12,6 @@ import com.xrwl.owner.module.publish.adapter.CargoAdapter;
 import com.xrwl.owner.module.publish.bean.CargoBean;
 import com.xrwl.owner.module.publish.mvp.CargoContract;
 import com.xrwl.owner.module.publish.mvp.CargoPresenter;
-import com.xrwl.owner.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,8 +35,6 @@ public class CargoActivity extends BaseActivity<CargoContract.IView, CargoPresen
     private List<CargoBean> mDatas1;
     private List<CargoBean> mDatas2;
 
-    private ProgressDialog mPostDialog;
-
     @Override
     protected CargoPresenter initPresenter() {
         return new CargoPresenter(this);
@@ -59,16 +54,11 @@ public class CargoActivity extends BaseActivity<CargoContract.IView, CargoPresen
         recycler_view1.setAdapter(mAdapter1);
 
         mAdapter1.setOnItemClickListener(position -> {
-
-            if(!MyUtils.isFastClick())
-                return;
-
-            mPostDialog = LoadingProgress.showProgress(this, "正在添加");
-
-            Map<String, String> params = new HashMap<>();
-            mAdapter1.setId(mDatas1.get(position).getId());
-            params.put("listId", mDatas1.get(position).getId() + "");
-            mPresenter.getList2(params);
+            mAdapter1.setId(mDatas1.get(position).getOneType().getId());
+            if (mDatas1.get(position).getTwoTypes() != null && mDatas1.get(position).getTwoTypes().size() > 0) {
+                mAdapter2.setData(mDatas1.get(position).getTwoTypes());
+                mDatas2 = mDatas1.get(position).getTwoTypes();
+            }
 
         });
 
@@ -98,12 +88,11 @@ public class CargoActivity extends BaseActivity<CargoContract.IView, CargoPresen
         mAdapter1.setData(mDatas1);
 
         if(mDatas1.size() > 0){
-            mPostDialog = LoadingProgress.showProgress(this, "正在添加");
-
-            Map<String, String> params = new HashMap<>();
-            mAdapter1.setId(mDatas1.get(0).getId());
-            params.put("listId", mDatas1.get(0).getId() + "");
-            mPresenter.getList2(params);
+            mAdapter1.setId(mDatas1.get(0).getOneType().getId());
+            if (mDatas1.get(0).getTwoTypes() != null && mDatas1.get(0).getTwoTypes().size() > 0) {
+                mAdapter2.setData(mDatas1.get(0).getTwoTypes());
+                mDatas2 = mDatas1.get(0).getTwoTypes();
+            }
         }
     }
 
@@ -115,28 +104,6 @@ public class CargoActivity extends BaseActivity<CargoContract.IView, CargoPresen
 
     @Override
     public void getListException(Throwable e) {
-        showNetworkError();
-    }
-
-    @Override
-    public void getListSuccessa2(BaseEntity<List<CargoBean>> entity) {
-        mPostDialog.dismiss();
-        if (entity.getData() != null && entity.getData().size() > 0) {
-            mAdapter2.setData(entity.getData());
-            mDatas2 = entity.getData();
-        }
-    }
-
-    @Override
-    public void getListError2(BaseEntity entity) {
-        mPostDialog.dismiss();
-        showToast("加载失败");
-        handleError(entity);
-    }
-
-    @Override
-    public void getListException2(Throwable e) {
-        mPostDialog.dismiss();
         showNetworkError();
     }
 

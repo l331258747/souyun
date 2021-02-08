@@ -20,10 +20,4 @@ public class CargoModel implements CargoContract.IModel {
         return OtherRetrofitFactory.getInstance("http://app.16souyun.com/").onetypeall(params).compose(RxSchedulers
                 .<BaseEntity<List<CargoBean>>>compose());
     }
-
-    @Override
-    public Observable<BaseEntity<List<CargoBean>>> getList2(Map<String, String> params) {
-        return OtherRetrofitFactory.getInstance("http://app.16souyun.com/").twotypeall(params).compose(RxSchedulers
-                .<BaseEntity<List<CargoBean>>>compose());
-    }
 }

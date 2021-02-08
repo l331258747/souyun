@@ -44,19 +44,21 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.ViewHolder> 
         if (data == null) return;
 
         if(type == 0){
-            if(id == data.getId()){
+            if(id == data.getOneType().getId()){
                 holder.tv_name.setBackgroundColor(ContextCompat.getColor(mContext,R.color.white));
                 holder.tv_name.setTextColor(ContextCompat.getColor(mContext,R.color.color_FA9211));
             }else {
                 holder.tv_name.setBackgroundColor(ContextCompat.getColor(mContext,R.color.color_F9F7FA));
                 holder.tv_name.setTextColor(ContextCompat.getColor(mContext,R.color.window_text_color));
             }
+
+            holder.tv_name.setText(data.getOneType().getName());
         }else{
             holder.tv_name.setBackgroundColor(ContextCompat.getColor(mContext,R.color.white));
             holder.tv_name.setTextColor(ContextCompat.getColor(mContext,R.color.window_text_color));
-        }
 
-        holder.tv_name.setText(data.getName());
+            holder.tv_name.setText(data.getName());
+        }
 
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(v -> mOnItemClickListener.onClick(position));

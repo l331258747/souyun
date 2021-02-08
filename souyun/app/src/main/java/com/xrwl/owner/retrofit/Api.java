@@ -507,11 +507,7 @@ public interface Api {
 
 
  /** 发布货物名称一级分类 */
- @GET("onetypeall")
+ @GET("typeall")
  Observable<BaseEntity<List<CargoBean>>> onetypeall(@QueryMap Map<String, String> params);
-
- /** 大宗到货总量修改 */
- @GET("twotypeall")
- Observable<BaseEntity<List<CargoBean>>> twotypeall(@QueryMap Map<String, String> params);
 
 }
