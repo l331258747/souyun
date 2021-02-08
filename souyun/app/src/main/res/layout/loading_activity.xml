@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pop"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/pppp"
+    android:layout_height="match_parent">
 
-    >
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/yindao"
+        android:scaleType="fitXY"/>
 
     <ProgressBar
         android:id="@+id/loadingProgressBar"
+        style="@style/DownloadingProgressBar"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_marginTop="55dip"
-        android:layout_marginBottom="@dimen/default_dp100"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/default_dp10"
+        android:layout_marginTop="55dip"
         android:layout_marginEnd="@dimen/default_dp10"
-        style="@style/DownloadingProgressBar"  />
+        android:layout_marginBottom="@dimen/default_dp100" />
 
 
     <TextView
         android:id="@+id/loadingVersionTv"
-        android:layout_height="40dp"
-       android:layout_marginTop="@dimen/default_dp10"
-        android:layout_alignParentBottom="true"
-     android:layout_alignParentEnd="true"
         android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/default_dp25"
-        android:textColor="@color/white"
-         android:gravity="center" />
+        android:layout_marginTop="@dimen/default_dp10"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/default_dp25"
-        android:textColor="@color/white"
-        android:textSize="@dimen/default_dp10"
+        android:gravity="center"
         android:text="16飕云 Copyright(C)2018-2020"
-        android:gravity="center" />
-
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_dp10"
+        android:visibility="gone" />
 
 
 </RelativeLayout>
