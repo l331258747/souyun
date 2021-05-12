@@ -35,7 +35,7 @@ public class PublishBean implements Serializable {
 //    //返回数据的价格
 //    public int xrpay;
 
-
+   public  String keyun;
     public String qinyanwei;
     public int category = -1;//配送类型
     //    public String truckDes;//车型描述
@@ -321,7 +321,7 @@ public class PublishBean implements Serializable {
 
     public String getWeight1() {
         if (TextUtils.isEmpty(defaultWeight)) {
-            return "1";
+            return "0.01";
         } else {
             return defaultWeight;
         }
@@ -347,7 +347,7 @@ public class PublishBean implements Serializable {
 
     public String getArea1() {
         if (TextUtils.isEmpty(defaultArea)) {
-            return "1";
+            return "0.01";
         } else {
             return defaultArea;
         }

@@ -15,7 +15,7 @@
         app:header_init_top="0"
         app:inn_id="@+id/inner_rv"
         app:target_id="@+id/target_layout"
-        app:target_init_bottom="400">
+        app:target_init_bottom="380">
 
         <com.amap.api.maps.MapView
             android:id="@+id/nlMapView"
@@ -183,8 +183,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-
                 <LinearLayout
                     android:id="@+id/ll_shouhuoren"
                     android:layout_width="0dp"
@@ -318,7 +316,6 @@
 
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:id="@+id/ll_qita"
                     android:layout_width="0dp"
@@ -391,7 +388,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/default_dp10"
                             android:gravity="center_vertical"
-                            android:text="货物吨数" />
+                            android:text="货物信息" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -488,109 +485,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="@dimen/default_dp40"-->
-                <!--                        android:gravity="center_vertical"-->
-                <!--                        android:visibility="gone"-->
-                <!--                        android:orientation="horizontal">-->
-
-                <!--                        <TextView-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="match_parent"-->
-                <!--                            android:gravity="center_vertical"-->
-                <!--                            android:layout_marginStart="@dimen/default_dp10"-->
-                <!--                            android:text="发货单位" />-->
-
-
-                <!--                        <EditText-->
-                <!--                            android:id="@+id/et_fahuodanwei"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:layout_height="match_parent"-->
-                <!--                            android:layout_marginStart="@dimen/dp_10"-->
-                <!--                            android:background="@null"-->
-                <!--                            android:hint="请输入发货单位"-->
-                <!--                            android:textSize="@dimen/sp_14"-->
-                <!--                            android:inputType="text"-->
-                <!--                            android:maxLines="1"-->
-                <!--                            android:paddingStart="5dp"-->
-                <!--                            android:paddingEnd="5dp" />-->
-
-                <!--                        <TextView-->
-                <!--                            android:id="@+id/bt_fahuodanwei_xuanze"-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:text="选择"-->
-                <!--                            android:background="@drawable/btn_red_r5"-->
-                <!--                            android:textColor="@color/white"-->
-                <!--                            android:paddingTop="5dp"-->
-                <!--                            android:paddingBottom="5dp"-->
-                <!--                            android:visibility="gone"-->
-                <!--                            android:paddingStart="@dimen/default_dp10"-->
-                <!--                            android:paddingEnd="@dimen/default_dp10"-->
-                <!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
-
-                <!--                    </LinearLayout>-->
-
-                <!--                    <View-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="@dimen/default_dp1"-->
-                <!--                        android:background="@color/divider_color"-->
-                <!--                        android:visibility="gone"/>-->
-
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="@dimen/default_dp40"-->
-                <!--                        android:gravity="center_vertical"-->
-                <!--                        android:visibility="gone"-->
-                <!--                        android:orientation="horizontal">-->
-
-                <!--                        <TextView-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="match_parent"-->
-                <!--                            android:gravity="center_vertical"-->
-                <!--                            android:layout_marginStart="@dimen/default_dp10"-->
-                <!--                            android:text="收货单位" />-->
-
-
-                <!--                        <EditText-->
-                <!--                            android:id="@+id/et_shouhuodanwei"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:layout_height="match_parent"-->
-                <!--                            android:layout_marginStart="@dimen/dp_10"-->
-                <!--                            android:background="@null"-->
-                <!--                            android:hint="请输入收货单位"-->
-                <!--                            android:textSize="@dimen/sp_14"-->
-                <!--                            android:inputType="text"-->
-                <!--                            android:maxLines="1"-->
-                <!--                            android:paddingStart="5dp"-->
-                <!--                            android:paddingEnd="5dp" />-->
-
-                <!--                        <TextView-->
-                <!--                            android:id="@+id/bt_shouhuodanwei_xuanze"-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:text="选择"-->
-                <!--                            android:background="@drawable/btn_red_r5"-->
-                <!--                            android:textColor="@color/white"-->
-                <!--                            android:paddingTop="5dp"-->
-                <!--                            android:paddingBottom="5dp"-->
-                <!--                            android:paddingStart="@dimen/default_dp10"-->
-                <!--                            android:visibility="gone"-->
-                <!--                            android:paddingEnd="@dimen/default_dp10"-->
-                <!--                            android:layout_marginEnd="@dimen/default_dp10"/>-->
-
-                <!--                    </LinearLayout>-->
-
-                <!--                    <View-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="@dimen/default_dp1"-->
-                <!--                        android:background="@color/divider_color"-->
-                <!--                        android:visibility="gone"/>-->
-
                 <LinearLayout
                     android:id="@+id/ll_leixing"
                     android:layout_width="0dp"
@@ -615,7 +509,7 @@
                             android:id="@+id/tv_dzys"
                             android:layout_width="@dimen/dp_110"
                             android:layout_height="@dimen/dp_45"
-                            android:background="@drawable/btn_red_r5"
+                            android:background="#1e7de7"
                             android:gravity="center"
                             android:text="大宗运输"
                             android:textStyle="bold"
@@ -631,7 +525,7 @@
                             android:id="@+id/tv_ctld"
                             android:layout_width="@dimen/dp_110"
                             android:layout_height="@dimen/dp_45"
-                            android:background="@drawable/btn_red_r5"
+                            android:background="#fa871d"
                             android:gravity="center"
                             android:text="零\u3000担"
                             android:textStyle="bold"
@@ -646,7 +540,7 @@
                             android:id="@+id/tv_ctzc"
                             android:layout_width="@dimen/dp_110"
                             android:layout_height="@dimen/dp_45"
-                            android:background="@drawable/btn_red_r5"
+                            android:background="#12ba96"
                             android:gravity="center"
                             android:text="整\u3000车"
                             android:textStyle="bold"
@@ -658,302 +552,204 @@
                             android:textColor="@color/white" />
 
                     </android.support.constraint.ConstraintLayout>
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:layout_marginTop="-36dp"
 
-<!--                    <android.support.constraint.ConstraintLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/dp_40"-->
-<!--                        android:orientation="horizontal">-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_tczc"-->
-<!--                            android:layout_width="@dimen/default_dp80"-->
-<!--                            android:layout_height="@dimen/dp_25"-->
-<!--                            android:background="@drawable/btn_red_r5"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="同城专车"-->
-<!--                            app:layout_constraintEnd_toStartOf="@+id/tv_tcld"-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            android:textColor="@color/white" />-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_tcld"-->
-<!--                            android:layout_width="@dimen/default_dp80"-->
-<!--                            android:layout_height="@dimen/dp_25"-->
-<!--                            android:background="@drawable/btn_red_r5"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="同城零担"-->
-<!--                            app:layout_constraintStart_toEndOf="@+id/tv_tczc"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            android:textColor="@color/white" />-->
+                        android:orientation="horizontal">
 
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/tv_paotui"-->
-<!--                            android:layout_width="@dimen/default_dp80"-->
-<!--                            android:layout_height="@dimen/dp_25"-->
-<!--                            android:background="@drawable/btn_red_r5"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="跑腿"-->
-<!--                            app:layout_constraintStart_toEndOf="@+id/tv_tcld"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            app:layout_constraintTop_toTopOf="parent"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            android:textColor="@color/white" />-->
-<!--                    </android.support.constraint.ConstraintLayout>-->
+                        <TextView
+                            android:id="@+id/tv_dzysaa"
+                            android:layout_width="@dimen/dp_110"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="#1e7de7"
+                            android:gravity="center"
+                            android:text="无车承运物流平台"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_ctldaa"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:textSize="@dimen/dp_10"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+
+                        <TextView
+                            android:id="@+id/tv_ctldaa"
+                            android:layout_width="@dimen/dp_110"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="#fa871d"
+                            android:gravity="center"
+                            android:text="一票到底 安全发货"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/dp_10"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_ctzcaa"
+                            app:layout_constraintStart_toEndOf="@+id/tv_dzysaa"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_ctzcaa"
+                            android:layout_width="@dimen/dp_110"
+                            android:layout_height="@dimen/dp_25"
+                            android:background="#12ba96"
+                            android:gravity="center"
+                            android:text="专车运输 上门服务"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/dp_10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_ctldaa"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:textColor="@color/white" />
+
+                    </android.support.constraint.ConstraintLayout>
 
                 </LinearLayout>
 
-                <!--            <LinearLayout-->
-                <!--                android:id="@+id/saoyisaoBtn"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:background="@drawable/sousuo"-->
-                <!--                android:orientation="horizontal"-->
-                <!--                android:visibility="gone">-->
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_gravity="center"-->
-                <!--                    android:layout_marginEnd="55dp"-->
-                <!--                    android:gravity="right"-->
-                <!--                    android:text="扫一扫"-->
-                <!--                    android:textColor="@color/white"-->
-                <!--                    android:textStyle="bold" />-->
-                <!--            </LinearLayout>-->
 
 
-                <!--            <LinearLayout-->
-                <!--                android:id="@+id/fanhuizhuyejian"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="50dp"-->
-                <!--                android:background="@color/colorPrimary"-->
-                <!--                android:orientation="horizontal"-->
-                <!--                android:visibility="gone">-->
+                <LinearLayout
+                    android:id="@+id/fangkuang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/default_dp80"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:background="@drawable/btn_white_r10"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_qita"
+                    android:visibility="gone"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <ImageView
+
+                            android:id="@+id/keyunpic"
+                            android:layout_width="120px"
+                            android:layout_height="120px"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="60px"
+                            android:layout_marginRight="50px"
+                            android:layout_marginTop="30px"
+                            android:src="@drawable/qin14" />
 
 
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_gravity="center"-->
-                <!--                    android:layout_marginStart="170dp"-->
-                <!--                    android:gravity="center_horizontal"-->
-                <!--                    android:text="主页"-->
-                <!--                    android:textColor="@color/white"-->
-                <!--                    android:textSize="@dimen/default_font16"-->
-                <!--                    android:visibility="gone" />-->
+                        <ImageView
+
+                            android:id="@+id/dangjianpic"
+                            android:layout_width="120px"
+                            android:layout_height="120px"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="60px"
+                            android:layout_marginTop="30px"
+                            android:src="@drawable/qin17" />
 
 
-                <!--                &lt;!&ndash;<TextView&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:id="@+id/saoyisaoBtn"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:layout_marginStart="100dp"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:text="扫一扫"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:textSize="@dimen/default_font16"&ndash;&gt;-->
-                <!--                &lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
-                <!--                &lt;!&ndash;/>&ndash;&gt;-->
-                <!--            </LinearLayout>-->
+                        <ImageView
+                            android:id="@+id/gonghuipic"
+                            android:layout_width="120px"
+                            android:layout_height="120px"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="150px"
+                            android:layout_marginTop="30px"
+                            android:src="@drawable/qin18" />
 
 
-                <!--            <android.support.v4.widget.NestedScrollView-->
-                <!--                android:id="@+id/scrollView"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content">-->
-
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="350dp"-->
-                <!--                    android:background="#EEEEEF"-->
-                <!--                    android:orientation="vertical">-->
-
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:background="@color/colorPrimary"-->
-                <!--                        android:orientation="horizontal"-->
-                <!--                        android:paddingTop="25dp"-->
-                <!--                        android:paddingBottom="25dp">-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:id="@+id/homePublishLayout"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:gravity="center_horizontal"-->
-                <!--                            android:orientation="vertical">-->
-
-                <!--                            <ImageView-->
-                <!--                                android:layout_width="@dimen/home_icon_size"-->
-                <!--                                android:layout_height="@dimen/home_icon_size"-->
-                <!--                                android:src="@drawable/home_ic_fbhy" />-->
-
-                <!--                            <TextView-->
-                <!--                                android:id="@+id/homePublishOrFindTv"-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-
-                <!--                                android:text="发布货源"-->
-                <!--                                android:textColor="@color/white" />-->
-
-                <!--                        </LinearLayout>-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:id="@+id/homeMyOrderLayout"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:gravity="center_horizontal"-->
-                <!--                            android:orientation="vertical">-->
-
-                <!--                            <ImageView-->
-                <!--                                android:layout_width="@dimen/home_icon_size"-->
-                <!--                                android:layout_height="@dimen/home_icon_size"-->
-                <!--                                android:src="@drawable/home_ic_wddd" />-->
-
-                <!--                            <TextView-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:text="我的订单"-->
-                <!--                                android:textColor="@color/white" />-->
-
-                <!--                        </LinearLayout>-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:id="@+id/homeHistoryLayout"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:gravity="center_horizontal"-->
-                <!--                            android:orientation="vertical">-->
-
-                <!--                            <ImageView-->
-                <!--                                android:layout_width="@dimen/home_icon_size"-->
-                <!--                                android:layout_height="@dimen/home_icon_size"-->
-                <!--                                android:src="@drawable/home_ic_lsjy" />-->
-
-                <!--                            <TextView-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:text="历史交易"-->
-                <!--                                android:textColor="@color/white" />-->
-
-                <!--                        </LinearLayout>-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:id="@+id/homeAuthLayout"-->
-                <!--                            android:layout_width="0dp"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_weight="1"-->
-                <!--                            android:gravity="center_horizontal"-->
-                <!--                            android:orientation="vertical">-->
-
-                <!--                            <ImageView-->
-                <!--                                android:layout_width="@dimen/home_icon_size"-->
-                <!--                                android:layout_height="@dimen/home_icon_size"-->
-                <!--                                android:src="@drawable/home_ic_smrz" />-->
-
-                <!--                            <TextView-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:text="实名认证"-->
-                <!--                                android:textColor="@color/white" />-->
-
-                <!--                        </LinearLayout>-->
-
-                <!--                    </LinearLayout>-->
-
-                <!--                    <TextView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="2dp" />-->
+                        <ImageView
+                             android:id="@+id/jinbiandanpic"
+                            android:layout_width="120px"
+                            android:layout_height="120px"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="150px"
+                            android:layout_marginTop="30px"
+                            android:src="@drawable/qin19" />
 
 
-                <!--                    <android.support.v4.view.ViewPager-->
-                <!--                        android:id="@+id/homeViewPager"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content" />-->
 
-                <!--                    <TextView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="5dp" />-->
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <TextView
+                            android:id="@+id/keyuntxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="85px"
+                            android:layout_marginRight="50px"
+                            android:layout_marginTop="15px"
+                            android:text="客运"
+                            />
+                        <TextView
+                            android:id="@+id/dangjiantxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="100px"
+
+                            android:layout_marginTop="15px"
+                            android:text="党建"
+                            />
+                        <TextView
+                            android:id="@+id/gonghuitxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="185px"
+                            android:layout_marginTop="15px"
+                            android:text="工会"
+                            />
+                        <TextView
+                            android:id="@+id/jinbiandantxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="175px"
+                            android:layout_marginTop="15px"
+                            android:text="晋扁担"
+                            />
 
 
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="@dimen/default_dp60"-->
-                <!--                        android:background="@color/white"-->
-                <!--                        android:orientation="horizontal">-->
-
-                <!--                        <ImageView-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:src="@drawable/owner" />-->
-
-                <!--                        <TextView-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_gravity="center"-->
-                <!--                            android:text="你的订单有人接单   1天前"-->
-                <!--                            android:textColor="@color/black" />-->
-
-                <!--                        <ImageView-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_gravity="center"-->
-                <!--                            android:layout_marginLeft="@dimen/default_dp80"-->
-                <!--                            android:src="@drawable/ic_green_arrow"-->
-
-                <!--                            />-->
-                <!--                    </LinearLayout>-->
+                    </LinearLayout>
 
 
-                <!--                    <TextView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="2dp" />-->
+                </LinearLayout>
 
-                <!--                    <android.support.v7.widget.RecyclerView-->
-                <!--                        android:id="@+id/homeIntroRv"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_marginBottom="2dp"-->
-                <!--                        android:background="@color/white"-->
 
-                <!--                        />-->
-                <!--轮播图位置-->
-                <!--                    <android.support.v4.view.ViewPager-->
-                <!--                        android:id="@+id/homesViewPager"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content" />-->
 
-                <!--                    <android.support.v7.widget.RecyclerView-->
-                <!--                        android:id="@+id/homeServiceRv"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_marginTop="8dp"-->
-                <!--                        android:layout_marginBottom="8dp"-->
-                <!--                        android:visibility="gone" />-->
 
-                <!--                    <TextView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="2dp"-->
-                <!--                        android:background="@color/dark_gray" />-->
 
-                <!--                    <com.example.library.banner.BannerLayout-->
-                <!--                        android:id="@+id/recycler"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="200dp"-->
-                <!--                        android:layout_marginTop="-10dp"-->
-                <!--                        android:background="@color/white" />-->
-                <!--                        app:autoPlaying="true"-->
-                <!--                        app:centerScale="1.3"-->
-                <!--                        app:itemSpace="20"-->
-                <!--                        app:moveSpeed="1.8"-->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             </android.support.constraint.ConstraintLayout>
