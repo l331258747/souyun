@@ -385,10 +385,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
         if (requestCode == GPS_REQUEST_CODE) {
-
         }
 
         if (resultCode != RESULT_OK) {
@@ -420,9 +417,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         }
     }
-
-
-
 
     @OnClick({R.id.shijidianhua,R.id.detailCancelBtn, R.id.detailLocationBtn, R.id.detailConfirmBtn,
             R.id.wxPayLayout, R.id.aliPayLayout, R.id.fanhuishouye, R.id.querenzhifu, R.id.yueCB, R.id.weixinCB,
@@ -513,13 +507,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 startActivity(mpIntent);
             }
         }
-
-        /**
-         * 点击查看线路*/
+        /** 点击查看线路*/
         else if (id == R.id.detailSelectBtn) {
-
         }
-
         /**是否确认发货*/
         else if (id == R.id.detailConfirmfaBtn) {
             new AlertDialog.Builder(this)
@@ -533,8 +523,7 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                         }
                     }).show();
         }
-
-        /**+*/
+        /**定位司机*/
         else if (id == R.id.detailLocationBtn) {
 //            mPresenter.location(mId, mDriverId);
 
@@ -657,7 +646,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                     }
                 }
             }
-        } else if (v.getId() == R.id.fanhuishouye) {
+        }
+        /**返回首页*/
+        else if (v.getId() == R.id.fanhuishouye) {
             new AlertDialog.Builder(this).setMessage("是否确定返回首页？")
                     .setNegativeButton("取消", null)
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -666,12 +657,16 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                             ActivityCollect.getAppCollect().finishAllNotHome();
                         }
                     }).show();
-        } else if (v.getId() == R.id.dianpingbt) {
+        }
+        /**在线点评*/
+        else if (v.getId() == R.id.dianpingbt) {
             final TextView displayTva = (TextView) findViewById(R.id.display);
             final TextView displayTvaa = (TextView) findViewById(R.id.displays);
             final TextView displayTvaaa = (TextView) findViewById(R.id.displayss);
             mPresenter.dianping(mId, mDriverId, "", displayTva.getText().toString().replace("当前评分为：", ""), displayTvaa.getText().toString().replace("当前评分为：", ""), displayTvaaa.getText().toString().replace("当前评分为：", ""), "", "", mpingjiacontent.getText().toString());
-        } else if (v.getId() == R.id.zhifuweikuandaishouBtn) {
+        }
+        /**支付(代收)货款*/
+        else if (v.getId() == R.id.zhifuweikuandaishouBtn) {
 
             myijieqing.setVisibility(View.VISIBLE);
             myingcanglo.setVisibility(View.VISIBLE);
@@ -746,7 +741,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mzhifuweikuandaishouBtn.setVisibility(View.GONE);
             }
             mdesLayout.setVisibility(View.GONE);
-        } else if (v.getId() == R.id.huozhuxianxiazhifu) {
+        }
+        /**货主线下支付*/
+        else if (v.getId() == R.id.huozhuxianxiazhifu) {
             new AlertDialog.Builder(this).setMessage("是否确定要线下支付吗？")
                     .setNegativeButton("取消", null)
                     .setPositiveButton("提醒司机线下支付", new DialogInterface.OnClickListener() {
@@ -756,7 +753,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                             mPresenter.confirmtixingOrder(mId);
                         }
                     }).show();
-        } else if (v.getId() == R.id.xuanzeonline) {
+        }
+        /**选择线上支付*/
+        else if (v.getId() == R.id.xuanzeonline) {
             if (mxuanzeonline.isChecked()) {
                 mweixincb.setChecked(true);
                 mxuanzeonline.setChecked(true);
@@ -766,7 +765,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mxuanzeonlinexianxia.setChecked(true);
                 mxuanzeonline.setChecked(false);
             }
-        } else if (v.getId() == R.id.xuanzeonlinexianxia) {
+        }
+        /**选择线下支付*/
+        else if (v.getId() == R.id.xuanzeonlinexianxia) {
             if (mxuanzeonlinexianxia.isChecked()) {
                 mxuanzeonline.setChecked(false);
                 mxuanzeonlinexianxia.setChecked(true);
@@ -781,7 +782,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mxuanzeonlinexianxia.setChecked(false);
                 mxuanzeonline.setChecked(true);
             }
-        } else if (v.getId() == R.id.querenzhifuhuokuan) {
+        }
+        /**货款支付*/
+        else if (v.getId() == R.id.querenzhifuhuokuan) {
             daishoutype = "4";
             //region 微信支付
             if (mweixincb.isChecked()) {
@@ -801,7 +804,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             }
 
             //endregion
-        } else if (v.getId() == R.id.querenzhifu) {
+        }
+        /**确认支付*/
+        else if (v.getId() == R.id.querenzhifu) {
             rgTabGroup.setVisibility(View.GONE);
             //region 微信支付
             if (mweixincb.isChecked()) {
@@ -1334,7 +1339,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             //endregion
 
 
-        } else if (id == R.id.yueCB) {
+        }
+        /**余额被选中*/
+        else if (id == R.id.yueCB) {
             if (myuecb.isChecked()) {
                 mzhifubaocb.setChecked(false);
                 myinhangkacb.setChecked(false);
@@ -1342,7 +1349,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
             } else {
                 myuecb.setChecked(false);
             }
-        } else if (id == R.id.weixinCB) {
+        }
+        /**微信被选中*/
+        else if (id == R.id.weixinCB) {
             //region 微信被选中
 
             if (mweixincb.isChecked()) {
@@ -1353,7 +1362,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mweixincb.setChecked(false);
             }
             //endregion
-        } else if (id == R.id.zhifubaoCB) {
+        }
+        /**支付宝被选中*/
+        else if (id == R.id.zhifubaoCB) {
             //region 支付宝被选中
 
             if (mzhifubaocb.isChecked()) {
@@ -1364,7 +1375,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 mzhifubaocb.setChecked(false);
             }
             //endregion
-        } else if (id == R.id.yinhangkaCB) {
+        }
+        /**银行卡被选中*/
+        else if (id == R.id.yinhangkaCB) {
             //region 银行卡被选中
 
             if (myinhangkacb.isChecked()) {
@@ -1375,8 +1388,9 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 myinhangkacb.setChecked(false);
             }
             //endregion
-        } else if (id == R.id.detailSendByselfBtn)//开始自送
-        {
+        }
+        /**开始自送*/
+        else if (id == R.id.detailSendByselfBtn){//开始自送
             new AlertDialog.Builder(this)
                     .setMessage("您确定要发起线路导航吗？导航方便您能准确定位发货的位置在哪里，大大提升您找到货物位置的效率")
                     .setNegativeButton("取消", null)
@@ -1387,15 +1401,15 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                             mPresenter.nav(mId);
                         }
                     }).show();
-        } else if (id == R.id.detailSendByselfquxiaoBtn)//取消自送
-        {
-
-        } else if (id == R.id.detailPickByselfBtn)//开始自提
-        {
-
-        } else if (id == R.id.detailPickByselfquxiaoBtn)//取消自提
-        {
-
+        }
+        /**取消自送*/
+        else if (id == R.id.detailSendByselfquxiaoBtn){
+        }
+        /**开始自提*/
+        else if (id == R.id.detailPickByselfBtn){
+        }
+        /**取消自提*/
+        else if (id == R.id.detailPickByselfquxiaoBtn){
         }
 //        else if(id==R.id.pingjiaone)
 //        {
