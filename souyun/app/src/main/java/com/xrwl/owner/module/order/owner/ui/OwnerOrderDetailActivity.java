@@ -333,340 +333,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     }
 
-//    @Override
-//    protected void initViews(Bundle savedInstanceState) {
-//        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)) {
-//            new AlertDialog.Builder(this).setMessage("您需要打开定位权限才能使用此功能")
-//                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                            finish();
-//                        }
-//                    })
-//                    .setPositiveButton("去打开", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            PermissionUtils.openAppSettings();
-//                        }
-//                    }).show();
-//        } else {
-//            initMap();
-//            // initLocation();
-//    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mMapView.onResume();
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mMapView.onPause();
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mMapView.onSaveInstanceState(outState);
-    }
-
-    /**
-     * 注册监听
-     */
-    private void registerListener() {
-//        mAmap.setOnMapClickListener(this);
-//        mAmap.setOnMarkerClickListener(this);
-//        mAmap.setOnInfoWindowClickListener(this);
-//        mAmap.setInfoWindowAdapter(this);
-
-    }
-
-    /**
-     * 开始搜索路线规划方案
-     */
-    public void searchRouteResult(int routeType, int mode) {
-        if (mStartPoint == null) {
-            Toast.makeText(this, "起点未设置", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (mEndPoint == null) {
-            Toast.makeText(this, "终点未设置", Toast.LENGTH_LONG).show();
-        }
-        //     showProgressDialog();
-        final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
-                mStartPoint, mEndPoint);
-        if (routeType == ROUTE_TYPE_WALK) {
-//            RouteSearch.WalkRouteQuery query = new RouteSearch.WalkRouteQuery(fromAndTo, mode);
-//            mRouteSearch.calculateWalkRouteAsyn(query);
-            RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, mode,null,null,"");
-            mRouteSearch.calculateDriveRouteAsyn(query);
-        }
-    }
-
-    /***
-     * 根据订单类型展示不同地图(实施刷新地图可以写定时器 每秒去触发)、
-     * 考虑服务器压力写成手动去刷新（去获取司机位置）
-     */
-    private void initwjdMap() {
-        registerListener();
-        mRouteSearch = new RouteSearch(this);
-        mRouteSearch.setRouteSearchListener(this);
-        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
-
-    }
-
-//    public void initjjdMap() {
-//        registerListener();
-//        mRouteSearch = new RouteSearch(this);
-//        mRouteSearch.setRouteSearchListener(this);
-//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
-//
-//    }
-
-    /**
-     * 开始坐标
-     * 给起点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     *
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
-//    protected BitmapDescriptor getStartBitmapDescriptor() {
-//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_start);
-//    }
-
-    /**
-     * 结束坐标
-     * 给终点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     *
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
-//    protected BitmapDescriptor getEndBitmapDescriptor() {
-//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_car);
-//    }
-
-//    private void inityjdMap() {
-//        registerListener();
-//
-//        mRouteSearch = new RouteSearch(this);
-//        mRouteSearch.setRouteSearchListener(this);
-//        mAmap.addMarker(new MarkerOptions()
-//                .position(AMapUtil.convertToLatLng(mStartPoint))
-//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed)));
-//        mAmap.addMarker(new MarkerOptions()
-//                .position(AMapUtil.convertToLatLng(mEndPoint))
-//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
-//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
-//
-//    }
-
-    /**
-     * 2020年4月11日 10:39:46
-     * other 张彬彬
-     * 司机实时经纬度返回接口
-     */
-    Marker sijiPos;
-    private void Driverpositioning() {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("userid", mDriverId);
-        retrofitManager = RetrofitManager.getInstance();
-        retrofitManager.createReq(NetService.class)
-                .Driverpositioning(hashMap)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<DriverpositioningBeen>() {
-
-                    private String zbblat;
-                    private String zbblon;
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(DriverpositioningBeen driverpositioningBeen) {
-
-                        Double lon = Double.valueOf(driverpositioningBeen.getData().getLon());
-                        Log.e("zbb", lon.toString());
-                        Double lat = Double.valueOf(driverpositioningBeen.getData().getLat());
-                        Log.e("zbb", lat.toString());
-//                        mEndPoint = new LatLonPoint(lat, lon);
-//                        Log.e("zbb", mEndPoint.toString());
-//                        getEndBitmapDescriptor();
-//                        getStartBitmapDescriptor();
-//                        initjjdMap();
-
-                        if(sijiPos != null) sijiPos.remove();
-                        sijiPos = mAmap.addMarker(new MarkerOptions()
-                                .position(AMapUtil.convertToLatLng(new LatLonPoint(lat,lon)))
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_car)));
-                        mAmap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat,lon)));
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-//    private void initMap() {
-//            MyLocationStyle myLocationStyle;
-//        // MyLocationStyle myLocationIcon(;//设置定位蓝点的icon图标方法，需要用到BitmapDescriptor类对象作为参数。
-//        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
-//        // myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);//定位一次，且将视角移动到地图中心点。
-//        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
-//        // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-//        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-//        myLocationStyle.strokeWidth(1);//设置定位蓝点精度圈的边框宽度的方法
-//
-//
-//        mAmap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
-//        mAmap.getUiSettings().setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
-//        mAmap.getUiSettings().setCompassEnabled(true);   //设置指南针用于向 App 端用户展示地图方向，默认不显示
-//        mAmap.getUiSettings().setScaleControlsEnabled(true);    //设置比例尺控件。位于地图右下角，可控制其显示与隐藏
-//        mAmap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
-//
-//        //在nextActivity活动中取出数据
-//
-//
-////        LatLng latLng = new LatLng(37.861469, 112.57373);
-////        doSearchQuery();
-////        ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
-////        /**
-////         * 展示坐标点
-////         */
-////        OrderDetail detail = new OrderDetail();
-////
-////        for (double[] coord : coords) {
-////            MarkerOptions markerOption = new MarkerOptions();
-////            latLng = new LatLng(coord[1], coord[0]);
-////            markerOption.position(latLng);
-////            markerOption.anchor(0.5f, 0.5f);
-////            markerOption.title("标记点");
-////
-////            markerOption.snippet("default point");
-////            markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed
-////            ));
-////            markerOptionlst.add(markerOption);
-////            LatLonPoint point = new LatLonPoint(latLng.latitude, latLng.longitude);
-////            //getAddress(point);
-////        }
-////        mAmap.addMarkers(markerOptionlst, true);
-////        final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
-//    }
-
-//    private double[][] coords = {{111.475466, 36.01835},
-//            {111.477869, 35.995368},
-//            {111.483534, 36.030914},
-//            {111.467055, 36.022862},
-//    };
-
-//    /**
-//     * 对当前位置进行定位，获取当前位置的坐标信息
-//     */
-//    private void initLocation() {
-//
-//        //初始化定位
-//        mLocationClient = new AMapLocationClient(getApplicationContext());
-//        //设置定位回调监听
-//        mLocationClient.setLocationListener(this);
-//        //设置定位参数
-//        mLocationClient.setLocationOption(getDefaultOption());
-//        // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
-//        // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
-//        // 在定位结束后，在合适的生命周期调用onDestroy()方法
-//        // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
-//        //启动定位
-//        mLocationClient.startLocation();
-//    }
-
-//    /**
-//     * 对输入出发地的地点进行位置查询
-//     */
-//    private void doSearchQuery() {
-//
-//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
-//        query.setPageSize(1);//设置每页最多返回多少条poiitem
-//        query.setPageNum(0);//设置查第一页
-////        query.setCityLimit(true);
-//        PoiSearch poiSearch = new PoiSearch(this, query);
-//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
-//            @Override
-//            public void onPoiSearched(PoiResult poiResult, int i) {
-//                List<PoiItem> datas = poiResult.getPois();
-//
-//                for (PoiItem pi : datas) {
-//                    double lat = pi.getLatLonPoint().getLatitude();
-//                    double lon = pi.getLatLonPoint().getLongitude();
-//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-//                }
-//            }
-//
-//            @Override
-//            public void onPoiItemSearched(PoiItem poiItem, int i) {
-//            }
-//        });
-//        if (mCurrentLocation != null) {
-//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 5000, true));//3000米以内
-//        }
-//        poiSearch.searchPOIAsyn();// 异步搜索
-//    }
-
-//    /**
-//     * 对坐标点进行数据请求
-//     */
-//    private void dadate() {
-//
-//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
-//        query.setPageSize(1);//设置每页最多返回多少条poiitem
-//        query.setPageNum(0);//设置查第一页
-////        query.setCityLimit(true);
-//        PoiSearch poiSearch = new PoiSearch(this, query);
-//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
-//            @Override
-//            public void onPoiSearched(PoiResult poiResult, int i) {
-//                List<PoiItem> datas = poiResult.getPois();
-//
-//                for (PoiItem pi : datas) {
-//                    double lat = pi.getLatLonPoint().getLatitude();
-//                    double lon = pi.getLatLonPoint().getLongitude();
-//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
-//                }
-//            }
-//
-//            @Override
-//            public void onPoiItemSearched(PoiItem poiItem, int i) {
-//            }
-//        });
-//        if (mCurrentLocation != null) {
-//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
-//        }
-//        poiSearch.searchPOIAsyn();// 异步搜索
-//    }
-
-
     @Override
     protected void initViews() {
 
@@ -2657,30 +2323,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     }
 
 
-
-
-    @Override
-    public void onRefreshError(Throwable e) {
-        mLoadingDialog.dismiss();
-        if (mXrwlwxpayDialog != null) {
-            mXrwlwxpayDialog.dismiss();
-        }
-        showNetworkError();
-    }
-
-    @Override
-    public void onError(BaseEntity entity) {
-        if (mPostDialog != null) {
-            mPostDialog.dismiss();
-        }
-        if (mXrwlwxpayDialog != null) {
-            mXrwlwxpayDialog.dismiss();
-        }
-        mLoadingDialog.dismiss();
-        handleError(entity);
-    }
-
-
     @Override
     public void resultsSuccess(BaseEntity<PayResult> entity) {
         mPostDialog.dismiss();
@@ -2720,460 +2362,24 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         startActivity(intent);
     }
 
-    @Override
-    public void onNavError(Throwable e) {
-        showToast("导航失败");
-    }
 
-    @Override
-    public void onCancelOrderSuccess(BaseEntity<OrderDetail> entity) {
-        mPostDialog.dismiss();
-        showToast("取消订单成功");
-        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
-        finish();
-    }
 
-    @Override
-    public void onCancelOrderError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void onCancelpayOrderSuccess(BaseEntity<OrderDetail> entity) {
-        // startActivity(new Intent(this, OwnerOrderActivity.class));
-        finish();
-    }
-
-    @Override
-    public void onCancelpayOrderError(Throwable e) {
+    //===================== 红包 start
+    public void hongbao() {
+        RedPacketEntity entity = new RedPacketEntity("16飕云", "http://www.16sbj.com/xcx/hongbao.png", "订单完成，红包返现");
+        showRedPacketDialog(entity);
+        mHomeIntroRv.setFocusableInTouchMode(false);
+        mHomeIntroRv.setHasFixedSize(true);
+        mHomeIntroRv.setNestedScrollingEnabled(false);
+        mHomeServiceRv.setFocusableInTouchMode(false);
+        mHomeServiceRv.setHasFixedSize(true);
+        mHomeServiceRv.setNestedScrollingEnabled(false);
+        mHomeIntroRv.setLayoutManager(new GridLayoutManager(mContext, 4));
+        mHomeIntroRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
+        mHomeServiceRv.setLayoutManager(new GridLayoutManager(mContext, 4));
+        mHomeServiceRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
 
     }
-
-    @Override
-    public void onConfirmOrderSuccess(BaseEntity<OrderDetail> entity) {
-
-        mPostDialog.dismiss();
-        showToast("收货成功");
-        handleError(entity);
-        finish();
-//        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
-//        Intent intent = new Intent(this, OwnerOrderActivity.class);
-//        intent.putExtra("position", 3);
-//        startActivity(intent);
-
-    }
-
-    @Override
-    public void onConfirmOrderError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void onConfirmtixingOrderSuccess(BaseEntity<OrderDetail> entity) {
-        // mPostDialog.dismiss();
-//        showToast("线下支付提醒司机成功");
-//        startActivity(new Intent(this, OwnerOrderActivity.class));
-        finish();
-    }
-
-    @Override
-    public void onConfirmtixingOrderError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void onConfirmOwnerkaishiyunshuSuccess(BaseEntity<OrderDetail> entity) {
-        // mPostDialog.dismiss();
-        //  handleError(entity);
-        //  EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
-//        Intent intent = new Intent(this, OwnerOrderActivity.class);
-//        intent.putExtra("position", 1);
-//        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void onConfirmOwnerkaishiyunshuError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void onLocationSuccess(BaseEntity<OrderDetail> entity) {
-        //   mPostDialog.dismiss();
-        OrderDetail od = entity.getData();
-        String lat = String.valueOf(od.lat);
-        String lon = String.valueOf(od.lon);
-        Intent intent = new Intent(mContext, QinLocationActivity.class);
-        intent.putExtra("mlat", lat);
-        intent.putExtra("mlon", lon);
-        startActivity(intent);
-
-
-//        NaviPara naviPara = new NaviPara();
-//        //设置终点位置
-//        naviPara.setTargetPoint(new LatLng(lat, lon));
-//        //设置导航策略，这里是避免拥堵
-//        naviPara.setNaviStyle(NaviPara.DRIVING_AVOID_CONGESTION);
-//        try {
-//            AMapUtils.openAMapNavi(naviPara, this);
-//        } catch (AMapException e) {
-//            e.printStackTrace();
-//            //如果没安装会进入异常，调起下载页面
-//            AMapUtils.getLatestAMapApp(this);
-//        }
-
-
-    }
-
-    @Override
-    public void onLocationError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void onPaySuccess(BaseEntity<PayResult> entity) {
-
-        mPostDialog.dismiss();
-
-        final PayResult pr = entity.getData();
-
-        //发起微信或支付宝支付
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                if (!mWXApi.isWXAppInstalled()) {
-                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!mWXApi.isWXAppSupportAPI()) {
-                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                PayReq request = new PayReq();
-//                request.appId = pr.appid;
-//                request.partnerId = pr.partnerid;
-//                request.prepayId = pr.prepayid;
-//                request.packageValue = pr.packagestr;
-//                request.nonceStr = pr.noncestr;
-//                request.timeStamp = pr.timestamp;
-//                request.sign = pr.sign;
-//                mWXApi.registerApp(pr.appid);
-                mWXApi.sendReq(request);
-                showToast("启动微信中...");
-            }
-        });
-    }
-
-    @Override
-    public void onPayError(Throwable e) {
-        mPostDialog.dismiss();
-        showNetworkError();
-    }
-
-    @Override
-    public void wxonOnlinePaySuccess(BaseEntity<PayResult> entity) {
-        // showToast("提交成功");
-        // startActivity(new Intent(this, OwnerOrderActivity.class));
-        // finish();
-        // mXrwlwxpayDialog.dismiss();
-        /**
-         * 调用微信支付php*/
-        mXrwlwxpayDialog.dismiss();
-        final PayResult pr = entity.getData();
-        final Config result = pr.getConfig();
-        Log.d(TAG, "result.bean = " + result.toString());
-
-        //发起微信或支付宝支付
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                if (!mWXApi.isWXAppInstalled()) {
-                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!mWXApi.isWXAppSupportAPI()) {
-                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                PayReq request = new PayReq();
-                request.appId = result.appid;
-                request.partnerId = result.partnerid;
-                request.prepayId = result.prepayid;
-                request.packageValue = result.packagestr;
-                request.nonceStr = result.noncestr;
-                request.timeStamp = result.timestamp;
-                request.sign = result.sign;
-                mWXApi.registerApp(result.appid);
-                mWXApi.sendReq(request);
-                showToast("启动微信中...");
-            }
-        });
-        EventBus.getDefault().post(new PublishClearCacheEvent());
-
-
-    }
-
-    @Override
-    public void wxonOnlinePayError(Throwable e) {
-
-    }
-
-    @Override
-    public void wxonOnlinedaishouPaySuccess(BaseEntity<PayResult> entity) {
-        mPostDialog.dismiss();
-
-        final PayResult pr = entity.getData();
-
-        //发起微信或支付宝支付
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                if (!mWXApi.isWXAppInstalled()) {
-                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!mWXApi.isWXAppSupportAPI()) {
-                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                PayReq request = new PayReq();
-//                request.appId = pr.appid;
-//                request.partnerId = pr.partnerid;
-//                request.prepayId = pr.prepayid;
-//                request.packageValue = pr.packagestr;
-//                request.nonceStr = pr.noncestr;
-//                request.timeStamp = pr.timestamp;
-//                request.sign = pr.sign;
-//                mWXApi.registerApp(pr.appid);
-                mWXApi.sendReq(request);
-                showToast("启动微信中...");
-            }
-        });
-    }
-
-    @Override
-    public void wxonOnlinedaishouPayError(Throwable e) {
-
-    }
-
-    @Override
-    public void onCancelDriverkaishiyunshuSuccess(BaseEntity<OrderDetail> entity) {
-        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
-        Intent intent = new Intent(this, OwnerOrderActivity.class);
-        intent.putExtra("position", 2);
-        startActivity(intent);
-        finish();
-
-    }
-
-    @Override
-    public void onCancelDriverkaishiyunshuError(Throwable e) {
-
-    }
-
-    @Override
-    public void onTotalPriceSuccess(String price) {
-        if (TextUtils.isEmpty(price)) {
-            myumoney.setText("剩余余额：0元");
-        } else {
-            if (Double.valueOf(price) <= 0) {
-                myumoney.setText("剩余余额：0元");
-            } else {
-                myumoney.setText("剩余余额：" + price + "元");
-            }
-        }
-        myyue = Double.parseDouble(price);
-    }
-
-    @Override
-    public void onTixianSuccess() {
-        new AlertDialog.Builder(this)
-                .setMessage("付款成功，请关注您的账户余额")
-                .setNegativeButton("取消", null)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(mContext, PublishSuccessActivity.class));
-                        finish();
-                    }
-                }).show();
-    }
-
-    @Override
-    public void onTixianError(BaseEntity entity) {
-        showToast("付款失败");
-        handleError(entity);
-    }
-
-    @Override
-    public void onTixianException(Throwable e) {
-
-    }
-
-    @Override
-    public void onTixiantuikuanSuccess() {
-        showToast("您的余额已经退款成功");
-
-    }
-
-    @Override
-    public void onTixiantuikuanError(BaseEntity entity) {
-        showToast("退款失败");
-        handleError(entity);
-    }
-
-    @Override
-    public void onTixiantuikuanException(Throwable e) {
-
-    }
-
-    @Override
-    public void onPingJiaSuccess() {
-        showToast("评价成功");
-    }
-
-    @Override
-    public void onPingJiaError(BaseEntity entity) {
-        showToast("评价失败");
-        handleError(entity);
-    }
-
-    @Override
-    public void onPingJiaException(Throwable e) {
-
-    }
-
-    @Override
-    public void ongetlistpingjiaSuccess(BaseEntity<String> entity) {
-
-    }
-
-    @Override
-    public void ongetlistpingjiaError(BaseEntity entity) {
-
-    }
-
-    @Override
-    public void ongetlistpingjiaException(Throwable e) {
-
-    }
-
-    @Override
-    public void onetlistpingjiasSuccess(String duqu, String username, String dianhua, String chexing, String pingfen, String chehao) {
-        dianpinglo = duqu;
-    }
-
-    @Override
-    public void onWx_refundSuccess(BaseEntity<PayResult> entity) {
-        showToast("退款成功");
-        finish();
-    }
-
-    @Override
-    public void onWx_refundError(Throwable e) {
-
-    }
-
-    @Override
-    public void updateOrderdunSuccess(BaseEntity entity) {
-        mWeightTv.setText(mWeightValue);
-        showToast("修改成功");
-    }
-
-    @Override
-    public void updateOrderdunError(BaseEntity e) {
-        showToast("修改失败");
-    }
-
-    @Override
-    public void updateOrderdundaodaSuccess(BaseEntity entity) {
-        mWeightTv2.setText(mWeightValue2);
-        showToast("修改成功");
-    }
-
-    @Override
-    public void updateOrderdundaodaError(BaseEntity e) {
-        showToast("修改失败");
-    }
-
-    @Override
-    public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
-        if(mOperationDialog!=null && mOperationDialog.isShowing())
-        mOperationDialog.dismiss();
-        mPresenter.getOrderDetail(mId);
-    }
-
-    @Override
-    public void onUploadImagesError(BaseEntity e) {
-        if(mOperationDialog!=null && mOperationDialog.isShowing())
-        mOperationDialog.dismiss();
-        showToast(e.getMsg());
-    }
-
-    @Override
-    public void onUploadImagesError(Throwable e) {
-        if(mOperationDialog!=null && mOperationDialog.isShowing())
-            mOperationDialog.dismiss();
-        showNetworkError();
-    }
-
-//    @Override
-//    public void onetlistpingjiasSuccess(String price) {
-//
-//    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (mPayBroadcastReceiver != null) {
-            LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
-        }
-        mHandler.removeCallbacksAndMessages(null);
-
-        //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
-        if(mMapView!= null)
-            mMapView.onDestroy();
-//        if (mLocationClient != null) {
-//            /**
-//             * 如果AMapLocationClient是在当前Activity实例化的，
-//             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
-//             */
-//            mLocationClient.onDestroy();
-//            mLocationClient = null;
-//        }
-
-    }
-
-//    /**
-//     * 默认的定位参数
-//     *
-//     * @author hongming.wang
-//     * @since 2.8.0
-//     */
-//    private AMapLocationClientOption getDefaultOption() {
-//        AMapLocationClientOption mOption = new AMapLocationClientOption();
-//        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
-//        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
-//        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
-//        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
-//        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
-//        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
-//        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
-//        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
-//        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
-//        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
-//        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
-//        return mOption;
-//    }
 
     public void showRedPacketDialog(RedPacketEntity entity) {
         if (mRedPacketDialogView == null) {
@@ -3212,21 +2418,170 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         mRedPacketDialog.show();
     }
 
-    public void hongbao() {
-        RedPacketEntity entity = new RedPacketEntity("16飕云", "http://www.16sbj.com/xcx/hongbao.png", "订单完成，红包返现");
-        showRedPacketDialog(entity);
-        mHomeIntroRv.setFocusableInTouchMode(false);
-        mHomeIntroRv.setHasFixedSize(true);
-        mHomeIntroRv.setNestedScrollingEnabled(false);
-        mHomeServiceRv.setFocusableInTouchMode(false);
-        mHomeServiceRv.setHasFixedSize(true);
-        mHomeServiceRv.setNestedScrollingEnabled(false);
-        mHomeIntroRv.setLayoutManager(new GridLayoutManager(mContext, 4));
-        mHomeIntroRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
-        mHomeServiceRv.setLayoutManager(new GridLayoutManager(mContext, 4));
-        mHomeServiceRv.addItemDecoration(new GridSpacingItemDecoration(4, 8, false));
+    //===================== 红包 start
+
+    //===================== 定位 start
+
+//    /**
+//     * 默认的定位参数
+//     *
+//     * @author hongming.wang
+//     * @since 2.8.0
+//     */
+//    private AMapLocationClientOption getDefaultOption() {
+//        AMapLocationClientOption mOption = new AMapLocationClientOption();
+//        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+//        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+//        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+//        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
+//        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
+//        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+//        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
+//        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+//        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+//        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
+//        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
+//        return mOption;
+//    }
+
+    //===================== 定位 end
+
+    //===================== 线路 start
+    @Override
+    public void onRideRouteSearched(RideRouteResult arg0, int arg1) {
+        // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public void onWalkRouteSearched(WalkRouteResult result, int errorCode) {
+        dissmissProgressDialog();
+
+        if (mOrderDetail.type.equals("0")) {
+            mAmap.clear();// 清理地图上的所有覆盖物
+            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+                if (result != null && result.getPaths() != null) {
+                    if (result.getPaths().size() > 0) {
+                        mWalkRouteResult = result;
+                        final WalkPath walkPath = mWalkRouteResult.getPaths()
+                                .get(0);
+                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
+                                this, mAmap, walkPath,
+                                mWalkRouteResult.getStartPos(),
+                                mWalkRouteResult.getTargetPos());
+
+                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                        walkRouteOverlay.removeFromMap();
+                        walkRouteOverlay.addToMap();
+                        walkRouteOverlay.zoomToSpan();
+                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                        int dis = (int) walkPath.getDistance();
+                        int dur = (int) walkPath.getDuration();
+                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                    } else if (result != null && result.getPaths() == null) {
+                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+            }
+        } else if (mOrderDetail.type.equals("1")) {
+            mAmap.clear();// 清理地图上的所有覆盖物
+            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+                if (result != null && result.getPaths() != null) {
+                    if (result.getPaths().size() > 0) {
+                        mWalkRouteResult = result;
+                        final WalkPath walkPath = mWalkRouteResult.getPaths()
+                                .get(0);
+                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
+                                this, mAmap, walkPath,
+                                mWalkRouteResult.getStartPos(),
+                                mWalkRouteResult.getTargetPos());
+
+                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                        walkRouteOverlay.removeFromMap();
+                        walkRouteOverlay.addToMap2();
+                        walkRouteOverlay.zoomToSpan();
+                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                        int dis = (int) walkPath.getDistance();
+                        int dur = (int) walkPath.getDuration();
+                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                    } else if (result != null && result.getPaths() == null) {
+                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+            }
+
+        } else if (mOrderDetail.type.equals("2")) {
+            mAmap.clear();// 清理地图上的所有覆盖物
+            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+                if (result != null && result.getPaths() != null) {
+                    if (result.getPaths().size() > 0) {
+                        mWalkRouteResult = result;
+                        final WalkPath walkPath = mWalkRouteResult.getPaths()
+                                .get(0);
+                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
+                                this, mAmap, walkPath,
+                                mWalkRouteResult.getStartPos(),
+                                mWalkRouteResult.getTargetPos());
+
+                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                        walkRouteOverlay.removeFromMap();
+                        walkRouteOverlay.addToMap();
+                        walkRouteOverlay.zoomToSpan();
+                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                        int dis = (int) walkPath.getDistance();
+                        int dur = (int) walkPath.getDuration();
+                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                    } else if (result != null && result.getPaths() == null) {
+                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+            }
+        } else if (mOrderDetail.type.equals("3")) {
+            mAmap.clear();// 清理地图上的所有覆盖物
+            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+                if (result != null && result.getPaths() != null) {
+                    if (result.getPaths().size() > 0) {
+                        mWalkRouteResult = result;
+                        final WalkPath walkPath = mWalkRouteResult.getPaths()
+                                .get(0);
+                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
+                                this, mAmap, walkPath,
+                                mWalkRouteResult.getStartPos(),
+                                mWalkRouteResult.getTargetPos());
+
+                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
+                        walkRouteOverlay.removeFromMap();
+                        walkRouteOverlay.addToMap();
+                        walkRouteOverlay.zoomToSpan();
+                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
+                        int dis = (int) walkPath.getDistance();
+                        int dur = (int) walkPath.getDuration();
+                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
+                    } else if (result != null && result.getPaths() == null) {
+                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
+
 
 //    @Override
 //    public void onLocationChanged(AMapLocation aMapLocation) {
@@ -3453,152 +2808,283 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 //        }
     }
 
-
-    @Override
-    public void onRideRouteSearched(RideRouteResult arg0, int arg1) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void onWalkRouteSearched(WalkRouteResult result, int errorCode) {
-        dissmissProgressDialog();
-
-        if (mOrderDetail.type.equals("0")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mWalkRouteResult = result;
-                        final WalkPath walkPath = mWalkRouteResult.getPaths()
-                                .get(0);
-                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
-                                this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
-        } else if (mOrderDetail.type.equals("1")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mWalkRouteResult = result;
-                        final WalkPath walkPath = mWalkRouteResult.getPaths()
-                                .get(0);
-                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
-                                this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap2();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
-
-        } else if (mOrderDetail.type.equals("2")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mWalkRouteResult = result;
-                        final WalkPath walkPath = mWalkRouteResult.getPaths()
-                                .get(0);
-                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
-                                this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
-        } else if (mOrderDetail.type.equals("3")) {
-            mAmap.clear();// 清理地图上的所有覆盖物
-            if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-                if (result != null && result.getPaths() != null) {
-                    if (result.getPaths().size() > 0) {
-                        mWalkRouteResult = result;
-                        final WalkPath walkPath = mWalkRouteResult.getPaths()
-                                .get(0);
-                        WalkRouteOverlay walkRouteOverlay = new WalkRouteOverlay(
-                                this, mAmap, walkPath,
-                                mWalkRouteResult.getStartPos(),
-                                mWalkRouteResult.getTargetPos());
-
-                        walkRouteOverlay.getWalkColor();//轨迹颜色修改
-                        walkRouteOverlay.removeFromMap();
-                        walkRouteOverlay.addToMap();
-                        walkRouteOverlay.zoomToSpan();
-                        walkRouteOverlay.setNodeIconVisibility(false);//关闭行走图标轨迹
-                        int dis = (int) walkPath.getDistance();
-                        int dur = (int) walkPath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-                    } else if (result != null && result.getPaths() == null) {
-                        Toast.makeText(this, "对不起 搜不到相关数据", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(this, "对不起，搜不到相关数据", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, errorCode, Toast.LENGTH_LONG).show();
-            }
+    /**
+     * 开始搜索路线规划方案
+     */
+    public void searchRouteResult(int routeType, int mode) {
+        if (mStartPoint == null) {
+            Toast.makeText(this, "起点未设置", Toast.LENGTH_LONG).show();
+            return;
         }
+        if (mEndPoint == null) {
+            Toast.makeText(this, "终点未设置", Toast.LENGTH_LONG).show();
+        }
+        //     showProgressDialog();
+        final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
+                mStartPoint, mEndPoint);
+        if (routeType == ROUTE_TYPE_WALK) {
+//            RouteSearch.WalkRouteQuery query = new RouteSearch.WalkRouteQuery(fromAndTo, mode);
+//            mRouteSearch.calculateWalkRouteAsyn(query);
+            RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, mode,null,null,"");
+            mRouteSearch.calculateDriveRouteAsyn(query);
+        }
+    }
+
+    /***
+     * 根据订单类型展示不同地图(实施刷新地图可以写定时器 每秒去触发)、
+     * 考虑服务器压力写成手动去刷新（去获取司机位置）
+     */
+    private void initwjdMap() {
+        registerListener();
+        mRouteSearch = new RouteSearch(this);
+        mRouteSearch.setRouteSearchListener(this);
+        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
 
     }
 
+//    public void initjjdMap() {
+//        registerListener();
+//        mRouteSearch = new RouteSearch(this);
+//        mRouteSearch.setRouteSearchListener(this);
+//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
+//
+//    }
 
     /**
-     * 隐藏进度框
+     * 开始坐标
+     * 给起点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
+     *
+     * @return 更换的Marker图片。
+     * @since V2.1.0
      */
-    private void dissmissProgressDialog() {
-        if (progDialog != null) {
-            //progDialog.dismiss();
-        }
+//    protected BitmapDescriptor getStartBitmapDescriptor() {
+//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_start);
+//    }
+
+    /**
+     * 结束坐标
+     * 给终点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
+     *
+     * @return 更换的Marker图片。
+     * @since V2.1.0
+     */
+//    protected BitmapDescriptor getEndBitmapDescriptor() {
+//        return BitmapDescriptorFactory.fromResource(R.drawable.amap_car);
+//    }
+
+//    private void inityjdMap() {
+//        registerListener();
+//
+//        mRouteSearch = new RouteSearch(this);
+//        mRouteSearch.setRouteSearchListener(this);
+//        mAmap.addMarker(new MarkerOptions()
+//                .position(AMapUtil.convertToLatLng(mStartPoint))
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed)));
+//        mAmap.addMarker(new MarkerOptions()
+//                .position(AMapUtil.convertToLatLng(mEndPoint))
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
+//        searchRouteResult(ROUTE_TYPE_WALK, RouteSearch.DRIVING_SINGLE_DEFAULT);
+//
+//    }
+
+    /**
+     * 2020年4月11日 10:39:46
+     * other 张彬彬
+     * 司机实时经纬度返回接口
+     */
+    Marker sijiPos;
+    private void Driverpositioning() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("userid", mDriverId);
+        retrofitManager = RetrofitManager.getInstance();
+        retrofitManager.createReq(NetService.class)
+                .Driverpositioning(hashMap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DriverpositioningBeen>() {
+
+                    private String zbblat;
+                    private String zbblon;
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(DriverpositioningBeen driverpositioningBeen) {
+
+                        Double lon = Double.valueOf(driverpositioningBeen.getData().getLon());
+                        Log.e("zbb", lon.toString());
+                        Double lat = Double.valueOf(driverpositioningBeen.getData().getLat());
+                        Log.e("zbb", lat.toString());
+//                        mEndPoint = new LatLonPoint(lat, lon);
+//                        Log.e("zbb", mEndPoint.toString());
+//                        getEndBitmapDescriptor();
+//                        getStartBitmapDescriptor();
+//                        initjjdMap();
+
+                        if(sijiPos != null) sijiPos.remove();
+                        sijiPos = mAmap.addMarker(new MarkerOptions()
+                                .position(AMapUtil.convertToLatLng(new LatLonPoint(lat,lon)))
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_car)));
+                        mAmap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat,lon)));
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
+//    private void initMap() {
+//            MyLocationStyle myLocationStyle;
+//        // MyLocationStyle myLocationIcon(;//设置定位蓝点的icon图标方法，需要用到BitmapDescriptor类对象作为参数。
+//        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
+//        // myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);//定位一次，且将视角移动到地图中心点。
+//        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
+//        // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
+//        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
+//        myLocationStyle.strokeWidth(1);//设置定位蓝点精度圈的边框宽度的方法
+//
+//
+//        mAmap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
+//        mAmap.getUiSettings().setMyLocationButtonEnabled(false);//设置默认定位按钮是否显示，非必需设置。
+//        mAmap.getUiSettings().setCompassEnabled(true);   //设置指南针用于向 App 端用户展示地图方向，默认不显示
+//        mAmap.getUiSettings().setScaleControlsEnabled(true);    //设置比例尺控件。位于地图右下角，可控制其显示与隐藏
+//        mAmap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+//
+//        //在nextActivity活动中取出数据
+//
+//
+////        LatLng latLng = new LatLng(37.861469, 112.57373);
+////        doSearchQuery();
+////        ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
+////        /**
+////         * 展示坐标点
+////         */
+////        OrderDetail detail = new OrderDetail();
+////
+////        for (double[] coord : coords) {
+////            MarkerOptions markerOption = new MarkerOptions();
+////            latLng = new LatLng(coord[1], coord[0]);
+////            markerOption.position(latLng);
+////            markerOption.anchor(0.5f, 0.5f);
+////            markerOption.title("标记点");
+////
+////            markerOption.snippet("default point");
+////            markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed
+////            ));
+////            markerOptionlst.add(markerOption);
+////            LatLonPoint point = new LatLonPoint(latLng.latitude, latLng.longitude);
+////            //getAddress(point);
+////        }
+////        mAmap.addMarkers(markerOptionlst, true);
+////        final Marker marker = mAmap.addMarker(new MarkerOptions().position(latLng).title("").snippet("DefaultMarker"));
+//    }
+
+//    private double[][] coords = {{111.475466, 36.01835},
+//            {111.477869, 35.995368},
+//            {111.483534, 36.030914},
+//            {111.467055, 36.022862},
+//    };
+
+//    /**
+//     * 对当前位置进行定位，获取当前位置的坐标信息
+//     */
+//    private void initLocation() {
+//
+//        //初始化定位
+//        mLocationClient = new AMapLocationClient(getApplicationContext());
+//        //设置定位回调监听
+//        mLocationClient.setLocationListener(this);
+//        //设置定位参数
+//        mLocationClient.setLocationOption(getDefaultOption());
+//        // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+//        // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+//        // 在定位结束后，在合适的生命周期调用onDestroy()方法
+//        // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+//        //启动定位
+//        mLocationClient.startLocation();
+//    }
+
+//    /**
+//     * 对输入出发地的地点进行位置查询
+//     */
+//    private void doSearchQuery() {
+//
+//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
+//        query.setPageSize(1);//设置每页最多返回多少条poiitem
+//        query.setPageNum(0);//设置查第一页
+////        query.setCityLimit(true);
+//        PoiSearch poiSearch = new PoiSearch(this, query);
+//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+//            @Override
+//            public void onPoiSearched(PoiResult poiResult, int i) {
+//                List<PoiItem> datas = poiResult.getPois();
+//
+//                for (PoiItem pi : datas) {
+//                    double lat = pi.getLatLonPoint().getLatitude();
+//                    double lon = pi.getLatLonPoint().getLongitude();
+//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+//                }
+//            }
+//
+//            @Override
+//            public void onPoiItemSearched(PoiItem poiItem, int i) {
+//            }
+//        });
+//        if (mCurrentLocation != null) {
+//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 5000, true));//3000米以内
+//        }
+//        poiSearch.searchPOIAsyn();// 异步搜索
+//    }
+
+//    /**
+//     * 对坐标点进行数据请求
+//     */
+//    private void dadate() {
+//
+//        PoiSearch.Query query = new PoiSearch.Query(mKeyword, "", "");
+//        query.setPageSize(1);//设置每页最多返回多少条poiitem
+//        query.setPageNum(0);//设置查第一页
+////        query.setCityLimit(true);
+//        PoiSearch poiSearch = new PoiSearch(this, query);
+//        poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
+//            @Override
+//            public void onPoiSearched(PoiResult poiResult, int i) {
+//                List<PoiItem> datas = poiResult.getPois();
+//
+//                for (PoiItem pi : datas) {
+//                    double lat = pi.getLatLonPoint().getLatitude();
+//                    double lon = pi.getLatLonPoint().getLongitude();
+//                    mAmap.addMarker(new MarkerOptions().title(pi.getTitle()).position(new LatLng(lat, lon)));
+//                }
+//            }
+//
+//            @Override
+//            public void onPoiItemSearched(PoiItem poiItem, int i) {
+//            }
+//        });
+//        if (mCurrentLocation != null) {
+//            LatLonPoint llp = new LatLonPoint(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+//            poiSearch.setBound(new PoiSearch.SearchBound(llp, 3000, true));//3000米以内
+//        }
+//        poiSearch.searchPOIAsyn();// 异步搜索
+//    }
+
+
+    //===================== 线路 end
+
+    //===================== 支付 start
     private class PayBroadcastReceiver extends BroadcastReceiver {
 
         @Override
@@ -3665,6 +3151,545 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         }
 
     }
+
+    @Override
+    public void onTotalPriceSuccess(String price) {
+        if (TextUtils.isEmpty(price)) {
+            myumoney.setText("剩余余额：0元");
+        } else {
+            if (Double.valueOf(price) <= 0) {
+                myumoney.setText("剩余余额：0元");
+            } else {
+                myumoney.setText("剩余余额：" + price + "元");
+            }
+        }
+        myyue = Double.parseDouble(price);
+    }
+
+    @Override
+    public void onTixianSuccess() {
+        new AlertDialog.Builder(this)
+                .setMessage("付款成功，请关注您的账户余额")
+                .setNegativeButton("取消", null)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(mContext, PublishSuccessActivity.class));
+                        finish();
+                    }
+                }).show();
+    }
+
+
+    @Override
+    public void onPaySuccess(BaseEntity<PayResult> entity) {
+
+        mPostDialog.dismiss();
+
+        final PayResult pr = entity.getData();
+
+        //发起微信或支付宝支付
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (!mWXApi.isWXAppInstalled()) {
+                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!mWXApi.isWXAppSupportAPI()) {
+                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                PayReq request = new PayReq();
+//                request.appId = pr.appid;
+//                request.partnerId = pr.partnerid;
+//                request.prepayId = pr.prepayid;
+//                request.packageValue = pr.packagestr;
+//                request.nonceStr = pr.noncestr;
+//                request.timeStamp = pr.timestamp;
+//                request.sign = pr.sign;
+//                mWXApi.registerApp(pr.appid);
+                mWXApi.sendReq(request);
+                showToast("启动微信中...");
+            }
+        });
+    }
+
+    @Override
+    public void onPayError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void wxonOnlinePaySuccess(BaseEntity<PayResult> entity) {
+        // showToast("提交成功");
+        // startActivity(new Intent(this, OwnerOrderActivity.class));
+        // finish();
+        // mXrwlwxpayDialog.dismiss();
+        /**
+         * 调用微信支付php*/
+        mXrwlwxpayDialog.dismiss();
+        final PayResult pr = entity.getData();
+        final Config result = pr.getConfig();
+        Log.d(TAG, "result.bean = " + result.toString());
+
+        //发起微信或支付宝支付
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (!mWXApi.isWXAppInstalled()) {
+                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!mWXApi.isWXAppSupportAPI()) {
+                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                PayReq request = new PayReq();
+                request.appId = result.appid;
+                request.partnerId = result.partnerid;
+                request.prepayId = result.prepayid;
+                request.packageValue = result.packagestr;
+                request.nonceStr = result.noncestr;
+                request.timeStamp = result.timestamp;
+                request.sign = result.sign;
+                mWXApi.registerApp(result.appid);
+                mWXApi.sendReq(request);
+                showToast("启动微信中...");
+            }
+        });
+        EventBus.getDefault().post(new PublishClearCacheEvent());
+
+
+    }
+
+    @Override
+    public void wxonOnlinePayError(Throwable e) {
+
+    }
+
+    @Override
+    public void wxonOnlinedaishouPaySuccess(BaseEntity<PayResult> entity) {
+        mPostDialog.dismiss();
+
+        final PayResult pr = entity.getData();
+
+        //发起微信或支付宝支付
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (!mWXApi.isWXAppInstalled()) {
+                    Toast.makeText(mContext, "没有安装微信哦", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!mWXApi.isWXAppSupportAPI()) {
+                    Toast.makeText(mContext, "当前版本不支持支付功能", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                PayReq request = new PayReq();
+//                request.appId = pr.appid;
+//                request.partnerId = pr.partnerid;
+//                request.prepayId = pr.prepayid;
+//                request.packageValue = pr.packagestr;
+//                request.nonceStr = pr.noncestr;
+//                request.timeStamp = pr.timestamp;
+//                request.sign = pr.sign;
+//                mWXApi.registerApp(pr.appid);
+                mWXApi.sendReq(request);
+                showToast("启动微信中...");
+            }
+        });
+    }
+
+    //===================== 支付 end
+
+
+
+    //==================== 无效
+
+    /**
+     * 隐藏进度框
+     */
+    private void dissmissProgressDialog() {
+        if (progDialog != null) {
+            //progDialog.dismiss();
+        }
+    }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    //    @Override
+//    protected void initViews(Bundle savedInstanceState) {
+//        if (!PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)) {
+//            new AlertDialog.Builder(this).setMessage("您需要打开定位权限才能使用此功能")
+//                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                            finish();
+//                        }
+//                    })
+//                    .setPositiveButton("去打开", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            PermissionUtils.openAppSettings();
+//                        }
+//                    }).show();
+//        } else {
+//            initMap();
+//            // initLocation();
+//    }
+
+
+
+
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    /**
+     * 注册监听
+     */
+    private void registerListener() {
+//        mAmap.setOnMapClickListener(this);
+//        mAmap.setOnMarkerClickListener(this);
+//        mAmap.setOnInfoWindowClickListener(this);
+//        mAmap.setInfoWindowAdapter(this);
+
+    }
+
+
+    @Override
+    public void onTixianError(BaseEntity entity) {
+        showToast("付款失败");
+        handleError(entity);
+    }
+
+    @Override
+    public void onTixianException(Throwable e) {
+
+    }
+
+    @Override
+    public void onTixiantuikuanSuccess() {
+        showToast("您的余额已经退款成功");
+
+    }
+
+    @Override
+    public void onTixiantuikuanError(BaseEntity entity) {
+        showToast("退款失败");
+        handleError(entity);
+    }
+
+    @Override
+    public void onTixiantuikuanException(Throwable e) {
+
+    }
+
+    @Override
+    public void onPingJiaSuccess() {
+        showToast("评价成功");
+    }
+
+    @Override
+    public void onPingJiaError(BaseEntity entity) {
+        showToast("评价失败");
+        handleError(entity);
+    }
+
+    @Override
+    public void onPingJiaException(Throwable e) {
+
+    }
+
+    @Override
+    public void ongetlistpingjiaSuccess(BaseEntity<String> entity) {
+
+    }
+
+    @Override
+    public void ongetlistpingjiaError(BaseEntity entity) {
+
+    }
+
+    @Override
+    public void ongetlistpingjiaException(Throwable e) {
+
+    }
+
+    @Override
+    public void onetlistpingjiasSuccess(String duqu, String username, String dianhua, String chexing, String pingfen, String chehao) {
+        dianpinglo = duqu;
+    }
+
+    @Override
+    public void onWx_refundSuccess(BaseEntity<PayResult> entity) {
+        showToast("退款成功");
+        finish();
+    }
+
+    @Override
+    public void onWx_refundError(Throwable e) {
+
+    }
+
+    @Override
+    public void updateOrderdunSuccess(BaseEntity entity) {
+        mWeightTv.setText(mWeightValue);
+        showToast("修改成功");
+    }
+
+    @Override
+    public void updateOrderdunError(BaseEntity e) {
+        showToast("修改失败");
+    }
+
+    @Override
+    public void updateOrderdundaodaSuccess(BaseEntity entity) {
+        mWeightTv2.setText(mWeightValue2);
+        showToast("修改成功");
+    }
+
+    @Override
+    public void updateOrderdundaodaError(BaseEntity e) {
+        showToast("修改失败");
+    }
+
+    @Override
+    public void onUploadImagesSuccess(BaseEntity<OrderDetail> entity) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+            mOperationDialog.dismiss();
+        mPresenter.getOrderDetail(mId);
+    }
+
+    @Override
+    public void onUploadImagesError(BaseEntity e) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+            mOperationDialog.dismiss();
+        showToast(e.getMsg());
+    }
+
+    @Override
+    public void onUploadImagesError(Throwable e) {
+        if(mOperationDialog!=null && mOperationDialog.isShowing())
+            mOperationDialog.dismiss();
+        showNetworkError();
+    }
+
+//    @Override
+//    public void onetlistpingjiasSuccess(String price) {
+//
+//    }
+
+    @Override
+    public void wxonOnlinedaishouPayError(Throwable e) {
+
+    }
+
+    @Override
+    public void onCancelDriverkaishiyunshuError(Throwable e) {
+
+    }
+
+    @Override
+    public void onCancelDriverkaishiyunshuSuccess(BaseEntity<OrderDetail> entity) {
+        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
+        Intent intent = new Intent(this, OwnerOrderActivity.class);
+        intent.putExtra("position", 2);
+        startActivity(intent);
+        finish();
+
+    }
+
+
+    @Override
+    public void onConfirmOwnerkaishiyunshuError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void onLocationSuccess(BaseEntity<OrderDetail> entity) {
+        //   mPostDialog.dismiss();
+        OrderDetail od = entity.getData();
+        String lat = String.valueOf(od.lat);
+        String lon = String.valueOf(od.lon);
+        Intent intent = new Intent(mContext, QinLocationActivity.class);
+        intent.putExtra("mlat", lat);
+        intent.putExtra("mlon", lon);
+        startActivity(intent);
+
+
+//        NaviPara naviPara = new NaviPara();
+//        //设置终点位置
+//        naviPara.setTargetPoint(new LatLng(lat, lon));
+//        //设置导航策略，这里是避免拥堵
+//        naviPara.setNaviStyle(NaviPara.DRIVING_AVOID_CONGESTION);
+//        try {
+//            AMapUtils.openAMapNavi(naviPara, this);
+//        } catch (AMapException e) {
+//            e.printStackTrace();
+//            //如果没安装会进入异常，调起下载页面
+//            AMapUtils.getLatestAMapApp(this);
+//        }
+
+
+    }
+
+    @Override
+    public void onLocationError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void onNavError(Throwable e) {
+        showToast("导航失败");
+    }
+
+    @Override
+    public void onCancelOrderSuccess(BaseEntity<OrderDetail> entity) {
+        mPostDialog.dismiss();
+        showToast("取消订单成功");
+        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
+        finish();
+    }
+
+    @Override
+    public void onCancelOrderError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void onCancelpayOrderSuccess(BaseEntity<OrderDetail> entity) {
+        // startActivity(new Intent(this, OwnerOrderActivity.class));
+        finish();
+    }
+
+    @Override
+    public void onCancelpayOrderError(Throwable e) {
+
+    }
+
+    @Override
+    public void onConfirmOrderSuccess(BaseEntity<OrderDetail> entity) {
+
+        mPostDialog.dismiss();
+        showToast("收货成功");
+        handleError(entity);
+        finish();
+//        EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
+//        Intent intent = new Intent(this, OwnerOrderActivity.class);
+//        intent.putExtra("position", 3);
+//        startActivity(intent);
+
+    }
+
+    @Override
+    public void onConfirmOrderError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void onConfirmtixingOrderSuccess(BaseEntity<OrderDetail> entity) {
+        // mPostDialog.dismiss();
+//        showToast("线下支付提醒司机成功");
+//        startActivity(new Intent(this, OwnerOrderActivity.class));
+        finish();
+    }
+
+    @Override
+    public void onConfirmtixingOrderError(Throwable e) {
+        mPostDialog.dismiss();
+        showNetworkError();
+    }
+
+    @Override
+    public void onConfirmOwnerkaishiyunshuSuccess(BaseEntity<OrderDetail> entity) {
+        // mPostDialog.dismiss();
+        //  handleError(entity);
+        //  EventBus.getDefault().post(new OwnerOrderListRrefreshEvent());
+//        Intent intent = new Intent(this, OwnerOrderActivity.class);
+//        intent.putExtra("position", 1);
+//        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mPayBroadcastReceiver != null) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(mPayBroadcastReceiver);
+        }
+        mHandler.removeCallbacksAndMessages(null);
+
+        //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
+        if(mMapView!= null)
+            mMapView.onDestroy();
+//        if (mLocationClient != null) {
+//            /**
+//             * 如果AMapLocationClient是在当前Activity实例化的，
+//             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
+//             */
+//            mLocationClient.onDestroy();
+//            mLocationClient = null;
+//        }
+
+    }
+
+
+
+    @Override
+    public void onRefreshError(Throwable e) {
+        mLoadingDialog.dismiss();
+        if (mXrwlwxpayDialog != null) {
+            mXrwlwxpayDialog.dismiss();
+        }
+        showNetworkError();
+    }
+
+    @Override
+    public void onError(BaseEntity entity) {
+        if (mPostDialog != null) {
+            mPostDialog.dismiss();
+        }
+        if (mXrwlwxpayDialog != null) {
+            mXrwlwxpayDialog.dismiss();
+        }
+        mLoadingDialog.dismiss();
+        handleError(entity);
+    }
+
 
 
 }
