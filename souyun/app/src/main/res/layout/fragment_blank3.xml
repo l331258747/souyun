@@ -641,8 +641,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="60px"
                             android:layout_marginRight="50px"
-                            android:layout_marginTop="30px"
-                            android:src="@drawable/qin14" />
+                            android:layout_marginTop="30px" />
 
 
                         <ImageView
@@ -653,8 +652,7 @@
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="60px"
-                            android:layout_marginTop="30px"
-                            android:src="@drawable/qin17" />
+                            android:layout_marginTop="30px" />
 
 
                         <ImageView
@@ -664,8 +662,7 @@
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="150px"
-                            android:layout_marginTop="30px"
-                            android:src="@drawable/qin18" />
+                            android:layout_marginTop="30px" />
 
 
                         <ImageView
@@ -675,8 +672,7 @@
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:layout_marginLeft="150px"
-                            android:layout_marginTop="30px"
-                            android:src="@drawable/qin19" />
+                            android:layout_marginTop="30px" />
 
 
 
