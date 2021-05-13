@@ -1,7 +1,5 @@
 package com.xrwl.owner.module.home.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.xrwl.owner.R;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
@@ -27,7 +26,8 @@ import com.yzq.zxinglibrary.common.Constant;
 import com.yzq.zxinglibrary.encode.CodeCreator;
 
 import java.util.List;
-public class saoyisaoActivity extends AppCompatActivity  implements View.OnClickListener {
+
+public class saoyisaoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button scanBtn;
     private TextView result;
     private EditText contentEt;
@@ -83,9 +83,6 @@ public class saoyisaoActivity extends AppCompatActivity  implements View.OnClick
         contentIv = (ImageView) findViewById(R.id.contentIv);
 
 
-
-
-
         Bitmap bitmap = null;
         AndPermission.with(this)
                 .permission(Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE)
@@ -132,7 +129,6 @@ public class saoyisaoActivity extends AppCompatActivity  implements View.OnClick
                 }).start();
 
 
-
     }
 
     @Override
@@ -141,7 +137,7 @@ public class saoyisaoActivity extends AppCompatActivity  implements View.OnClick
         Bitmap bitmap = null;
         switch (v.getId()) {
             case R.id.scanBtn:
-                     AndPermission.with(this)
+                AndPermission.with(this)
                         .permission(Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE)
                         .onGranted(new Action() {
                             @Override
@@ -159,13 +155,13 @@ public class saoyisaoActivity extends AppCompatActivity  implements View.OnClick
                                 //  config.setShake(false);//是否震动  默认为true
                                 // config.setDecodeBarCode(false);//是否扫描条形码 默认为true
 //                                config.setReactColor(R.color.colorAccent);//设置扫描框四个角
-                            //    的颜色 默认为白色
+                                //    的颜色 默认为白色
 //                                config.setFrameLineColor(R.color.colorAccent);//设置扫描框边
-                             //   框颜色 默认无色
+                                //   框颜色 默认无色
 //                                config.setScanLineColor(R.color.colorAccent);//设置扫描线的颜
-                            //    色 默认白色
+                                //    色 默认白色
                                 config.setFullScreenScan(false);//是否全屏扫描  默认为true  设
-                           //     为false则只会在扫描框中扫描
+                                //     为false则只会在扫描框中扫描
                                 intent.putExtra(Constant.INTENT_ZXING_CONFIG, config);
                                 startActivityForResult(intent, REQUEST_CODE_SCAN);
                             }
@@ -232,35 +228,30 @@ public class saoyisaoActivity extends AppCompatActivity  implements View.OnClick
         // 扫描二维码/条码回传
         if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
             if (data != null) {
-               String content = data.getStringExtra(Constant.CODED_CONTENT);
+                String content = data.getStringExtra(Constant.CODED_CONTENT);
 
-                if("apk".equals(getExtensionName(content)))
-                {
-                    Intent intent= new Intent();
+                if ("apk".equals(getExtensionName(content))) {
+                    Intent intent = new Intent();
                     intent.setAction("android.intent.action.VIEW");
                     Uri content_url = Uri.parse(content);
                     intent.setData(content_url);
                     startActivity(intent);
 
-                }
-                else
-                {
-
+                } else {
                     result.setText("扫描结果为：" + content);
                 }
 
             }
-        }
-        else
-        {
-            startActivity(new Intent(this, HomeFragment.class));
+        } else {
+            finish();
+//            startActivity(new Intent(this, HomeFragment.class));
         }
     }
 
     public static String getExtensionName(String filename) {
         if ((filename != null) && (filename.length() > 0)) {
             int dot = filename.lastIndexOf('.');
-            if ((dot >-1) && (dot < (filename.length() - 1))) {
+            if ((dot > -1) && (dot < (filename.length() - 1))) {
                 return filename.substring(dot + 1);
             }
         }
