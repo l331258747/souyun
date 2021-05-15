@@ -1744,14 +1744,14 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         initwjdMap();
 
-        if(od.type.equals("0") || od.type.equals("1") || od.type.equals("2")){//0：未接单，1：以接单未运输，2以接单并运输
+        if(mOrderDetail.type.equals("0") || mOrderDetail.type.equals("1") || mOrderDetail.type.equals("2")){//0：未接单，1：以接单未运输，2以接单并运输
             rl_qrcode.setVisibility(View.VISIBLE);
             tv_qrcode_afhuo.setOnClickListener(view -> {
                 Intent intent = new Intent();
                 intent.putExtra("orderId",mId);
                 intent.putExtra("orderType",0);
-                intent.putExtra("orderStart",od.start_desc);
-                intent.putExtra("orderEnd",od.end_desc);
+                intent.putExtra("orderStart",mOrderDetail.start_desc);
+                intent.putExtra("orderEnd",mOrderDetail.end_desc);
                 intent.setClass(mContext,OrderQrcodeActivity.class);
                 startActivity(intent);
             });
@@ -1759,8 +1759,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 Intent intent = new Intent();
                 intent.putExtra("orderId",mId);
                 intent.putExtra("orderType",1);
-                intent.putExtra("orderStart",od.start_desc);
-                intent.putExtra("orderEnd",od.end_desc);
+                intent.putExtra("orderStart",mOrderDetail.start_desc);
+                intent.putExtra("orderEnd",mOrderDetail.end_desc);
                 intent.setClass(mContext,OrderQrcodeActivity.class);
                 startActivity(intent);
             });
@@ -2376,12 +2376,12 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
 
         if(isQrcode){
-            if(TextUtils.equals("0",od.type)){
+            if(TextUtils.equals("0",mOrderDetail.type)){
                 Handler handler = new Handler();//延迟3秒是因为，定位还没获取到，操作不了
                 handler.postDelayed(() -> {
 
                 }, 2000);
-            }else if(TextUtils.equals("2",od.type)){
+            }else if(TextUtils.equals("2",mOrderDetail.type)){
                 Handler handler = new Handler();//延迟3秒是因为，定位还没获取到，操作不了
                 handler.postDelayed(() -> {
 

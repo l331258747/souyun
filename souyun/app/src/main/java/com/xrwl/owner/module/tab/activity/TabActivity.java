@@ -15,6 +15,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.blankj.utilcode.util.LogUtils;
 import com.hdgq.locationlib.LocationOpenApi;
 import com.hdgq.locationlib.listener.OnResultListener;
 import com.ldw.library.bean.BaseEntity;
@@ -86,6 +87,8 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
     @Override
     protected void initViews() {
         orderId = getIntent().getStringExtra("orderId");
+
+        LogUtils.e("11111111111111:" + orderId);
 
         //在启动页或 app 首页中，初始化 sdk 服务。context 必须为 activity。
         String appId = "com.xrwl.owner";
@@ -167,16 +170,29 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 //                    }
 //                });
 
+        goOrderDetail();
+    }
+
+    private void goOrderDetail(){
         if(!TextUtils.isEmpty(orderId)){
             Intent intent = new Intent(mContext, OwnerOrderDetailActivity.class);
             intent.putExtra("id", orderId);
             intent.putExtra("isQrcode",true);
             startActivity(intent);
         }
-
-
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent != null){
+            orderId = intent.getStringExtra("orderId");
+            LogUtils.e("222222222222:" + orderId);
+            if(!TextUtils.isEmpty(orderId)){
+                goOrderDetail();
+            }
+        }
+    }
 
     private void initNavBar() {
         for (int i = 0, size = mDatas.size(); i < size; i++) {
