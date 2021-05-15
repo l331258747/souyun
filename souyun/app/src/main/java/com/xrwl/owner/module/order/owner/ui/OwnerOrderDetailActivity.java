@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,7 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.hdgq.locationlib.LocationOpenApi;
 import com.hdgq.locationlib.entity.ShippingNoteInfo;
@@ -291,6 +293,15 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
     TextView shijidianhua;
     @BindView(R.id.shijichepai)
     TextView shijichepai;
+
+    @BindView(R.id.rl_qrcode)
+    RelativeLayout rl_qrcode;
+    @BindView(R.id.tv_qrcode_afhuo)
+    TextView tv_qrcode_afhuo;
+    @BindView(R.id.tv_qrcode_daoda)
+    TextView tv_qrcode_daoda;
+
+
     private ProgressDialog mXrwlwxpayDialog;
 
 //    private AMapLocationClient mLocationClient;
@@ -310,6 +321,8 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
     String mWeightValue = "";
     String mWeightValue2 = "";
+
+    private boolean isQrcode = false;
 
     @Override
     protected OwnerOrderDetailPresenter initPresenter() {
@@ -363,9 +376,14 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
                 .compress(true)
                 .circleDimmedLayer(true)
                 .forResult(PictureConfig.CHOOSE_REQUEST));
+        isQrcode = getIntent().getBooleanExtra("isQrcode",false);
         mId = getIntent().getStringExtra("id");
         mDriverId = getIntent().getStringExtra("driverid");
-        Log.e("=======", mDriverId.toString());
+        if(TextUtils.isEmpty(mDriverId)){
+            LogUtils.e(mDriverId + "");
+        }else{
+            LogUtils.e("mDriverId is null");
+        }
         mLoadingDialog = LoadingProgress.showProgress(this, "正在加载...");
         mPresenter.getOrderDetail(mId);
         myuecb.setChecked(true);
@@ -526,12 +544,6 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         /**定位司机*/
         else if (id == R.id.detailLocationBtn) {
 //            mPresenter.location(mId, mDriverId);
-
-
-
-
-
-
 
             ShippingNoteInfo shippingNoteInfo = new ShippingNoteInfo();
             shippingNoteInfo.setShippingNoteNumber("123");
@@ -1732,6 +1744,31 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
 
         initwjdMap();
 
+        if(od.type.equals("0") || od.type.equals("1") || od.type.equals("2")){//0：未接单，1：以接单未运输，2以接单并运输
+            rl_qrcode.setVisibility(View.VISIBLE);
+            tv_qrcode_afhuo.setOnClickListener(view -> {
+                Intent intent = new Intent();
+                intent.putExtra("orderId",mId);
+                intent.putExtra("orderType",0);
+                intent.putExtra("orderStart",od.start_desc);
+                intent.putExtra("orderEnd",od.end_desc);
+                intent.setClass(mContext,OrderQrcodeActivity.class);
+                startActivity(intent);
+            });
+            tv_qrcode_daoda.setOnClickListener(view -> {
+                Intent intent = new Intent();
+                intent.putExtra("orderId",mId);
+                intent.putExtra("orderType",1);
+                intent.putExtra("orderStart",od.start_desc);
+                intent.putExtra("orderEnd",od.end_desc);
+                intent.setClass(mContext,OrderQrcodeActivity.class);
+                startActivity(intent);
+            });
+        }else{
+            rl_qrcode.setVisibility(View.GONE);
+        }
+
+
         if (mOrderDetail.type.equals("0")) {
 //            initwjdMap();
             mCancelBtn.setVisibility(View.VISIBLE);
@@ -2334,6 +2371,24 @@ public class OwnerOrderDetailActivity extends BaseActivity<OwnerOrderContract.ID
         rgTabGroup.setVisibility(View.VISIBLE);
 
         mLoadingDialog.dismiss();
+
+        //如果是通过二维码进入 则执行操作
+
+
+        if(isQrcode){
+            if(TextUtils.equals("0",od.type)){
+                Handler handler = new Handler();//延迟3秒是因为，定位还没获取到，操作不了
+                handler.postDelayed(() -> {
+
+                }, 2000);
+            }else if(TextUtils.equals("2",od.type)){
+                Handler handler = new Handler();//延迟3秒是因为，定位还没获取到，操作不了
+                handler.postDelayed(() -> {
+
+                }, 2000);
+            }
+        }
+
     }
 
 

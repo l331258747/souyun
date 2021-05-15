@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import com.xrwl.owner.event.BusinessTabCountEvent;
 import com.xrwl.owner.event.TabCheckEvent;
 import com.xrwl.owner.module.account.activity.LoginActivity;
 import com.xrwl.owner.module.home.ui.HomeFragment;
+import com.xrwl.owner.module.order.owner.ui.OwnerOrderDetailActivity;
 import com.xrwl.owner.module.tab.mvp.TabPresenter;
 import com.xrwl.owner.utils.AccountUtil;
 import com.xrwl.owner.utils.BadgeUtil;
@@ -69,6 +71,8 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
     private Object shippingNoteInfos;
     private RetrofitManager1 retrofitManager;
 
+    String orderId;
+
     @Override
     protected TabPresenter initPresenter() {
         return new TabPresenter(this);
@@ -81,7 +85,7 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 
     @Override
     protected void initViews() {
-
+        orderId = getIntent().getStringExtra("orderId");
 
         //在启动页或 app 首页中，初始化 sdk 服务。context 必须为 activity。
         String appId = "com.xrwl.owner";
@@ -162,6 +166,14 @@ public class TabActivity extends BaseEventActivity<BaseMVP.IBaseView, TabPresent
 //
 //                    }
 //                });
+
+        if(!TextUtils.isEmpty(orderId)){
+            Intent intent = new Intent(mContext, OwnerOrderDetailActivity.class);
+            intent.putExtra("id", orderId);
+            intent.putExtra("isQrcode",true);
+            startActivity(intent);
+        }
+
 
     }
 

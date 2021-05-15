@@ -82,6 +82,9 @@
     <color name="base_dialog_content_color">#272727</color>
 
 
+    <color name="color_0547AA">#0547AA</color>
+    <color name="color_D6A206">#D6A206</color>
+
     <style name="activityTheme" parent="@android:style/Theme">
         <item name="android:windowIsTranslucent">true</item>
     </style>

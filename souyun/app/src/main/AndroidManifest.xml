@@ -113,15 +113,26 @@
         <service android:name="com.amap.api.location.APSService"></service>
         <activity
             android:name=".module.loading.activity.LoadingActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+
+                <data android:scheme="myapp" android:host="www.16souyun.com" android:path="/openwith"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".easier.ui.CalendarView"
+            android:screenOrientation="portrait" />
+        <activity android:name=".module.order.owner.ui.OrderQrcodeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".module.account.activity.AgreementActivity"

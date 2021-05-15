@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ldw.library.view.TitleView
+        android:id="@+id/baseTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:backImage="@drawable/ic_back"
+        app:titleText="二维码"
+        app:rightText="保存"
+        app:titleTextColor="@color/white" />
+
+
+
+    <LinearLayout
+        android:id="@+id/view_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@drawable/btn_d6a206_r15"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/default_dp20"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="欢迎使用16搜云"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="24sp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/iv_code" />
+
+        <ImageView
+            android:id="@+id/iv_code"
+            android:layout_width="@dimen/dp_240"
+            android:layout_height="@dimen/dp_240"
+            tools:src="@drawable/ic_qrcode"
+            android:layout_marginTop="@dimen/dp_20" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_20"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_40"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/white"
+                android:text="出发地：阿隆索的科技发来速度快阿隆索的科技发来速度快阿隆索的科技发来速度快"/>
+
+            <TextView
+                android:id="@+id/tv_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textSize="@dimen/sp_16"
+                android:textColor="@color/white"
+                android:text="目的地：阿隆索的科技发来速度快阿隆索的科技发来速度快阿隆索的科技发来速度快"/>
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16搜云出发码"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

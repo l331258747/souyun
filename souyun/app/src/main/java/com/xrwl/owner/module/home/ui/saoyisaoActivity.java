@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xrwl.owner.R;
+import com.xrwl.owner.module.order.owner.ui.OwnerOrderDetailActivity;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -235,6 +236,15 @@ public class saoyisaoActivity extends AppCompatActivity implements View.OnClickL
                     intent.setAction("android.intent.action.VIEW");
                     Uri content_url = Uri.parse(content);
                     intent.setData(content_url);
+                    startActivity(intent);
+
+                } else if(content.lastIndexOf("www.16souyun.com/h5.aspx?id=") != -1){
+                    finish();
+                    Intent intent = new Intent(saoyisaoActivity.this, OwnerOrderDetailActivity.class);
+                    Uri uri = Uri.parse(content);
+                    String orderId= uri.getQueryParameter("id"); //id 值 10943
+                    intent.putExtra("id", orderId);
+                    intent.putExtra("isQrcode",true);
                     startActivity(intent);
 
                 } else {
